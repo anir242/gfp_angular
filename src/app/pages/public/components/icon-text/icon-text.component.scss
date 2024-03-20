@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin icon-text-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #iconText{
+    svg {
+      max-height: 75px;
+      max-width: 75px;
+      stroke: mat.get-color-from-palette($accent);
+    }
+    .value{
+      color: mat.get-color-from-palette($accent);
+    }
+  }
+
+}

@@ -1,0 +1,47 @@
+<div id="projectsDetailsSummary">
+  <div class="container p-0">
+    <div class="row g-0 gy-4 justify-content-center">
+      <div class="col-12 text-center">
+        <span class="mat-display-1">
+          {{mainTitle}}
+        </span>
+      </div>
+      <div class="col-12 d-none d-md-block">
+        <div class="d-flex justify-content-around">
+          <div *ngFor="let item of items" class="my-3">
+            <app-icon-text
+              [url]="item.url"
+              [title]="item.title"
+              [value]="item.description"
+            ></app-icon-text>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 d-md-none">
+        <div id="carouselSummary" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselSummary" data-bs-slide-to="0" class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselSummary" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselSummary" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let item of items; let i = index" [ngClass]="i==0 ? 'active': ''"
+                 data-bs-interval="100000">
+              <div class="d-flex flex-column text-center h-100 itemBody my-3">
+                  <app-icon-text
+                    [url]="item.url"
+                    [title]="item.title"
+                    [value]="item.description"
+                  ></app-icon-text>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

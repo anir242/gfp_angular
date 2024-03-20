@@ -1,0 +1,72 @@
+<div class="p-4 pt-5 pb-4">
+  <div *ngIf="active; else inactive">
+    <div [id]="getId()">
+      <div class="container">
+        <div class="row justify-content-between align-items-start">
+          <div class="col-12 col-xl-4">
+            <div class="my-3 pt-4 px-0 px-lg-4">
+              <p class="title-1 bold text-white mt-4 mb-3">{{'stages.navigate'|translate:{name:name} }}</p>
+              <p class="body text-white">{{'stages.topUp'|translate}}</p>
+              <app-header-stages [progress]="percent"
+                                 [stageNumber]="stage"
+                                 [description]="description"
+                                 [type]="projectType?.slug"
+                                 [singlePaymentPacksInterface]="pack"></app-header-stages>
+            </div>
+          </div>
+          <div class="col-12 col-xl-8 wrapper-3d">
+            <div class="container-3d">
+              <div *ngIf="isPreservation()" [ngSwitch]="stage">
+                <div *ngSwitchCase="1">
+                  <app-preservation-first-stage></app-preservation-first-stage>
+                </div>
+                <div *ngSwitchDefault>
+                  <app-preservation-second-stage></app-preservation-second-stage>
+                </div>
+              </div>
+              <div *ngIf="isRenewable()" [ngSwitch]="stage">
+                <div *ngSwitchCase="1">
+                  <app-renewable-first-stage></app-renewable-first-stage>
+                </div>
+                <div *ngSwitchDefault>
+                  <app-renewable-second-stage></app-renewable-second-stage>
+                </div>
+              </div>
+              <div *ngIf="isRestoration()" [ngSwitch]="stage">
+                <div *ngSwitchCase="1">
+                  <app-reforestation-first-stage></app-reforestation-first-stage>
+                </div>
+                <div *ngSwitchCase="2">
+                  <app-reforestation-second-stage></app-reforestation-second-stage>
+                </div>
+                <div *ngSwitchCase="3">
+                  <app-reforestation-third-stage></app-reforestation-third-stage>
+                </div>
+                <div *ngSwitchDefault>
+                  <app-reforestation-fourth-stage></app-reforestation-fourth-stage>
+                </div>
+              </div>
+              <div *ngIf="isMarineRestoration()" [ngSwitch]="stage">
+                <div *ngSwitchCase="1">
+                  <app-marine-first-stage></app-marine-first-stage>
+                </div>
+                <div *ngSwitchCase="2">
+                  <app-marine-second-stage></app-marine-second-stage>
+                </div>
+                <div *ngSwitchCase="3">
+                  <app-marine-third-stage></app-marine-third-stage>
+                </div>
+                <div *ngSwitchDefault>
+                  <app-marine-fourth-stage></app-marine-fourth-stage>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #inactive>
+    <app-inactive [bgColor]="projectType?.colorSecondary" [pack]="pack" [slug]="slug"></app-inactive>
+  </ng-template>
+</div>

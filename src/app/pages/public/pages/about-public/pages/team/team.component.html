@@ -1,0 +1,28 @@
+<div class="content" id="aboutTeam">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-12" id="image" [style]="retrieveStyleBackgroundPublic(team)" *ngIf="showTitle">
+        <app-about-title-public
+          [title]="translate.instant('aboutPublicTeam.title')"
+          [buttonText]="buttonText"
+          arrow="team"
+          (button)="scrollToId('join')"></app-about-title-public>
+      </div>
+      <div class="col-12 mt-3" id="team" *ngIf="teamInterface">
+        <div class="container">
+          <app-our-team [team]="teamInterface"></app-our-team>
+        </div>
+      </div>
+      <div class="col-12 mt-3" id="ambassadors" *ngIf="ambassadorInterface">
+        <div class="container">
+          <app-our-ambassadors [ambassadors]="ambassadorInterface"></app-our-ambassadors>
+        </div>
+      </div>
+      <div class="col-12 joinGfp" id="join" *ngIf="showJoin">
+        <app-join-gfp
+        [title]="translate.instant('aboutPublicTeam.ready')"
+        [description]="translate.instant('aboutPublicTeam.readyDescription')"></app-join-gfp>
+      </div>
+    </div>
+  </div>
+</div>

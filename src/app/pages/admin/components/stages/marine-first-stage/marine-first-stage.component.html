@@ -1,0 +1,39 @@
+<div class="position-relative">
+    <model-viewer src="assets/images/models3D/mar-stg1.glb" camera-controls ar-modes="webxr scene-viewer quick-look" exposure="2.5"
+                  shadow-intensity="0" environment-image="neutral">
+      <button class="Hotspot" slot="hotspot-3" data-position="0.6849973m 1.02234m -0.006838m"
+              data-normal="0.8813045421377461m -0.4449796862333256m -0.15904522264773893m"
+              (click)="clickHotspot($event.target)"
+              data-visibility-attribute="visible">
+        <div class="HotspotAnnotation mat-body-1">{{'marineFirst.hotspot1'|translate}}</div>
+      </button>
+      <button class="Hotspot" slot="hotspot-1"
+              (click)="clickHotspot($event.target)"
+              data-position="0.4150106012463386m 0.9213264915389906m 0.5994302003986549m"
+              data-normal="0.4680167748712478m -0.6848170071247479m 0.5585570384408551m"
+              data-visibility-attribute="visible">
+        <div class="HotspotAnnotation mat-body-1">{{'marineFirst.hotspot2'|translate}}</div></button>
+      <button class="Hotspot" slot="hotspot-2"
+              (click)="clickHotspot($event.target)"
+              data-position="-0.8100612228689072m 0.9437216585290863m 0.5967048947274347m"
+              data-normal="-0.826474508775823m -0.4235094116287161m 0.20389520769553318m"
+              data-visibility-attribute="visible">
+        <div class="HotspotAnnotation mat-body-1">{{'marineFirst.hotspot3'|translate}}</div>
+      </button>
+      <button class="Hotspot" slot="hotspot-5"
+              (click)="clickHotspot($event.target)"
+              data-position="-0.12608928675673472m 0.919033300976272m -0.551197282658218m"
+              data-normal="0.532808628964498m -0.4469942864861719m -0.7185478917578774m"
+              data-visibility-attribute="visible">
+        <div class="HotspotAnnotation mat-body-1">{{'marineFirst.hotspot4'|translate}}</div>
+      </button>
+      <button class="Hotspot" slot="hotspot-6"
+              (click)="clickHotspot($event.target)"
+              data-position="0.5789445193094599m 0.9096117732743288m -0.6550797426121193m"
+              data-normal="0.8667839525809999m -0.4278451102994326m -0.25619161020791686m"
+              data-visibility-attribute="visible">
+        <div class="HotspotAnnotation mat-body-1">{{'marineFirst.hotspot5'|translate}}</div>
+      </button>
+    </model-viewer>
+</div>
+

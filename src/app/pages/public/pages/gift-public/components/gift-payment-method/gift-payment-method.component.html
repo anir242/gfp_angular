@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="paymentsMethods mt-3">
+        <mat-radio-group [formControl]="cardType" class="d-flex flex-column">
+          <mat-radio-button value="creditCard">
+            <div>
+              <span class="mat-caption">{{'subscription.creditCard'|translate}}</span>
+            </div>
+            <img src="../../../assets/images/creditCard1.jpg" alt=""/>
+            <img src="../../../assets/images/creditCard2.jpg" alt=""/>
+          </mat-radio-button>
+        </mat-radio-group>
+        <ng-container class="cardData" *ngIf="cardType.value == 'creditCard'">
+          <div class="container" ngxStripeCardGroup>
+            <div class="row">
+              <div class="col-12">
+                <div class="my-3">
+                  <ngx-stripe-card
+                    [options]="cardOptions"
+                    [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+        <ng-container class="cardData" *ngIf="cardType.value == 'digitalPayment'">
+          <ngx-stripe-payment-request-button
+            [paymentOptions]="paymentRequestOptions"
+            (paymentMethod)="onPaymentMethod($event)"
+            (shippingaddresschange)="onShippingAddressChange($event)"
+            (notavailable)="onNotAvailable()"></ngx-stripe-payment-request-button>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="showPromo">
+      <div class="promo mt-4">
+        <span class="mat-subheading-2">{{'subscription.addPromoCode'|translate}}</span>
+        <app-mat-input
+          class="mt-4 mb-4"
+          label="subscription.promoCodeNumber"
+          [control]="code">
+        </app-mat-input>
+      </div>
+    </div>
+    <div class="col-12">
+      <mat-checkbox
+        [formControl]="agreeTermsOfUse">
+                <span class="mat-caption">
+                   {{'singleDonations.agreeTermsOfUse'| translate}}
+                </span>
+      </mat-checkbox>
+      <div class="d-md-none my-3" style="background-color: #8fdf82;">
+        <app-order-summary></app-order-summary>
+      </div>
+      <div class="text-end save">
+        <button class="mt-2 proceedCheckout" mat-raised-button color="yellow"
+                [disabled]="!agreeTermsOfUse.valid" matStepperNext
+                (click)="sendData()">{{buttonText}}</button>
+      </div>
+    </div>
+  </div>
+</div>

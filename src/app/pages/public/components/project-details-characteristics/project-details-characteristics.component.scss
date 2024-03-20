@@ -1,0 +1,47 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin project-details-characteristics-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #projectCharacteristics {
+    padding: 40px;
+    mat-accordion{
+      border-radius: 4px;
+    }
+    .title{
+      color: mat.get-color-from-palette($accent);
+    }
+    .mat-card{
+      &.singleCard{
+        margin: 10px;
+        @include media-breakpoint-up(md){
+          height: 100%;
+          margin: auto;
+        }
+      }
+      @include mat.elevation(0);
+      svg-icon{
+        stroke: mat.get-color-from-palette($accent);
+      }
+    }
+    .read{
+      cursor: pointer;
+      color: mat.get-color-from-palette($accent);
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .green{
+      color: mat.get-color-from-palette($accent);
+    }
+    mat-expansion-panel{
+      @include mat.elevation(0);
+    }
+  }
+}

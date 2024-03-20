@@ -1,0 +1,70 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin material-text($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  .chivo {
+    font-family: $font-chivo !important;
+  }
+
+  .lato {
+    font-family: $font-lato !important;
+  }
+
+  .xxl {
+    font-size: $font-xxl !important;
+    line-height: $line-xxl !important;
+  }
+
+  .xl {
+    font-size: $font-xl !important;
+    line-height: $line-xl !important;
+  }
+
+  .lg {
+    font-size: $font-lg !important;
+    line-height: $line-lg !important;
+  }
+
+  .md {
+    font-size: $font-md !important;
+    line-height: $line-md !important;
+  }
+
+  .sm {
+    font-size: $font-sm !important;
+    line-height: $line-sm !important;
+  }
+
+  .xs {
+    font-size: $font-xs !important;
+    line-height: $line-xs !important;
+  }
+
+  .xxs {
+    font-size: $font-xxs !important;
+    line-height: $line-xxs !important;
+  }
+
+  .bold {
+    font-weight: 700 !important;
+  }
+
+  .light {
+    font-weight: 100 !important;
+  }
+
+  .underline {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  .mat-headline {
+    color: mat.get-color-from-palette($foreground, 'text');
+  }
+}

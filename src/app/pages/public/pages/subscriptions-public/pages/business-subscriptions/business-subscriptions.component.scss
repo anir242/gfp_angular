@@ -1,0 +1,164 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import "../../components/impact-employees/impact-employees.component";
+@import "../../components/pioneer-selector/pioneer-selector.component";
+@import "../../components/estimate-climate-pioneer/estimate-climate-pioneer.component";
+
+@mixin business-subscriptions-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+  .businessSubscriptions {
+    background-image: url('../../../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 6rem !important;
+
+    .mobileView{
+      @include media-breakpoint-down(xl) {
+        width: 100%;
+      }
+    }
+
+    .toggleExpansion{
+      height: 30px;
+      width: 30px;
+      color: white;
+      border: none;
+      background-color: transparent;
+
+      @include media-breakpoint-down(xl) {
+        color: $bar-yellow;
+      }
+    }
+
+    .mat-card {
+      background-color: rgba(250, 250, 250, 0.08) !important;
+      border-radius: 8px;
+      @include mat.elevation(0);
+      border: 2px solid transparent;
+      box-shadow: none !important;
+    }
+
+    .mat-card-content{
+      padding: 1.5rem;
+    }
+
+    .mat-vertical-content {
+      padding: 0;
+    }
+
+    .mat-step-header {
+      background-color: rgba(250, 250, 250, 0.15);
+      border-radius: 40px;
+      padding: 0;
+      margin-bottom: 20px;
+      height: 32px;
+
+      .mat-step-icon {
+        width: 32px;
+        height: 32px;
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+      }
+
+      .mat-step-icon-selected {
+        background-color: white;
+        border-color: white;
+        color: $deep-green;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 18px;
+        font-family: $font-lato;
+      }
+    }
+
+    #outerCard {
+      background-color: rgba(250, 250, 250, 0.05) !important;
+      border-radius: 8px;
+
+      .mat-tab-header {
+        border: 0;
+
+        .mat-tab-label-content {
+          color: #FAFAFA;
+        }
+
+        .mat-ink-bar {
+          background-color: $bar-yellow;
+        }
+      }
+
+      .tabContent {
+        border-radius: 8px;
+      }
+
+      .mat-form-field {
+        .mat-form-field-outline > * {
+          background: rgba(250,250,250,.05);
+        }
+        .mat-form-field-label, .mat-input-element {
+          color: white;
+        }
+      }
+
+      .mat-step-label-selected {
+        font-weight: bold;
+      }
+
+      .labelTitle {
+        color: mat.get-color-from-palette($foreground);
+      }
+
+      .mat-step {
+
+        &:nth-child(2){
+          .mat-vertical-content{
+            padding-bottom: 0px;
+          }
+        }
+      }
+
+      .mat-stepper-vertical {
+        .mat-step-header {
+          cursor: pointer;
+        }
+
+        background-color: transparent;
+
+        .mat-vertical-content-container {
+          margin-left: 0px;
+        }
+
+        .mat-stepper-vertical-line {
+          &:before {
+            border-width: 0;
+          }
+        }
+      }
+    }
+
+    .explainSubscriptions {
+      background-color: mat.get-color-from-palette($background, 'disabled-button-toggle');
+
+      .fakeCard {
+        background-color: transparent;
+        border-radius: 4px;
+        padding: 0;
+
+        @include media-breakpoint-up(md) {
+          background-color: mat.get-color-from-palette($primary, 'main-contrast');
+          padding: 32px;
+        }
+      }
+    }
+  }
+}

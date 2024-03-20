@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '../../../../node_modules/@angular/material/index' as mat;
+
+@mixin upload-logo-theme($theme) {
+  $accent: map.get($theme, accent);
+  $foreground: map.get($theme, foreground);
+
+  #uploadLogo{
+    border-radius: 50%;
+    // height: 75px;
+    .imageLoaded {
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    .ngx-file-drop__content{
+      height: 75px;
+    }
+    .ngx-file-drop__drop-zone{
+      border: 0;
+    }
+
+    .upload-btn {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+}

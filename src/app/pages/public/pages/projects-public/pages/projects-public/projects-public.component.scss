@@ -1,0 +1,132 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import "../../components/project-list-item/project-list-item.component";
+
+@mixin projects-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #projectsPublic {
+    color: white;
+    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/assets/images/bg_noise_low.png');
+
+    .bannerGrad{
+      background-image: $background1;
+      background-repeat: no-repeat;
+      background-size: 100% 480px;
+    }
+
+    @include media-breakpoint-up(md){
+      padding-bottom: 2rem;
+    }
+    .toggleGroup{
+      margin-top: 0.25em;
+    }
+    .mat-form-field-wrapper{
+      padding-bottom: 0;
+    }
+    .mat-button-toggle{
+      &.mat-button-toggle-checked{
+        background-color: $deep-green;
+        button{
+          svg{
+            fill: $card-yellow;
+          }
+        }
+      }
+      button{
+        svg{
+          fill: #8A8A8A;
+        }
+      }
+    }
+
+    .list{
+      mat-button-toggle{
+        width: 50px;
+      }
+      svg{
+        fill: $card-yellow;
+      }
+    }
+    .projectsMap{
+      border-radius: 4px;
+      height: 600px;
+      overflow: scroll;
+    }
+    @include project-list-item-public-theme($theme);
+    .green{
+      color: mat.get-color-from-palette($accent);
+    }
+    .search{
+      width: 100%;
+
+      @include media-breakpoint-up(md){
+        width: auto;
+      }
+    }
+    .searchButton{
+      margin-top: 0.25em;
+      min-height: 52px;
+    }
+
+    .mat-form-field-outline-start, .mat-form-field-outline-gap, .mat-form-field-outline-end {
+      background: rgba(250, 250, 250, 0.05);
+      border: none;
+    }
+
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon {
+      color: white;
+      height: fit-content;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-prefix {
+      top: initial;
+    }
+
+    .mat-form-field .mat-form-field-flex {
+      display: flex;
+      align-items: center;
+    }
+
+
+    .mat-form-field-infix {
+      border-top: none;
+      height: 40px;
+    }
+
+    .mat-form-field .mat-form-field-flex {
+      margin-bottom: 0;
+    }
+
+    .mat-form-field input::placeholder {
+      margin-left: 1rem;
+      color: $grey3;
+      vertical-align:-webkit-baseline-middle;
+    }
+
+    input.mat-input-element {
+      margin-top: 0;
+      caret-color: $bar-yellow;
+      color: $bar-yellow;
+    }
+
+    .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+      line-height: 40px;
+    }
+
+    .mat-button-toggle-group-appearance-standard {
+      border: none;
+      background-color: transparent;
+    }
+
+    .mat-button-toggle-group .mat-button-toggle {
+      border-radius: 0;
+    }
+  }
+}

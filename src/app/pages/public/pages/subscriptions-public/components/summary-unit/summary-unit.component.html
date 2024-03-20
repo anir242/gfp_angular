@@ -1,0 +1,43 @@
+<mat-expansion-panel *ngIf="items?.length > 0" class="my-2 summaryUnit p-0"
+                     [ngStyle]="border ? setColor(items[0]?.project.type ? items[0]?.project.type.colorLabel : '#BABABA') : ''">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <svg-icon [src]="'assets/images/svg/subs_' + key + '.svg'" [hidden]="border"></svg-icon>
+      <span class="ms-2 small-body bold" style="width:20px">{{'orderSummary.' + key |translate}}</span>
+    </mat-panel-title>
+    <mat-panel-description class="text-right flex-grow-0">
+      <ng-container *ngIf="key === projectTypesName.preservation, else noAcre">
+        <span class="small-body">{{getPreservationValue(getTotal() * multiplier)}}</span>
+      </ng-container>
+      <ng-template #noAcre>
+        <span class="small-body" *ngIf="key == 'CO2' && getTotal() < 1; else noKg">
+          {{'orderSummary.CO2kgUnit' |translate: {value: roundNumber(getTotal() * multiplier * 1000, 0)} }}
+        </span>
+        <ng-template #noKg>
+          <span class="small-body">
+            {{'orderSummary.' + key + 'Unit' |translate: {value: roundNumber(getTotal() * multiplier, 2)} }}
+          </span>
+        </ng-template>
+      </ng-template>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div *ngFor="let x of items">
+    <div class="d-flex justify-content-between">
+      <span class="mat-caption">{{x.project.name}}</span>
+      <ng-container *ngIf="key === projectTypesName.preservation, else noAcreProject">
+        <span class="mat-caption">{{getPreservationValue(x.quantity * multiplier)}}</span>
+      </ng-container>
+      <ng-template #noAcreProject>
+        <span class="mat-caption" *ngIf="key == 'CO2' && x.quantity < 1; else noKgProject">
+          {{'orderSummary.CO2kgUnit' |translate: {value: roundNumber(x.quantity * multiplier * 1000, 0)} }}
+        </span>
+        <ng-template #noKgProject>
+          <span class="mat-caption">
+            {{'orderSummary.' + key + 'Unit' |translate: {value: roundNumber(x.quantity * multiplier, 2)} }}
+          </span>
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+</mat-expansion-panel>
+

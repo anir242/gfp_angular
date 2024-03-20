@@ -1,0 +1,28 @@
+<div id="projectAboutData" class="paddingAboutData" [style]="setBackground(bgImage)">
+  <div class="container text-center">
+    <p class="mat-display-1 mb-5 pre-line">{{title}}</p>
+    <div class="row gy-3">
+      <div class="col-md-4 col-12 align-self-start position-relative">
+       
+        <app-squared-info-data
+          squaredPosition="left"
+          [data]="data1"
+          [description]="description1"
+          [color]="color"></app-squared-info-data>
+      </div>
+      <div class="col-md-4 col-12  align-self-start position-relative ">
+        <app-squared-info-data
+          [data]="data2"
+          [description]="description2"
+          [color]="color"></app-squared-info-data>
+      </div>
+      <div class="col-md-4 col-12  align-self-start position-relative">
+        <app-squared-info-data
+          squaredPosition="left"
+          [data]="data3"
+          [description]="description3"
+          [color]="color"></app-squared-info-data>
+      </div>
+    </div>
+  </div>
+</div>

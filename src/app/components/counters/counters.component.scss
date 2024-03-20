@@ -1,0 +1,48 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin counters-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .counterComponent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .mat-card{
+      height: 40px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+
+    button.mat-button-base.mat-icon-button {
+      background-color: $bar-yellow;
+      border: 0;
+      height: 40px;
+      width: 40px;
+
+      &.mat-button-disabled {
+        background-color: white;
+      }
+
+      &.mat-button-disabled:hover {
+        background-color: white;
+        opacity: 1;
+      }
+    }
+
+    button.mat-button-base.mat-icon-button:hover {
+      background-color: $bar-yellow;
+      opacity: 0.8;
+    }
+  }
+}

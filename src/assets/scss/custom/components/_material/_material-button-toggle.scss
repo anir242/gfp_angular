@@ -1,0 +1,69 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../light-theme-public-yellow";
+
+
+@mixin material-button-toggle($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  $accent2: map.get($light-theme-public-yellow, 'accent');
+
+  $buttonHeight: 42px;
+  $buttonYellowHover: #FFE274;
+  $buttonGreenHover: #00BA80;
+  $buttonTextDark: #002822;
+  $buttonDisabled: #E8E8E8;
+  $buttonDisabledText: #8A8A8A;
+
+  .mat-button-toggle-group {
+    @include mat.elevation(0);
+    background-color: mat.get-color-from-palette($background, 'background');
+    border-radius: 4px;
+    overflow: hidden;
+
+    .mat-button-toggle {
+      border-radius: 4px;
+
+      &.mat-button-toggle-checked {
+        background-color: mat.get-color-from-palette($accent);
+        color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+
+    &.yellow {
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+
+      .mat-button-toggle {
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+        color: mat.get-color-from-palette($primary);
+
+        &.mat-button-toggle-checked {
+          background-color: mat.get-color-from-palette($accent2);
+          color: mat.get-color-from-palette($primary);
+        }
+      }
+    }
+  }
+
+}
+
+@mixin set-button-svg-color($color) {
+  span {
+    color: $color;
+
+    svg-icon {
+      stroke: $color;
+
+      svg {
+        path {
+          fill: $color;
+        }
+      }
+    }
+  }
+}
+

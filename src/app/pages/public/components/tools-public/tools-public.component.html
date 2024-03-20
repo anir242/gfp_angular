@@ -1,0 +1,63 @@
+<!-- TODO: change the mobile version to mat-expand for better user experience -->
+<div class="tools-public-wrapper py-5" id="sectionTools">
+  <div class="row g-0">
+    <div class="col-12">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-12 text-start">
+            <div class="mb-5">
+              <div class="mb-2">
+                <span class="title-1 bold">{{headingText|translate}}</span>
+              </div>
+              <span class="large-body">{{headingDesc|translate}}</span>
+            </div>
+            <div class="row g-0 text-start">
+              <div class="d-none d-lg-block col-lg-7">
+                <div class="img-holder pe-5" *ngIf="selected">
+                  <!-- TODO: replace once API has ready -->
+                  <img src="assets/images/public/home/{{selected.icon}}.png">
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <ng-container *ngFor="let item of data; let i = index">
+                  <div class="box" [class.selected]="selected.icon === item.icon" [class.individual]="!business" (click)="selected = item">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="icon me-3">
+                        <!-- TODO: replace once API has ready -->
+                        <img src="/assets/images/public/home/icon/{{item.icon}}.svg" *ngIf="business">
+                        <img src="/assets/images/public/home/icon/{{item.icon}}_green.svg" *ngIf="!business">
+                      </div>
+                      <span class="title-3 bold">
+                        {{item.title | translate }}
+                      </span>
+                    </div>
+                    <span class="small-body">
+                      {{item.caption | translate }}
+                    </span>
+                  </div>
+                  <div class="d-block d-lg-none col-lg-6 mb-3" *ngIf="selected === item">
+                    <div class="img-holder" *ngIf="selected">
+                      <!-- TODO: replace once API has ready -->
+                      <img src="/assets/images/public/home/{{selected.icon}}.png">
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <button mat-raised-button color="yellow"
+              class="d-flex float-end my-3 align-items-center" [style]="customBtnStyle"
+              *ngIf="clientType == 'business'" (click)="routeToCalendly()">
+              {{'monthlyClimateSubscription.contactUs'|translate}}
+          </button>
+            <button mat-raised-button
+              class="d-flex float-end my-3 align-items-center" color="lime"
+              [routerLink]="'/monthlyClimateSubscription'"
+              *ngIf="clientType != 'business'">
+              {{'monthlyClimateSubscription.startFreeTrial'|translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

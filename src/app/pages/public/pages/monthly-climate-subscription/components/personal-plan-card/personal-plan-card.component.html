@@ -1,0 +1,67 @@
+<mat-card>
+  <div class="position-relative" style="height: inherit">
+    <div class="layer headingContainer">
+        <img src="/assets/images/icons/person_shelter_thin.png">
+        <p class="text-white title-1 ps-4 bold">{{ 'monthlyClimateSubscription.personalPlans' | translate }}</p>
+    </div>
+    <div class="p-4 mb-5">
+      <mat-card class="d-flex flex-lg-row flex-column justify-content-between ps-2 my-4 py-3 align-items-center">
+        <div class="row gx-1 d-flex justify-content-start align-items-center">
+          <div class="col-2 d-flex justify-content-start">
+            <img src="/assets/images/panther.png" class="imgPlan">
+          </div>
+          <div class="col-10 ps-4 ps-0 pe-3">
+            <div class="row d-flex justify-content-xl-start justify-content-center">
+              <div class="col-10 col-xl-5 mx-2 flex-column d-flex justify-content-start">
+                <p class="body bold pb-2">{{ 'monthlyClimateSubscription.climateHero' | translate }}</p>
+                <p class="small-body">{{ 'monthlyClimateSubscription.climateHeroDesc' | translate }}</p>
+              </div>
+              <div class="col-10 col-xl-3 d-flex justify-content-start align-items-center">
+                <p class="title-3 bold" style="color: #00734F;">{{ 'monthlyClimateSubscription.personalMonthlyPlanValue' | translate: { value: '€28,00'} }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="d-flex flex-lg-row flex-column justify-content-between ps-2 my-4 py-3 align-items-center">
+        <div class="row gx-1 d-flex justify-content-start align-items-center">
+          <div class="col-2 d-flex justify-content-start">
+            <img src="/assets/images/croc.png" class="imgPlan">
+          </div>
+          <div class="col-10 ps-4 ps-0 pe-3">
+            <div class="row d-flex justify-content-xl-start justify-content-center">
+              <div class="col-10 col-xl-5 mx-2 flex-column d-flex justify-content-start">
+                <p class="body bold pb-2">{{ 'monthlyClimateSubscription.climateRanger' | translate }}</p>
+                <p class="small-body">{{ 'monthlyClimateSubscription.climateRangerDesc' | translate }}</p>
+              </div>
+              <div class="col-10 col-xl-3 d-flex justify-content-start align-items-center">
+                <p class="title-3 bold" style="color: #00734F;">{{ 'monthlyClimateSubscription.personalMonthlyPlanValue' | translate: { value: '€16,00'} }}</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      </mat-card>
+      <mat-card class="d-flex flex-lg-row flex-column justify-content-between ps-2 my-4 py-3 align-items-center">
+        <div class="row gx-1 d-flex justify-content-start align-items-center">
+          <div class="col-2 d-flex justify-content-start">
+            <img src="/assets/images/pink_swans.png" class="imgPlan">
+          </div>
+          <div class="col-10 ps-4 ps-0 pe-3">
+            <div class="row d-flex justify-content-xl-start justify-content-center">
+              <div class="col-10 col-xl-5 mx-2 flex-column d-flex justify-content-start">
+                <p class="body bold pb-2">{{ 'monthlyClimateSubscription.climateTrooper' | translate }}</p>
+                <p class="small-body">{{ 'monthlyClimateSubscription.climateTrooperDesc' | translate }}</p>
+              </div>
+              <div class="col-10 col-xl-3 d-flex justify-content-start align-items-center">
+                <p class="title-3 bold" style="color: #00734F;">{{ 'monthlyClimateSubscription.personalMonthlyPlanValue' | translate: { value: '€8,50'} }}</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      </mat-card>
+    </div>
+    <div class="position-absolute bottom-0 col-12 px-4 pb-4 mb-0">
+      <button mat-raised-button color="lime" class="w-100" [routerLink]="'/subscriptions/individual/checkout'">{{ 'monthlyClimateSubscription.getStarted' | translate }}</button>
+    </div>
+  </div>
+</mat-card>

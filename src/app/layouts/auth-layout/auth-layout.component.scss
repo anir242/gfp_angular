@@ -1,0 +1,15 @@
+@import "../../components/navbar-auth/navbar-auth.component";
+
+@mixin auth-layout-theme($theme) {
+  @include auth-navbar-theme($theme);
+
+  .wrapper {
+    position: relative;
+    overflow: auto;
+
+    &.wrapper-full-page {
+      height: 100%;
+      min-height: 100%;
+    }
+  }
+}

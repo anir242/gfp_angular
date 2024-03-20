@@ -1,0 +1,68 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin statistics-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .statistics {
+    background-color: rgba(240,240,240,.05);
+    border-radius: 12px;
+    padding: 20px;
+
+    .dashboard-content {
+      .content-header {
+      }
+
+      .content-body {
+        font-size: 32px;
+      }
+    }
+
+    .row {
+      align-items: center;
+    }
+
+    .clouds {
+      stroke: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+
+    .statistic {
+      background-color: rgba(240,240,240,.15);
+      border-radius: 8px;
+      padding: 10px 10px 0px;
+    }
+
+    img {
+      width: 48px !important;
+      height: 48px !important;
+    }
+
+    svg-icon {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    /*        .bubble {
+                  display: table;
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 25px;
+
+                  &.green {
+                    background-color: mat.get-color-from-palette($accent);
+                  }
+
+                  &.red {
+                    background-color: #C97658;
+                  }
+
+                  &.aquamarine {
+                    background-color: #008480;
+                  }
+                }*/
+  }
+}

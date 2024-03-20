@@ -1,0 +1,400 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@import "../../pages/public/pages/landing-public/landing-public.component";
+@import "../../pages/public/pages/about-public/pages/team/team.component";
+@import "../../pages/public/pages/about-public/pages/what-we-do/what-we-do.component";
+@import "../../pages/public/pages/faq/faq.component";
+@import "../../pages/public/pages/legal-stuff/privacy-policy/privacy-policy.component";
+@import "../../pages/public/pages/legal-stuff/terms-conditions/terms-conditions.component";
+@import "../../pages/public/pages/about-public/pages/about/about.component";
+@import "../../pages/public/pages/blog/components/blog-list-item/blog-list-item.component";
+@import "../../pages/public/pages/blog/pages/blog/blog.component";
+@import "../../pages/public/pages/blog/pages/article/article.component";
+@import "../../pages/public/pages/partners-public/partners-public.component";
+@import "../../pages/public/pages/projects-public/pages/projects-public/projects-public.component";
+@import "../../pages/public/components/provider-offset/provider-offset.component";
+@import "../../pages/public/components/project-offset/project-offset.component";
+@import "../../pages/public/components/checkout-offset/checkout-offset.component";
+@import "../../pages/public/components/case-studies/case-studies.component";
+@import "../../pages/public/components/carbon-dioxide-offset/carbon-dioxide-offset.component";
+@import "../../pages/public/pages/company-public/pages/company-public.component";
+@import "../../pages/public/pages/single-donations/single-donations.component";
+@import "../../pages/public/pages/about-public/pages/project-typology/project-typology.component";
+@import "../../pages/public/pages/welcome-on-board/welcome-on-board.component";
+@import "../../pages/public/pages/gift-public/pages/gift/gift.component";
+@import "../../pages/public/pages/gift-public/pages/gift-cart/gift-cart.component";
+@import "../../pages/public/pages/gift-public/pages/gift-details/gift-details.component";
+@import "../../pages/public/pages/gift-public/pages/gift-check-out/gift-check-out.component";
+@import "../../pages/public/pages/gift-public/components/gift-card-summary/gift-card-summary.component";
+@import "../../pages/public/pages/gift-public/components/gift-occasion/gift-occasion.component";
+@import "../../pages/public/pages/projects-public/pages/project-public-details/project-public-details.component";
+@import "../../pages/public/pages/about-public/pages/achievements/achievements.component";
+@import "../../pages/public/pages/business-public/pages/why-join/why-join.component";
+@import "../../pages/public/pages/business-public/pages/api-integration/api-integration.component";
+@import "../../pages/public/pages/business-public/components/api-step-item/api-step-item.component";
+@import "../../pages/public/pages/business-public/components/additional-services/additional-services.component";
+@import "../../pages/public/pages/business-public/components/partners/partners.component";
+@import "../../pages/public/components/subscription-types/subscription-types.component";
+@import "../../pages/public/dialogs/support-project/support-project.component";
+@import "../../components/order-summary/order-summary.component";
+@import "../../pages/public/components/make-gift/make-gift.component";
+@import "../../pages/public/pages/business-public/components/campaigns/campaigns.component";
+@import "../../pages/public/pages/business-public/components/campaign-item/campaign-item.component";
+@import "../../pages/public/components/subscribe/subscribe.component";
+@import "../../pages/public/pages/business-public/components/card-icon-small/card-icon-small.component";
+@import "../../pages/public/components/squared-info-data/squared-info-data.component";
+@import "../../pages/public/components/review-public/review-public.component";
+@import "../../pages/public/components/project/project.component";
+@import "../../pages/public/components/tools-public/tools-public.component";
+@import "../../pages/public/components/title-public/title-public.component";
+@import "../../pages/public/components/title-public-logo/title-public-logo.component";
+@import "../../pages/public/pages/business-public/components/subscription-card/subscription-card.component";
+@import "../../pages/public/components/power/power.component";
+@import "../../pages/public/components/single-donation-price/single-donation-price.component";
+@import "../../pages/public/components/tools/tools.component";
+@import "../../pages/public/components/plans/plans.component";
+@import "../../pages/public/components/unsure/unsure.component";
+@import "../../pages/public/components/achievements-data/achievements-data.component";
+@import "../../pages/public/components/supporting-cards/supporting-cards.component";
+@import "../../pages/public/components/press/press.component";
+@import "../../pages/public/pages/business-public/components/api-available/api-available.component";
+@import "../../pages/public/components/flip-card/flip-card.component";
+@import "../../pages/public/components/about-title-public/about-title-public.component";
+@import "../../components/summary-item/summary-item.component";
+@import "../../pages/public/components/items-list/items-list.component";
+@import "../../pages/public/components/solution/solution.component";
+@import "../../pages/public/components/approach/approach.component";
+@import "../../pages/public/components/impact-explained/impact-explained.component";
+@import "../../pages/public/components/manifesto/manifesto.component";
+@import "../../pages/public/components/project-title-public/project-title-public.component";
+@import "../../pages/public/components/explore/explore.component";
+@import "../../pages/public/components/business-solutions/business-solutions.component";
+@import "../../pages/public/components/project-about-data/project-about-data.component";
+@import "../../pages/public/components/about-problem/about-problem.component";
+@import "../../pages/public/pages/gift-public/components/summary-welcome-on-board/summary-welcome-on-board.component";
+@import "../../pages/public/components/about-solution/about-solution.component";
+@import "../../pages/public/components/our-team/our-team.component";
+@import "../../pages/public/components/our-ambassadors/our-ambassadors.component";
+@import "../../pages/public/components/join-gfp/join-gfp.component";
+@import "../../pages/public/components/title-images/title-images.component";
+@import "../../pages/public/components/about-contribute/about-contribute.component";
+@import "../../pages/public/components/done-so-far/done-so-far.component";
+@import "../../pages/public/components/shape-future/shape-future.component";
+@import "../../pages/public/components/project-details-characteristics/project-details-characteristics.component";
+@import "../../pages/public/components/project-details-title/project-details-title.component";
+@import "../../pages/public/components/project-details-summary/project-details-summary.component";
+@import "../../pages/public/components/project-details-slider/project-details-slider.component";
+@import "../../pages/public/components/homepage-popup/homepage-popup.component";
+@import "../../pages/public/components/main-faq/main-faq.component";
+@import "../../pages/public/components/card-icon-text/card-icon-text.component";
+@import "../../pages/public/components/icon-text/icon-text.component";
+@import "../../pages/public/components/filter-popup/filter-popup.component";
+@import "../../pages/public/components/arrow-scroll/arrow-scroll.component";
+@import "../../pages/public/pages/gift-public/components/gift-card/gift-card.component";
+@import "../../pages/public/components/highlight-div/highlight-div.component";
+@import "../../pages/public/components/progress-scroller/progress-scroller.component";
+@import "../../components/your-payment-method/your-payment-method.component";
+@import "../../components/counters/counters.component";
+@import "../../components/info/info.component";
+@import "../../components/hotspot-popup/hotspot-popup.component";
+@import "../../pages/public/components/banner/banner.component";
+@import "../../pages/public/components/faq-item/faq-item.component";
+@import "../../pages/public/pages/gift-public/components/gift-summary/gift-summary.component";
+@import "../../components/divider-text/divider-text.component";
+@import "../../components/sidebar/sidebar.component";
+@import "../../pages/public/pages/gift-public/components/gift-pick-info/gift-pick-info.component";
+@import "../../pages/public/pages/subscriptions-public/components/subscription/subscription.component";
+@import "../../pages/public/pages/subscriptions-public/components/subscription-group/subscription-group.component";
+@import "../../pages/public/pages/subscriptions-public/pages/main-subscriptions/main-subscriptions.component";
+@import "../../pages/public/pages/subscriptions-public/pages/business-subscriptions/business-subscriptions.component";
+@import "../../pages/public/pages/subscriptions-public/pages/individual-checkout/individual-checkout.component";
+@import "../../pages/public/pages/subscriptions-public/components/summary-unit/summary-unit.component";
+@import "../../pages/public/pages/subscriptions-public/pages/business-checkout/business-checkout.component";
+@import "../../pages/public/pages/green-nft/green-nft.component";
+@import "../../pages/public/pages/monthly-climate-subscription/pages/monthly-climate-subscription/monthly-climate-subscription.component";
+@import "../../pages/public/pages/climate-positive-subscription/climate-positive-subscription.component";
+@import "../../pages/public/components/short-banner/short-banner.component";
+@import "../../pages/public/components/contact-form/contact-form.component";
+@import "../../pages/public/components/faq-public/faq-public.component";
+@import "../../pages/public/pages/ecomm-api-public/ecomm-api-public.component";
+@import "../../pages/public/pages/legal-stuff/cookie-policy/cookie-policy.component";
+@import "../../pages/public/components/layer-header-card/layer-header-card.component";
+@import "../../pages/public/pages/nativa-landing/nativa-landing.component";
+@import "../../pages/public/pages/carbon-footprint-management/carbon-footprint-management.component";
+@import "../../pages/public/pages/nativa-welcome/nativa-welcome.component";
+@import "../../pages/public/pages/projects-public/pages/project-live/project-live.component";
+
+
+@mixin public-layout-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, "accent");
+  $background: map.get($color-config, "background");
+  $foreground: map.get($color-config, "foreground");
+  $primary: map.get($color-config, "primary");
+  $warn: map.get($color-config, "warn");
+
+  @include what-we-do-theme($theme);
+  @include landing-public-theme($theme);
+  @include company-public-theme($theme);
+  @include projects-public-theme($theme);
+  @include provider-offset-theme($theme);
+  @include project-offset-theme($theme);
+  @include checkout-offset-theme($theme);
+  @include carbon-dioxide-offset-theme($theme);
+  @include short-banner-theme($theme);
+  @include support-project-theme($theme);
+  @include gift-theme($theme);
+  @include faq-theme($theme);
+  @include privacyPolicy-theme($theme);
+  @include tnc-theme($theme);
+  @include gift-details-theme($theme);
+  @include gift-cart-theme($theme);
+  @include gift-check-out-theme($theme);
+  @include summary-welcome-on-board-theme($theme);
+  @include gift-cart-summary($theme);
+  @include team-theme($theme);
+  @include why-join-theme($theme);
+  @include api-integration-theme($theme);
+  @include api-step-item-theme($theme);
+  @include campaigns-theme($theme);
+  @include partners-theme($theme);
+  @include campaign-item-theme($theme);
+  @include api-available-theme($theme);
+  @include project-typology-theme($theme);
+  @include projects-public-details-theme($theme);
+  @include single-donations-theme($theme);
+  @include cookie-theme($theme);
+  @include make-gift-theme($theme);
+  @include shape-future-theme($theme);
+  @include our-team-theme($theme);
+  @include subscribe-theme($theme);
+  @include review-public-theme($theme);
+  @include tools-public-theme($theme);
+  @include explore-theme($theme);
+  @include business-solutions-theme($theme);
+  @include partner-public-theme($theme);
+  @include project-public-theme($theme);
+  @include about-public-theme($theme);
+  @include carbon-footprint-theme($theme);
+  @include blog-theme($theme);
+  @include blog-list-item-theme($theme);
+  @include article-theme($theme);
+  @include title-public-theme($theme);
+  @include case-studies-theme($theme);
+  @include title-public-logo-theme($theme);
+  @include about-title-public-theme($theme);
+  @include power-theme($theme);
+  @include tools-theme($theme);
+  @include plans-theme($theme);
+  @include unsure-theme($theme);
+  @include achievements-data-theme($theme);
+  @include supporting-theme($theme);
+  @include press-theme($theme);
+  @include flip-card-theme($theme);
+  @include divider-text-theme($theme);
+  @include welcome-on-board-theme($theme);
+  @include order-summary-theme($theme);
+  @include projects-details-slider-theme($theme);
+  @include summary-item-theme($theme);
+  @include items-list-theme($theme);
+  @include solution-theme($theme);
+  @include approach-theme($theme);
+  @include join-gfp-theme($theme);
+  @include impact-explained-theme($theme);
+  @include monthly-climate-subscription-theme($theme);
+  @include climate-positive-subscription-theme($theme);
+  @include our-ambassadors-theme($theme);
+  @include manifesto-theme($theme);
+  @include project-title-public-theme($theme);
+  @include project-about-data($theme);
+  @include about-problem-theme($theme);
+  @include about-solution-theme($theme);
+  @include achievements-theme($theme);
+  @include title-images-theme($theme);
+  @include done-so-far-theme($theme);
+  @include projects-details-summary-theme($theme);
+  @include project-details-characteristics-theme($theme);
+  @include project-details-title-theme($theme);
+  @include about-contribute($theme);
+  @include squared-info-data-component($theme);
+  @include card-icon-text($theme);
+  @include icon-text-theme($theme);
+  @include arrow-scroll-theme($theme);
+  @include your-payment-method($theme);
+  @include gift-card-theme($theme);
+  @include banner-theme($theme);
+  @include filter-popup-theme($theme);
+  @include highlight-div-theme($theme);
+  @include gift-summary-theme($theme);
+  @include gift-pick-info-theme($theme);
+  @include main-subscriptions-public-theme($theme);
+  @include subscription-component-theme($theme);
+  @include subscription-group-theme($theme);
+  @include business-subscriptions-theme($theme);
+  @include individual-subscriptions-theme($theme);
+  @include summary-unit-theme($theme);
+  @include homepage-popup-theme($theme);
+  @include card-icon-small($theme);
+  @include progress-scroller-theme($theme);
+  @include additional-services-theme($theme);
+  @include subscription-types-theme($theme);
+  @include subscription-card-theme($theme);
+  @include gift-occasion-theme($theme);
+  @include counters-theme($theme);
+  @include sidebar-theme($theme);
+  @include business-checkout-theme($theme);
+  @include faq-item-theme($theme);
+  @include main-faq-theme($theme);
+  @include project-list-theme($theme);
+  @include project-detail-theme($theme);
+  @include globe-theme($theme);
+  @include project-data-theme($theme);
+  @include gallery-manager-theme($theme);
+  @include info-theme($theme);
+  @include hotspot-popup-theme($theme);
+  @include green-nft-public-theme($theme);
+  @include contact-form-public-theme($theme);
+  @include faq-public-theme($theme);
+  @include ecomm-api-theme($theme);
+  @include project-live-theme($theme);
+  @include nativa-donation-theme($theme);
+  @include nativa-welcome-theme($theme);
+  @include layer-header-card-theme($theme);
+
+  .mat-sidenav {
+    width: 100%;
+  }
+
+  &.wrapper {
+    height: auto;
+    min-height: 100%;
+  }
+
+  .layer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: $background1;
+  }
+
+  .banner {
+    padding: 80px 0;
+    background-position: center;
+    background-size: cover;
+    background-position-x: 72%;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+  }
+
+  .customPadding {
+    padding: 2em 2em;
+
+    @include media-breakpoint-up(lg) {
+      padding: 4em 7em;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .main-panel .content {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  .logo-img {
+    width: 35px;
+    height: 35px;
+    display: block;
+    margin-left: 0;
+    position: relative;
+    top: 0;
+
+    img {
+      width: 35px;
+    }
+  }
+
+  .sidebar:before,
+  .off-canvas-sidebar:before {
+    border-bottom: 5px solid mat.get-color-from-palette($warn);
+  }
+
+  .sidebar {
+    width: 100%;
+    background: $background1;
+    color: white;
+    &,
+    &[data="red"] {
+      @include linear-gradient(
+        mat.get-color-from-palette($warn),
+        mat.get-color-from-palette($warn)
+      );
+    }
+
+    &[data="primary"] {
+      @include linear-gradient(
+        mat.get-color-from-palette($primary),
+        mat.get-color-from-palette($primary)
+      );
+    }
+
+    padding-top: 60px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .main-panel {
+      .content {
+        padding-left: 30px !important;
+      }
+    }
+
+    .fixed-plugin .dropdown-toggle:after {
+      display: none;
+    }
+
+    #bodyClick {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      opacity: 1;
+      top: 0;
+      right: 0;
+      left: 260px;
+      content: "";
+      z-index: 9999;
+      overflow-x: hidden;
+      background-color: transparent;
+      transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    }
+
+    .nav-open .rtl .wrapper {
+      transform: none;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .sidebar-mini .main-panel .content,
+    .sidebar-mini footer {
+      padding-left: 130px !important;
+    }
+  }
+
+  .bg-white-noise {
+    background-image: url("/assets/images/bg_noise_low.png"),
+      linear-gradient(white, white);
+    background-blend-mode: color;
+    background-size: contain;
+  }
+}

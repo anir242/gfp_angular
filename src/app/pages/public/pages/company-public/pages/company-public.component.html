@@ -1,0 +1,195 @@
+<div class="gradientHome pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="page">
+          <div class="hello mb-3 mt-5">
+            <span class="headline bold d-none d-lg-block text-uppercase fw-light text-white">{{firstName}} Climate Impact</span>
+            <span class="title-1 bold d-lg-none text-uppercase fw-light text-white">{{firstName}} Climate Impact</span>
+          </div>
+          <div class="container-fluid p-0" *ngIf="countersInterface">
+            <div class="row">
+              <div class="col-12 col-lg-5">
+                <div class="statistics mt-5">
+                  <div class="row">
+                    <div class="col-12 mt-3 d-flex justify-content-between align-items-center">
+                      <div class="title-3 bold text-white">
+                        <span>{{firstName}}'s Impact</span>
+                      </div>
+                      <a mat-raised-button href="/projects/" color="yellow" matTooltip="{{'admin.addImpact' | translate}}" aria-label="Button that displays a tooltip when focused or hovered over">
+                        <div class="d-flex align-items-center mt-1">
+                          <svg-icon src="assets/images/svg/impact.svg"></svg-icon>
+                          <span>Go to Projects</span>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-12 col-xl-6 mt-3">
+                      <div class="d-block statistic p-3">
+                        <img src="assets/images/icons/co2.png" alt="CO2" />
+                        <div class="mt-4">
+                          <div class="d-none d-md-block">
+                            <!-- problema font -->
+                            <p class="title-2 mb-2">
+                              {{ 'admin.tons'| translate: {tons: totalTons | number : '1.2-2'} }}
+                            </p>
+                          </div>
+                          <div class="d-md-none">
+                            <p class="title-2 mb-2">
+                              {{ 'admin.tons'| translate: {tons: totalTons} }}
+                            </p>
+                          </div>
+                          <p class="body m-0">
+                            {{'admin.total' | translate}}
+                            CO<sub>2</sub>
+                            {{'admin.offset' | translate}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-xl-6 mt-3">
+                      <div class="d-block statistic p-3">
+                        <img src="assets/images/icons/restoration.png" alt="Restoration" />
+                        <div class="mt-4">
+                          <p class="title-2 mb-2">
+                            {{'admin.trees'| translate: {trees: totalTrees} }}
+                          </p>
+                          <p class="body m-0">{{'admin.planted' | translate}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-xl-6 mt-3">
+                      <div class="d-block statistic p-3">
+                        <img src="assets/images/icons/preservation.png" alt="Preservation" />
+                        <div class="mt-4">
+                          <p class="title-2 mb-2" *ngIf="totalAcres >= 0.5">
+                            {{'admin.acres'| translate: {acres: totalAcres} }}
+                          </p>
+                          <p class="title-2 mb-2" *ngIf="totalAcres < 0.5">
+                            {{'admin.m2'| translate: {m2: totalM2} }}m<sup>2</sup>
+                          </p>
+                          <p class="body m-0">{{'admin.protected' | translate}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-xl-6 mt-3">
+                      <div class="d-block statistic p-3">
+                        <img src="assets/images/icons/renewable.png" alt="Renewable" />
+                        <div class="mt-4">
+                          <p class="title-2 mb-2">
+                            {{'admin.kw'| translate: {kw: totalKwH} }}
+                          </p>
+                          <p class="body m-0">{{'admin.produced' | translate}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-7 order-3 order-md-2">
+                <div class="globe d-none d-md-block">
+                  <app-globe></app-globe>
+                </div>
+                <div class="d-flex justify-content-center order-md-5">
+                  <div class="mt-2 d-none d-md-block">
+                    <svg-icon class="rotation" src="assets/images/svg/rotation.svg"></svg-icon>
+                    <span class="ms-2 mat-caption text-center">{{'admin.clickAndDrag' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="projectsContainers">
+        <app-project-list [projectsInterface]="projectsInterface" [enableSupport]="false" [public]="true"></app-project-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-tab-group class="d-none" *ngIf="countersInterface" id="carousel-tabs">
+  <mat-tab label="CO2 offset" class="carousel-item">
+    <app-co2-offsetted [totalCo2]="totalTons"
+                       [co2Certified]="tonsCertified"
+                       [co2NotCertified]="tonsNotCertified"
+                       [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')"
+                       [public]="true">
+    </app-co2-offsetted>
+  </mat-tab>
+  <mat-tab label="Trees planted" class="carousel-item">
+    <app-real-data [totalCo2]="totalTons"
+                   [countersInterface]="countersInterface"
+                   [type]="projectTypes.restoration"
+                   [co2Certified]="tonsCertified"
+                   [co2NotCertified]="tonsNotCertified"
+                   [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')"></app-real-data>
+  </mat-tab>
+  <mat-tab label="Forest protected" class="carousel-item">
+    <app-real-data [totalCo2]="totalTons"
+                   [countersInterface]="countersInterface"
+                   [type]="projectTypes.preservation"
+                   [co2Certified]="tonsCertified"
+                   [co2NotCertified]="tonsNotCertified"
+                   [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')"></app-real-data>
+  </mat-tab>
+  <mat-tab label="Energy produced" class="carousel-item">
+    <app-real-data [totalCo2]="totalTons"
+                   [countersInterface]="countersInterface"
+                   [type]="projectTypes.renewable_energy"
+                   [co2Certified]="tonsCertified"
+                   [co2NotCertified]="tonsNotCertified"
+                   [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')"></app-real-data>
+  </mat-tab>
+</mat-tab-group>
+
+  <div class="container-fluid p-0">
+    <carousel [cellWidth]="'100%'" [margin]="0"
+              *ngIf="countersInterface" id="carousel">
+      <div class="carousel-cell">
+        <app-co2-offsetted
+                          [id]="1"
+                          [totalCo2]="totalTons"
+                          [co2Certified]="tonsCertified"
+                          [co2NotCertified]="tonsNotCertified"
+                          [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')"
+                          [public]="true">
+        </app-co2-offsetted>
+      </div>
+      <div class="carousel-cell">
+        <app-real-data
+                      [id]="1"
+                      [totalCo2]="totalTons"
+                      [countersInterface]="countersInterface"
+                      [type]="projectTypes.restoration"
+                      [co2Certified]="tonsCertified"
+                      [co2NotCertified]="tonsNotCertified"
+                      [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')">></app-real-data>
+      </div>
+      <div class="carousel-cell">
+        <app-real-data
+                      [id]="1"
+                      [totalCo2]="totalTons"
+                      [countersInterface]="countersInterface"
+                      [type]="projectTypes.preservation"
+                      [co2Certified]="tonsCertified"
+                      [co2NotCertified]="tonsNotCertified"
+                      [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')">></app-real-data>
+      </div>
+      <div class="carousel-cell">
+        <app-real-data
+                      [id]="1"
+                      [totalCo2]="totalTons"
+                      [countersInterface]="countersInterface"
+                      [type]="projectTypes.renewable_energy"
+                      [co2Certified]="tonsCertified"
+                      [co2NotCertified]="tonsNotCertified"
+                      [name]="firstName ? isItalian() ? firstName : firstName + '\'s' : translate.instant('projectDetails.your')">></app-real-data>
+      </div>
+    </carousel>
+  </div>

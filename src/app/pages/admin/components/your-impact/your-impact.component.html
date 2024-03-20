@@ -1,0 +1,221 @@
+<div class="yourImpact p-4 py-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5 order-1 px-0 pb-3">
+        <div class="align-items-start d-flex flex-column h-100">
+          <div class="mb-auto">
+            <div class="">
+              <p class="mat-headline">{{'projectDetails.yourImpact' | translate}}</p>
+            </div>
+            <span class="mat-title">{{'yourImpact.somethingYouShould'|translate}}</span>
+            <br>
+            <span class="mat-title fw-bold">{{'yourImpact.shareWithTheWorld'|translate}}</span>
+            <br>
+            <div class="d-none d-md-block">
+              <p class="mat-headline mt-5">{{'yourImpact.yourTotalImpact'|translate}}</p>
+            </div>
+            <div class="d-none d-md-block">
+
+              <button mat-icon-button class="me-2 noFill" (click)="retrieveUrlReport()">
+                <svg-icon class="share" src="assets/images/svg/share.svg"></svg-icon>
+              </button>
+              <button class="noFill" mat-stroked-button (click)="downloadReport()">
+                {{'realData.downloadFullReport'|translate}}
+                <svg-icon src="assets/images/svg/paper.svg"></svg-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="d-none d-md-block d-flex">
+            <div class="d-flex justify-content-start">
+              <div class="py-3 mb-3">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <span class="mat-title mb-0">{{'yourImpact.amountCo2Offsetted'|translate}}</span>
+                  </div>
+                  <div>
+                    <svg-icon src="assets/images/svg/info.svg" style="cursor: pointer" class=" ms-2"
+                              (click)="openModal(popUpTitle, 'small', popUpBody, '', false)"></svg-icon>
+                  </div>
+                </div>
+                <p class="mat-body-2 fw-bold">
+                  <svg-icon src="assets/images/svg/clouds.svg" [svgClass]="'align-top'"
+                            [svgStyle]="{'height.px':'25', 'width.px':'30'}"></svg-icon>
+                  <ng-container *ngIf="totalCo2 >= 1; else co2Kg">
+                    {{'yourImpact.tonsCo2InTotal'|translate : {value: totalCo2} }}
+                  </ng-container>
+                  <ng-template #co2Kg>
+                    {{'yourImpact.kgCo2InTotal'|translate : {value: totalCo2 * 1000} }}
+                  </ng-template>
+                </p>
+                <div class="d-flex align-items-center justify-content-between my-2">
+                  <div>
+                    <span class="mat-body-2 fw-bold">
+                      <svg-icon src="assets/images/svg/certified.svg" [svgClass]="'align-top'"
+                                [svgStyle]="{'height.px':'25', 'width.px':'30'}"></svg-icon>
+                      {{'yourImpact.tonsCertified'|translate : {
+                      value: co2Certified
+                    }  }}</span>
+                  </div>
+                  <div>
+                    <svg-icon src="assets/images/svg/info.svg" style="cursor: pointer" class=" ms-2"
+                              (click)="openModal(popUpCertifiedTitle, 'small', popUpCertifiedBody, '', false)"></svg-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center my-2 justify-content-between">
+                  <div>
+                    <span class="mat-body-2 fw-bold">
+                      <svg-icon src="assets/images/svg/science.svg" [svgClass]="'align-top'"
+                                [svgStyle]="{'height.px':'25', 'width.px':'30'}"></svg-icon>
+                      {{'yourImpact.scienceBacked'|translate: {
+                      value: co2NotCertified
+                    } }}</span>
+                  </div>
+                  <div>
+                    <svg-icon src="assets/images/svg/info.svg" style="cursor: pointer" class=" ms-2"
+                              (click)="openModal(popUpScienceTitle, 'small', popUpScienceBody, '', false)"></svg-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="p-3">
+                <p class="mat-title">{{'yourImpact.howYouOffsetIt'|translate}}</p>
+                <div class="project mt-2">
+                  <span class="type mat-caption text-uppercase restoration">{{'restoration' | translate}}</span>
+                  <span class="ms-2 mat-body-2">{{'yourImpact.byPlanting' | translate:{value: trees} }}</span>
+
+                </div>
+                <div class="project mt-2">
+                  <span class="type mat-caption text-uppercase preservation">{{'preservation' | translate}}</span>
+                  <span class="ms-2 mat-body-2">{{'yourImpact.byProtecting' | translate:{value: roundNumber(acres * 10000)} }}</span>
+
+                </div>
+                <div class="project mt-2">
+                  <span class="type mat-caption text-uppercase renewable_energy">{{'renewable' | translate}}</span>
+                  <span class="ms-2 mat-body-2">{{'yourImpact.byProducing' | translate:{value: kwh} }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 p-0 order-3 d-md-none">
+        <div class="d-flex justify-content-start">
+          <div class="row">
+            <div class="col-12">
+              <div class="pt-3 mb-0 mt-5">
+                <div class="d-flex align-items-center mb-2">
+                  <span class="mat-title mb-0">{{'yourImpact.amountCo2Offsetted'|translate}}</span>
+                  <svg-icon src="assets/images/svg/info.svg" style="cursor: pointer" class="ms-2"
+                            (click)="openModal(popUpTitle, 'small', popUpBody, '', false)"></svg-icon>
+                </div>
+                <p class="mat-body-2 fw-bold">
+                  <svg-icon src="assets/images/svg/clouds.svg" [svgClass]="'align-top'"
+                            [svgStyle]="{'height.px':'25', 'width.px':'30'}"></svg-icon>
+                  <ng-container *ngIf="totalCo2 >= 1; else co2Kg">
+                    {{'yourImpact.tonsCo2InTotal'|translate : {value: totalCo2} }}
+                  </ng-container>
+                </p>
+                <div class="d-flex align-items-center justify-content-between my-2">
+                  <div>
+                    <span class="mat-body-2 fw-bold">
+                      <svg-icon src="assets/images/svg/certified.svg" [svgClass]="'align-top'"
+                                [svgStyle]="{'height.px':'25', 'width.px':'30'}"></svg-icon>
+                      {{'yourImpact.tonsCertified'|translate : {
+                      value: co2Certified
+                    }  }}</span>
+                  </div>
+                  <div>
+                    <svg-icon src="assets/images/svg/info.svg" style="cursor: pointer" class=" ms-2"
+                              (click)="openModal(popUpCertifiedTitle, 'small', popUpCertifiedBody, '', false)"></svg-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between my-2">
+                  <div>
+                    <span class="mat-body-2 fw-bold">
+                      <svg-icon src="assets/images/svg/science.svg" [svgClass]="'align-top'"
+                                [svgStyle]="{'height.px':'25', 'width.px':'30'}"></svg-icon>
+                      {{'yourImpact.scienceBacked'|translate: {
+                      value: co2NotCertified
+                    } }}</span>
+                  </div>
+                  <div>
+                    <svg-icon src="assets/images/svg/info.svg" style="cursor: pointer" class=" ms-2"
+                              (click)="openModal(popUpScienceTitle, 'small', popUpScienceBody, '', false)"></svg-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="py-3 mb-3">
+                <p class="mat-title">{{'yourImpact.howYouOffsetIt'|translate}}</p>
+                <div class="project mt-2">
+                  <span class="type mat-caption text-uppercase restoration">{{'restoration' | translate}}</span>
+                  <span class="ms-2 mat-body-2">{{'yourImpact.byPlanting' | translate:{value: trees} }}</span>
+
+                </div>
+                <div class="project mt-2">
+                  <span class="type mat-caption text-uppercase preservation">{{'preservation' | translate}}</span>
+                  <span class="ms-2 mat-body-2">{{'yourImpact.byProtecting' | translate:{value: roundNumber(acres * 10000)} }}</span>
+
+                </div>
+                <div class="project mt-2">
+                  <span class="type mat-caption text-uppercase renewable_energy">{{'renewable' | translate}}</span>
+                  <span class="ms-2 mat-body-2">{{'yourImpact.byProducing' | translate:{value: kwh} }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 order-2 p-0 d-md-flex justify-content-md-center">
+        <div class="chart">
+          <div class="d-none d-md-block">
+            <!--            [view]="[undefined, 500]"-->
+
+            <ngx-charts-pie-chart
+              [view]="[500, 500]"
+              [results]="results"
+              [gradient]="true"
+              [arcWidth]="0.3"
+              [scheme]="colorScheme"
+              [labels]="false"
+              [doughnut]="true"
+              [legend]="true"
+              [legendTitle]="translate.instant('legend')"
+              [tooltipDisabled]="true"
+              [legendPosition]="'below'"></ngx-charts-pie-chart>
+            <img class="foggy" src="assets/images/foggy.png" alt="foggy">
+          </div>
+          <div class="totalTons">
+            <div class="d-flex justify-content-md-center justify-content-start">
+              <div class="image d-none d-md-block">
+                <svg-icon src="assets/images/svg/clouds.svg" [svgClass]="'align-top'"
+                          [svgStyle]="{'height.px':'70'}"></svg-icon>
+              </div>
+              <div class="text ms-md-2 ms-0">
+                <span class="mat-headline">{{'yourImpact.tons'|translate:{value: roundNumber(totalCo2)} }}</span>
+                <br>
+                <span class="mat-body-2">{{'yourImpact.totalCo2Offsetted'|translate}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="d-md-none chartSm">
+            <ngx-charts-pie-chart
+              [results]="results"
+              [gradient]="true"
+              [arcWidth]="0.3"
+              [scheme]="colorScheme"
+              [labels]="false"
+              [doughnut]="true"
+              [legend]="true"
+              [legendTitle]="translate.instant('legend')"
+              [tooltipDisabled]="true"
+              [legendPosition]="'below'"></ngx-charts-pie-chart>
+            <img class="foggy w-75" src="assets/images/foggy.png" alt="foggy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="wrapper users-layout">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="mode" [opened]="toggleOpen" (openedStart)="hideNav()" (closedStart)="showNav()"
+      (window:resize)="onResize($event)">
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="container-fluid px-0">
+        <div class="background"></div>
+        <div class="header text-white">
+          <span class="headline bold mb-1 text-uppercase">{{'settings.settings'|translate}}</span>
+          <h1 class="chivo xs fw-light">{{'settings.settingsSubtitle'|translate}}</h1>
+          <nav mat-tab-nav-bar>
+            <a mat-tab-link *ngFor="let item of navTabItems; index as i" (click)="setActiveItem(i)"
+              [routerLink]="item.route" [active]="item.active">{{item.label|translate}}</a>
+          </nav>
+        </div>
+
+        <router-outlet style="overflow-y: visible;"></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

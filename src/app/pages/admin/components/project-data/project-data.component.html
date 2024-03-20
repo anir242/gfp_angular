@@ -1,0 +1,27 @@
+<ng-container>
+  <div class="containerUserValues statistic p-3 d-lg-flex">
+    <div class="d-flex align-items-center">
+      <img src="assets/images/icons/{{img}}_{{type}}.svg" alt="{{img}}" />
+      <div class="ms-3 data">
+        <p class="title-2 mb-2">{{item}}</p>
+        <p class="body">{{text3 | translate}}</p>
+      </div>
+      <app-info [selector]="'{{img}}_{{type}}'"
+                [title]="popUpTitle"
+                [body]="popUpBody"
+                [link]="'/about'"
+                [positionY]="'bottom'"></app-info>
+    </div>
+    <mat-divider [vertical]="true" class="ms-4"></mat-divider>
+    <div class="row ms-4">
+      <div class="col-12 body"><b>{{totalData}}</b> {{text | translate}}</div>
+      <div class="col-12">
+        <div class="d-flex align-items-center">
+          <span class="percent small-body">{{remainder}}%</span>
+          <mat-progress-bar [class]="'ms-3 align-middle'" mode="determinate" [value]="remainder" [ngClass]="type"></mat-progress-bar>
+        </div>
+      </div>
+      <div class="col-12 tiny-body">{{text2 | translate}}</div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin material-form-field($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $warn: map.get($color-config, 'warn');
+  $accent2: map.get($light-theme-public-yellow, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  $color: mat.get-color-from-palette($foreground, text);
+  $my-typography: mat.define-typography-config();
+
+  mat-form-field{
+    .mat-form-field-infix{
+    }
+  }
+
+}

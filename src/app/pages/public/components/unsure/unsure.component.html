@@ -1,0 +1,23 @@
+<div class="customPadding unsure">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <span class="mat-display-1">{{title}}</span>
+        <p class="mat-display-1 mb-2">{{subtitle}}</p>
+        <img src="assets/images/desktop_mobile.png" class="deviceImg" alt="desktop mobile"/>
+      </div>
+      <ng-container *ngFor="let item of items, let i = index">
+        <div [ngClass]="'col-md-'+12/items.length" class="col-12">
+          <div class="texts">
+            <span class="mat-subheading-2 fw-bold">
+                {{item.title}}
+            </span>
+            <p class="mat-body-1 mt-2">
+              {{item.description}}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

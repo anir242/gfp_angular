@@ -1,0 +1,31 @@
+<div id="ourTeam">
+  <div class="container p-0">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="mb-4">
+          <p class="title-1 bold mb-2 text-center">{{'aboutPublicTeam.meetTeam'|translate}}</p>
+          <p class="large-body text-center">{{'aboutPublicTeam.teamDescription'|translate}}</p>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="container"></div>
+        <div class="row g-md-4 gx-0 gy-2">
+          <ng-container *ngFor="let item of team">
+            <div class="col-12 col-md-6 col-xl-3 col-lg-4">
+              <div class="item">
+                <app-flip-card
+                  [name]="item.firstname+' '+item.lastname"
+                  [description]="item.description"
+                  [image]="item.image?.url"
+                  [caption]="item.role"
+                  cardType="large"
+                  [business]="business"
+                ></app-flip-card>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

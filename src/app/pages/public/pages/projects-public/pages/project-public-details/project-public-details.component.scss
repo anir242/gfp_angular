@@ -1,0 +1,75 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin projects-public-details-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #projectsPublicDetails {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-size: cover;
+    position: relative;
+
+    .characteristics {
+      background-color: $summary-title;
+    }
+
+    .detailsSummary {
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+
+    .goals {
+      background-color: white;
+    }
+
+    .problemHelp {
+      padding: 24px 20px;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+    }
+  }
+
+  .scroller {
+    height: 400px;
+
+    .cdk-virtual-scroll-content-wrapper {
+      display: flex;
+      flex-direction: row;
+
+      .scrollerItem {
+        width: 250px;
+      }
+    }
+  }
+
+  .img-full {
+    width: 100%;
+  }
+
+  .country-image {
+    max-width: 400px;
+  }
+
+
+  .goToGallery {
+    text-align: center;
+
+    button {
+      width: 100%;
+
+      @include media-breakpoint-up(sm) {
+        width: auto;
+      }
+    }
+  }
+}

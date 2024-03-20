@@ -1,0 +1,126 @@
+<div class="infoModal">
+  <div mat-dialog-title>
+    <div class="position-relative">
+      <div class="text-end mb-2 closeButton">
+        <button mat-icon-button color="transparent" [mat-dialog-close]="false">
+          <mat-icon class="close-icon">close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12" id="share">
+          <div class="d-flex justify-content-center">
+            <div class="inviteFriendsContainer p-0 p-md-3">
+              <div class="text-center">
+                <svg-icon src="assets/images/svg/man.svg"></svg-icon>
+                <p class="mat-subheading-1 mt-2">{{'editEmployee.title'|translate}}</p>
+              </div>
+              <div>
+                <span class="mat-body-1">{{'subscriptionDetails.frequentFlyers'|translate}}</span>
+                <p class="text-start mat-body-1 mb-0">{{'editEmployee.remaining'|translate: {value: remainingFlyers} }}</p>
+                <mat-form-field appearance="none">
+                  <mat-chip-list #chipListFlyers>
+                    <div class="mailList">
+                      <mat-chip [color]="(item.invalid)?'warn':''" selected
+                                *ngFor="let item of frequentFlyer; let i = index"
+                                [selectable]="true"
+                                [removable]="removable"
+                                (removed)="removeEmail(item, subscriptionTypes.frequentFlyer)">
+                        <span class="mat-body-1">{{item.value}}</span>
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input autocomplete="off" class="text-start mat-chip-input mat-input-element"
+                             placeholder="{{placeholderFlyers}}"
+                             [matChipInputFor]="chipListFlyers"
+                             *ngIf="remainingFlyers > 0"
+                             [matChipInputSeparatorKeyCodes]="separatorKeys"
+                             [matChipInputAddOnBlur]="true"
+                             (matChipInputTokenEnd)="add($event, subscriptionTypes.frequentFlyer)"/>
+                    </div>
+                  </mat-chip-list>
+                  <mat-error>
+                    <span>{{'share.invalidEmail'| translate}}</span>
+                  </mat-error>
+                </mat-form-field>
+                <div class="mb-3 text-start" hidden>
+                  <svg-icon src="assets/images/svg/upload.svg" [svgClass]="'align-left'"></svg-icon>
+                  <a class="ms-2 mat-caption upload">{{'share.csv' | translate}}</a>
+                </div>
+              </div>
+              <div>
+                <span class="mat-body-1">{{'subscriptionDetails.globeTrotter'|translate}}</span>
+                <p class="text-start mat-body-1 mb-0">{{'editEmployee.remaining'|translate: {value: remainingTrotter} }}</p>
+                <mat-form-field appearance="none">
+                  <mat-chip-list #chipListGlobe>
+                    <div class="mailList">
+                      <mat-chip [color]="(item.invalid)?'warn':''" selected
+                                *ngFor="let item of globeTrotter; let i = index"
+                                [selectable]="true"
+                                [removable]="removable"
+                                (removed)="removeEmail(item, subscriptionTypes.globeTrotter)">
+                        <span class="mat-body-1">{{item.value}}</span>
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input autocomplete="off" class="text-start mat-chip-input mat-input-element"
+                             placeholder="{{placeholderGlobe}}"
+                             [matChipInputFor]="chipListGlobe"
+                             *ngIf="remainingTrotter > 0"
+                             [matChipInputSeparatorKeyCodes]="separatorKeys"
+                             [matChipInputAddOnBlur]="true"
+                             (matChipInputTokenEnd)="add($event,subscriptionTypes.globeTrotter)"/>
+                    </div>
+                  </mat-chip-list>
+                  <mat-error>
+                    <span>{{'share.invalidEmail'| translate}}</span>
+                  </mat-error>
+                </mat-form-field>
+                <div class="mb-3 text-start" hidden>
+                  <svg-icon src="assets/images/svg/upload.svg" [svgClass]="'align-left'"></svg-icon>
+                  <a class="ms-2 mat-caption upload">{{'share.csv' | translate}}</a>
+                </div>
+              </div>
+              <div>
+                <span class="mat-body-1">{{'subscriptionDetails.ecoFriendly'|translate}}</span>
+                <p class="text-start mat-body-1">{{'editEmployee.remaining'|translate: {value: remainingFriendly} }}</p>
+                <mat-form-field appearance="none">
+                  <mat-chip-list #chipListEco>
+                    <div class="mailList">
+                      <mat-chip [color]="(item.invalid)?'warn':''" selected
+                                *ngFor="let item of ecoFriendly; let i = index"
+                                [selectable]="true"
+                                [removable]="removable"
+                                (removed)="removeEmail(item, subscriptionTypes.ecoFriendly)">
+                        <span class="mat-body-1">{{item.value}}</span>
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input autocomplete="off" class="text-start mat-chip-input mat-input-element"
+                             placeholder="{{placeholderEco}}"
+                             *ngIf="remainingFriendly > 0"
+                             [matChipInputFor]="chipListEco"
+                             [matChipInputSeparatorKeyCodes]="separatorKeys"
+                             [matChipInputAddOnBlur]="true"
+                             (matChipInputTokenEnd)="add($event,subscriptionTypes.ecoFriendly)"/>
+                    </div>
+                  </mat-chip-list>
+                  <mat-error>
+                    <span>{{'share.invalidEmail'| translate}}</span>
+                  </mat-error>
+                </mat-form-field>
+                <div class="mb-3 text-start" hidden>
+                  <svg-icon src="assets/images/svg/upload.svg" [svgClass]="'align-left'"></svg-icon>
+                  <a class="ms-2 mat-caption upload">{{'share.csv' | translate}}</a>
+                </div>
+              </div>
+              <button [disabled]="buttonDisabled" (click)="invite()" mat-raised-button color="yellow">
+                {{'share.invite' | translate}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

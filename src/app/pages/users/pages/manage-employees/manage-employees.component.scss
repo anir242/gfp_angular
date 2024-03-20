@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin manage-employees-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #manageEmployees{
+    .mat-table{
+      //background-color: red;
+      .actions { // not working
+        cursor: pointer;
+        stroke: mat.get-color-from-palette($foreground, 'text');
+      }
+    }
+    .mat-paginator{
+      .mat-icon-button{
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+}

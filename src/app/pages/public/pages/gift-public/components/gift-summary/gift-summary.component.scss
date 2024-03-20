@@ -1,0 +1,61 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-summary-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #giftSummary {
+    @media(min-width:992px) {
+      // position: fixed;
+      min-width: 300px;
+
+      &.sticky {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    .summary {
+      border-radius: 4px;
+      background-color: white;
+
+      img {
+        width: 100%;
+        max-width: 90px;
+
+        @include media-breakpoint-up(md) {
+          width: 100%;
+          max-width: 260px;
+        }
+      }
+
+      .dotted {
+        border-bottom: 2px dotted black;
+        margin-bottom: 7px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .customImg {
+    width: 25%;
+
+    @include media-breakpoint-up(md) {
+      width: 100%;
+    }
+  }
+
+  .giftTree {
+    width: 75%;
+
+    @include media-breakpoint-up(md) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin estimate-pioneer-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .estimatePioneer {
+    max-width: 460px;
+    margin: 16px auto;
+
+    .mat-card {
+      padding: 0;
+      overflow: hidden;
+
+      .mat-card-header {
+        display: block;
+        padding: 1rem;
+        background-color: $teal;
+        justify-content: center;
+
+        .mat-card-header-text {
+          margin: 0;
+
+          .mat-card-title {
+            margin: 0;
+          }
+        }
+      }
+
+      .mat-card-content {
+        background-color: mat.get-color-from-palette($background, 'dialog');
+        padding: 0 12px;
+
+        .mat-form-field-wrapper {
+          padding-bottom: 0.5em;
+        }
+      }
+
+      .mat-card-footer {
+        background-color: $footer-public;
+        padding: 1rem;
+        margin: 0;
+
+        span {
+          color: mat.get-color-from-palette($primary, 'main-contrast');
+        }
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@mixin notifications-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .notificationPanel{
+        white-space: normal;
+        .header{
+          background-color: $notificationHeader;
+        }
+        .read {
+          background-color: $notificationRead;
+        }
+        .unRead{
+          background-color: $notificationUnRead;
+        }
+        .dropdown-menu{
+          width: 450px;
+          right: 2px;
+        }
+        ul{
+          @include media-breakpoint-up(md){
+            transform: translateX(60%);
+          }
+        }
+        p, span{
+          color: mat.get-color-from-palette($primary, 'main-contrast');
+        }
+        svg-icon{
+          stroke: mat.get-color-from-palette($primary, 'main-contrast');
+          margin-left: 10px;
+        }
+        .mat-stroked-button {
+          padding-right: 15px;
+        }
+        .mat-raised-button{
+          .mat-button-wrapper{
+            color: $main-text-dark;
+          }
+        }
+        .dot {
+          height: 11px;
+          width: 11px;
+          background-color: $notificationDot;
+          border-radius: 50%;
+          display: inline-block;
+        }
+
+      }
+}
+

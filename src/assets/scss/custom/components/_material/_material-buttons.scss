@@ -1,0 +1,233 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../light-theme-public-yellow";
+
+
+@mixin material-buttons-new($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $warn: map.get($color-config, 'warn');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  $buttonHeight: 42px;
+  $buttonYellowHover: #FFE274;
+  $buttonGreenHover: #00BA80;
+  $buttonLime: #DBF794;
+  $buttonLimeHover: #C9E43E;
+  $buttonTextDark: #002822;
+  $buttonDisabled: #E8E8E8;
+  $buttonDisabledText: #8A8A8A;
+
+  button, a {
+    $accent2: map.get($light-theme-public-yellow, 'accent');
+
+    &.mat-button-base {
+      border-radius: 4px;
+      height: $buttonHeight;
+      padding: 0 16px;
+
+
+      &:hover:enabled {
+        cursor: pointer;
+      }
+
+      &.mat-raised-button {
+        background-color: mat.get-color-from-palette($accent);
+        @include set-button-svg-color(mat.get-color-from-palette($primary));
+
+        &:hover:enabled {
+          background-color: $buttonGreenHover;
+        }
+
+        &.mat-yellow {
+          background-color: mat.get-color-from-palette($accent2);
+          @include set-button-svg-color($buttonTextDark);
+
+          &:hover:enabled {
+            background-color: $buttonYellowHover;
+          }
+        }
+
+        &.mat-warn {
+          background-color: mat.get-color-from-palette($warn);
+          @include set-button-svg-color($buttonTextDark);
+
+          &:hover:enabled {
+            background-color: $buttonYellowHover;
+          }
+        }
+
+        &.mat-lime {
+          background-color: $buttonLime;
+          @include set-button-svg-color($buttonTextDark);
+
+          &:hover:enabled {
+            background-color: $buttonLimeHover;
+          }
+        }
+
+        &.mat-button-disabled {
+          opacity: 1;
+          background-color: $buttonDisabled;
+          @include set-button-svg-color($buttonDisabledText);
+
+          &.mat-yellow {
+            background-color: $buttonDisabled;
+            @include set-button-svg-color($buttonDisabledText);
+          }
+        }
+      }
+
+      &.mat-stroked-button {
+        background-color: transparent;
+        border: 1px solid mat.get-color-from-palette($accent);
+        overflow: hidden;
+        @include set-button-svg-color(mat.get-color-from-palette($accent));
+        &:hover:enabled {
+          border: 1px solid $buttonGreenHover;
+          background-color: transparent;
+          @include set-button-svg-color($buttonGreenHover);
+        }
+
+        &.mat-yellow {
+          border: 1px solid mat.get-color-from-palette($accent2);
+          @include set-button-svg-color(mat.get-color-from-palette($accent2));
+
+          &:hover:enabled {
+            border: 1px solid $buttonYellowHover;
+            @include set-button-svg-color($buttonYellowHover);
+            color: $buttonTextDark;
+          }
+        }
+
+        &.mat-lime {
+          border: 1px solid $buttonLime;
+          @include set-button-svg-color($buttonLime);
+
+          &:hover:enabled {
+            border: 1px solid $buttonLimeHover;
+            @include set-button-svg-color($buttonLimeHover);
+            color: $buttonTextDark;
+          }
+        }
+
+        &.mat-button-disabled {
+          opacity: 1;
+          border: 1px solid $buttonDisabled;
+          @include set-button-svg-color($buttonDisabledText);
+
+          &.mat-yellow {
+            border: 1px solid $buttonDisabled;
+
+            @include set-button-svg-color($buttonDisabledText)
+          }
+        }
+      }
+
+      &.mat-stroked-button,
+      &.mat-raised-button {
+
+        svg-icon {
+          right: auto;
+          left: auto;
+          top: auto;
+          margin: 0 8px 0 0;
+          position: relative;
+          vertical-align: middle;
+        }
+
+      }
+
+      &.mat-button {
+        color: mat.get-color-from-palette($accent);
+        text-transform: none;
+        text-decoration: underline;
+
+        &.mat-white {
+          color: mat.get-color-from-palette($primary, 'main-contrast');
+        }
+
+        &.mat-yellow {
+          color: mat.get-color-from-palette($accent2);
+
+          &:hover:enabled {
+            color: $buttonYellowHover;
+          }
+        }
+
+        &:hover:enabled {
+          color: $buttonGreenHover;
+        }
+      }
+
+      &.mat-icon-button {
+        padding: 0;
+        background-color: mat.get-color-from-palette($accent);
+        @include set-button-svg-color(mat.get-color-from-palette($primary));
+
+        &:hover:enabled {
+          border: 0;
+          background-color: $buttonGreenHover;
+        }
+
+        &.mat-yellow {
+          background-color: mat.get-color-from-palette($accent2);
+          @include set-button-svg-color($buttonTextDark);
+
+          &:hover:enabled {
+            background-color: $buttonYellowHover;
+          }
+        }
+
+        &.mat-transparent {
+          background-color: transparent;
+
+          .mat-icon {
+            color: mat.get-color-from-palette($primary, 'main-contrast')
+          }
+        }
+
+        &.mat-button-disabled {
+          opacity: 1;
+          background-color: $buttonDisabled;
+          @include set-button-svg-color($buttonDisabledText);
+
+          &.mat-yellow {
+            background-color: $buttonDisabled;
+            @include set-button-svg-color($buttonDisabledText);
+          }
+        }
+      }
+    }
+
+    .mat-button-focus-overlay {
+      background-color: transparent !important;
+    }
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+}
+
+@mixin set-button-svg-color($color) {
+  .mat-badge-content {
+    color: white;
+  }
+  span {
+    color: $color;
+
+    svg-icon {
+      stroke: $color;
+
+      svg {
+        path {
+          fill: $color;
+        }
+      }
+    }
+  }
+}
+

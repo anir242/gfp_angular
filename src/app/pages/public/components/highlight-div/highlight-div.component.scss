@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin highlight-div-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #highLightDiv {
+    cursor: pointer;
+    background-color: rgba(240,240,240,.15);
+    border-radius: 4px;
+    &.selected{
+      border: 2px solid;
+    }
+    span{
+      color: #fafafa;
+    }
+    svg-icon{
+      //stroke: mat.get-color-from-palette($accent);
+    }
+    .description{
+      margin-left: 2em;
+    }
+  }
+}

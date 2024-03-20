@@ -1,0 +1,37 @@
+<div class="container py-2 leaderRecap text-white">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="container p-0 mt-2">
+        <div class="row">
+          <div class="col-8">
+            <div class="subscriptionData text-start" >
+              <span class="d-block small-body">
+                {{'mainSubscriptions.checkout.business.treePlanted'|translate: {value: getQuantityForType(unitTypes.TREE) * quantity?.value} }}
+              </span>
+              <span class="d-block small-body">
+                {{'mainSubscriptions.checkout.business.forestProtected'|translate: {value: getPreservationValue(getQuantityForType(unitTypes.ACRE) * quantity?.value + getQuantityForType(unitTypes.HECTARE) * quantity?.value)} }}
+              </span>
+              <span class="d-block small-body">{{'mainSubscriptions.checkout.business.energyProduced'|translate: {value: getQuantityForType(unitTypes.KWH) * quantity?.value} }}</span>
+              <span class="d-block small-body">{{co2Str}}</span>
+            </div>
+          </div>
+          <div class="d-none col-4">
+            <mat-select [formControl]="quantity" [value]="0">
+              <mat-option *ngFor="let number of selectValues()" [value]="number">{{number}}</mat-option>
+            </mat-select>
+          </div>
+          <div class="col-12">
+            <div class="d-flex justify-content-start">
+              <span class="small-body bold mt-2">{{'mainSubscriptions.checkout.business.costPerMonth'|translate}}</span>
+              <span class="small-body m-2">{{'mainSubscriptions.checkout.business.cost'|translate: {
+                value: (quantity?.value * subscriptionType.costMonthly) | number : '1.2-2'} }}</span>
+
+            </div>
+            <button mat-button class="p-0 d-none" [disabled]="quantity?.value == 0" (click)="quantity.setValue(0)">{{'mainSubscriptions.checkout.business.remove'|translate}}</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

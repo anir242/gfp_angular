@@ -1,0 +1,28 @@
+<div id="faqItem" [ngClass]="theme">
+    <ng-container *ngIf="mockFaq">
+      <mat-divider></mat-divider>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="ps-0">
+          <mat-panel-title class="fw-bold">{{mockFaq.title}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="mb-3">
+          <span class="mat-body-1 ps-0" [innerHTML]="mockFaq.content"></span>
+        </div>
+        <img [src]="mockFaq.url">
+      </mat-expansion-panel>
+    </ng-container>
+    <mat-accordion>
+      <ng-container *ngFor="let faq of faqs, let last = last">
+        <mat-divider></mat-divider>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header class="ps-0">
+              <mat-panel-title class="fw-bold">{{faq.title}}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <span class="mat-body-1 ps-0" [innerHTML]="faq.content"></span>
+          </mat-expansion-panel>
+        <ng-container *ngIf="last">
+          <mat-divider></mat-divider>
+        </ng-container>
+      </ng-container>
+    </mat-accordion>
+</div>

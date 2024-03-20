@@ -1,0 +1,66 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin details-table-theme($theme) {
+  $accent: map.get($theme, accent);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $warn: map.get($theme, warn);
+
+  .mat-table {
+    tr {
+      &.detail-row {
+        height: 0;
+        background: mat.get-color-from-palette($background, hover);
+
+        &:not(.expanded-row):hover {
+          background: mat.get-color-from-palette($background, hover);
+        }
+
+        &:not(.expanded-row):active {
+          background: mat.get-color-from-palette($background, selected-button);
+        }
+
+        td.mat-cell {
+          padding: 0;
+        }
+      }
+
+      &:not(.detail-row) {
+        cursor: pointer;
+      }
+    }
+
+  }
+
+
+  .element-detail {
+    overflow: hidden;
+    display: block;
+
+    .contentFields {
+      display: inline;
+
+      .field {
+        display: inline;
+
+        table {
+          display: inline-table;
+
+          tr {
+            text-align: left;
+
+            th,
+            td {
+              padding: 16px 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+

@@ -1,0 +1,33 @@
+<div class="container-fluid p-0" id="explore">
+  <div class="row g-0">
+    <div class="col-12">
+      <div class="container">
+        <div class="title" *ngIf="business; else exploreTitle">
+          <h2 class="title-1 bold">
+            {{'landingPublicExplore.explore'|translate}}
+          </h2>
+          <p class="large-body text-center">
+            {{'landingPublicExplore.findTheClimate'|translate}}
+            <br>
+            {{'landingPublicExplore.allOfOurSolutions'|translate}}
+          </p>
+        </div>
+        <ng-template #exploreTitle>
+          <div class="title">
+            <h2 class="title-1 bold">
+              {{'landingPublicExplore.exploreB2C'|translate}}
+            </h2>
+            <h3 class="large-body">
+              {{'landingPublicExplore.findTheClimateB2C'|translate}}
+              <br>
+              {{'landingPublicExplore.allOfOurSolutions'|translate}}
+            </h3>
+          </div>
+        </ng-template>
+        <div class="mb-5">
+          <app-business-solutions [business]="business"></app-business-solutions>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

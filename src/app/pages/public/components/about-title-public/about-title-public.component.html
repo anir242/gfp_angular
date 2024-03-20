@@ -1,0 +1,33 @@
+<div class="bannerTitle">
+  <div class="layer">
+    <div class="d-flex align-items-center h-100">
+      <div class="container p-0">
+        <div class="row g-0">
+          <div class="col-12">
+            <div class="title text-start">
+              <app-breadcrumb></app-breadcrumb>
+              <div class="mb-5">
+                <p class="mat-display-3 pre-line mb-1">{{title}}</p>
+                <span *ngIf="name" class="mat-subheading-2 pre-line">{{name}}</span>
+              </div>
+              <!--              <a (click)="scrollToId(button)">
+                  <button mat-stroked-button color="yellow" class="mt-4">{{buttonText}}</button>
+                </a>-->
+              <div class="d-none d-md-flex button-container">
+                <ng-container *ngIf="buttonText">
+                  <button mat-stroked-button color="yellow" class="mt-4" (click)="button.emit()">{{buttonText}}</button>
+                </ng-container>
+                <ng-container *ngIf="linkText">
+                  <a mat-stroked-button color="yellow" class="mt-4 btn-2" href="{{linkUrl}}" target="_blank">{{linkText}}</a>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-md-none">
+      <app-arrow-scroll [id]="arrow"></app-arrow-scroll>
+    </div>
+  </div>
+</div>

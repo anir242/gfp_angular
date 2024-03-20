@@ -1,0 +1,41 @@
+<div class="container p-0" id="progressScroller">
+  <div class="row g-0">
+    <div class="col-12">
+      <div class="d-none d-md-block">
+        <app-progress
+          [type]="progressType"
+          [items]="items"
+          [title]="title"
+          [circleColor]="'#00BA80'"
+          [numberColor]="'#00734F'"
+          numberFont="mat-headline"
+          titleFont="mat-display-1"
+          descriptionFont="mat-body-1 fw-bold"
+        ></app-progress>
+      </div>
+      <div class="d-md-none">
+        <p class="text-center mat-headline mb-5 mx-2">{{title}}</p>
+        <div class="ms-4">
+          <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" minBufferPx="1200" maxBufferPx="1300">
+            <div *cdkVirtualFor="let item of items, let i = index" class="mt-2 d-flex flex-row">
+              <div class="item p-3" [ngClass]="itemTheme">
+                <p class="mat-headline number">{{i + 1}}</p>
+                <p class="mat-body-2 mb-0">
+                  {{item.text}}
+                </p>
+              </div>
+              <div class="connectionContainer">
+                <div [ngClass]="i+1<items.length ? 'connection' : ''"></div>
+              </div>
+            </div>
+          </cdk-virtual-scroll-viewport>
+        </div>
+      </div>
+      <div class="text-center bottomButton mt-5" *ngIf="buttonAction">
+        <button mat-raised-button color="yellow" (click)="buttonAction()" [disabled]="buttonDisabled">
+          {{buttonText}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

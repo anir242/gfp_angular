@@ -1,0 +1,35 @@
+<div class="content" id="aboutPublic">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-12" [style]="retrieveStyleBackgroundPublic(whatWeDo)">
+        <app-about-title-public
+          arrow="features"
+          (button)="scrollToId('approach')"
+          [title]="translate.instant('aboutPublic.title')"
+          [buttonText]="translate.instant('aboutPublic.approach')">
+        </app-about-title-public>
+      </div>
+      <div class="col-12 features" id="features">
+        <app-items-list></app-items-list>
+      </div>
+      <div class="col-12 solution p-0">
+        <app-solution></app-solution>
+      </div>
+      <div class="col-12 approach" id="approach">
+        <app-approach></app-approach>
+      </div>
+      <div class="col-12 impact">
+        <app-impact-explained></app-impact-explained>
+      </div>
+      <div class="col-12">
+        <app-achievements-data></app-achievements-data>
+      </div>
+      <div class="col-12 manifesto" id="manifesto">
+        <app-manifesto></app-manifesto>
+      </div>
+      <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlSubscribe)">
+        <app-subscribe></app-subscribe>
+      </div>
+    </div>
+  </div>
+</div>

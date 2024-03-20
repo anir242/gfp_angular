@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin subscribe-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .subscribe {
+    padding: 50px 20px;
+    @include media-breakpoint-up(md){
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    p {
+      color: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+  }
+}

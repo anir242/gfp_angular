@@ -1,0 +1,105 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin share-friends-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .infoModal {
+    max-width: 650px;
+    max-height: 580px;
+
+    .closeButton {
+      position: absolute;
+      top: 0;
+      right: 0.5rem;
+    }
+
+    #share {
+      text-align: center;
+
+      .inviteFriendsContainer {
+        width: 100%;
+        margin: auto 2rem;
+        @include media-breakpoint-up(md) {
+          width: auto;
+          margin: auto;
+        }
+
+        .mat-form-field {
+          .mat-form-field-wrapper {
+            padding-bottom: 1.1rem;
+            // padding-bottom: 60px;
+            .mat-chip-list-wrapper {
+              .mat-form-field-infix {
+                padding: 0;
+              }
+
+              .mailList {
+                overflow: scroll;
+                height: 150px;
+                width: 100%;
+                padding: 10px;
+                border: dashed 1px;
+
+                .mat-chip {
+                  height: auto;
+
+                  span {
+                    vertical-align: center;
+                    word-break: break-all;
+                    color: $main-text-light;
+                  }
+                }
+
+                input {
+                  height: auto;
+                  width: 90%;
+                  padding: 10px 10px 10px 0;
+                  caret-color: black;
+
+                  &.mat-input-element {
+                    font-family: mat.font-family($fontConfig, 'body-1');;
+                  }
+                }
+              }
+            }
+
+            .mat-form-field-underline {
+              display: none;
+            }
+          }
+        }
+      }
+
+      button {
+        width: 100%;
+        max-width: 185px;
+      }
+
+      svg-icon {
+        fill: mat.get-color-from-palette($accent);
+      }
+
+      .upload {
+        color: mat.get-color-from-palette($accent);
+      }
+
+
+      .thick {
+        stroke: $main-text-light;
+        fill: mat.get-color-from-palette($accent);
+      }
+    }
+
+
+  }
+  app-progress {
+    background-color: $invite-friend-progress;
+  }
+
+}

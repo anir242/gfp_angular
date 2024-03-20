@@ -1,0 +1,47 @@
+<div class="container p-0 sticky-top" *ngIf="pageType !== 'welcome'">
+  <div class="row g-0">
+    <div class="col">
+      <div class="orderSummary" style="border-radius: 8px">
+        <div class="title">
+          <span class="mat-subheading-2">{{title}}</span>
+        </div>
+        <div class="total">
+          <app-summary-item [summaryType]="summaryType" [offset]="offset" [integrationType]="integrationType" [freeAvailable]="freeAvailable" [freeQuantity]="freeQuantity" [countryPolicy]="countryPolicy"></app-summary-item>
+        </div>
+        <!-- bottom yellow total cost summary -->
+        <div class="donation d-flex justify-content-between">
+          <div>
+            <span class="mat-subheading-1 fw-semibold">{{costDescription}}</span>
+          </div>
+          <div>
+            <span class="mat-subheading-1 fw-semibold">{{'orderSummary.€' |translate : {value: cost | number: '1.2-2'} }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container p-0 sticky-top" *ngIf="pageType === 'welcome'">
+  <div class="row g-0">
+    <div class="col">
+      <div class="orderSummary" style="border-radius: 8px">
+        <div class="title">
+          <span class="mat-subheading-2">{{"orderSummary.title" | translate}}</span>
+        </div>
+        <div class="total">
+          <app-summary-item [summaryType]="summaryType" [offset]="offset" [integrationType]="integrationType" [freeAvailable]="freeAvailable" [freeQuantity]="freeQuantity" [countryPolicy]="countryPolicy"></app-summary-item>
+        </div>
+        <!-- bottom yellow total cost summary -->
+        <div [ngClass]="integrationType === 'nativa' ? 'donationNativa' : 'donation'" class="d-flex justify-content-between">
+          <div>
+            <span [ngClass]="integrationType ==='nativa' ? 'text-white' : ''" class="mat-subheading-1 fw-semibold">{{ "nativa.orderSummary.costDescription" | translate }}</span>
+          </div>
+          <div>
+            <span [ngClass]="integrationType === 'nativa' ? 'text-white' : ''" class="mat-subheading-1 fw-semibold">{{'orderSummary.€' |translate : {value: cost | number: '1.2-2'} }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

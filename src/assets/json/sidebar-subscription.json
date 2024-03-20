@@ -1,0 +1,22 @@
+[
+  {
+    "displayName": "home",
+    "route": "/admin",
+    "iconName": "home"
+  },
+  {
+    "displayName": "subscriptions",
+    "route": "/admin/users/subscriptions",
+    "iconName": "tree"
+  },
+  {
+    "displayName": "details",
+    "route": "/admin/users/subscriptions/details",
+    "iconName": "info-circle"
+  },
+  {
+    "displayName": "api",
+    "route": "/admin/users/subscriptions/api",
+    "iconName": "code"
+  }
+]

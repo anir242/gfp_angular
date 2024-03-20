@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin card-icon-text($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #cardIconText {
+    @include mat.elevation(0);
+
+    svg-icon{
+      stroke: mat.get-color-from-palette($accent);
+    }
+    mat-card{
+    }
+    &.green{
+      .title{
+        color: mat.get-color-from-palette($accent);
+      }
+    }
+  }
+}

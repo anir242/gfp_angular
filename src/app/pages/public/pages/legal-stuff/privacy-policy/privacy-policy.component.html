@@ -1,0 +1,33 @@
+<div class="layer pe-5" id="privacyPolicy">
+  <mat-card class="mt-5">
+    <div id="title" class="container">
+      <div class="px-2">
+        <span class="headline text-black d-lg-block d-none mb-0">{{
+          'privacyPolicy.title' | translate
+        }}</span>
+        <span class="title-1  text-black bold d-lg-none mb-0">{{
+          'privacyPolicy.title' | translate
+        }}</span>
+      </div>
+    </div>
+    <div
+      name="termly-embed"
+      data-id="c00dd5ca-2d59-434f-bf2a-40050bcddfa1"
+      data-type="iframe"
+      class="legal-content"
+      >
+    </div>
+  </mat-card>
+
+</div>
+<script type="text/javascript">
+  (function (d, s, id) {
+    var js,
+      tjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'https://app.termly.io/embed-policy.min.js';
+    tjs.parentNode.insertBefore(js, tjs);
+  })(document, 'script', 'termly-jssdk');
+</script>

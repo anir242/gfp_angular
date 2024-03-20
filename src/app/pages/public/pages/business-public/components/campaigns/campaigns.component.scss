@@ -1,0 +1,63 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin campaigns-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #campaignItem{
+
+    .campaigns {
+      color: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+    .carousel-dots{
+      @include media-breakpoint-up(md){
+        text-align: left;
+      }
+      .carousel-dot{
+        border-radius: 0;
+        border: 0;
+        background-color: mat.get-color-from-palette($background, 'app-bar');
+        opacity: 0.3;
+        width: 30%;
+        height: 4px;
+        @include media-breakpoint-up(md){
+          width: 40px;
+          height: 4px;
+        }
+        &.carousel-dot-active{
+          background-color: mat.get-color-from-palette($primary, 'main-contrast');
+          opacity: 1;
+        }
+      }
+    }
+
+
+
+    #campaignCarousel {
+      // height: 90%;
+      .carousel-indicators {
+        margin: 0 0 0em;
+        @include media-breakpoint-up(md){
+          margin: 0 0 2em;
+        }
+        button {
+          width: 100%;
+        }
+
+        justify-content: center;
+        @include media-breakpoint-up(md) {
+          justify-content: start;
+          button {
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+
+}

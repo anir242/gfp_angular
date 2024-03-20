@@ -1,0 +1,146 @@
+<div class="realData" [ngClass]="type">
+  <div class="container-fluid" *ngIf="countersData">
+    <div class="row d-flex g-2">
+      <div class="col-12 col-lg-6 justify-content-center align-items-center order-1">
+        <div class="info align-items-start d-flex flex-column">
+          <div class="p-3">
+            <div class="mt-3 mb-4">
+              <span class="title-2 text-white">{{'projectDetails.yourImpactFull'|translate:{name: name} }}</span>
+              <p class="body">{{'projectDetails.yourImpactShare'|translate}}</p>
+            </div>
+            <div class="impact-buttons">
+              <button shareButtonsPopup mat-icon-button color="yellow" class="me-3 noFill d-none"
+                      [theme]="'default'"
+                      [include]="['facebook','twitter','linkedin','telegram','messenger','whatsapp','sms','email','print','copy']"
+                      [show]="5"
+                      [url]="url"
+                      [description]="translate.instant('sharePopup.description')"
+                      [autoSetMeta]="false">
+                <svg-icon class="share" src="assets/images/svg/share.svg"></svg-icon>
+              </button>
+              <button mat-icon-button color="yellow" (click)="openImpactPreview()" [disabled]="clicked">
+                <svg-icon src="assets/images/svg/download.svg"></svg-icon>
+              </button>
+            </div>
+            <div class="statistics p-2">
+              <div class="row g-2 align-items-start">
+                <div class="col-12 col-xl-6">
+                  <div class="statistic half p-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                      <img src="assets/images/icons/co2.svg" alt="CO2" />
+                      <app-info [selector]="'co2'+id"
+                                [title]="translate.instant('yourImpact.infoTitle')"
+                                [body]="translate.instant('yourImpact.infoBody')"
+                                [link]="type == projectTypes.renewable_energy?'/about/renewable_energy': type == projectTypes.preservation ? '/about/preservation' : '/about/restoration'"
+                                [positionY]="'bottom'"></app-info>
+                    </div>
+                    <div class="title-2 mt-4 mb-2" *ngIf="countersData.certified + countersData.notCertified >= 1000">
+                      {{'admin.tons'|translate : {tons: roundNumber((countersData.certified + countersData.notCertified) / 1000)} }}
+                    </div>
+                    <div class="title-2 mt-4 mb-2" *ngIf="countersData.certified + countersData.notCertified < 1000">
+                      {{'admin.kg'|translate : {kg: roundNumber(countersData.certified + countersData.notCertified, 0)} }}
+                    </div>
+                    <p class="body m-0">
+                      {{'admin.total' | translate}}
+                      CO<sub>2</sub>
+                      {{'admin.offset' | translate}}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6">
+                  <div class="statistic half p-3">
+                    <ng-container *ngIf="type == projectTypes.restoration">
+                      <img src="assets/images/icons/restoration.svg" alt="Restoration" />
+                      <div class="title-2 mt-4 mb-2">
+                        {{'yourImpact.treesPlanted'|translate : {value: roundNumber(countersData.unit) } }}
+                      </div>
+                      <p class="body m-0">
+                        {{'yourImpact.treesPlantedDescription'|translate }}
+                      </p>
+                    </ng-container>
+                    <ng-container *ngIf="type == projectTypes.preservation">
+                      <img src="assets/images/icons/preservation.svg" alt="Preservation" />
+                      <div class="title-2 mt-4 mb-2" *ngIf="countersData.unit >= 0.5">
+                        {{'admin.acres'| translate: {acres: roundNumber(countersData.unit)} }}
+                      </div>
+                      <div class="title-2 mt-4 mb-2" *ngIf="countersData.unit < 0.5">
+                        {{'admin.m2'| translate: {m2: roundNumber(countersData.unit * 10000)} }} m<sup>2</sup>
+                      </div>
+                      <p class="body m-0">{{'admin.protected' | translate}}</p>
+                    </ng-container>
+                    <ng-container *ngIf="type == projectTypes.renewable_energy">
+                      <img src="assets/images/icons/renewable.svg" alt="Renewable" />
+                      <div class="title-2 mt-4 mb-2">
+                        {{'yourImpact.kWh'|translate : {value: roundNumber(countersData.unit) } }}
+                      </div>
+                      <p class="body m-0">
+                        {{'yourImpact.kWhDescription'|translate }}
+                      </p>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="statistic p-3">
+                    <ng-container *ngIf="type == projectTypes.restoration">
+                      <div class="d-flex justify-content-between">
+                        <div class="body text-white">
+                          {{'realData.youHaveReforested' | translate:{name:cleanName} }} {{'realData.anAreaSameSizeAs' | translate}}
+                        </div>
+                        <app-info [selector]="'tennisRestoration'+id"
+                                  [title]="translate.instant('yourImpact.tennisTitle')"
+                                  [body]="translate.instant('yourImpact.tennisBody')"
+                                  [link]="'/about'"
+                                  [positionY]="'top'"></app-info>
+                      </div>
+                      <p class="title-2 mt-3 mb-2 data {{type}}">{{'realData.tennisCourts'|translate:{value: value} }}</p>
+                    </ng-container>
+                    <ng-container *ngIf="type == projectTypes.preservation">
+                      <div class="d-flex justify-content-between">
+                        <div class="body text-white">
+                          {{'realData.youHaveProtected' | translate:{name:cleanName} }} {{'realData.anAreaSameSizeAs' | translate}}
+                        </div>
+                        <app-info [selector]="'tennisPreservation'+id"
+                                  [title]="translate.instant('yourImpact.tennisTitle')"
+                                  [body]="translate.instant('yourImpact.tennisBody')"
+                                  [link]="'/about'"
+                                  [positionY]="'top'"></app-info>
+                      </div>
+
+                      <p class="title-2 mt-3 mb-2 data {{type}}">{{'realData.tennisCourts'|translate:{value: value} }}</p>
+                    </ng-container>
+                    <ng-container *ngIf="type == projectTypes.renewable_energy">
+                      <div class="d-flex justify-content-between">
+                        <div class="body text-white">
+                          {{'realData.youHaveProduced' | translate:{name:cleanName} }} {{'realData.sameAmountOf' | translate}} {{'realData.energyPower' | translate}}
+                        </div>
+                        <app-info [selector]="'households'+id"
+                                  [title]="translate.instant('yourImpact.householdsTitle')"
+                                  [body]="translate.instant('yourImpact.householdsBody')"
+                                  [link]="'/about'"
+                                  [positionY]="'top'"></app-info>
+                      </div>
+                      <p class="title-2 mt-3 mb-2 data {{type}}">{{'realData.households'|translate:{value: value} }}</p>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center order-2 p-0">
+        <div class="mapsImg justify-content-center align-items-center">
+          <ng-container *ngIf="type == 'preservation'">
+            <img src="assets/images/tennisball.png" alt="health earth"/>
+          </ng-container>
+          <ng-container *ngIf="type == 'restoration'">
+            <img src="assets/images/tennisCourt.png" alt="health earth"/>
+          </ng-container>
+          <ng-container *ngIf="type == 'renewable_energy'">
+            <img src="assets/images/houseImpact.png" alt="health earth"/>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

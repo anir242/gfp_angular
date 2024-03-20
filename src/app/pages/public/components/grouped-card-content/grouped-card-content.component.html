@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-11">
+            <div class="card-content py-3 ps-3">
+                <mat-card-content>
+                    <mat-list-item>
+                        <div class="header-style" [ngClass]="customContentStyle">
+                            <img [src]="imgUrl" *ngIf="imgUrl" [ngClass]="imgStyle">
+                            <span class="title-2 p-2 mt-3" *ngIf="headerText">{{headerText}}</span>
+                        </div>
+                        <p class="body p-0">{{bodyText}}</p>
+                    </mat-list-item>
+                  </mat-card-content>
+            </div>
+        </div>
+    </div>
+</div>
+
+

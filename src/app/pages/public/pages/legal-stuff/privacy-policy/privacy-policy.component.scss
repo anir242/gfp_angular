@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin privacyPolicy-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $background: map.get($color-config, 'background');
+
+  #privacyPolicy {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-size: cover;
+    position: relative;
+    background: transparent;
+    padding-left: 32px;
+
+    @include media-breakpoint-down(md) {
+      margin-top: 35px;
+    }
+
+    .mat-card{
+      //Since we can't change the font color this will remain commented
+      // background-color: rgba(240, 240, 240, 0.05);
+      box-shadow: none !important;
+    }
+
+    .container{
+      margin-left: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    #title {
+      padding: 20px 20px;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 85px;
+      }
+      span {
+        color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+  }
+  .legal-content {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    padding-left:0 !important;
+  }
+}

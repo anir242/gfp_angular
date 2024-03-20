@@ -1,0 +1,1167 @@
+<div
+id="solutions-top"
+  class="w-100 d-flex justify-content-center align-items-center flex-column py-5"
+  style="
+    background-image: url('../../../../../assets/images/carbon-neutral-bg.png');
+    background-size: cover;
+  "
+>
+  <div class="d-flex flex-column align-items-center py-5 text-center" [ngClass]="windowWidth > 600 ? 'w-50' : 'w-100'">
+    <p
+      class="headline text-white"
+      [ngClass]="{'mx-4': windowWidth < 600}"
+      innerHTML="{{ 'solutions.the360' | translate }}"
+    ></p>
+    <div id="ring" class="ring">
+      <div class="position-1" id="0" (click)="scrollToId('communicate')">
+        <div class="icon1"></div>
+        <div class="part part1">
+          <span class="button-helper"></span>
+          <img
+            class="text1"
+            [src]="
+              lang == 'it'
+                ? '../../../../../assets/images/pilio/text/text1_it.svg'
+                : '../../../../../assets/images/pilio/text/text1.svg'
+            "
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="position-2" id="1" (click)="scrollToId('measure')">
+        <div class="icon2"></div>
+        <div class="part part2">
+          <span class="button-helper"></span>
+          <img
+            class="text2"
+            [src]="
+              lang == 'it'
+                ? '../../../../../assets/images/pilio/text/text2_it.svg'
+                : '../../../../../assets/images/pilio/text/text2.svg'
+            "
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="position-3" id="2" (click)="scrollToId('track')">
+        <div class="icon3"></div>
+        <div class="part part3">
+          <span class="button-helper"></span>
+          <img
+            [class]="lang == 'it' ? 'text3-it' : 'text3'"
+            [src]="
+              lang == 'it'
+                ? '../../../../../assets/images/pilio/text/text3_it.svg'
+                : '../../../../../assets/images/pilio/text/text3.svg'
+            "
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="position-4" id="3" (click)="scrollToId('offset')">
+        <div class="icon4"></div>
+        <div class="part part4">
+          <span class="button-helper"></span>
+          <img
+            class="text4"
+            [src]="
+              lang == 'it'
+                ? '../../../../../assets/images/pilio/text/text4_it.svg'
+                : '../../../../../assets/images/pilio/text/text4.svg'
+            "
+            alt=""
+          />
+        </div>
+      </div>
+      <div
+        (click)="scrollToId('esg')"
+        class="center-logo"
+        [ngClass]="{ 'center-logo-it': lang === 'it' }"
+        id="4"
+      ></div>
+    </div>
+  </div>
+  <div class="position-relative">
+    <ng-container>
+      <a (click)="scrollToId('solutions')">
+        <img class="w-100" style="cursor: pointer;" src="../../../../../assets/images/solutions/images/angle-down-regular.svg" alt="Next" width="56">
+      </a>
+    </ng-container>
+  </div>
+</div>
+
+<div id="solutions" [class]="windowWidth > 600 ?'p-5 text-dark' : 'text-dark'">
+  <p [style]="windowWidth > 600 ? 'font-size: 24px;' : ''" [ngClass]="windowWidth < 600 ? 'p-3 pt-5 mb-4' : 'my-5'" class="big-body  green" innerHtml="{{
+    'solutions.gfp'
+      | translate
+  }}">
+  </p>
+
+  <div id="measure">
+    <div class="container px-4" [ngClass]="{'mb-3': windowWidth < 600}">
+      <div class="row">
+        <div class="col-md-1 d-flex align-items-center w-auto">
+          <div class="measure-logo" [ngClass]="{'mb-4': windowWidth < 600}"></div>
+        </div>
+        <div class="col-md-7">
+          <div>
+            <p class="title-1 bold" [ngClass]="windowWidth > 600 ? 'm-0' : 'mb-2'">
+              {{ "businessSolutions.measure.measure2" | translate }}
+            </p>
+            <p class="big-body" innerHtml="{{ 'solutions.measure.leverage' | translate }}">
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex flex-column justify-content-center gap-3 h-100">
+            <button class="w-100" mat-raised-button color="yellow" (click)="openMeet()">
+              {{ "solutions.bookDemo" | translate }}
+            </button>
+            <a class="w-100 shadow-none" mat-stroked-button [href]="lang == 'it'?'/gestione_impronta_carbonio':'/carbon_footprint_management'">
+              {{ "solutions.learnMore" | translate }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container their-carbon my-1" *ngIf="windowWidth > 600, else measureCarousel">
+      <div class="row mt-3">
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="d-flex gap-4 align-items-center">
+              <img
+                src="../../../../../assets/images/solutions/icons/measure1.svg"
+                alt=""
+              />
+              <p class="title-3 bold" innerHtml="{{ 'solutions.measure.energyHealth' | translate }}">
+              </p>
+            </div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/measure1.png"
+              alt=""
+            />
+            <div>
+              <p class="body opacity-75">
+                {{ "solutions.measure.atGFP" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="d-flex gap-4 align-items-center">
+              <img
+                src="../../../../../assets/images/solutions/icons/measure2.svg"
+                alt=""
+              />
+              <p class="title-3 bold" [ngClass]="{'text-nowrap': windowWidth > 1200}" innerHTML=" {{ 'solutions.measure.energyManagement' | translate }}">
+               
+              </p>
+            </div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/measure2.png"
+              alt=""
+            />
+            <div>
+              <p class="body opacity-75">
+                {{ "solutions.measure.connectYourEneregy" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="d-flex gap-4 align-items-center">
+              <img
+                src="../../../../../assets/images/solutions/icons/measure3.svg"
+                alt=""
+              />
+              <p class="title-3 bold" innerHtml="{{ 'solutions.measure.carbonFootprint' | translate }}">         
+              </p>
+            </div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/measure3.png"
+              alt=""
+            />
+            <div>
+              <p class="body opacity-75">
+                {{ "solutions.measure.ourSolution" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #measureCarousel>
+        <div class="their-carbon my-1 mx-4">
+          <carousel [cellsToShow]="1" height="550">
+            <div class="card carousel-cell">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/measure1.svg"
+                  alt=""
+                  [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+                />
+                <p class="title-3 bold" innerHtml="{{ 'solutions.measure.energyHealth' | translate }}">
+                </p>
+              </div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/measure1.png"
+                alt=""
+              />
+              <div>
+                <p class="body opacity-75">
+                  {{ "solutions.measure.atGFP" | translate }}
+                </p>
+              </div>
+            </div>
+            <div class="card carousel-cell">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/measure2.svg"
+                  alt=""
+                  [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+                />
+                <p class="title-3 bold"  innerHTML=" {{ 'solutions.measure.energyManagement' | translate }}">
+                 
+                </p>
+              </div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/measure2.png"
+                alt=""
+              />
+              <div>
+                <p class="body opacity-75">
+                  {{ "solutions.measure.connectYourEneregy" | translate }}
+                </p>
+              </div>
+            </div>
+            <div class="card carousel-cell">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/measure3.svg"
+                  alt=""
+                  [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+                />
+                <p class="title-3 bold" innerHtml="{{ 'solutions.measure.carbonFootprint' | translate }}">         
+                </p>
+              </div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/measure3.png"
+                alt=""
+              />
+              <div>
+                <p class="body opacity-75">
+                  {{ "solutions.measure.ourSolution" | translate }}
+                </p>
+              </div>
+            </div>
+          </carousel>
+        </div>
+    </ng-template>
+  </div>
+  <div id="offset" class="mt-5">
+    <div class="container px-4" [ngClass]="{'mb-3': windowWidth < 600}">
+      <div class="row">
+        <div class="col-md-1 d-flex align-items-center w-auto">
+          <div class="offset-logo"  [ngClass]="{'mb-4': windowWidth < 600}"></div>
+        </div>
+        <div class="col-md-8">
+          <div>
+            <p class="title-1 bold" [ngClass]="windowWidth > 600 ? 'm-0' : 'mb-2'">{{
+              'businessSolutions.offset.offset2'
+                | translate
+            }}</p>
+            <p class="big-body">
+              {{
+                'solutions.offset.aRange'
+                  | translate
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container their-carbon my-1" *ngIf="windowWidth > 600, else offsetCarousel">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="card justify-content-between">
+           <div class="d-flex flex-column gap-4">
+            <div class="d-flex gap-4 align-items-center">
+              <img
+                src="../../../../../assets/images/solutions/icons/offset1.svg"
+                alt=""
+              />
+              <p class="title-3 bold" [ngClass]="{'text-nowrap': windowWidth > 1200 && lang !== 'it'}" innerHtml="{{
+                'solutions.offset.co2'
+                  | translate
+              }}">    </p>
+            </div>
+            <div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/offset1.png"
+              alt=""
+            />
+              <p class="body opacity-75 pt-4">
+                {{
+                  'solutions.offset.measure'
+                    | translate
+                }}
+              </p>
+            </div>
+           </div>
+            <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/offset/checkout'">
+              {{
+                'solutions.offset.purchaseNow'
+                  | translate
+              }}
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card justify-content-between">
+           <div class="d-flex flex-column gap-4">
+            <div class="d-flex gap-4 align-items-center">
+              <img
+                src="../../../../../assets/images/solutions/icons/offset2.svg"
+                alt=""
+              />
+              <p class="title-3 bold" innerHtml="{{
+                'solutions.offset.climatePositive'
+                  | translate
+              }}">  </p>
+            </div>
+            <div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/offset2.png"
+              alt=""
+            />
+              <p class="body opacity-75 pt-4">
+                {{
+                  'solutions.offset.asCarbon'
+                    | translate
+                }}
+              </p>
+            </div>
+           </div>
+            <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/climatePositiveSubscription'">
+              {{
+                'solutions.offset.exploreAll'
+                  | translate
+              }}
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card justify-content-between">
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/offset3.svg"
+                  alt=""
+                />
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.offset.eCommerce'
+                    | translate
+                }}"> </p>
+              </div>
+              <div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/offset3.png"
+                alt=""
+              />
+                <p class="body opacity-75 pt-4">
+                  {{
+                    'solutions.offset.scaleUp'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <a class="w-100 shadow-none" mat-stroked-button [href]="'/api'">
+              {{
+                'solutions.offset.discover'
+                  | translate
+              }}
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card justify-content-between">
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/offset4.svg"
+                  alt=""
+                />
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.offset.climatePositiveGift'
+                    | translate
+                }}">   </p>
+              </div>
+              <div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/offset4.png"
+                alt=""
+              />
+                <p class="body opacity-75 pt-4">
+                  {{
+                    'solutions.offset.leadTheWay'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/gift'">
+              {{
+                'solutions.offset.inspire'
+                  | translate
+              }}
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card justify-content-between">
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/offset5.svg"
+                  alt=""
+                />
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.offset.support'
+                    | translate
+                }}">  </p>
+              </div>
+              <div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/offset5.png"
+                alt=""
+              />
+                <p class="body opacity-75 pt-4">
+                  {{
+                    'solutions.offset.weAdopt'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/projects'">
+              {{
+                'solutions.offset.investNow'
+                  | translate
+              }}
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card justify-content-between">
+           <div class="d-flex flex-column gap-4">
+            <div class="d-flex gap-4 align-items-center">
+              <img
+                src="../../../../../assets/images/solutions/icons/offset6.svg"
+                alt=""
+              />
+              <p class="title-3 bold" innerHtml="{{
+                'solutions.offset.greenNft'
+                  | translate
+              }}"> </p>
+            </div>
+            <div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/offset6.png"
+              alt=""
+            />
+              <p class="body opacity-75 pt-4">
+                {{
+                  'solutions.offset.ifYouAre'
+                    | translate
+                }}
+              </p>
+            </div>
+           </div>
+            <a class="w-100 shadow-none" mat-stroked-button [href]="'/nft'">
+              {{
+                'solutions.offset.findOut'
+                  | translate
+              }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #offsetCarousel>
+      <div class="their-carbon my-1 mx-4">
+        <carousel [cellsToShow]="1" height="670">
+          <div class="card carousel-cell justify-content-between">
+            <div class="d-flex flex-column gap-4">
+             <div class="d-flex gap-4 align-items-center">
+               <img
+                 src="../../../../../assets/images/solutions/icons/offset1.svg"
+                 alt=""
+                 [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+               />
+               <p class="title-3 bold" innerHtml="{{
+                 'solutions.offset.co2'
+                   | translate
+               }}">    </p>
+             </div>
+             <div>
+             <img
+             class="silver"
+               src="../../../../../assets/images/solutions/images/offset1.png"
+               alt=""
+             />
+               <p class="body opacity-75 pt-4">
+                 {{
+                   'solutions.offset.measure'
+                     | translate
+                 }}
+               </p>
+             </div>
+            </div>
+            <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/offset/checkout'">
+              {{
+                'solutions.offset.purchaseNow'
+                  | translate
+              }}
+            </a>
+           </div>
+           <div class="card carousel-cell justify-content-between">
+            <div class="d-flex flex-column gap-4">
+             <div class="d-flex gap-4 align-items-center">
+               <img
+                 src="../../../../../assets/images/solutions/icons/offset2.svg"
+                 alt=""
+                 [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+               />
+               <p class="title-3 bold" innerHtml="{{
+                 'solutions.offset.climatePositive'
+                   | translate
+               }}">  </p>
+             </div>
+             <div>
+             <img
+             class="silver"
+               src="../../../../../assets/images/solutions/images/offset2.png"
+               alt=""
+             />
+               <p class="body opacity-75 pt-4">
+                 {{
+                   'solutions.offset.asCarbon'
+                     | translate
+                 }}
+               </p>
+             </div>
+            </div>
+             <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/climatePositiveSubscription'">
+               {{
+                 'solutions.offset.exploreAll'
+                   | translate
+               }}
+              </a>
+           </div>
+           <div class="card carousel-cell justify-content-between">
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/offset3.svg"
+                  alt=""
+                  [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+                />
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.offset.eCommerce'
+                    | translate
+                }}"> </p>
+              </div>
+              <div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/offset3.png"
+                alt=""
+              />
+                <p class="body opacity-75 pt-4">
+                  {{
+                    'solutions.offset.scaleUp'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <a class="w-100 shadow-none" mat-stroked-button [href]="'/api'">
+              {{
+                'solutions.offset.discover'
+                  | translate
+              }}
+            </a>
+          </div>
+          <div class="card carousel-cell justify-content-between">
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/offset4.svg"
+                  alt=""
+                  [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+                />
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.offset.climatePositiveGift'
+                    | translate
+                }}">   </p>
+              </div>
+              <div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/offset4.png"
+                alt=""
+              />
+                <p class="body opacity-75 pt-4">
+                  {{
+                    'solutions.offset.leadTheWay'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/gift'">
+              {{
+                'solutions.offset.inspire'
+                  | translate
+              }}
+            </a>
+          </div>
+          <div class="card carousel-cell justify-content-between">
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex gap-4 align-items-center">
+                <img
+                  src="../../../../../assets/images/solutions/icons/offset5.svg"
+                  alt=""
+                  [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+                />
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.offset.support'
+                    | translate
+                }}">  </p>
+              </div>
+              <div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/offset5.png"
+                alt=""
+              />
+                <p class="body opacity-75 pt-4">
+                  {{
+                    'solutions.offset.weAdopt'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <a class="w-100 shadow-none" mat-raised-button color="yellow" [href]="'/projects'">
+              {{
+                'solutions.offset.investNow'
+                  | translate
+              }}
+            </a>
+          </div>
+          <div class="card carousel-cell justify-content-between">
+            <div class="d-flex flex-column gap-4">
+             <div class="d-flex gap-4 align-items-center">
+               <img
+                 src="../../../../../assets/images/solutions/icons/offset6.svg"
+                 alt=""
+                 [style]="windowWidth < 600 ? 'max-width: 30px; object-fit: contain':''"
+               />
+               <p class="title-3 bold" innerHtml="{{
+                 'solutions.offset.greenNft'
+                   | translate
+               }}"> </p>
+             </div>
+             <div>
+             <img
+             class="silver"
+               src="../../../../../assets/images/solutions/images/offset6.png"
+               alt=""
+             />
+               <p class="body opacity-75 pt-4">
+                 {{
+                   'solutions.offset.ifYouAre'
+                     | translate
+                 }}
+               </p>
+             </div>
+            </div>
+             <a class="w-100 shadow-none" mat-stroked-button [href]="'/nft'">
+               {{
+                 'solutions.offset.findOut'
+                   | translate
+               }}
+              </a>
+           </div>
+        </carousel>
+      </div>
+    </ng-template>
+  </div>
+  <div id="track" class="mt-5" [ngClass]="{'mx-4': windowWidth < 600 }">
+    <div class="container" [ngClass]="windowWidth < 600 ? 'mb-3' : 'px-4'">
+      <div class="row">
+        <div class="col-md-1 d-flex align-items-center w-auto">
+          <div class="track-logo"  [ngClass]="{'mb-4': windowWidth < 600}"></div>
+        </div>
+        <div class="col-md-10">
+          <div>
+            <p class="title-1 bold" [ngClass]="windowWidth > 600 ? 'm-0' : 'mb-2'">  {{
+              'businessSolutions.track.track2'
+                | translate
+            }}</p>
+            <p class="big-body">
+              {{
+                'solutions.track.track'
+                  | translate
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container their-carbon my-1">
+      <div class="row" [ngClass]="{'flex-column-reverse': windowWidth < 600}">
+        <div class="col-lg-4 col-md-6">
+          <div class="card justify-content-between" [style]="windowWidth < 600 ? 'width: 280px !important;': ''">
+            <div class="d-flex gap-4 align-items-center">
+              <img
+                src="../../../../../assets/images/solutions/icons/track1.svg"
+                alt=""
+              />
+              <p class="title-3 bold" innerHtml="{{
+                'solutions.track.fullTransparency'
+                  | translate
+              }}"> </p>
+            </div>
+            <div>
+              <p class="body opacity-75">
+                {{
+                'solutions.track.ourPlatform'
+                  | translate
+              }}
+              </p>
+            </div>
+          <a style="text-decoration: none;" href="https://page.greenfutureproject.com/meeting-website" target="_blank">
+            <button class="w-100" mat-raised-button color="yellow" >
+              {{
+                'solutions.track.bookDemo'
+                  | translate
+              }}
+            </button>
+          </a>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-6 d-flex align-items-center">
+          <img
+            class="mw-100"
+            [ngClass]="{'mb-3': windowWidth < 600}"
+            src="../../../../../assets/images/solutions/images/track1.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div name="communicate" id="communicate" class="mt-5">
+    <div class="container px-4" [ngClass]="{'mb-3': windowWidth < 600}">
+      <div class="row">
+        <div class="col-md-1 d-flex align-items-center w-auto">
+          <div class="communicate-logo"  [ngClass]="{'mb-4': windowWidth < 600}"></div>
+        </div>
+        <div class="col-md-7">
+          <div>
+            <p class="title-1 bold" [ngClass]="windowWidth > 600 ? 'm-0' : 'mb-2'">  {{
+              'businessSolutions.communicate.communicate2'
+                | translate
+            }}</p>
+            <p class="big-body">
+              {{
+                'solutions.communicate.showcase'
+                  | translate
+              }}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex flex-column justify-content-center gap-3 h-100">
+            <button class="w-100" mat-stroked-button (click)="scrollToId('contact-form')">  {{
+              'solutions.communicate.getInTouch'
+                | translate
+            }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container their-carbon my-1" *ngIf="windowWidth > 600, else communicateCarousel">
+      <div class="row mt-3">
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="d-flex align-items-center">
+              <p class="title-3 bold" innerHtml="{{
+                'solutions.communicate.climateImpact'
+                  | translate
+              }}">  </p>
+            </div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/communicate1.png"
+              alt=""
+            />
+            <div>
+              <p class="body opacity-75">
+                {{
+                  'solutions.communicate.ourWidget'
+                    | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="d-flex align-items-center">
+              <p class="title-3 bold" innerHtml="{{
+                'solutions.communicate.shareYour'
+                  | translate
+              }}">  </p>
+            </div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/communicate2.png"
+              alt=""
+            />
+            <div>
+              <p class="body opacity-75">
+                {{
+                  'solutions.communicate.fromCarbon'
+                    | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="d-flex align-items-center">
+              <p class="title-3 bold" innerHtml="{{
+                'solutions.communicate.partnerMedia'
+                  | translate
+              }}">  </p>
+            </div>
+            <img
+            class="silver"
+              src="../../../../../assets/images/solutions/images/communicate3.png"
+              alt=""
+            />
+            <div>
+              <p class="body opacity-75">
+                {{
+                  'solutions.communicate.integrate'
+                    | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #communicateCarousel>
+        <div class="their-carbon my-1 mx-4">
+          <carousel [cellsToShow]="1" height="500">
+            <div class="card carousel-cell">
+              <div class="d-flex align-items-center">
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.communicate.climateImpact'
+                    | translate
+                }}">  </p>
+              </div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/communicate1.png"
+                alt=""
+              />
+              <div>
+                <p class="body opacity-75">
+                  {{
+                    'solutions.communicate.ourWidget'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <div class="card carousel-cell">
+              <div class="d-flex align-items-center">
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.communicate.shareYour'
+                    | translate
+                }}">  </p>
+              </div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/communicate2.png"
+                alt=""
+              />
+              <div>
+                <p class="body opacity-75">
+                  {{
+                    'solutions.communicate.fromCarbon'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <div class="card carousel-cell">
+              <div class="d-flex align-items-center">
+                <p class="title-3 bold" innerHtml="{{
+                  'solutions.communicate.partnerMedia'
+                    | translate
+                }}">  </p>
+              </div>
+              <img
+              class="silver"
+                src="../../../../../assets/images/solutions/images/communicate3.png"
+                alt=""
+              />
+              <div>
+                <p class="body opacity-75">
+                  {{
+                    'solutions.communicate.integrate'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+          </carousel>
+        </div>
+    </ng-template>
+  </div>
+  <div id="esg" [ngClass]="windowWidth < 600 ? 'px-4 my-5' : 'mt-5'">
+    <div class="container" [ngClass]="windowWidth < 600 ? 'mb-3': 'px-4'">
+      <div class="row">
+        <div class="col-md-1 d-flex align-items-center w-auto">
+          <div class="esg-logo"  [ngClass]="{'mb-4': windowWidth < 600}"></div>
+        </div>
+        <div class="col-md-7">
+          <div>
+            <p class="title-1 bold" [ngClass]="windowWidth > 600 ? 'm-0' : 'mb-2'">  {{
+              'businessSolutions.esg.esg'
+                | translate
+            }}</p>
+            <p class="big-body">
+              {{
+                'solutions.esg.ourTeam'
+                  | translate
+              }}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex flex-column justify-content-center gap-3 h-100">
+            <button class="w-100" mat-stroked-button (click)="scrollToId('contact-form')" >    {{
+              'solutions.esg.findOutMore'
+                | translate
+            }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container their-carbon my-1 mw-100">
+      <div class="row" [ngClass]="{'flex-column-reverse': windowWidth < 600}">
+        <div class="col-md-8" *ngIf="windowWidth > 600, else esgCarousel">
+          <div class="row">
+            <div class="col-md-6" [ngClass]="{'my-3': windowWidth < 600}">
+              <div class="card gap-2">
+                <div class="d-flex gap-4 align-items-center">
+                  <p class="title-3 bold" innerHtml="    {{
+                    'solutions.esg.lifeCycle'
+                      | translate
+                  }}"
+                  
+                  >
+                  </p>
+                </div>
+                <div>
+                  <p class="body opacity-75">
+                    {{
+                      'solutions.esg.weCarry'
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" [ngClass]="{'my-3': windowWidth < 600}">
+              <div class="card gap-2">
+                <div class="d-flex gap-4 align-items-center">
+                  <p class="title-3 bold" innerHtml="{{
+                    'solutions.esg.corporateCarbon'
+                      | translate
+                  }}"
+                  
+                  >
+                          
+                  </p>
+                </div>
+                <div>
+                  <p class="body opacity-75">
+                    {{
+                      'solutions.esg.weSupport'
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div [class]="windowWidth > 600 ? 'row mt-4': 'row'">
+            <div class="col-md-6" [ngClass]="{'my-3': windowWidth < 600}">
+              <div class="card gap-2">
+                <div class="d-flex gap-4 align-items-center">
+                  <p class="title-3 bold" innerHtml="{{
+                    'solutions.esg.eventCarbon'
+                      | translate
+                  }}"
+                  
+                  >
+                    
+                  </p>
+                </div>
+                <div>
+                  <p class="body opacity-75">
+                    {{
+                      'solutions.esg.weProvide'
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" [ngClass]="{'my-3': windowWidth < 600}">
+              <div class="card gap-2">
+                <div class="d-flex gap-4 align-items-center">
+                  <p class="title-3 bold" innerHtml="  {{
+                    'solutions.esg.sustainablity'
+                      | translate
+                  }}"
+                  
+                  >
+
+                  </p>
+                </div>
+                <div>
+                  <p class="body opacity-75">
+                    {{
+                      'solutions.esg.weOffer'
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #esgCarousel>
+            <div class="their-carbon my-1">
+              <carousel [cellsToShow]="1" height="375">
+                <div class="card carousel-cell">
+                  <div class="d-flex gap-4 align-items-center">
+                    <p class="title-3 bold" innerHtml="    {{
+                      'solutions.esg.lifeCycle'
+                        | translate
+                    }}">
+                    </p>
+                  </div>
+                  <div>
+                    <p class="body opacity-75">
+                      {{
+                        'solutions.esg.weCarry'
+                          | translate
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="card carousel-cell">
+                  <div class="d-flex gap-4 align-items-center">
+                    <p class="title-3 bold" innerHtml="{{
+                      'solutions.esg.corporateCarbon'
+                        | translate
+                    }}">
+                            
+                    </p>
+                  </div>
+                  <div>
+                    <p class="body opacity-75">
+                      {{
+                        'solutions.esg.weSupport'
+                          | translate
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="card carousel-cell">
+                  <div class="d-flex gap-4 align-items-center">
+                    <p class="title-3 bold" innerHtml="{{
+                      'solutions.esg.eventCarbon'
+                        | translate
+                    }}">
+                      
+                    </p>
+                  </div>
+                  <div>
+                    <p class="body opacity-75">
+                      {{
+                        'solutions.esg.weProvide'
+                          | translate
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="card carousel-cell">
+                  <div class="d-flex gap-4 align-items-center">
+                    <p class="title-3 bold" innerHtml="  {{
+                      'solutions.esg.sustainablity'
+                        | translate
+                    }}">
+  
+                    </p>
+                  </div>
+                  <div>
+                    <p class="body opacity-75">
+                      {{
+                        'solutions.esg.weOffer'
+                          | translate
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </carousel>
+            </div>
+        </ng-template>
+        <div class="col-md-4">
+          <img class="w-100 mw-100 h-100" src="../../../../../assets/images/solutions/images/esg.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button style="z-index: 10000;" mat-raised-button class="ps-2 back-to-top" [ngClass]="{'show-btt': windowHeight >= 500}" (click)="scrollToId('solutions-top')"><mat-icon class="me-1">keyboard_arrow_up</mat-icon> Back to Top</button>
+  <app-contact-form></app-contact-form>
+</div>

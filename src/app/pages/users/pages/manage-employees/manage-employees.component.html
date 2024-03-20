@@ -1,0 +1,93 @@
+<div class="content" id="manageEmployees" *ngIf="subscription">
+  <div class="paddingUser">
+    <div class="container">
+      <app-subscription-type *ngIf="subscription.subscriptionType.group.slug == subscriptionTypes.climateLeader"
+                             [image]="image"
+                             [subscriptionType]="subscription.subscriptionType.group.name"></app-subscription-type>
+      <app-subscription-type *ngIf="subscription.subscriptionType.group.slug == subscriptionTypes.climatePioneer"
+                             [image]="image"
+                             [subscriptionType]="subscription.subscriptionType.group.name"></app-subscription-type>
+      <div *ngIf="subscription.subscriptionType.group.slug  == subscriptionTypes.climateLeader">
+        <p class="mat-headline">{{'manageEmployees.manageEmployees'|translate}}</p>
+<!--
+        <p class="mat-body-2">{{'manageEmployees.loremIpsum'|translate}}</p>
+-->
+      </div>
+      <div *ngIf="subscription.subscriptionType.group.slug  == subscriptionTypes.climatePioneer">
+        <div class="d-flex justify-content-between mb-3">
+          <div class="align-self-center">
+            <span class="mat-headline">{{'manageEmployees.manageUsers'|translate}}</span>
+          </div>
+          <div>
+            <button mat-raised-button color="yellow"
+                    (click)="inviteEmployee()"
+                    style="width: 8rem;">{{'manageEmployees.invite'|translate}}</button>
+          </div>
+        </div>
+        <!--<p class="mat-body-2">{{'manageEmployees.loremIpsum'|translate}}</p>-->
+      </div>
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-8 align-self-center"
+               *ngIf="subscription.subscriptionType.group.slug == subscriptionTypes.climateLeader">
+            <mat-chip-list selectable multiple>
+              <span class="mat-body-2 fw-bold me-2">{{'manageEmployees.filterBySubscription'|translate}}</span>
+              <mat-chip #c="matChip" *ngFor="let option of options" [value]="option" (click)="toggleSelection(c)">
+                {{'manageEmployees.' + option | translate}}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <div class="col-md-4 col-12">
+            <mat-form-field appearance="standard">
+              <mat-label>{{'manageEmployees.searchByName'|translate}}</mat-label>
+              <input matInput placeholder="Name" #input>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div *ngIf="subscription.subscriptionType.group.slug == subscriptionTypes.climateLeader"><span
+            class="mat-body-1">{{'manageEmployees.employees'|translate: {value: itemsNumber} }}</span></div>
+          <div *ngIf="subscription.subscriptionType.group.slug  == subscriptionTypes.climatePioneer"><span
+            class="mat-body-1">{{'manageEmployees.usersInvited'|translate: {value: itemsNumber} }}</span></div>
+          <div>
+            <mat-paginator [hidePageSize]="true" [length]="paginatorLimit"></mat-paginator>
+          </div>
+        </div>
+        <div class="overflow-auto">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+              <mat-header-cell *matHeaderCellDef>{{'manageEmployees.' + column|translate}}
+                <div *ngIf="column == 'checkbox'">
+                  <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()">
+                  </mat-checkbox>
+                </div>
+                <div *ngIf="column == 'action'"></div>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <div class="w-100">
+                  <div *ngIf="column == 'checkbox'">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(element) : null"
+                                  [checked]="selection.isSelected(element)">
+                    </mat-checkbox>
+                  </div>
+                  <div *ngIf="column == 'action'" class="d-flex justify-content-center">
+                    <svg-icon class="actions" src="assets/images/svg/edit.svg" (click)="editEmployee()"></svg-icon>
+                    <svg-icon class="actions ms-3" (click)="deleteUser()" src="assets/images/svg/bin.svg"></svg-icon>
+                  </div>
+                  {{column == 'createdAt' ? (element[column] | moment) : column.indexOf('.') > -1 ? getElement(element, column) : element[column]}}
+                </div>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+          </table>
+        </div>
+      </div>
+      <mat-paginator [hidePageSize]="true" [length]="paginatorLimit"></mat-paginator>
+    </div>
+  </div>
+</div>

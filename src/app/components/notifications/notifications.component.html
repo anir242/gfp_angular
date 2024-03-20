@@ -1,0 +1,48 @@
+<div class="dropdown notificationPanel d-inline-block">
+  <button mat-icon-button class="dropdown-toggle" color="transparent" data-bs-toggle="dropdown" aria-expanded="false">
+    <mat-icon>notifications_none</mat-icon>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end p-0 mt-1">
+    <div class="header p-4">
+      <div class="d-flex justify-content-between align-self-center">
+        <div>
+          <span class="mat-subheading-1 fw-bold">{{'notifications.notifications'|translate}}</span>
+        </div>
+        <div>
+          <svg-icon src="assets/images/svg/refresh.svg"></svg-icon>
+          <svg-icon src="assets/images/svg/inbox.svg"></svg-icon>
+          <svg-icon src="assets/images/svg/bin.svg"></svg-icon>
+          <svg-icon src="assets/images/svg/settings.svg"></svg-icon>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="notificationInterface?.length>0, else noNotifications">
+      <div class="p-4" *ngFor="let notification of notificationInterface" [ngClass]="read == true ? 'read' : 'unRead'">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="mat-body-1">{{notification.text}}</p>
+          </div>
+          <div>
+            <div *ngIf="read == false">
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="mat-caption">{{notification.createdAt}}</span>
+        </div>
+        <div class="d-flex justify-content-end">
+          <div class="text-center">
+            <button mat-raised-button color="yellow">{{'notifications.primary'|translate}}</button>
+            <button class="ms-2 pe-auto" mat-stroked-button color="yellow">{{'notifications.secondary'|translate}}</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noNotifications>
+      <div class="p-4 unRead">
+        <span class="mat-body-1">{{'notifications.noNotifications'|translate}}</span>
+      </div>
+    </ng-template>
+  </ul>
+</div>

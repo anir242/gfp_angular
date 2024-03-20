@@ -1,0 +1,35 @@
+<div class="container p-0" id="campaignItem">
+  <div class="row g-0">
+    <div class="col-12 col-md-4 customBorder">
+      <div class="main pe-3">
+        <p class="fw-bold mat-headline">{{mainTitle}}</p>
+      </div>
+    </div>
+    <ng-container *ngIf="readMore">
+      <div class="col-6 col-md-4 customBorder">
+        <div class="px-3">
+          <p class="mat-subheading-2">{{title1}}</p>
+          <p class="mat-body-1">{{description1}}</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="px-3">
+          <p class="mat-subheading-2">{{title2}}</p>
+          <p class="mat-body-1">{{description2}}</p>
+        </div>
+      </div>
+    </ng-container>
+    <div class="col-12">
+      <div class="d-md-none mb-3">
+        <button mat-button (click)="readMoreAction()">
+          <ng-container *ngIf="readMore, else noRead">
+            {{'whyJoin.readLess'|translate}}
+          </ng-container>
+          <ng-template #noRead>
+            {{'whyJoin.readMore'|translate}}
+          </ng-template>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

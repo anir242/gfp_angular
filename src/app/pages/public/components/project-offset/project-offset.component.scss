@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin project-offset-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+  .project-offset-wrapper {
+
+    .mat-radio-button {
+      float: right;
+    }
+
+    .selected>div {
+      border-radius: 8px;
+      border: $bar-yellow 1px solid;
+      transform: scale(1.05);
+      transition: 0.1s;
+    }
+
+    .grey7 {
+      color: white;
+    }
+
+    img.background {
+      width: 100%;
+      height: 200px;
+      z-index: -1;
+      border-radius: 8px;
+    }
+
+    .btn-holder {
+      height: 38px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+
+

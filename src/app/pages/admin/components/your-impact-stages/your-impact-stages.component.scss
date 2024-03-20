@@ -1,0 +1,127 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../components/stages/marine-first-stage/marine-first-stage.component";
+@import "../../components/stages/preservation-first-stage/preservation-first-stage.component";
+@import "../../components/stages/preservation-second-stage/preservation-second-stage.component";
+@import "../../components/stages/preservation-fourth-stage/preservation-fourth-stage.component";
+@import "../../components/stages/reforestation-first-stage/reforestation-first-stage.component";
+@import "../../components/stages/reforestation-third-stage/reforestation-third-stage.component";
+@import "../../components/stages/reforestation-fourth-stage/reforestation-fourth-stage.component";
+@import "../../components/stages/reforestation-second-stage/reforestation-second-stage.component";
+@import "../../components/stages/renewable-first-stage/renewable-first-stage.component";
+@import "../../components/stages/renewable-second-stage/renewable-second-stage.component";
+@import "../../components/stages/header-stages/header-stages.component";
+@import "../../components/stages/inactive/inactive.component";
+
+@mixin your-impact-stages-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  @include reforestation-first-stage-theme($theme);
+  @include reforestation-second-stage-theme($theme);
+  @include reforestation-third-stage-theme($theme);
+  @include reforestation-fourth-stage-theme($theme);
+  @include preservation-first-stage-theme($theme);
+  @include preservation-second-stage-theme($theme);
+  @include preservation-fourth-stage-theme($theme);
+  @include renewable-first-stage-theme($theme);
+  @include renewable-second-stage-theme($theme);
+  @include marine-first-stage-theme($theme);
+  @include header-stages-theme($theme);
+  @include inactive-theme($theme);
+  overflow-y: visible;
+  overflow-x: hidden;
+
+  #projectStages {
+    background-color: $landing-blue;
+    background-image: url('../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003348', endColorstr='#011d26', GradientType=0); /* IE6-9 */
+    display: block;
+    color: mat.get-color-from-palette($primary, 'main-contrast');
+
+    .wrapper-3d {
+      overflow-y: hidden;
+    }
+  }
+
+  
+
+  model-viewer {
+    width: 75%;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media-breakpoint-up(sm) {
+      height: 850px;
+    }
+
+    &::part(default-progress-bar) {
+      background-color: $forest-green;
+      margin-top: 200px;
+    }
+  }
+
+  --min-hotspot-opacity: 0;
+
+  #preservationStg {
+    display: flex;
+
+    .Hotspot {
+      border: 2px solid #ffffff;
+      background: rgb(176,207,145);
+      background: -moz-radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(122,204,187,1) 0%, rgba(71,168,158,1) 35%, rgba(32,140,135,1) 60%, rgba(17,130,127,1) 75%, rgba(17,130,127,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(122,204,187,1) 0%, rgba(71,168,158,1) 35%, rgba(32,140,135,1) 60%, rgba(17,130,127,1) 75%, rgba(17,130,127,1) 100%);
+      background: radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(122,204,187,1) 0%, rgba(71,168,158,1) 35%, rgba(32,140,135,1) 60%, rgba(17,130,127,1) 75%, rgba(17,130,127,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b0cf91",endColorstr="#11827f",GradientType=1);
+    }
+  }
+
+  #reforestationStg {
+    display: flex;
+
+    .Hotspot {
+      border: 2px solid #ffffff;
+      background: rgb(176,207,145);
+      background: -moz-radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(133,181,127,1) 15%, rgba(69,144,102,1) 50%, rgba(30,120,87,1) 60%, rgba(15,112,81,1) 75%, rgba(15,112,81,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(133,181,127,1) 15%, rgba(69,144,102,1) 50%, rgba(30,120,87,1) 60%, rgba(15,112,81,1) 75%, rgba(15,112,81,1) 100%);
+      background: radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(133,181,127,1) 15%, rgba(69,144,102,1) 50%, rgba(30,120,87,1) 60%, rgba(15,112,81,1) 75%, rgba(15,112,81,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b0cf91",endColorstr="#0f7051",GradientType=1);
+    }
+  }
+
+
+  #renewableStg {
+    display: flex;
+
+    .Hotspot {
+      border: 2px solid #ffffff;
+      background: rgb(219,173,158);
+      background: -moz-radial-gradient(circle, rgba(219,173,158,1) 0%, rgba(213,166,150,1) 15%, rgba(184,130,111,1) 60%, rgba(173,117,96,1) 75%, rgba(173,117,96,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(219,173,158,1) 0%, rgba(213,166,150,1) 15%, rgba(184,130,111,1) 60%, rgba(173,117,96,1) 75%, rgba(173,117,96,1) 100%);
+      background: radial-gradient(circle, rgba(219,173,158,1) 0%, rgba(213,166,150,1) 15%, rgba(184,130,111,1) 60%, rgba(173,117,96,1) 75%, rgba(173,117,96,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbad9e",endColorstr="#ad7560",GradientType=1);
+    }
+  }
+
+
+  #marineStg {
+    display: flex;
+
+    .Hotspot {
+      border: 2px solid #ffffff;
+      background: rgb(176,207,145);
+      background: -moz-radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(122,204,187,1) 0%, rgba(71,168,158,1) 35%, rgba(32,140,135,1) 60%, rgba(17,130,127,1) 75%, rgba(17,130,127,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(122,204,187,1) 0%, rgba(71,168,158,1) 35%, rgba(32,140,135,1) 60%, rgba(17,130,127,1) 75%, rgba(17,130,127,1) 100%);
+      background: radial-gradient(circle, rgba(176,207,145,1) 0%, rgba(122,204,187,1) 0%, rgba(71,168,158,1) 35%, rgba(32,140,135,1) 60%, rgba(17,130,127,1) 75%, rgba(17,130,127,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b0cf91",endColorstr="#11827f",GradientType=1);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="content giftCards">
+  <div class="paddingUser">
+    <div class="container">
+      <div class="d-block">
+        <p class="mat-headline mb-4 text-white">{{'settings.giftCard'|translate}}</p>
+        <mat-divider></mat-divider>
+      </div>
+      <div class="d-block">
+        <ng-container *ngIf="!giftCards || giftCards.length == 0; else gifts">
+          <span class="mat-body-2 pt-3 d-inline-block">{{'settings.noGiftCards'|translate}}</span>
+        </ng-container>
+        <ng-template #gifts>
+          <ng-container *ngFor="let item of giftCards">
+            <app-gift-card-sent
+              [gift]="item"></app-gift-card-sent>
+          </ng-container>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

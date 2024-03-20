@@ -1,0 +1,95 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin faq-public-theme($theme) {
+
+  #faq-public {
+    width: 100%;
+    background-color: transparent;
+
+    .content {
+      box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15);
+      background-color: $grey7;
+      border-radius: 24px;
+    }
+
+    .mat-expansion-panel{
+      background-color: $grey6;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      border-radius: 8px;
+    }
+
+    .mat-form-field-infix{
+      font-size: 16px;
+      line-height: 24px;
+      font-family: $font-lato;
+    }
+
+    .mat-input-element{
+      font-size: 16px;
+      line-height: 24px;
+      font-family: $font-lato;
+    }
+
+    .mat-expansion-panel-header{
+      @include media-breakpoint-down(md){
+        height: 70px;
+      }
+    }
+
+    h3 {
+      margin: 0
+    }
+
+    .imgCenter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .grad {
+
+    div {
+      background-color: white;
+      background: -moz-radial-gradient(126.53% 286.38% at 123.19% 129.89%, #124155 32.6%, #051622 73.62%) !important;
+      background: -webkit-radial-gradient(126.53% 286.38% 123.19% 129.89%, #124155 32.6%, #051622 73.62%) !important;
+      background: $background1;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+
+  .grad2 {
+
+    div {
+      border-radius: 24px;
+      padding: 10px 20px;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 16px;
+      box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15) !important;
+      background-color: white;
+      background: -moz-radial-gradient(54.79% 190.63% at 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+      background: -webkit-radial-gradient(54.79% 190.63% 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+      background: $background3;
+      background-clip: text;
+      color: transparent;
+
+      &:hover{
+        color: #00BA80 !important;
+      }
+
+      &.selected {
+        background: -moz-radial-gradient(54.79% 190.63% at 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+        background: -webkit-radial-gradient(54.79% 190.63% 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+        background: $background3 !important;
+        color: $grey5 !important;
+      }
+
+      p{
+        -webkit-background-clip: text;
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+import {ProjectTypesInterface} from '../projects/project-types-interface';
+import {ProjectsInterface} from '../projects/projects-interface';
+import {ImagesInterface} from '../images-interface';
+
+export interface ProjectTypologyInterface {
+  id: string;
+  projectTypeId: string;
+  name: string;
+  name_it: string;
+  slug: string;
+  imageId: string;
+  miniatureImageId: string;
+  titleData: string;
+  titleData_it: string;
+  firstData: string;
+  firstDataDescription: string;
+  firstDataDescription_it: string;
+  secondData: string;
+  secondDataDescription: string;
+  secondDataDescription_it: string;
+  thirdData: string;
+  thirdDataDescription: string;
+  thirdDataDescription_it: string;
+  problem: string;
+  problem_it: string;
+  problemImageId: string;
+  contributeImageId: string;
+  backgroundDataImageId: string;
+  solution: string;
+  solution_it: string;
+  description: string;
+  description_it: string;
+  colorLabel: string;
+  colorSecondary: string;
+  createdAt: Date;
+  updatedAt: Date;
+  backgroundDataImage: ImagesInterface;
+  image: ImagesInterface;
+  supportImage: ImagesInterface;
+  problemImage: ImagesInterface;
+  miniatureImage: ImagesInterface;
+  contributeImage: ImagesInterface;
+  projects: ProjectsInterface[];
+}

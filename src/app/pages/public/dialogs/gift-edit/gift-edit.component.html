@@ -1,0 +1,42 @@
+<ng-container *ngIf="giftCardInterface">
+  <div class="p-4" id="giftEdit">
+    <div class="close">
+      <button mat-icon-button color="transparent" mat-dialog-close>
+        <mat-icon class="close-icon">close</mat-icon>
+      </button>
+    </div>
+    <div class="container p-0">
+      <div class="row g-0">
+        <div class="col-12">
+          <span class="mat-headline">{{'gift.edit'|translate}}</span>
+        </div>
+        <ng-container *ngFor="let item of giftCardInterface?.giftCardPacks">
+          <div class="col-md-4 col-12">
+            <app-highlight-div
+              (clickDiv)="highlight(item.id)"
+              [highlightId]="selectedDiv"
+              [giftCardPack]="item">
+            </app-highlight-div>
+          </div>
+        </ng-container>
+        <div class="col-12">
+          <div class="my-3">
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <div class="col-12">
+          <app-gift-for [form]="giftFor"></app-gift-for>
+        </div>
+        <div class="col-12">
+          <app-gift-occasion [form]="occasion" [options]="getOccasions()"></app-gift-occasion>
+        </div>
+        <div class="col-12">
+          <app-gift-personalized-text [form]="message"></app-gift-personalized-text>
+        </div>
+        <button mat-raised-button color="yellow" [disabled]="!giftData.valid" (click)="fillCart()" mat-dialog-close>
+          {{'gift.save'|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

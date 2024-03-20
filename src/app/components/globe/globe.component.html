@@ -1,0 +1,199 @@
+<div class="globe">
+
+  <!--<model-viewer src="assets/images/models3D/sphere.glb" camera-controls exposure="1.2" auto-rotate
+                min-camera-orbit="auto auto auto" max-camera-orbit="auto auto auto">
+    <button class="Hotspot" slot="hotspot-2"
+            data-position="0.6484135745018387m -0.3342955927094994m -0.683056105655121m"
+            data-normal="0.6653405195304636m -0.3385893339119964m -0.6653414582242441m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">Label 1</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-4"
+            data-position="0.22725366214641526m 0.28399748333948527m -0.9306927530503333m"
+            data-normal="0.20948923693628632m 0.2788637745816145m -0.9372028888314136m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">Label 2</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-5"
+            data-position="0.6755570910620656m -0.3496387850022018m 0.6481063212101993m"
+            data-normal="0.6653406882744273m -0.33859051530281065m 0.6653406882744273m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">Label 3</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-6"
+            data-position="-0.22280614961928913m 0.35088802394733115m 0.9088051584385977m"
+            data-normal="-0.20525823800697224m 0.33859391395329363m 0.9182718645172916m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">Label 4</div>
+    </button>
+  </model-viewer>-->
+  <ng-container *ngIf="page != 'welcome'; else welcome">
+    <model-viewer id="myModelViewer" src="/assets/images/models3D/earth2.glb" auto-rotate min-camera-orbit="auto auto auto" max-camera-orbit="auto auto auto"
+                  environment-image="/assets/images/models3D/hdr/globe.hdr"
+                  camera-controls disable-zoom exposure="1.26" shadow-intensity="0"
+                  camera-orbit="-89.25deg 85.88deg 7.455m">
+      <ng-container *ngIf="showButtons(); else acceptCookies">
+        <button class="Hotspot" slot="hotspot-8"
+                [ngClass]="setBackgroundByProjectType(madagascar)"
+                data-position="0.6686750307983083m -0.2809723146667472m -0.6952439296197827m"
+                data-normal="0.6917473731631483m -0.2056286153283785m -0.6922444974718239m"
+                data-visibility-attribute="visible"
+                (click)="clickHotspot($event.target, madagascar)">
+                <app-hotspot-popup [backgroundType]="setBackgroundByProjectType(madagascar)"
+                                   [slugProject]="selectedSlug"
+                                   [nameProject]="selectedName"
+                                   [typeProject]="selectedType"
+                                   [imageProject]="selectedImage"
+                                   [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+
+        </button>
+        <button class="Hotspot" slot="hotspot-12"
+                [ngClass]="setBackgroundByProjectType(indonesia)"
+                data-position="-0.7421143627667923m -0.017415179071190487m -0.6766560170472364m"
+                data-normal="-0.7423261317455645m -0.012333919612846633m -0.6699252111651353m"
+                data-visibility-attribute="visible"
+
+                (click)="clickHotspot($event.target, indonesia)"
+                >
+                <app-hotspot-popup [backgroundType]="setBackgroundByProjectType(indonesia)"
+                                   [slugProject]="selectedSlug"
+                                   [nameProject]="selectedName"
+                                   [typeProject]="selectedType"
+                                   [imageProject]="selectedImage"
+                                   [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+          <!-- <div class="HotspotAnnotation">
+          <p>{{'globe.korem' | translate}}</p>
+          <p>{{'globe.indonesia' | translate}}</p>
+        </div>-->
+        </button>
+        <button class="Hotspot" slot="hotspot-13"
+                [ngClass]="setBackgroundByProjectType(india)"
+                data-position="0.2564916782678536m 0.47421027350668576m -0.8481053678147588m"
+                data-normal="0.26147854822696776m 0.4808151839451912m -0.8369263573964374m"
+                data-visibility-attribute="visible"
+                (click)="clickHotspot($event.target, india)">
+                <app-hotspot-popup  [backgroundType]="setBackgroundByProjectType(india)"
+                                    [slugProject]="selectedSlug"
+                                    [nameProject]="selectedName"
+                                    [typeProject]="selectedType"
+                                    [imageProject]="selectedImage"
+                                    [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+          <!--  <div class="HotspotAnnotation">
+            <p>{{'globe.wind' | translate}}</p>
+            <p>{{'globe.india' | translate}}</p>
+          </div>-->
+        </button>
+        <button class="Hotspot" slot="hotspot-22"
+                [ngClass]="setBackgroundByProjectType(canande)"
+                data-position="0.2181859759781533m 0.007783196330790661m 0.9831399876332025m"
+                data-normal="-0.035711497882958416m 0.2986605471247499m 0.9536910225592462m"
+                data-visibility-attribute="visible"
+                (click)="clickHotspot($event.target, canande)">
+                <app-hotspot-popup  [backgroundType]="setBackgroundByProjectType(canande)"
+                                    [slugProject]="selectedSlug"
+                                    [nameProject]="selectedName"
+                                    [typeProject]="selectedType"
+                                    [imageProject]="selectedImage"
+                                    [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+          <!--  <div class="HotspotAnnotation">
+            <p>{{'globe.canande' | translate}}</p>
+            <p>{{'globe.ecuador' | translate}}</p>
+          </div>-->
+        </button>
+        <button class="Hotspot" slot="hotspot-23"
+                [ngClass]="setBackgroundByProjectType(yanacocha)"
+                data-position="0.22934156549310644m 0.00011568330266517081m 0.9830737168560276m"
+                data-normal="0.37094284758745666m 0.3037171592386039m 0.877586059032242m"
+                data-visibility-attribute="visible"
+                (click)="clickHotspot($event.target, yanacocha)">
+                <app-hotspot-popup  [backgroundType]="setBackgroundByProjectType(yanacocha)"
+                                    [slugProject]="selectedSlug"
+                                    [nameProject]="selectedName"
+                                    [typeProject]="selectedType"
+                                    [imageProject]="selectedImage"
+                                    [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+          <!--  <div class="HotspotAnnotation">
+            <p>{{'globe.yanacocha' | translate}}</p>
+            <p>{{'globe.ecuador' | translate}}</p>
+          </div>-->
+        </button>
+        <button class="Hotspot" slot="hotspot-24"
+                [ngClass]="setBackgroundByProjectType(narupa)"
+                data-position="0.23856333166837856m -0.004663853123893617m 0.9789223041045896m"
+                data-normal="0.38868176131671106m -0.05786380112236868m 0.9195532985854656m"
+                data-visibility-attribute="visible"
+                (click)="clickHotspot($event.target, narupa)">
+                <app-hotspot-popup  [backgroundType]="setBackgroundByProjectType(narupa)"
+                                    [slugProject]="selectedSlug"
+                                    [nameProject]="selectedName"
+                                    [typeProject]="selectedType"
+                                    [imageProject]="selectedImage"
+                                    [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+          <!--<div class="HotspotAnnotation">
+          <p>{{'globe.narupa' | translate}}</p>
+          <p>{{'globe.ecuador' | translate}}</p>
+        </div>-->
+        </button>
+        <button class="Hotspot" slot="hotspot-25"
+                [ngClass]="setBackgroundByProjectType(bajo)"
+                data-position="0.2516207899077258m 0.07462798931327252m 0.9711069556891422m"
+                data-normal="0.041242286777570435m 0.14679438268881728m 0.9883068769326487m"
+                data-visibility-attribute="visible"
+                (click)="clickHotspot($event.target, bajo)">
+                <app-hotspot-popup  [backgroundType]="setBackgroundByProjectType(bajo)"
+                                    [slugProject]="selectedSlug"
+                                    [nameProject]="selectedName"
+                                    [typeProject]="selectedType"
+                                    [imageProject]="selectedImage"
+                                    [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+          <!--  <div class="HotspotAnnotation">
+            <p>{{'globe.bajo' | translate}}</p>
+            <p>{{'globe.colombia' | translate}}</p>
+          </div>-->
+        </button>
+        <button class="Hotspot" slot="hotspot-26"
+                [ngClass]="setBackgroundByProjectType(vicenza)"
+                data-position="0.6564916782678536m 0.72421027350668576m -0.1281053678147588m"
+                data-normal="0.56147854822696776m 0.6808151839451912m -0.2369263573964374m"
+                data-visibility-attribute="hidden"
+                (click)="clickHotspot($event.target, vicenza)">
+                <app-hotspot-popup  [backgroundType]="setBackgroundByProjectType(vicenza)"
+                                    [slugProject]="selectedSlug"
+                                    [nameProject]="selectedName"
+                                    [typeProject]="selectedType"
+                                    [imageProject]="selectedImage"
+                                    [isDashboardHome]="isDashboardHome">
+                </app-hotspot-popup>
+          <!--  <div class="HotspotAnnotation">
+          <p>{{'globe.bajo' | translate}}</p>
+          <p>{{'globe.colombia' | translate}}</p>
+        </div>-->
+        </button>
+      </ng-container>
+      <ng-template #acceptCookies>
+        <div class="text-center text-white chivo md" style="margin:200px 0;">
+          {{'landingPublic.cookies'|translate}}
+        </div>
+      </ng-template>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+    </model-viewer>
+  </ng-container>
+  <ng-template #welcome>
+    <model-viewer src="/assets/images/models3D/earth2.glb" auto-rotate min-camera-orbit="auto auto auto"
+      max-camera-orbit="auto auto auto" environment-image="/assets/images/models3D/hdr/globe.hdr"
+      exposure="1.26" shadow-intensity="0" camera-orbit="-89.25deg 85.88deg 7.455m">
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+    </model-viewer>
+  </ng-template>
+</div>

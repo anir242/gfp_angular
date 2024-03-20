@@ -1,0 +1,102 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin green-nft-public-theme($theme) {
+
+  .box {
+    border-radius: 8px;
+  }
+
+  .softImage {
+    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/assets/images/bg_noise_low.png');
+  }
+
+  .w-95 {
+    width: 95%;
+  }
+
+  .w-5 {
+    width: 5%;
+  }
+
+  #nft {
+    padding-bottom: 3rem;
+
+    .box {
+      background-color: white;
+      box-shadow: 0px 10px 20px 0px #7B7B7B14;
+      padding: 32px 32px;
+      margin: 1rem;
+      height: 100%;
+      width: auto;
+      min-height: 300px;
+    }
+
+    // .box {
+    //   padding: 32px 32px;
+    //   margin: 1rem;
+    //   position: relative;
+    //   height: 100%;
+    //   width: auto;
+    //   background-color: rgba(240, 240, 240, 0.05);
+    // }
+
+  }
+
+  #buttonMobile{
+    display: block;
+    padding: 2rem 0 3rem 0;
+    width: auto;
+    text-align: center;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  #big-picture {
+
+    #buttonNotMobile{
+      display: none;
+
+      @include media-breakpoint-up(lg) {
+        display: block;
+      }
+    }
+
+    .border-round {
+      border-radius: 16px;
+
+      @include media-breakpoint-up(lg) {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+
+    .background1 {
+      background: $background1;
+      width: 100%;
+      margin: 0 5% 0 5%;
+
+      @include media-breakpoint-up(lg) {
+        margin: 0 5% 0 0;
+      }
+    }
+
+    .box {
+      background: #FAFAFA26;
+      padding: 24px;
+      margin-bottom: 1rem;
+      min-height: 15rem;
+
+      @include media-breakpoint-up(lg) {
+        min-height: 20rem;
+      }
+    }
+
+  }
+
+  #contact-form {
+    height: max-content;
+  }
+}

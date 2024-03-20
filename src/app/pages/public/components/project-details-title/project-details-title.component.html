@@ -1,0 +1,59 @@
+<div id="projectDetailsTitle" class="bannerTitle" [style]="getBackground(projectInterface)">
+  <div class="layer">
+    <div class="d-flex align-items-center h-100">
+      <div class="container p-0">
+        <div class="row g-0 align-items-center">
+          <div class="col-12 col-md-6">
+            <div class="title text-start">
+              <app-breadcrumb></app-breadcrumb>
+              <svg-icon src="assets/images/icons/location.svg" style="align-items: left;"></svg-icon><span class="ps-1 body">{{projectInterface.country.name}}, {{projectInterface.country.continentName}}</span>
+              <div class="d-flex flex-column">
+                <span class="headline d-none d-lg-block mb-3">{{projectInterface.name}}</span>
+                <span class="title-1 bold d-lg-none mb-3">{{projectInterface.name}}</span>
+              </div>
+              <span [ngStyle]="{'background-color': color}" class="projectLabel px-3 py-1 mat-caption bold">{{projectInterface.type.name}}</span>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 order-4">
+            <div class="supportButton">
+              <div class="d-flex justify-content-between justify-content-md-start">
+                <button mat-raised-button color="yellow" class="dialogButton" (click)="goToCheckout(projectInterface.slug)" [hidden]="!projectInterface.isSupportEnabled">
+                    {{buttonText}}
+                </button>
+                <button mat-raised-button color="yellow" (click)="goToContact()" [hidden]="projectInterface.isSupportEnabled">
+                    {{'supportProject.getInTouch'|translate}}
+                </button>
+                <button [hidden]="!shareButtonEnabled" shareButtonsPopup class="ms-md-2 d-none d-md-block" mat-button
+                        [theme]="'default'"
+                        [include]="['facebook','twitter','linkedin','telegram','messenger','whatsapp','sms','email','print','copy']"
+                        [show]="5"
+                        [url]="url"
+                        [description]="projectInterface.slug"
+                        [autoSetMeta]="false">
+                  <svg-icon class="share" src="assets/images/svg/share_new.svg"></svg-icon>
+                </button>
+                <button [hidden]="!shareButtonEnabled" shareButtonsPopup class="ms-md-2 d-md-none" mat-icon-button
+                        [theme]="'default'"
+                        [include]="['facebook','twitter','linkedin','telegram','messenger','whatsapp','sms','email','print','copy']"
+                        [show]="5"
+                        [url]="url"
+                        [description]="projectInterface.slug"
+                        [autoSetMeta]="false">
+                  <svg-icon class="share" src="assets/images/svg/share_new.svg"></svg-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 order-1">
+            <div class="description">
+              <span class="title-3">{{projectInterface.projectData.scope}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-md-none">
+        <app-arrow-scroll [id]="arrow"></app-arrow-scroll>
+      </div>
+    </div>
+  </div>
+</div>

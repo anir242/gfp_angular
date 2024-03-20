@@ -1,0 +1,182 @@
+<div class="content businessSubscriptions">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="container p-0 mb-5">
+          <div class="row">
+            <div class="d-none col-12">
+              <app-breadcrumb [dark]="false"></app-breadcrumb>
+            </div>
+            <div class="col-12 ">
+              <ng-container
+                *ngIf="subscriptionGroup?.slug == subscriptionTypes.climatePioneer; else otherSubscriptionGroups">
+                <div class="container p-0">
+                  <p class="mat-headline text-center text-white">{{'mainSubscriptions.pickTheDonation' | translate}}</p>
+                  <p
+                    class="mat-headline mat-subheading-1 text-center text-white">{{'mainSubscriptions.chooseTheModel' | translate}}</p>
+
+                  <mat-card class="pioneer-card">
+                    <mat-card-content>
+                      <app-pioneer-selector
+                        [title]="translate.instant('mainSubscriptions.treePerItemModel')"
+                        [subtitle]="translate.instant('mainSubscriptions.treePerItemModelDescription')"
+                        imageSrc="assets/images/svg/cp_automatic.svg"
+                        [pioneerSelected]="pioneerSelected"
+                        [pioneerModel]="pioneerModel"
+                        value="treePerItem"
+                        (click)="getValue($event)"></app-pioneer-selector>
+                      <app-pioneer-selector
+                        [title]="translate.instant('mainSubscriptions.revenuePercentageModel')"
+                        [subtitle]="translate.instant('mainSubscriptions.revenuePercentageModelDescription')"
+                        imageSrc="assets/images/svg/cp_manual.svg"
+                        [pioneerSelected]="pioneerSelected"
+                        [pioneerModel]="pioneerModel"
+                        value="revenuePercentage"
+                        (click)="getValue($event)"></app-pioneer-selector>
+
+                      <app-estimate-climate-pioneer
+                        [subscriptionTypes]="subscriptionGroup.subscriptionsTypes"
+                        (enableStartTop)="setStartNow($event)"
+                        [itemsOrRevenues]="itemsOrRevenues"
+                        [percentageOrItemToPlant]="percentageOrItemToPlant"
+                        [pioneerSelected]="pioneerSelected"
+                        [pioneerModel]="pioneerModel">
+                      </app-estimate-climate-pioneer>
+                    </mat-card-content>
+
+                    <mat-card-actions>
+                      <div class="text-center">
+                        <button #startNow mat-raised-button color="yellow" class="mt-2 px-5" (click)="clickStartNow()"
+                                [disabled]="!itemsOrRevenues.valid || !percentageOrItemToPlant.valid">
+                          {{'mainSubscriptions.startNow' | translate}}
+                        </button>
+                      </div>
+
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+              </ng-container>
+              <ng-template #otherSubscriptionGroups>
+                <div class="container p-0">
+                  <div class="mb-4 text-white d-none d-lg-block">
+                    <div class="headline text-uppercase">{{'climatePositiveSubscription.title'|translate}}</div>
+                    <div class="large-body mt-2">{{'climatePositiveSubscription.subtitle'|translate}}</div>
+                  </div>
+                  <div class="mb-4 text-white d-lg-none">
+                    <div class="title-1 bold text-uppercase">{{'climatePositiveSubscription.title'|translate}}</div>
+                    <div class="body mt-2">{{'climatePositiveSubscription.subtitle'|translate}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-lg-8 col-xl-9">
+                      <mat-card id="outerCard">
+                        <mat-card-content>
+                              <div class="small-body mt-3 text-white">{{'climatePositiveSubscription.createSubscription'| translate}}</div>
+                              <div class="title-4 my-3 text-white">{{'climatePositiveSubscription.select'| translate}}</div>
+
+                              <mat-card class="mb-3 p-4">
+                                <ng-container *ngFor="let sub of subscriptionGroup?.subscriptionsTypes; let i = index">
+                                  <mat-card class="mb-3">
+                                    <div class="col-12">
+                                      <div class="row p-4">
+                                        <div class="col-12 col-xl-7 d-flex flex-column flex-xl-row">
+                                          <div class="col-12 col-xl-2 d-flex justify-content-center align-items-center">
+                                            <img mat-card-sm-image [src]="sub.image.url" [alt]="sub.name"/>
+                                          </div>
+                                          <div class="mobileView col-10 col-xl-8 d-flex align-items-start flex-column body text-white p-xl-3 py-3">
+                                            <p>{{'climatePositiveSubscription.how'| translate }} <b>{{'climatePositiveSubscription.?'| translate : {name: sub.name} }}</b></p>
+                                            <div class="d-flex justify-content-between w-100">
+                                              <img [src]="'assets/images/frame-'+sub.slug+'.svg'" style="height: 20px;">
+                                              <button class="d-xl-none toggleExpansion" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseExample'+i" aria-expanded="false" [attr.aria-controls]="'collapseExample'+i">
+                                                <mat-icon>keyboard_arrow_down</mat-icon>
+                                                <!-- <mat-icon>keyboard_arrow_up</mat-icon> -->
+                                              </button>
+                                            </div>
+                                          </div>
+                                          <div class="d-xl-flex d-none col-2 col-xl-2 align-items-center body text-white">
+                                            <button class="toggleExpansion" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseExample'+i" aria-expanded="false" [attr.aria-controls]="'collapseExample'+i">
+                                              <mat-icon>keyboard_arrow_down</mat-icon>
+                                              <!-- <mat-icon>keyboard_arrow_up</mat-icon> -->
+                                            </button>
+                                          </div>
+                                        </div>
+                                        <div class="col-12 col-xl-4 text-white">
+                                          <app-counters
+                                            [title]="translate.instant('mainSubscriptions.insertNumberOfEmployees')"
+                                            [control]="employees.controls[i]"
+                                          ></app-counters>
+                                          <span class="body bold">{{'climatePositiveSubscription.contribution'| translate}}</span>
+                                          <p class="body bold">{{'climatePositiveSubscription.valuePerMonth' | translate : {value: '€'+sub.costMonthly} }}</p>
+                                        </div>
+                                        <div class="col-12">
+                                          <div class="collapse" [id]="'collapseExample'+i">
+                                            <div class="text-white" >
+                                              <!-- don't work Forest protected ,Energy produced and CO2 offset counters -->
+                                              <app-business-subscription-type-recap [quantity]="quantity(i)"
+                                                  [subscriptionType]="sub">
+                                              </app-business-subscription-type-recap>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </mat-card>
+                                </ng-container>
+                                <div class="d-flex justify-content-center justify-content-md-end m-3">
+                                  <button #startNow mat-raised-button color="yellow" class="mt-2 w-100" disabled
+                                  (click)="clickStartNow()">{{'mainSubscriptions.startNow' | translate}}</button>
+                                </div>
+                              </mat-card>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                    <!--  -->
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 explainSubscriptions p-5 mt-5" *ngIf="subscriptionGroup?.slug != subscriptionTypes.climatePioneer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-center fakeCard">
+                <p class="mat-headline m-0">{{'mainSubscriptions.ourBusinessSubscriptions' | translate}}
+
+                <div class="container g-0">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="py-2">
+                        <app-card-icon-small
+                          [description]="translate.instant('mainSubscriptions.personalizedDashboardBusiness')"
+                          url="assets/images/svg/window_browser.svg"
+                        ></app-card-icon-small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="py-2">
+                        <app-card-icon-small
+                          [description]="translate.instant('mainSubscriptions.infographicAnalitycalBusiness')"
+                          url="assets/images/svg/monitor.svg"
+                        ></app-card-icon-small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="py-2">
+                        <app-card-icon-small
+                          [description]="translate.instant('mainSubscriptions.gfpIntegrationBusiness')"
+                          url="assets/images/svg/integration.svg"
+                        ></app-card-icon-small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

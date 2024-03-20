@@ -1,0 +1,54 @@
+<div class="content" id="apiWidget">
+  <div class="paddingUser">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="container">
+            <h1>{{'apiWidget.title'|translate}}</h1>
+            <p>C{{'apiWidget.description'|translate}}</p>
+            <ol>
+              <li>{{'apiWidget.instruction1'|translate}}</li>
+              <li>{{'apiWidget.instruction2'|translate}}</li>
+              <li>{{'apiWidget.instruction3'|translate}}</li>
+            </ol>
+            <form class="widget-options row">
+              <div class="col-12">
+                <mat-checkbox class="p-0" [name]="isLight" (change)="updateLight($event);">
+                  <span class=text-white>{{'apiWidget.light'|translate}}</span>
+                </mat-checkbox>
+              </div>
+              <div class="col-12">
+                <mat-checkbox class="p-0" [name]="isVertical" (change)="updateVertical($event);">
+                  <span class="text-white">{{'apiWidget.vertical'|translate}}</span>
+                </mat-checkbox>
+              </div>
+              <div class="col-12">
+                <mat-checkbox class="p-0" [name]="isAnimated" (change)="updateAnimated($event);">
+                  <span class="text-white">{{'apiWidget.animated'|translate}}</span>
+                </mat-checkbox>
+              </div>
+            </form>
+            <button mat-button class="mat-focus-indicator noFill mat-stroked-button mat-button-base" (click)="copyHtml()">
+              {{'apiWidget.copy'|translate}}
+            </button>
+            <hr />
+            <p class="small">
+              {{'apiWidget.questions'|translate}}
+              <a href="mailto:info@greenfutureproject.com">{{'apiWidget.contact'|translate}}</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="container">
+            <div class="codeblock">
+              <pre>{{html}}</pre>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mt-5">
+          <app-achievements-data [company]="companyInterface" *ngIf="companyInterface"></app-achievements-data>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

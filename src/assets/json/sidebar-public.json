@@ -1,0 +1,149 @@
+[
+  {
+    "displayName": "home",
+    "route": "",
+    "iconName": "",
+    "expanded": false,
+    "children": [
+      {
+        "displayName": "individual",
+        "store": 1
+      },
+      {
+        "displayName": "business",
+        "store": 2
+      }
+    ]
+  },
+  {
+    "displayName": "solutions",
+    "route": "",
+    "iconName": "",
+    "expanded": false,
+    "children": [
+      {
+        "displayName": "allSolutionsType",
+        "route": "/carbon_neutral_solutions",
+        "route_it": "/soluzioni_carbon_neutral",
+        "root": true
+      },
+      {
+        "displayName": "energy",
+        "route": "/carbon_footprint_management",
+        "route_it": "/gestione_impronta_carbonio",
+        "image": "energy"
+      },
+      {
+        "displayName": "co2",
+        "route": "/offset/checkout",
+        "image": "offset"
+      },
+      {
+        "displayName": "businessSubscription",
+        "route": "/climatePositiveSubscription",
+        "type": "2",
+        "image": "positive"
+      },
+      {
+        "displayName": "ecommerce",
+        "route": "/api",
+        "type": "2",
+        "image": "ecommerce"
+      },
+      {
+        "displayName": "nft",
+        "route": "/nft",
+        "image": "nft"
+      },
+      {
+        "displayName": "gifts",
+        "route": "/gift",
+        "image": "gifts"
+      },
+      {
+        "displayName": "individualSubscription",
+        "route": "/monthlyClimateSubscription",
+        "type": "1",
+        "image": "monthly"
+      }
+    ]
+  },
+  {
+    "displayName": "projects",
+    "route": "/about",
+    "iconName": "",
+    "expanded": false,
+    "children": [
+      {
+        "displayName": "allProjectsType",
+        "route": "/projects",
+        "root": true
+      },
+      {
+        "displayName": "restoration",
+        "route": "/restoration",
+        "image": "restoration"
+      },
+      {
+        "displayName": "preservation",
+        "route": "/preservation",
+        "image": "preservation"
+      },
+      {
+        "displayName": "renewable",
+        "route": "/renewable_energy",
+        "image": "renewable"
+      },
+      {
+        "displayName": "marine",
+        "route": "/marine_restoration",
+        "image": "marine"
+      }
+    ]
+  },
+  {
+    "displayName": "partners",
+    "route": "/partners",
+    "iconName": ""
+  },
+  {
+    "displayName": "about",
+    "route": "/about",
+    "iconName": ""
+  },
+  {
+    "displayName": "resources",
+    "route": "",
+    "iconName": "",
+    "expanded": false,
+    "children": [
+      {
+        "displayName": "blog",
+        "route": "https://blog.greenfutureproject.com/making-impact-possible-a-green-future-project-blog",
+        "route_it": "https://blog.greenfutureproject.com/it/making-impact-possible-a-green-future-project-blog",
+        "image": ""
+      }
+    ]
+  },
+  {
+    "displayName": "resources",
+    "route": "/",
+    "iconName": "",
+    "expanded": false,
+    "visible": false,
+    "children": [
+      {
+        "displayName": "individual",
+        "route": "/whyJoin"
+      },
+      {
+        "displayName": "business",
+        "route": "/apiIntegration"
+      }
+    ]
+  },
+  {
+    "displayName": "contact",
+    "route": "/faq"
+  }
+]

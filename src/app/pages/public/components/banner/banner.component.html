@@ -1,0 +1,21 @@
+<div id="banner" [ngClass]="type" [ngStyle]="{'background-color': bgColor}">
+  <div class="d-flex align-items-center">
+      <div class="me-4">
+        <svg-icon [src]="url"></svg-icon>
+      </div>
+    <div>
+      <div>
+        <span class="mat-headline fw-bold pre-line">{{title}}</span>
+      </div>
+        <div>
+          <div>
+            <span class="mat-subheading-1">{{description}}</span>
+          </div>
+          <div class="mt-2" *ngIf="buttonText">
+            <button mat-button (click)="buttonAction.emit()" [hidden]="!hiddenButton">{{buttonText}}</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

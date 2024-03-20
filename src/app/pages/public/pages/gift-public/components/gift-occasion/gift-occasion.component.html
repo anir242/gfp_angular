@@ -1,0 +1,25 @@
+<div class="container" id="giftOccasion">
+  <div class="row gx-2 gy-1">
+    <div class="col-12">
+      <span class="large-body">{{'gift.whatOccasion'| translate}}</span>
+    </div>
+    <div class="col-12 col-md-6">
+      <mat-form-field appearance="outline">
+        <mat-select [formControl]="occasion">
+          <mat-option *ngFor="let item of options" [value]="item">
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-6 date">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>{{'gift.delivery' | translate}}</mat-label>
+        <input matInput (focus)="picker.open()" [matDatepicker]="picker" [formControl]="deliveryDate" [min]="minDate" [max]="maxDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+        <mat-error *ngIf="!deliveryDate.valid">{{'authentication.invalidDate' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

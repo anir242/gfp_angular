@@ -1,0 +1,28 @@
+<div class="container-fluid text-white">
+  <div class="row gy-3">
+    <div class="col-md-4 col-6">
+      <div>
+        <span class="mat-body-2">{{'singleDonations.amount'|translate}}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{'singleDonations.€'|translate : {value: price | number: '1.2-2'} }}</span>
+      </div>
+    </div>
+    <div class="col-md-4 col-6">
+      <div>
+        <span class="mat-body-2">{{'singleDonations.' + unit |translate }}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{acres}}</span>
+      </div>
+    </div>
+    <div class="col-md-4 col-6">
+      <div>
+        <span class="mat-body-2">{{'singleDonations.CO2'|translate}}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{tons}}</span>
+      </div>
+    </div>
+  </div>
+</div>

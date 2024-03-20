@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+.mat-card {
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15) !important;
+    height: 100%;
+}
+
+.headingContainer {
+    height: 120px !important;
+    padding: 32px 40px 32px 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    h1 {
+        margin-left: 24px;
+    }
+}
+
+.imgPlan{
+
+  width: 90px;
+  height:90px;
+  padding-right: 1rem;
+
+  @media (min-width:992px){
+    width: 104px;
+    height:104px;
+  }
+}

@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin inactive-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+  $imgUrl: 'inactiveStage.png';
+  #inactive {
+    .bgInactive{
+      background-image: url('/assets/images/#{$imgUrl}');
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 60rem;
+    }
+  }
+}

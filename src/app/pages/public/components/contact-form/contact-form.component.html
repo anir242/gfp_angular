@@ -1,0 +1,358 @@
+<div id="contact-form" class="content">
+  <div class="container-fluid px-0">
+    <div class="d-flex position-relative">
+      <div class="form-group-container" *ngIf="windowWidth > 600">
+        <div class="w-95 h-304 background-leaves border-round p-5">
+          <div class="text-container">
+            <p class="title-1 bold text-white">
+              {{ "contactForm.any" | translate }}
+            </p>
+            <span class="large-body text-white">{{
+              "contactForm.ask" | translate
+            }}</span>
+            <p class="body mt-4">
+              <a
+                class="text-white link bold d-flex align-items-center"
+                href="mailto:info@greenfutureproject.com"
+                target="_blank"
+                style="text-decoration: none"
+              >
+                <fa-icon
+                  [icon]="faEnvelope"
+                  class="me-2 d-flex align-items-center"
+                ></fa-icon>
+                info@greenfutureproject.com
+              </a>
+            </p>
+
+            <p class="d-none">
+              <a class="text-white">
+                <fa-icon [icon]="faPhone" class="me-3"></fa-icon>
+                Coming soon
+              </a>
+            </p>
+          </div>
+        </div>
+        <form [formGroup]="form">
+         <div class="row">
+          <div class="d-flex flex-row-reverse h5">{{
+            "contactForm.mandatoryFields" | translate
+          }}</div>
+            <div class="col-sm-6 col-12">
+              <mat-label class="small-body">{{
+                "contactForm.fname" | translate
+              }}*</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="text"
+                  [placeholder]="'Jane'"
+                  [formControl]="fname"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-12">
+              <mat-label class="small-body">{{
+                "contactForm.lname" | translate
+              }}*</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="text"
+                  [placeholder]="'Doe'"
+                  [formControl]="lname"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div [ngClass]="clientType === '2' ? 'col-sm-6 col-12' : 'col-12'">
+              <mat-label class="small-body">{{
+                "contactForm.email" | translate
+              }}*</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="email"
+                  [placeholder]="'name@domain.com'"
+                  [formControl]="email"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-12" *ngIf="clientType === '2'">
+              <mat-label class="small-body">{{
+                "contactForm.company" | translate
+              }}*</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="text"
+                  [placeholder]="'Green Future Project'"
+                  [formControl]="company"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <mat-label class="small-body">{{
+                "contactForm.objective" | translate
+              }}*</mat-label>
+              <mat-form-field appearance="outline">
+                <mat-select
+                  [formControl]="category"
+                  placeholder="{{
+                    'contactForm.optionPlaceholder' | translate
+                  }}"
+                >
+                  <ng-container *ngFor="let cat of optionsCategory">
+                    <mat-option [value]="cat.value">{{ cat.text | translate}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <mat-label class="small-body">{{
+                "contactForm.opinion" | translate
+              }}</mat-label>
+              <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="textarea">
+                <textarea
+                  matInput
+                  [formControl]="message"
+                  placeholder="{{
+                    'contactForm.opinionPlaceholder' | translate
+                  }}"
+                ></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 d-flex align-items-center">
+              <mat-checkbox [formControl]="privacyConsent"
+              >
+            </mat-checkbox>
+            <p innerHtml="{{ 'contactForm.privacyConsent' | translate }} *"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <mat-checkbox [formControl]="marketingConsent"
+                >{{ "contactForm.marketingConsent" | translate }}
+              </mat-checkbox>
+            </div>
+          </div>
+
+
+          <div id="popup1" class="overlay">
+            <div class="popup">
+              <div class="d-flex flex-row align-items-center">
+                <div class="checkIcon text-white">
+                  <mat-icon>done</mat-icon>
+                </div>
+                <span class="ps-3 title-1">{{
+                  "contactForm.thanks" | translate
+                }}</span>
+              </div>
+              <a class="close" (click)="close()" style="cursor: pointer"
+                >&times;</a
+              >
+              <div class="py-3 content small-body">
+                {{ "contactForm.weWill" | translate }}
+              </div>
+            </div>
+          </div>
+          <button
+            mat-raised-button
+            color="yellow"
+            [disabled]="form.invalid"
+            (click)="sendContact()"
+          >
+            {{ "contactForm.send" | translate }}
+          </button>
+        </form>
+      </div>
+      <div class="form-group-container" *ngIf="windowWidth < 600">
+        <div class="w-95 h-304 background-leaves border-round p-5">
+          <div class="text-container">
+            <p class="title-1 bold text-white" id="contact-form-text">
+              {{ "contactForm.any" | translate }}
+            </p>
+            <span class="large-body text-white">{{
+              "contactForm.ask" | translate
+            }}</span>
+            <p class="body mt-4">
+              <a
+                class="text-white link bold d-flex align-items-center"
+                href="mailto:info@greenfutureproject.com"
+                target="_blank"
+                style="text-decoration: none"
+              >
+                <fa-icon
+                  [icon]="faEnvelope"
+                  class="me-2 d-flex align-items-center"
+                ></fa-icon>
+                info@greenfutureproject.com
+              </a>
+            </p>
+
+            <p class="d-none">
+              <a class="text-white">
+                <fa-icon [icon]="faPhone" class="me-3"></fa-icon>
+                Coming soon
+              </a>
+            </p>
+          </div>
+          <form class="mt-4" [formGroup]="form">
+           <div class="row">
+            <div class="d-flex flex-row-reverse h5">{{
+              "contactForm.mandatoryFields" | translate
+            }}</div>
+              <div class="col-sm-6 col-12">
+                <mat-label class="small-body">{{
+                  "contactForm.fname" | translate
+                }}*</mat-label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    type="text"
+                    [placeholder]="'Jane'"
+                    [formControl]="fname"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-6 col-12">
+                <mat-label class="small-body">{{
+                  "contactForm.lname" | translate
+                }}*</mat-label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    type="text"
+                    [placeholder]="'Doe'"
+                    [formControl]="lname"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div [ngClass]="clientType === '2' ? 'col-sm-6 col-12' : 'col-12'">
+                <mat-label class="small-body">{{
+                  "contactForm.email" | translate
+                }}*</mat-label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    type="email"
+                    [placeholder]="'name@domain.com'"
+                    [formControl]="email"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-6 col-12" *ngIf="clientType === '2'">
+                <mat-label class="small-body">{{
+                  "contactForm.company" | translate
+                }}*</mat-label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    type="text"
+                    [placeholder]="'Green Future Project'"
+                    [formControl]="company"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-12">
+                <mat-label class="small-body">{{
+                  "contactForm.objective" | translate
+                }}*</mat-label>
+                <mat-form-field appearance="outline">
+                  <mat-select
+                    [formControl]="category"
+                    placeholder="{{
+                      'contactForm.optionPlaceholder' | translate
+                    }}"
+                  >
+                    <ng-container *ngFor="let cat of optionsCategory">
+                      <mat-option [value]="cat.value">{{ cat.text }}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-12">
+                <mat-label class="small-body">{{
+                  "contactForm.opinion" | translate
+                }}</mat-label>
+                <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="textarea">
+                  <textarea
+                    matInput
+                    [formControl]="message"
+                    placeholder="{{
+                      'contactForm.opinionPlaceholder' | translate
+                    }}"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-12 d-flex align-items-center">
+                <mat-checkbox [formControl]="privacyConsent"
+                >
+              </mat-checkbox>
+              <p innerHtml="{{ 'contactForm.privacyConsent' | translate }} *"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <mat-checkbox [formControl]="marketingConsent"
+                  >{{ "contactForm.marketingConsent" | translate }}
+                </mat-checkbox>
+              </div>
+            </div>
+  
+  
+            <div id="popup1" class="overlay">
+              <div class="popup">
+                <div class="d-flex flex-row align-items-center">
+                  <div class="checkIcon text-white">
+                    <mat-icon>done</mat-icon>
+                  </div>
+                  <span class="ps-3 title-1">{{
+                    "contactForm.thanks" | translate
+                  }}</span>
+                </div>
+                <a class="close" (click)="close()" style="cursor: pointer"
+                  >&times;</a
+                >
+                <div class="py-3 content small-body">
+                  {{ "contactForm.weWill" | translate }}
+                </div>
+              </div>
+            </div>
+            <button
+              mat-raised-button
+              color="yellow"
+              [disabled]="form.invalid"
+              (click)="sendContact()"
+            >
+              {{ "contactForm.send" | translate }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

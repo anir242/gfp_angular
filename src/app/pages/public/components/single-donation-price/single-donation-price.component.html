@@ -1,0 +1,155 @@
+<div id="singlePrice">
+  <div *ngIf="selectAmount; else form">
+    <mat-radio-group [(ngModel)]="default">
+      <div class="row g-3">
+        <ng-container *ngFor="let item of items.singlePayments, let i = index">
+          <div class="col-12 col-md-6" *ngIf="item.price > 0">
+            <div class="item p-1 p-md-3">
+              <div class="container-fluid p-0">
+                <div class="row g-3 align-items-center">
+                  <div class="col-12 d-flex align-items-center">
+                    <mat-radio-button class="mb-0" [value]="item.id" (change)="sendItem($event)" [attr.data-price]="item.price">
+                    </mat-radio-button>
+                    <span class="mb-0 ms-2 title-3 bold">
+                      {{'supportProject.€'|translate: {value: item.price | number: '1.2-2'} }}
+                    </span>
+                  </div>
+                  <div class="col-12">
+                    <div class="">
+                      <div class="d-flex justify-content-between" *ngIf="!offset && items.unit.slug != 'tonne'">
+                        <span class="small-body bold">
+                          {{'supportProject.' + items.unit.slug + 'Title' |translate : {value: items.unit.slug}| titlecase}}
+                        </span>
+                        <span class="small-body" *ngIf="items.unit.slug != 'hectare' || item?.quantity >= 1">
+                          {{'supportProject.' + items.unit.slug |translate: {value: item?.quantity} }}
+                        </span>
+                        <span class="small-body" *ngIf="items.unit.slug == 'hectare' && item?.quantity < 1">
+                          {{item?.quantity * 10000}}m<sup>2</sup>
+                        </span>
+                      </div>
+                      <ng-container *ngIf="items.unit.slug != 'coral'">
+                        <div class="d-flex justify-content-between" *ngIf="items.unit.slug != 'tonne' && !offset; else offsetTotal">
+                          <span class="small-body bold" *ngIf="items.unit.slug == 'tree'">
+                            {{'supportProject.CO2Year'|translate}}
+                          </span>
+                          <span class="small-body bold" *ngIf="items.unit.slug != 'tree'">
+                            {{'supportProject.CO2'|translate}}
+                          </span>
+                          <span class="small-body" *ngIf="item?.co2 >= 500 && roundNumber(item?.co2 / 1000) != 1">
+                            {{'supportProject.tons'|translate: {value: roundNumber(item?.co2 / 1000)} }}
+                          </span>
+                          <span class="small-body" *ngIf="roundNumber(item?.co2 / 1000) == 1">
+                            {{'supportProject.tons'|translate: {value: roundNumber(item?.co2 / 1000)} }}
+                          </span>
+                          <span class="small-body" *ngIf="item?.co2 < 500">
+                            {{'supportProject.kg'|translate: {value: roundNumber(item?.co2)} }}
+                          </span>
+                        </div>
+                        <ng-template #offsetTotal>
+                          <div class="d-flex justify-content-between">
+                            <span class="small-body bold">
+                              {{'supportProject.CO2'|translate}}
+                            </span>
+                            <span *ngIf="items.unit.slug === 'tonne'">
+                              <span class="small-body"  *ngIf="item.quantity === 1">
+                                {{'supportProject.ton'|translate: {value: roundNumber(item?.quantity)} }}
+                              </span>
+                              <span class="small-body"  *ngIf="item.quantity !== 1">
+                                {{'supportProject.tons'|translate: {value: roundNumber(item?.quantity)} }}
+                              </span>
+                            </span>
+                            <span *ngIf="items.unit.slug !== 'tonne'">
+                              <span class="small-body"  *ngIf="roundNumber(item?.co2 / 1000) == 1">
+                                {{'supportProject.ton'|translate: {value: roundNumber(item?.co2 / 1000)} }}
+                              </span>
+                              <span class="small-body"  *ngIf="roundNumber(item?.co2 / 1000) != 1">
+                                {{'supportProject.tons'|translate: {value: roundNumber(item?.co2 / 1000)} }}
+                              </span>
+                            </span>
+                          </div>
+                        </ng-template>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </mat-radio-group>
+  </div>
+  <ng-template #form>
+    <div class="container p-3 p-md-5">
+      <p class="large-body mb-4" *ngIf="!offset">{{'supportProject.enterAmount'|translate}}</p>
+      <div class="d-block d-md-flex align-items-center justify-content-between">
+        <div class="mb-3">
+          <app-mat-input 
+            [control]="units" 
+            [label]="selectUnitsLabel"
+            [type]="'number'"
+          >
+          </app-mat-input>
+        </div>
+        <div class="mb-3">
+          <div class="lato bold md">{{'supportProject.or'|translate}}</div>
+        </div>
+        <div class="mb-3">
+          <app-mat-input 
+            [control]="cost" 
+            [label]="translate.instant('supportProject.typeAmount')"
+            [type]="'number'"
+            [prefix]="currency"
+          >
+          </app-mat-input>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-center mt-4 mb-4">
+        <div class="item selected offset-total p-1 p-md-3">
+          <div class="row g-3 align-items-center">
+            <div class="col-12">
+              <p class="m-0 title-3 bold">
+                {{'supportProject.€'|translate: {value: cost.value | number: '1.2-2'} }}
+              </p>
+            </div>
+            <div class="col-12">
+              <div class="">
+                <div class="d-flex justify-content-between" *ngIf="!offset && unit != 'tonne'">
+                  <span class="small-body bold">
+                    {{'supportProject.' + items.unit.slug + 'Title' |translate : {value: items.unit.slug}| titlecase}}
+                  </span>
+                  <span class="small-body" *ngIf="unit != 'm2' && units.value == 1">
+                    {{'supportProject.' + items.unit.slug |translate: {value: units.value} }}
+                  </span>
+                  <span class="small-body" *ngIf="unit != 'm2' && units.value != 1">
+                    {{'supportProject.' + items.unit.slug + 's' |translate: {value: units.value} }}
+                  </span>
+                  <span class="small-body" *ngIf="unit == 'm2'">
+                    {{units}}m<sup>2</sup>
+                  </span>
+                </div>
+                <div class="d-flex justify-content-between" *ngIf="items.unit.slug != 'coral'">
+                  <span class="small-body bold" *ngIf="!offset && items.unit.slug == 'tree'">
+                    {{'supportProject.CO2Year'|translate}}
+                  </span>
+                  <span class="small-body bold" *ngIf="offset || items.unit.slug != 'tree'">
+                    {{'supportProject.CO2'|translate}}
+                  </span>
+                  <span class="small-body" *ngIf="co2 >= 500 && !offset">
+                    {{'supportProject.tons'|translate: {value: roundNumber(co2 / 1000)} }}
+                  </span>
+                  <span class="small-body" *ngIf="co2 < 500 && !offset">
+                    {{'supportProject.kg'|translate: {value: roundNumber(co2)} }}
+                  </span>
+                  <span class="small-body" *ngIf="offset">
+                    {{'supportProject.tons'|translate: {value: roundNumber(co2)} }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,107 @@
+<ng-container *ngIf="giftCardInterface">
+  <div id="gift">
+    <app-short-banner [title]="translate.instant('gift.title')"
+      [subtitle]="translate.instant('gift.description')"
+      [buttonText]="translate.instant('ecommAPI.getStarted')"
+      [background]="'gift.png'">
+    </app-short-banner>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-none">
+          <div class="filter">
+            <div class="mt-2 d-md-none">
+              <button mat-raised-button color="yellow" (click)="openFilterPopup()">{{'gift.filter'|translate}}</button>
+            </div>
+            <div class="d-flex my-3">
+              <div class="me-md-auto flex-grow-1">
+                <mat-form-field appearance="outline">
+                  <mat-icon class="d-none d-md-block" matPrefix>search</mat-icon>
+                  <input matInput type="search" [formControl]="searchInput" [placeholder]="translate.instant('gift.search')">
+                </mat-form-field>
+              </div>
+              <button mat-icon-button color="yellow" class="d-md-none search">
+                <svg-icon src="assets/images/svg/search.svg"></svg-icon>
+              </button>
+
+              <div class="mx-2 d-none d-md-block">
+                <app-filter
+                  (eventEmitter)="filterService.addFilter($event, 'giftTypology')"
+                  [label]="translate.instant('gift.typology')"
+                  [items]="projectTypes"
+                  [selected]="filterService.getFiltersByType('giftTypology')"></app-filter>
+              </div>
+              <div class="d-none d-md-block">
+                <app-filter
+                  (eventEmitter)="filterService.addFilter($event, 'giftContinent')"
+                  [label]="translate.instant('gift.continent')"
+                  [items]="continent"
+                  [selected]="filterService.getFiltersByType('giftContinent')"></app-filter>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <div class="col-12 d-none">
+          <div class="mt-4 d-none d-md-block" *ngIf="occasionsInterface">
+            <app-banner
+              type="light"
+              [bgColor]="occasionsInterface.color"
+              [url]="occasionsInterface.iconImage.url"
+              [title]="occasionsInterface.title"
+              [description]="occasionsInterface.description"></app-banner>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="my-5">
+            <div class="container p-0">
+              <div class="row g-3" *ngIf="giftCardInterface">
+                <ng-container *ngFor="let item of filteredCard">
+                  <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <app-gift-card
+                      [cardId]="item.id"
+                      [location]="getLocation(item.id)"
+                      [title]="item.title"
+                      [description]="item.description"
+                      [price]="getMinimumPrice(item.giftCardPacks)"
+                      [url]="item.image.url"
+                      [color]="color"
+                      [selectGift]="selectGift"
+                      [projectType]="projectType">
+                    </app-gift-card>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid row">
+      <div class="col-12">
+        <app-progress
+              [type]="progressTypes.numberUpTextBelow"
+              [items]="howTo"
+              [circleColor]="'#00BA80'"
+              [numberColor]="'#00BA80'"
+              [title]="translate.instant('gift.work')"
+              [forGift]="true"
+              numberFont="mat-headline"
+              descriptionFont="mat-body-1"
+              titleFont="mat-headline fw-bold"></app-progress>
+      </div>
+      <div class="col-12">
+        <div class="container-fluid mt-5 mb-5 px-5 d-flex flex-column justify-content-center align-items-center">
+          <mat-card class="background-leaves">
+              <div class="content-container">
+                  <h1 class="text-white title-2 text-center">{{'gift.bannerBottomTitle' | translate}}</h1>
+                  <p class="text-white body text-center">{{'gift.bannerBottomDescription' | translate}}</p>
+                  <button mat-raised-button color="yellow" class="mt-3" [routerLink]="'/faq'" fragment="contact-form">
+                      {{'gift.bannerBottomButton' | translate}}
+                  </button>
+              </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

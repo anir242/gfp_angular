@@ -1,0 +1,95 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin your-impact-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .yourImpact {
+    background: linear-gradient(rgba(219, 247, 148, .2), rgba(219, 247, 148, .2)), url(../../../../../assets/images/bg_your_impact.jpg);
+
+    svg-icon {
+      stroke: mat.get-color-from-palette($foreground, 'text');
+    }
+
+    .share {
+      stroke: $main-text-light;
+    }
+
+    .project {
+      .type {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 15px;
+
+        &.preservation {
+          background-color: $preservation-one;
+        }
+
+        &.marine_restoration {
+          background-color: $marine-one;
+        }
+
+        &.restoration {
+          background-color: $restoration-one;
+        }
+
+        &.renewable_energy {
+          background-color: $renewable-one;
+        }
+      }
+    }
+
+    .chart {
+      .chartSm {
+        max-height: 300px;
+      }
+
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+
+      .legend-wrap {
+        .legend-labels {
+          overflow-x: scroll;
+          text-align: center;
+
+          .legend-label {
+            color: mat.get-color-from-palette($foreground, 'text');
+          }
+        }
+      }
+
+
+      .foggy {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      .totalTons {
+        position: relative;
+        top: 0;
+
+        @include media-breakpoint-up(md) {
+          height: 75px;
+          // margin: auto;
+          margin-top: 13rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+}
+

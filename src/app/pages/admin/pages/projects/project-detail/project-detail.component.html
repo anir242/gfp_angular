@@ -1,0 +1,97 @@
+<ng-container *ngIf="project">
+  <div id="projectDetail">
+    <div class="container-fluid projectData">
+      <div class="row h-100">
+        <div class="col-12 ps-0 pe-0 " [style]="retrieveStyleBackground()">
+          <div class="layer">
+            <div class="container ps-lg-4">
+              <div class="row">
+                <div class="col-12">
+                  <div class="projectInfo">
+                    <span class="nation body text-uppercase">
+                      <svg-icon src="assets/images/icons/location.svg" [svgClass]="align-left"></svg-icon>
+                      {{project.country.name}}
+                    </span>
+                    <div class="d-none d-lg-block headline mt-2 mb-3">{{project.name}}</div>
+                    <div class="d-lg-none title-1 mt-2 mb-3">{{project.name}}</div>
+                    <div class="px-3 py-1 type mat-caption bold"
+                         [style]="{'background-color': project.type.colorLabel}">{{project.type?.name}}</div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="actions mt-3">
+                    <button [hidden]="!addImpactEnabled" (click)="goToCheckout()" class="mb-md-4" mat-raised-button color="yellow">
+                      <svg-icon src="assets/images/icons/impact.svg" [svgClass]="align-left"></svg-icon>
+                      <span class="title-4 bold">{{'projectDetails.addImpact'|translate}}</span>
+                    </button>
+                    <button (click)="inviteAFriend()" mat-stroked-button color="yellow"
+                            class="ms-2 noFill d-none">
+                      {{'admin.inviteAFriend'|translate}}
+                    </button>
+                    <button (click)="goToLive(project.slug)" mat-stroked-button color="yellow" class="ms-2 noFill">
+                      <mat-icon class="fs-6 h-auto">fiber_manual_record</mat-icon>
+                      <span>{{'admin.goLive'|translate}}</span>
+                    </button>
+                    <button [hidden]="!shareButtonEnabled" shareButtonsPopup class="d-none ms-md-2 noFill" mat-icon-button
+                            color="yellow"
+                            [theme]="'default'"
+                            [include]="['facebook','twitter','linkedin','telegram','messenger','whatsapp','sms','email','print','copy']"
+                            [show]="5"
+                            [url]="url"
+                            [description]="project.name"
+                            [autoSetMeta]="false">
+                      <svg-icon class="share" src="assets/images/svg/share.svg"></svg-icon>
+                    </button>
+                  </div>
+                </div>
+                <div class="container py-3">
+                  <div class="statistics p-3" *ngIf="projectSlug">
+                    <div class="title-3 pb-3 bold text-white">
+                      {{'admin.your'|translate:{name:name} }}
+                    </div>
+                    <div class="row g-3">
+                      <div class="col-12">
+                        <app-project-data [slug]="projectSlug"
+                                          [totalData]="totalData"
+                                          [remainder]="remainder"
+                                          [item]="item"
+                                          [type]="project.type?.slug"
+                                          *ngIf="!this.tonnesOnly">
+                        </app-project-data>
+                      </div>
+                      <div class="col-12">
+                        <app-project-data *ngIf="projectSlug!=projectTypes.marine_restoration"
+                                          [slug]=""
+                                          [totalData]="totalTons"
+                                          [remainder]="remainderFlights"
+                                          [item]="flights"
+                                          [popUpTitle]="titleCO2"
+                                          [popUpBody]="popUpCO2"
+                                          [type]="project.type?.slug">
+                        </app-project-data>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <nav mat-tab-nav-bar *ngIf="false">
+                <a mat-tab-link *ngFor="let link of links"
+                   (click)="activeLink = link"
+                   [routerLink]="link"
+                   [active]="RouterLinkActive.isActive"
+                   routerLinkActive #RouterLinkActive="routerLinkActive"
+                   class="text-white"> {{translate.instant('projectDetails.' + link)}} </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="projectStages" *ngIf="project.slug !== 'posi'">
+    <app-your-impact-stages [pack]="singlePaymentPacksInterface" [unit]="totalData" *ngIf="totalData" [name]="name"></app-your-impact-stages>
+  </div>
+  <div id="projectAbout">
+    <app-about-manager [public]="public"></app-about-manager>
+  </div>
+</ng-container>

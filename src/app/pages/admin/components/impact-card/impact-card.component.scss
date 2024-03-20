@@ -1,0 +1,234 @@
+$restoration: #C3E8C1;
+$preservation: #B5E7EA;
+$carbon_offset: #DBF794;
+$renewable: #F4B68C;
+$white: #FFFFFF;
+$grey: #E8E8E8;
+$dark_grey: #333333;
+$preservation_image: url("../../../../../assets/images/preservation_bg.webp");
+$restoration_image: url("../../../../../assets/images/restoration_bg.webp");
+$carbon_offset_image: url("../../../../../assets/images/carbon_offset_bg.webp");
+$renewable_image: url("../../../../../assets/images/renewable_bg.webp");
+$summary_image: url("../../../../../assets/images/summary.jpg");
+$next_arrow_background: url("../../../../../assets/images/icons/right-arrow.svg");
+$prev_arrow_background: url("../../../../../assets/images/icons/left-arrow.svg");
+$background_size: 545px;
+
+#impact_card_preview_wrapper {
+  font-family: 'Chivo';
+  font-style: normal; 
+  position: relative;
+
+  .text_preservation{
+    color: $preservation
+  }
+  .bg_preservation{
+    background-color: $preservation
+  }
+  .img_preservation{
+    background-image: $preservation_image;
+    background-repeat: no-repeat;
+    background-size: $background_size
+  }
+
+  .text_restoration{
+    color: $restoration
+  }
+  .bg_restoration{
+    background-color: $restoration
+  }
+  .img_restoration{
+    background-image: $restoration_image;
+    background-repeat: no-repeat;
+    background-size: $background_size
+  }
+
+  .text_carbon_offset{
+    color: $carbon_offset
+  }
+  .bg_carbon_offset{
+    background-color: $grey
+  }
+  .img_carbon_offset{
+    background-image: $carbon_offset_image;
+    background-repeat: no-repeat;
+    background-size: $background_size
+  }
+
+  .text_renewable{
+    color: $renewable
+  }
+  .bg_renewable{
+    background-color: $renewable
+  }
+  .img_renewable{
+    background-image: $renewable_image;
+    background-repeat: no-repeat;
+    background-size: $background_size
+  }
+  .img_summary {
+    background-image: $summary_image;
+    background-repeat: no-repeat;
+    background-size: $background_size;
+  }
+
+  #impact_card {
+    height: $background_size;
+    width: $background_size;
+    color: $white;
+    #top_bar {
+
+      #your_impact {
+        font-weight: 200;
+        font-size: 1rem;
+        line-height: 25px;
+        color: $white;
+      }
+
+      #impact_type_parent {
+        gap: 2rem;
+        width: max-content; 
+
+        img {
+          width: 2rem;
+          height: auto;
+        }
+
+        #impact_type {
+          font-weight: 700;
+          font-size: 1rem;
+          letter-spacing: 0.03em;
+          color: $dark_grey;
+          border-radius: 35px;
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+
+    #lines{
+      gap: 2px;
+
+      .line {
+        font-weight: 200;
+        font-size: 1.75rem;
+        line-height: 2rem;
+        color: $white;
+      }
+
+      .smaller_line {
+        font-weight: 200;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+      }
+
+      .example_line{
+        font-weight: 200;
+        font-size: 2.25rem;
+        line-height: 3rem;
+      }
+    }
+  }
+
+  .carousel-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    button{
+      box-shadow: none;
+    }
+  }
+
+  ::ng-deep {
+    .carousel-arrow-disabled {
+      display: none;
+    }
+    .carousel-arrow-next {
+      background-image: $next_arrow_background;
+      background-size: 50% 50%;
+      border: 1px solid #00734f;
+      background-color: transparent;
+      box-shadow: none;
+    }
+    .carousel-arrow-prev {
+      background-image: $prev_arrow_background;
+      background-size: 50% 50%;
+      border: 1px solid #00734f;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    .mat-stroked-button{
+      .mat-button-wrapper{
+        color: #00734f !important;
+      }
+    }
+  }
+
+  .w-300 {
+    max-width: 300px;
+  }
+  .h-300 {
+    max-height: 300px;
+  }
+
+  .icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .download-icon{
+    width: 15px;
+  }
+
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+  .summary-main-subtitle{
+    img {
+      width: 46px;
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    #impact_card {
+      background-size: cover;
+    }
+
+    .summary-main-subtitle{
+      img {
+        width: 25px;
+      }
+    }
+    .img_summary {
+        .totals {
+          img {
+            width: 20px;
+          }
+        }
+    }
+    ::ng-deep {
+      .carousel-arrows {
+        position: absolute;
+        bottom: 200px;
+        left: 32%;
+        width: 130px;
+      }
+
+    }
+  }
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    &:has(#impact_card_preview_wrapper) {
+      padding: 20px 0 20px 16px !important;
+      height: auto !important;
+      overflow-y: scroll !important;
+      text-align: start;
+    }
+  }
+}

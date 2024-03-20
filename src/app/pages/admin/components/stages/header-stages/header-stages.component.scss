@@ -1,0 +1,74 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin header-stages-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $typography-config: mat.get-typography-config($theme);
+
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .stages {
+
+    .renewable_energy{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(248, 197, 175);
+      }
+    }
+    .preservation{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(181, 231, 234);
+      }
+    }
+    .restoration{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(195, 232, 193);
+      }
+    }
+    .marine{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(203, 228, 246);
+      }
+    }
+
+    .textStages {
+      text-align: center;
+
+      span {
+        font-size: 30px;
+
+        @if $typography-config != null {
+          font-family: mat.font-family($typography-config);
+          font-weight: mat.font-weight($typography-config, 'title');
+
+          @include media-breakpoint-up(md) {
+            font-size: mat.font-size($typography-config, 'title');
+          }
+        }
+      }
+    }
+    /*  font-size: 30px;
+           font-family: mat.font-family($my-typography);
+           !*
+           font-weight: mat.font-weight($my-typography);
+           *!
+           */
+    //max-width: 200px;
+
+    .open-dialog {
+      .mat-button-wrapper {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .mat-progress-bar {
+      .mat-progress-bar-buffer {
+        background: #707070;
+     }
+    }
+  }
+}

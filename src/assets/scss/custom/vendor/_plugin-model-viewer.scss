@@ -1,0 +1,66 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin model-viewer($theme) {
+  $primary: map.get($theme, primary);
+  $background: map.get($theme, background);
+  $accent: map.get($theme, accent);
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
+  $warn: map.get($theme, warn);
+
+  model-viewer {
+    --poster-color: transparent;
+    outline: none;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+
+    button {
+      display: block;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      border: none;
+      background-color: mat.get-color-from-palette($primary);
+      box-sizing: border-box;
+
+      .Hotspot {
+        background-color: transparent;
+        color: transparent;
+      }
+
+      &:not([data-visible]) {
+        background-color: transparent;
+        transition: all ease 0.5s;
+
+        .HotspotAnnotation {
+          background-color: transparent;
+          color: transparent;
+        }
+      }
+
+      .HotspotAnnotation {
+        background-color: transparent;
+        color: transparent;
+        display: none;
+        width: 200px;
+        overflow: scroll;
+        max-height: 200px;
+        &.active,
+        &:active/*,
+        &:hover*/ {
+          display: flex;
+          background-color: rgba(239, 236, 236, 0.8);
+          color: black;
+          position: absolute;
+          transform: translate(10px, 10px);
+          border-radius: 10px;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

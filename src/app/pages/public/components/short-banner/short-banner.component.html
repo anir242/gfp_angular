@@ -1,0 +1,19 @@
+<div class="banner" style="background-image:url(assets/images/bg_{{background}})">
+    <div class="container p-0">
+        <div class="row px-3 g-0">
+            <div class="col-12 col-md-7">
+                <div class="title text-start text-white mt-5">
+                    <div class="mb-5">
+                        <span [ngClass]="isSmallScreen ? 'title-1 bold text-wrap' : 'headline text-nowrap'">{{title | uppercase}}</span>
+                        <p class="body mt-2">{{subtitle}}</p>
+                    </div>
+                    <div *ngIf="showButton">
+                        <button mat-raised-button color="yellow" (click)="proceed()" [style]="btnStyle">
+                            {{buttonText}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container p-0" id="items">
+  <div class="row g-0 justify-content-center">
+    <div class="col-11 col-md-4" *ngFor="let item of items">
+      <mat-card class="singleCard m-md-3 my-2">
+        <mat-card-content>
+          <div>
+            <svg-icon [src]="item.url"></svg-icon>
+          </div>
+          <div class="mt-4">
+            <span class="mat-subheading-2 fw-bold">{{item.title}}</span>
+          </div>
+          <div>
+            <span class="mat-subheading-1">{{item.description}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-12 text-center">
+      <div class="mt-4">
+        <button mat-button (click)="scrollToId('manifesto')">
+          {{'aboutPublic.readManifesto'|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

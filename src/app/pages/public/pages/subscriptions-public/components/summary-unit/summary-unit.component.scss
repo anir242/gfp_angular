@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin summary-unit-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .summaryUnit {
+    &.mat-expansion-panel {
+      @include mat.elevation(0);
+
+      .mat-expansion-panel-header {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+
+    &#co2{
+      border-color: #BABABA;
+    }
+    span{
+      color: mat.get-color-from-palette($foreground, 'text');
+    }
+    //border-left: 10px solid;
+    background-color: $single-donation-item;
+    border-radius: 4px;
+    padding: 15px;
+  }
+}

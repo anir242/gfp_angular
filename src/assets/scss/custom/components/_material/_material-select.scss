@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../light-theme-accent-yellow";
+
+@mixin material-select-new($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+
+  .mat-select {
+    background-color: transparent;
+    padding: 0;
+  }
+}

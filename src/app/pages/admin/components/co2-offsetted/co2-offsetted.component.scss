@@ -1,0 +1,57 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin co2-offsetted-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .impact-buttons {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    z-index: 5;
+  }
+
+  .offsetFlight {
+    background: linear-gradient(rgba(219, 247, 148, .1), rgba(219, 247, 148, .1)), url(../../../../../assets/images/bg_your_impact.jpg);
+
+    .impact-divider {
+      background-color: #68D8D5;
+    }
+
+    .statistics {
+      margin-top: 9rem;
+      grid-gap: 10px;
+
+      .statistic {
+        background: rgba(240,240,240,.15);
+        border-radius: 8px;
+        position: relative;
+
+        &.half {
+          min-height: 200px;
+        }
+
+        img {
+          width: 48px !important;
+          height: 48px !important;
+          display: block;
+          position: relative;
+        }
+      }
+    }
+
+    .mapsImg {
+      overflow: hidden;
+
+      img {
+        top: -20px;
+      }
+    }
+  }
+}

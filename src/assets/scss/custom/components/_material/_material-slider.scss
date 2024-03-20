@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "src/assets/scss/custom/light-theme-accent-yellow";
+
+@mixin material-slider($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  mat-slider {
+    width: 100%;
+
+    .mat-slider-thumb {
+      background-color: mat.get-color-from-palette($accent);
+    }
+  }
+}

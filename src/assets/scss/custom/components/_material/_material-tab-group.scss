@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin material-tab-group($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+
+  .mat-tab-group {
+    color: mat.get-color-from-palette($primary);
+    .mat-tab-label-content {
+      color: mat.get-color-from-palette($primary);
+    }
+  }
+
+}

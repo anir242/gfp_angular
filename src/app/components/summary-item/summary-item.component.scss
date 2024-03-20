@@ -1,0 +1,61 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin summary-item-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .summaryItem{
+    .mat-expansion-panel{
+      @include mat.elevation(0);
+    }
+    mat-expansion-panel-header{
+      .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+        display: flex;
+      }
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+      padding-left: 15px;
+      span{
+        color: mat.get-color-from-palette($foreground, 'text');
+      }
+    }
+    .mat-expansion-panel-body{
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+      padding-left: 15px;
+    }
+
+    #co2{
+      span{
+        color: mat.get-color-from-palette($foreground, 'text');
+      }
+      border-left: 10px solid  $grey5;
+      background-color: $single-donation-item;
+      border-radius: 4px;
+      padding: 15px;
+    }
+    .normal-summary-item{
+      span{
+        color: mat.get-color-from-palette($foreground, 'text');
+      }
+      border-left: 10px solid $single-donation-item;
+      background-color: $single-donation-item;
+      border-radius: 4px;
+      padding: 15px;
+    }
+
+    .dark-border{
+      border-radius: 4px;
+      border-left: 10px solid $grey5;
+    }
+
+
+    .light-border{
+      border-radius: 4px;
+      border-left: 10px solid $single-donation-item;
+    }
+  }
+}

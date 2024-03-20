@@ -1,0 +1,93 @@
+<ng-container>
+  <div class="main-content" id="giftCheckOut">
+    <div class="container p-0 pb-5">
+      <div class="row g-0">
+        <div class="col-12 d-none d-md-block">
+          <div class="mb-2 mt-5">
+            <span class="chivo xxl bold text-white">
+              {{'gift.giftCheckOut'|translate}}
+            </span>
+          </div>
+          <div class="mb-5">
+            <span class="lato sm text-white">{{'gift.giftComplete'|translate}}</span>
+          </div>
+        </div>
+        <div class="col-md-8 col-12">
+          <mat-card class="mainCheckOut" class="mb-5">
+            <div class="mb-3 d-md-none">
+              <span class="chivo xl bold text-white">
+                {{'gift.giftCheckOut'|translate}}
+              </span>
+            </div>
+            <form [formGroup]="checkOut">
+              <mat-stepper #stepper orientation="vertical" linear (selectionChange)="setUpdate($event)">
+                <mat-step [stepControl]="about">
+                  <ng-template matStepLabel>
+                    <span class="mat-headline labelTitle text-white">{{'gift.yourData'|translate}}</span>
+                  </ng-template>
+                  <ng-container *ngIf="!updated">
+                    <div>
+                      <app-gift-about [form]="about"></app-gift-about>
+                    </div>
+                    <div>
+                      <app-gift-contact-info [form]="contact"></app-gift-contact-info>
+                    </div>
+                    <div>
+                      <mat-checkbox [formControl]="marketingConsent">
+                        <span class="text-white">
+                          {{ "contactForm.marketingConsent" | translate }}
+                        </span>
+                      </mat-checkbox>
+                    </div>
+                    <div class="text-end">
+                      <button (click)="setUpdate($event)" [disabled]="!(about.valid && contact.valid)" mat-raised-button
+                              color="yellow" matStepperNext>{{'gift.saveAndContinue'|translate}}</button>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="updated">
+                    <app-your-data-summary
+                      [name]="about.value.name"
+                      [surname]="about.value.surname"
+                      [email]="contact.value.email"
+                      [phone]="contact.value.phone">
+                    </app-your-data-summary>
+                  </ng-container>
+                </mat-step>
+                <mat-step [stepControl]="paymentMethods">
+                  <ng-template matStepLabel>
+                    <span class="mat-headline labelTitle text-white">{{'gift.paymentMethod'|translate}}</span>
+                  </ng-template>
+                  <div>
+                    <app-your-payment-method
+                      [summaryTitle]="translate.instant('gift.totalGift')"
+                      summaryType="gift"
+                      [marketingConsent]="marketingConsent.value"
+                      [savedPaymentMethodEnabled]="false"
+                      [agreeTermsOfUse]="agree"
+                      [buttonText]="translate.instant('gift.confirm')"
+                      [paymentMethods]="paymentMethods"
+                      [summaryCostDescription]="translate.instant('gift.totalCost')"
+                    ></app-your-payment-method>
+                  </div>
+                </mat-step>
+              </mat-stepper>
+            </form>
+          </mat-card>
+        </div>
+        <div class="col-md-4 col-12 position-sticky d-none d-md-block">
+          <div class="mt-md-auto mt-3 ms-3">
+            <app-order-summary
+              [title]="translate.instant('gift.totalGift')"
+              [costDescription]="translate.instant('gift.totalCost')"
+              summaryType="gift"></app-order-summary>
+          </div>
+        </div>
+        <div class="col-12 d-none">
+          <div class="mt-5">
+            <app-footer-authentication></app-footer-authentication>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

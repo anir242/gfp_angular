@@ -1,0 +1,79 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin faq-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #faq {
+
+    .softImage{
+      background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/assets/images/bg_noise_low.png');
+    }
+
+    .search{
+      width: 100%;
+
+      @include media-breakpoint-up(lg){
+        width: auto;
+      }
+
+      .mat-form-field-wrapper{
+        padding-bottom: 0px;
+      }
+
+      .mat-form-field-infix{
+        padding: 0.5rem 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .mat-form-field-flex {
+        margin-bottom: 0px;
+      }
+    }
+    .searchButton{
+      margin-top: 0.25em;
+      min-height: 52px;
+    }
+
+    .banner {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .marginReverse{
+      margin-top: -13rem;
+
+      @include media-breakpoint-up(lg){
+        margin-top: -15rem;
+      }
+    }
+
+    #title{
+      padding: 100px 20px;
+
+      @include media-breakpoint-up(lg){
+        padding: 185px 0px;
+      }
+      span{
+        color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+
+    .faqItem{
+      padding: 60px 20px;
+      @include media-breakpoint-up(lg){
+        padding: 90px 0;
+      }
+      &.light{
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin progress-scroller-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #progressScroller{
+    cdk-virtual-scroll-viewport{
+      height: 145px;
+      .cdk-virtual-scroll-content-wrapper {
+        display: flex;
+        flex-direction: row;
+        .item{
+          width: 250px;
+          &.dark{
+            background-color: mat.get-color-from-palette($background, 'app-bar');
+          }
+          background-color: mat.get-color-from-palette($primary, 'main-contrast');
+          .number{
+            color: mat.get-color-from-palette($accent);
+          }
+        }
+        .connectionContainer{
+          position: relative;
+          margin-right: 20px;
+          .connection{
+            position: absolute;
+            top: 50%;
+            border-top: 3px solid mat.get-color-from-palette($background, 'dialog');
+            width: 20px;
+          }
+        }
+      }
+    }
+    .bottomButton{
+      button{
+        width: auto;
+        @include media-breakpoint-up(md){
+          width: 200px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin progress-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+  $border: #E8E8E8;
+  $border-sm: #BABABA;
+
+  .giftHowTo {
+    .top {
+      background-image: radial-gradient(226.7% 343.12% at 66.76% 100%, #1A4549 0%, #020F19 84.05%);
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      min-height: 130px;
+    }
+    .bottom {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+
+  .big {
+    .stepper-wrapper {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .stepper-item {
+      .number {
+        color: mat.get-color-from-palette($accent);
+        margin-bottom: 0;
+      }
+
+      position: relative;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+
+      &::before {
+        position: absolute;
+        content: "";
+        border-bottom: 1px solid mat.get-color-from-palette($accent);
+        width: 100%;
+        top: 20px;
+        left: -50%;
+        z-index: 2;
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        border-bottom: 1px solid mat.get-color-from-palette($accent);
+
+        width: 100%;
+        top: 20px;
+        left: 50%;
+        z-index: 2;
+      }
+    }
+
+    .stepper-item .step-counter {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid mat.get-color-from-palette($accent);
+      margin-bottom: 6px;
+    }
+
+    .stepper-item:first-child::before,
+    .stepper-item:last-child::after {
+      content: none;
+    }
+  }
+  .small {
+    .stepper-wrapper {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .stepper-item {
+      .number {
+        color: mat.get-color-from-palette($accent);
+      }
+
+      position: relative;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+
+      &::before {
+        position: absolute;
+        content: "";
+        border-bottom: 3px solid $border;
+        width: 100%;
+        bottom: 13px;
+        left: -50%;
+        z-index: 2;
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        border-bottom: 3px solid $border;
+        width: 100%;
+        bottom: 13px;
+        left: 50%;
+        z-index: 2;
+      }
+    }
+
+
+    .step-counter {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      margin-bottom: 6px;
+    }
+
+    .stepper-item:first-child::before,
+    .stepper-item:last-child::after {
+      content: none;
+    }
+  }
+
+  .smView {
+    margin-top: 20px;
+
+    .row {
+      .itemList {
+        background-color: white;
+        border-radius: 4px;
+        max-width: 160px;
+        position: relative;
+        z-index: 2;
+
+        .vertical {
+          border-left: 3px solid $border-sm;
+          height: 100%;
+          position: absolute;
+          left: 50%;
+          z-index: -1;
+        }
+      }
+
+      &:last-child {
+        .itemList .vertical {
+          display: none;
+        }
+      }
+    }
+  }
+}
+

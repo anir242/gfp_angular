@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin main-faq-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #mainFaq{
+    background-color: mat.get-color-from-palette($primary, 'main-contrast');
+    padding: 60px 20px;
+    @include media-breakpoint-up(md){
+      padding: 90px 0;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin campaign-item-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #campaignItem{
+    .main{
+      p{
+        color: $green-hover;// mat.get-color-from-palette($accent);
+      }
+    }
+    p{
+      color: mat.get-color-from-palette($primary, 'main-contrast');
+    };
+    .customBorder{
+      @include media-breakpoint-up(md){
+        border-right: 1px solid mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+
+    button{
+      span{
+        color: $green-hover;
+      }
+    }
+  }
+}

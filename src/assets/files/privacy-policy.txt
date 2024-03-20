@@ -1,0 +1,46 @@
+﻿Privacy Policy of www.greenfutureproject.com
+This Application collects some Personal Data from its Users.
+Personal Data collected for the following purposes and using the following services:
+   * Advertising
+      * LinkedIn Ads and Google Ad Manager
+Personal Data: Tracker; Usage Data
+      * Facebook Audience Network
+      * HubSpot CRM
+Personal Data: Tracker; unique device identifiers for advertising (Google Advertiser ID or IDFA, for example); Usage Data
+   * Matomo Analytics
+   * Google Analytics, Google Analytics for Firebase and Facebook Ads conversion tracking (Facebook pixel)
+Personal Data: Tracker; Usage Data
+      * Hosting and backend infrastructure
+      * Amazon Web Services (AWS)
+      * Cloudflare
+Personal Data: various types of Data as specified in the privacy policy of the service
+         * Interaction with data collection platforms and other third parties
+         * Mailchimp widget
+         * FontAwesome
+Personal Data: email address
+            * Interaction with external social networks and platforms
+            * LinkedIn button and social widgets, Twitter Tweet button and social widgets and Facebook Like button and social widgets
+Personal Data: Tracker; Usage Data
+            * YouTube button and social widgets
+            * Sentry
+Personal Data: Usage Data
+               * Managing contacts and sending messages
+               * Mailchimp
+Personal Data: company name; country; email address; first name; last name; phone number; physical address; Tracker; username
+                  * Registration and authentication provided directly by this Application
+                  * Direct registration
+Personal Data: billing address; city; company name; country; email address; field of activity; first name; last name; number of employees; password; phone number; physical address; username; VAT Number; ZIP/Postal code
+                     * Remarketing and behavioral targeting
+                     * Facebook Remarketing and Google Ads Remarketing
+Personal Data: Tracker; Usage Data
+                        * Tag Management
+                        * Google Tag Manager
+Personal Data: Tracker; Usage Data
+Contact information
+                           * Owner and Data Controller
+GREEN FUTURE PROJECT S.R.L. 
+PIAZZA B. CAIROLI 6, 00186 Roma
+Owner contact email:admin@greenfutureproject.com
+Latest update: October 12, 2021
+iubenda hosts this content and only collects the Personal Data strictly necessary for it to be provided.
+Show the complete Privacy Policy

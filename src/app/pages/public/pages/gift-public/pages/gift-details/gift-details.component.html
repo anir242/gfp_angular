@@ -1,0 +1,120 @@
+<ng-container *ngIf="giftCardInterface">
+  <div class="main-content" id="giftDetails">
+    <div class="container p-0 pt-5">
+      <div class="row g-0">
+        <div class="col-lg-8 col-12">
+          <div class="order text-white">
+            <p class="mat-body-1 light-text mb-1 d-none">
+              <ng-container *ngFor="let p of locationArray; let first = first">
+                <span><span *ngIf="!first">, </span>{{p.name}}</span>
+              </ng-container>
+            </p>
+            <span class="mb-4 headline d-none d-lg-block">
+              {{giftCardInterface.title}}
+            </span>
+            <span class="mb-4 title-1 bold d-lg-none mb-4">
+              {{giftCardInterface.title}}
+            </span>
+            <mat-expansion-panel class="mt-3 d-lg-none">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{'gift.get'|translate}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngFor="let item of qualityList">
+                <app-tick-and-text [text]="item"></app-tick-and-text>
+              </ng-container>
+            </mat-expansion-panel>
+            <div class="d-none d-lg-block">
+              <ng-container *ngFor="let item of qualityList">
+                <app-tick-and-text [text]="item"></app-tick-and-text>
+              </ng-container>
+            </div>
+            <div class="d-lg-none mt-4 pickGift d-flex align-items-center">
+              <div>
+                <span class="large-body">{{'gift.pick' | translate}}</span>
+              </div>
+              <div class="ms-2">
+                <svg-icon (click)="openInfo()" src="assets/images/svg/info_public.svg"></svg-icon>
+              </div>
+            </div>
+            <div class="container p-0 mt-4">
+              <div class="row g-0">
+                <ng-container *ngFor="let item of giftCardInterface.giftCardPacks">
+                  <div class="col-lg-4 col-12">
+                    <app-highlight-div
+                      [subscriptionTitle]="item.packTitle ? translate.instant('gift.' + item.packTitle) : null"
+                      (clickDiv)="highlight(item.id)" [highlightId]="selectedDiv" [giftCardPack]="item" [color]="color">
+                    </app-highlight-div>
+                  </div>
+                </ng-container>
+                <div class="col-12">
+                  <div class="my-3">
+                    <mat-divider></mat-divider>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <app-gift-for [form]="giftFor"></app-gift-for>
+                </div>
+                <div class="col-12">
+                  <app-gift-occasion [form]="occasion" [options]="getOccasions()"></app-gift-occasion>
+                </div>
+                <div class="col-12">
+                  <app-gift-personalized-text [form]="message"></app-gift-personalized-text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12 position-sticky">
+          <div class="giftCard text-center d-flex align-items-center flex-column mx-3 mt-lg-0 my-3">
+            <p class="title-4 text-white pt-4">{{'gift.giftCard' | translate}}</p>
+            <img class="pt-3" src="assets/images/public/gifts/gift-howto-1.png" />
+          </div>
+          <div class="mt-lg-auto mt-3">
+            <div class="d-none cartItemsList flex-column mx-3 mt-lg-0 my-3" *ngIf="cartItems.length > 0">
+              <div *ngFor="let item of cartItems">
+                <div style="margin: 3px">
+                  <div style="display: inline">
+                    <span class="title-4">{{item?.title}}</span>
+                    <span class="mat-body-1 fw-bold" style="float: right">{{'gift.€' | translate : {value: item?.amount
+                      | number: '1.2-2'} }}</span>
+                  </div>
+                  <span class="mat-body-1 fw-bold">{{'gift.giftN' | translate }} {{item?.amountUnit}}
+                    {{item?.unit}}</span>
+                </div>
+                <mat-divider></mat-divider>
+              </div>
+            </div>
+            <app-gift-summary [giftA]="projectDescription" [url]="imgUrl" (addToCart)="addToCart($event)"
+              [title]="selectedGiftCard ? getUnits() : ''" [subtitle]="giftCardInterface.title" [subtotal]="subTotal"
+              [items]="cartItems" [disabledButton]="!isValid()">
+            </app-gift-summary>
+          </div>
+        </div>
+        <div class="col-8 d-none">
+          <div class="order mt-4">
+            <app-progress [type]="progressTypes.numberUpTextBelow" [items]="item" [circleColor]="'#00BA80'"
+              [numberColor]="'#00BA80'" [title]="translate.instant('gift.work')" numberFont="mat-headline"
+              descriptionFont="mat-body-1" titleFont="mat-headline fw-bold"></app-progress>
+          </div>
+        </div>
+        <div class="fixed-bottom d-lg-none summaryMobile">
+          <div class="p-2 bg">
+            <div class="px-3 mainBg d-flex justify-content-between align-items-center">
+              <div>
+                <span class="mat-subheading-1">{{'gift.total'|translate: {value: selectedGiftCard?.giftCardValue ?
+                  selectedGiftCard?.giftCardValue : 0 } }}</span>
+              </div>
+              <div>
+                <button mat-button [disabled]="!isValid()" (click)="addToCart(false)">
+                  {{'gift.add'|translate}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,22 @@
+<div class="container gallery">
+  <div class="mb-5">
+    <span class="pre-line mat-display-2">{{'gallery.title'|translate}}</span>
+  </div>
+  <div class="container-fluid p-0">
+    <div class="row g-2">
+      <ng-container *ngIf="projectGalleryInterface?.length > 0, else empty">
+        <ng-container *ngFor="let item of projectGalleryInterface">
+          <div class="col-6 col-sm-4">
+            <div class="containerImage">
+              <img [src]="item.image.url" [alt]="item.project.slug"/>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <ng-template #empty>
+        <span class="mat-title">{{'gallery.empty'|translate}}</span>
+      </ng-template>
+    </div>
+  </div>
+</div>
+

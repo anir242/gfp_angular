@@ -1,0 +1,103 @@
+<div class="content text-white" id="manageEmployees" *ngIf="dataSource">
+  <div class="paddingUser">
+    <div class="container">
+      <ng-container *ngIf="subscription">
+        <app-subscription-type *ngIf="subscription.subscriptionType.group.slug == subscriptionTypes.climateLeader"
+                               [image]="image"
+                               [subscriptionType]="subscription.subscriptionType.group.name"></app-subscription-type>
+        <app-subscription-type *ngIf="subscription.subscriptionType.group.slug == subscriptionTypes.climatePioneer"
+                               [image]="image"
+                               [subscriptionType]="subscription.subscriptionType.group.name"></app-subscription-type>
+      </ng-container>
+      <div>
+        <p class="mat-headline text-white">{{'invoices.title'|translate}}</p>
+      </div>
+
+      <div class="overflow-auto" *ngIf="invoices">
+        <table mat-table [dataSource]="invoices">
+          <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+            <mat-header-cell *matHeaderCellDef class="text-white">
+              {{'invoices.' + column|translate}}
+              <div *ngIf="column == 'action'"></div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div class="w-100 text-white">
+                <div *ngIf="column == 'action'">
+                  <button mat-icon-button color="transparent" (click)="downloadInvoice(element['id'])">
+                    <mat-icon>cloud_download</mat-icon>
+                  </button>
+                </div>
+                {{
+                  column == 'created' ? (element[column] * 1000 | moment) : 
+                  column == 'currency' && element[column] ? element[column].toUpperCase() : 
+                  column == 'total' && element[column] ? 
+                    (element[column] / 100).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }) :
+                  element[column] 
+                }}
+              </div>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+        </table>
+      </div>
+
+      <div class="mt-5">
+        <p class="mat-headline text-white">{{'charges.title'|translate}}</p>
+      </div>
+
+      <div class="overflow-auto" *ngIf="charges">
+        <table mat-table [dataSource]="charges">
+          <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplayCharges">
+            <mat-header-cell *matHeaderCellDef class="text-white">
+              {{'charges.' + column|translate}}
+              <div *ngIf="column == 'action'"></div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div class="w-100 text-white">
+                <div *ngIf="column == 'action'">
+                  <button mat-icon-button color="transparent" (click)="openReceipt(element['receipt_url'])">
+                    <mat-icon>cloud_download</mat-icon>
+                  </button>
+                </div>
+                {{
+                  column == 'created' ? (element[column] * 1000 | moment) : 
+                  column == 'currency' && element[column] ? element[column].toUpperCase() : 
+                  column == 'amount' && element[column] ? 
+                    (element[column] / 100).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }) :
+                  element[column] 
+                }}
+              </div>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="columnsToDisplayCharges"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnsToDisplayCharges;"></mat-row>
+        </table>
+      </div>
+
+      <div class="overflow-auto" *ngIf="false">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+            <mat-header-cell *matHeaderCellDef>
+              {{'invoices.' + column|translate}}
+              <div *ngIf="column == 'action'"></div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div class="w-100">
+                <div *ngIf="column == 'action'">
+                  <button mat-icon-button color="transparent" (click)="downloadInvoice(element['id'])" *ngIf="element['invoiceStripeId']">
+                    <mat-icon>cloud_download</mat-icon>
+                  </button>
+                </div>
+                {{column == 'createdAt' ? (element[column] | moment) : column == 'amount' ? (element[column] / 100 | number:'1.2-2') : element[column] }}
+              </div>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin press-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+  }
+
+  .supportingPadding {
+    padding: 3em 2em;
+
+    @include media-breakpoint-up(md) {
+      padding: 4em 7em;
+    }
+
+    .carousel-cells {
+        margin: auto;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      padding: 60px 0;
+    }
+
+    .carousel-arrows {
+      .carousel-arrow-next,
+      .carousel-arrow-prev {
+        box-shadow: none;
+        background-color: transparent;
+        border-radius: 0px;
+      }
+    }
+  }
+}

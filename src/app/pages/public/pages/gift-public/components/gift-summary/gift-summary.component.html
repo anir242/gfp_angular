@@ -1,0 +1,74 @@
+<div id="giftSummary" [ngClass]="{'sticky' : isSticky}">
+  <div class="d-md-none my-3 mx-2">
+    <div class="summary p-3">
+      <div>
+        <span class="mat-subheading-1">{{'gift.cart'|translate}}</span>
+      </div>
+      <div class="d-flex flex-row my-3">
+        <div class="text-center me-3" *ngIf="url">
+          <img [src]="url">
+        </div>
+        <div>
+          <p class="small-body mb-1">
+            {{giftA}}
+          </p>
+          <p class="mat-headline mb-2">
+            {{title}}
+          </p>
+        </div>
+      </div>
+      <div class="my-3">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="d-flex">
+        <div>
+          <span class="small-body">{{'gift.subtotal' | translate}}</span>
+        </div>
+        <div class="flex-grow-1 dotted"></div>
+        <div>
+          <ng-container>
+            <span class="small-body">{{'gift.€' | translate: {value: subtotal ? (subtotal | number: '1.2-2') : 0} }}</span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="my-3">
+      <button class="w-100" color="yellow" [disabled]="disabledButton" mat-raised-button (click)="addToCart.emit()">{{'gift.add'|translate}}</button>
+    </div>
+    <div>
+      <button class="w-100" [disabled]="disabledButton" (click)="addToCart.emit(true)" mat-stroked-button>{{'gift.checkOut'|translate}}</button>
+    </div>
+  </div>
+  <div class="d-md-block d-none mx-3">
+    <div class="summary p-3">
+      <div>
+        <p class="small-body mb-1">
+          {{giftA}}
+        </p>
+        <p class="mat-headline fw-bold mb-2">
+          {{title}}
+        </p>
+      </div>
+      <div class="d-flex">
+        <div>
+          <span class="small-body">{{'gift.subtotal' | translate}}</span>
+        </div>
+        <div class="flex-grow-1 dotted"></div>
+        <div>
+          <ng-container>
+            <span class="small-body">{{'gift.€' | translate: {value: subtotal ? (subtotal | number: '1.2-2') : 0} }}</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="text-center my-3" *ngIf="url">
+        <img [src]="url">
+      </div>
+    </div>
+    <div class="my-3">
+      <button class="w-100" color="yellow" [disabled]="disabledButton" mat-raised-button (click)="addToCart.emit()">{{'gift.add'|translate}}</button>
+    </div>
+    <div>
+      <button class="w-100" [disabled]="disabledButton" (click)="addToCart.emit(true)" mat-stroked-button>{{'gift.checkOut'|translate}}</button>
+    </div>
+  </div>
+</div>

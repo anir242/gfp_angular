@@ -1,0 +1,119 @@
+<div class="offsetFlight">
+  <div class="container-fluid">
+    <div class="row d-flex g-2">
+      <div class="col-12 col-lg-6 justify-content-center align-items-center order-1">
+        <div class="align-items-start d-flex flex-column">
+          <div class="p-3">
+            <div class="mt-3 mb-4">
+              <span class="title-2 text-white">{{'projectDetails.yourImpactFull'|translate:{name: name} }}</span>
+              <p class="body" *ngIf="!public">{{'projectDetails.yourImpactShare'|translate}}</p>
+            </div>
+            <div class="impact-buttons">
+              <button shareButtonsPopup mat-icon-button color="yellow" class="me-3 noFill d-none"
+                      [theme]="'default'"
+                      [include]="['facebook','twitter','linkedin','telegram','messenger','whatsapp','sms','email','print','copy']"
+                      [show]="5"
+                      [url]="url"
+                      [description]="translate.instant('sharePopup.description')"
+                      [autoSetMeta]="false">
+                <svg-icon class="share" src="assets/images/svg/share.svg"></svg-icon>
+              </button>
+              <button mat-icon-button color="yellow" (click)="openImpactPreview()" [disabled]="clicked">
+                <svg-icon src="assets/images/svg/download.svg"></svg-icon>
+              </button>
+            </div>
+            <div class="statistics p-2">
+              <div class="row g-2 d-flex align-items-start">
+                <div class="col-12 col-xl-6">
+                  <div class="statistic half p-3 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="m-0"><img src="assets/images/icons/co2.svg" alt="CO2" /></div>
+                      <app-info [selector]="'co2'+id"
+                                [title]="translate.instant('yourImpact.infoTitle')"
+                                [body]="translate.instant('yourImpact.infoBody')"
+                                [link]="'/about'"
+                                [positionY]="'bottom'"></app-info>
+                    </div>
+                    <div class="title-2 mt-4 mb-2" *ngIf="totalCo2 >= 1">{{'admin.tons'|translate : {tons: totalCo2} }}</div>
+                    <div class="title-2 mt-4 mb-2" *ngIf="totalCo2 < 1">{{'admin.kg'|translate : {kg: totalCo2 * 1000} }}</div>
+                    <p class="body m-0">
+                      {{'admin.total' | translate}}
+                      CO<sub>2</sub>
+                      {{'admin.offset' | translate}}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6">
+                  <div class="statistic half p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/icons/certified.svg" alt="Certified" />
+                        <div class="ms-2">
+                          <div class="body mb-2">
+                            {{'yourImpact.tonsCertified'|translate : {value: co2Certified} }}
+                          </div>
+                          <p class="body m-0">
+                            {{'yourImpact.tonsCertifiedDescription'|translate }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="align-self-baseline">
+                        <app-info [selector]="'certified'+id"
+                                  [title]="translate.instant('yourImpact.certifiedTitle')"
+                                  [body]="translate.instant('yourImpact.certifiedBody')"
+                                  [link]="'/about'"
+                                  [positionY]="'bottom'"></app-info>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-4">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/icons/science.svg" alt="Science" />
+                        <div class="ms-2">
+                          <div class="body mb-2">
+                            {{'yourImpact.scienceBacked'|translate : {value: co2NotCertified} }}
+                          </div>
+                          <p class="body m-0">
+                            {{'yourImpact.scienceBackedDescription'|translate }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="align-self-baseline">
+                        <app-info [selector]="'science'+id"
+                                  [title]="translate.instant('yourImpact.scienceTitle')"
+                                  [body]="translate.instant('yourImpact.scienceBody')"
+                                  [link]="'/about'"
+                                  [positionY]="'top'"></app-info>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="statistic p-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="body text-white">
+                        {{'realData.youHaveOffsetted' | translate:{name:cleanName} }} 
+                        {{'realData.sameAmountOf' | translate}} 
+                        {{'realData.co2Produced' | translate}}
+                      </div>
+                      <app-info [selector]="'flights'+id"
+                                [title]="translate.instant('yourImpact.flightsTitle')"
+                                [body]="translate.instant('yourImpact.flightsBody')"
+                                [link]="'/about'"
+                                [positionY]="'top'"></app-info>
+                    </div>
+                    <p class="title-2 mt-3 mb-2 text-white">{{'realData.flightsRomeNewYork'|translate:{value: flights} }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center order-2 p-0">
+        <div class="mapsImg justify-content-center align-items-center">
+          <img src="../../../../../assets/images/co2Slider.png" alt="health earth"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

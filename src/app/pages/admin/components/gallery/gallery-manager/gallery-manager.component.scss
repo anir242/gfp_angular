@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gallery-manager-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .gallery {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    .containerImage {
+      width: 100%;
+      // overflow: hidden;
+      margin-bottom: 32px;
+
+      img {
+        object-position: right;
+        object-fit: cover;
+        width: 100%;
+        height: 350px;
+      }
+    }
+  }
+}

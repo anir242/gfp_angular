@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin faq-item-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #faqItem {
+    img{
+      max-width: 600px;
+    }
+    &.light{
+      .mat-expansion-panel {
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+    .mat-expansion-panel{
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+      @include mat.elevation(0);
+      .mat-expansion-panel-body{
+        padding-left: 0;
+      }
+      .mat-expansion-panel-header{
+        @include media-breakpoint-down(md){
+          height: 70px;
+        }
+      }
+    }
+  }
+}

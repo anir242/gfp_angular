@@ -1,0 +1,84 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-details-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+  $accent2: map.get($light-theme-public-yellow, 'accent');
+
+  #giftDetails {
+    background-color: $landing-blue;
+    background-image: url('../../../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .cartItemsList {
+      background-color: #FFF;
+      margin: auto;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      padding: 3px;
+    }
+
+    @include media-breakpoint-up(md){
+      padding-top: 80px;
+      padding-bottom: 64px;
+    }
+    mat-expansion-panel{
+      @include mat.elevation(0);
+      mat-panel-title, .mat-expansion-indicator::after{
+        color: mat.get-color-from-palette($accent);
+      }
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+    }
+    background-color: mat.get-color-from-palette($background, 'dialog');
+    .order{
+      @include media-breakpoint-down(md){
+        padding-top: 64px;
+      }
+      border-radius: 4px;
+      padding: 30px 25px;
+      background-color: rgba(240,240,240,.15);
+
+      .mat-form-field {
+        .mat-form-field-outline > * {
+          background: rgba(250,250,250,.05);
+        }
+        .mat-form-field-label, .mat-input-element {
+          color: white;
+        }
+      }
+    }
+    .pickGift{
+      svg{
+        cursor: pointer;
+        fill: mat.get-color-from-palette($accent);
+      }
+    }
+    .summaryMobile{
+      .mainBg{
+        border-radius: 4px;
+        background-color: rgba(240,240,240,.15);
+      }
+      .bg{
+        background-color: rgba(240,240,240,.15);
+      }
+    }
+
+    .giftCard{
+      background: rgba(#FAFAFA, 0.05);
+      border-radius: 8px;
+      height: auto;
+      max-width: 100%;
+
+      img{
+        max-width: inherit;
+      }
+    }
+  }
+}

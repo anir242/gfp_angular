@@ -1,0 +1,52 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin breadcrumb-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #breadcrumb {
+    &.dark {
+      ol {
+        li {
+          a {
+            color: mat.get-color-from-palette($primary);
+          }
+          span {
+            color: mat.get-color-from-palette($primary);
+          }
+        }
+      }
+    }
+    ol {
+      padding: 0;
+
+      li {
+        &:first-child {
+          span {
+            margin-left: 0;
+
+          }
+        }
+
+        a {
+          margin: 0;
+          color: mat.get-color-from-palette($primary, 'main-contrast');
+          text-decoration: none;
+        }
+
+        span {
+          margin-right: 0.5rem;
+          margin-left: 0.5rem;
+
+          color: mat.get-color-from-palette($primary, 'main-contrast');
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,45 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin nativa-welcome-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  $my-typography: mat.define-typography-config();
+  $border-sm: #BABABA;
+
+  .top-banner {
+    background: url('../../../../../assets/images/nativa_bg.png');
+    height: 100%;
+    background-size: cover;
+    // position: absolute;
+  }
+
+  #click-here{
+    color: $yellow;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @include media-breakpoint-up(md) {
+    #logo-container {
+      text-align: -webkit-center;
+      > div {
+        width: 70%;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    #logo-container {
+      text-align: start;
+      width: 80%;
+    }
+  }
+
+}

@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin social-buttons-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .socialLogins {
+    text-align: center;
+    display: block;
+    padding: 0;
+
+    button.mat-button-base.mat-raised-button {
+      text-align: start;
+      width: 100%;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+
+      span {
+        color: mat.get-color-from-palette($primary, 'main-contrast');
+
+        svg {
+          margin-right: 5px;
+          margin-bottom: 6px;
+
+          path {
+            fill: mat.get-color-from-palette($primary, 'main-contrast');
+            stroke: transparent;
+          }
+
+        }
+      }
+
+      &#facebook {
+        background-color: $facebook_new;
+      }
+
+      &#google {
+        background-color: $google-red;
+      }
+
+      &#twitter {
+        background-color: $twitter;
+      }
+
+      &#linkedin {
+        background-color: $linkedin;
+      }
+    }
+  }
+}

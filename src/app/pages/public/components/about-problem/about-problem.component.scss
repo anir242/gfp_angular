@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin about-problem-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #aboutProblem {
+    .theProblem{
+      padding: 50px 20px;
+      @include media-breakpoint-up(md){
+        padding-left: 6em;// padding: 30px;
+        padding-right: 6em;
+      }
+    }
+    background-color: $main-text-light;
+    .backgroundAbout {
+      height: 350px;
+      @include media-breakpoint-up(md){
+        max-height: 500px;
+        // min-height: calc(100vh - 64px)
+      }
+    }
+  }
+}

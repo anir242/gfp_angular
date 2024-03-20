@@ -1,0 +1,180 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import "src/app/components/notifications/notifications.component";
+@import "src/app/components/navbar/navbar.component";
+@import "src/app/components/info/info.component";
+@import "src/app/components/sidebar-account/sidebar-account.component";
+@import "src/app/components/globe/globe.component";
+@import "../../pages/admin/pages/landing/landing.component";
+@import "../../pages/admin/pages/dashboard/dashboard.component";
+@import "../../pages/admin/pages/projects/projects/projects.component";
+@import "../../pages/admin/pages/projects/project-detail/project-detail.component";
+@import "../../pages/admin/components/gallery/gallery-manager/gallery-manager.component";
+@import "../../pages/admin/components/dashboard/statistics/statistic.component";
+@import "../../pages/admin/components/project-list/project-list.component";
+@import "../../pages/admin/components/project-data/project-data.component";
+@import "../../pages/admin/components/invite-code/invite-code.component";
+
+
+@mixin admin-layout-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .admin-layout {
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    .content {
+      overflow: auto;
+      position: relative;
+    }
+
+    @include notifications-theme($theme);
+    @include navbar-theme($theme);
+    @include info-theme($theme);
+    @include projects-theme($theme);
+    @include landing-theme($theme);
+    @include dashboard-theme($theme);
+    @include project-list-theme($theme);
+    @include statistics-theme($theme);
+    @include project-detail-theme($theme);
+    @include globe-theme($theme);
+    @include project-data-theme($theme);
+    @include gallery-manager-theme($theme);
+    @include invite-code-theme($theme);
+    // @include sidebar-account-theme($theme);
+  }
+
+  .noFill {
+    svg {
+      path {
+        fill: transparent !important;
+      }
+    }
+  }
+
+  .wrapper {
+
+    mat-sidenav-container {
+
+      mat-sidenav {
+        width: auto;
+        padding: 0px;
+        border: 0;
+        background-color: transparent;
+        overflow: visible !important;
+      }
+
+      mat-sidenav-content {
+        .content {
+          padding: 64px 8px 8px;
+        }
+      }
+
+      .mat-drawer-inner-container{
+        overflow: visible !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .main-panel .content {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  .logo-img {
+    width: 35px;
+    height: 35px;
+    display: block;
+    margin-left: 0;
+    position: relative;
+    top: 0;
+
+    img {
+      width: 35px;
+    }
+  }
+
+  .sidebar:before,
+  .off-canvas-sidebar:before {
+    border-bottom: 5px solid mat.get-color-from-palette($warn);
+  }
+
+  .sidebar {
+    &.admin {
+      background: $white;
+      max-width: 230px;
+      color: #0f0f0f !important;
+
+      .nav-link {
+        p, span {
+          color: #0f0f0f !important;
+        }
+      }
+    }
+
+    &,
+    &[data="red"] {
+      @include linear-gradient(mat.get-color-from-palette($warn), mat.get-color-from-palette($warn));
+    }
+
+    &[data="primary"] {
+      @include linear-gradient(mat.get-color-from-palette($primary), mat.get-color-from-palette($primary));
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .main-panel {
+      .content {
+        padding-left: 30px !important;
+      }
+    }
+
+    .fixed-plugin .dropdown-toggle:after {
+      display: none;
+    }
+
+    #bodyClick {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      opacity: 1;
+      top: 0;
+      right: 0;
+      left: 260px;
+      content: "";
+      z-index: 9999;
+      overflow-x: hidden;
+      background-color: transparent;
+      transition: all .5s cubic-bezier(.685, .0473, .346, 1);
+    }
+
+    .nav-open .rtl .wrapper {
+      transform: none;
+    }
+  }
+
+  .swal2-modal {
+    border: 2px solid #00734f;
+    background: white;
+  }
+
+  @media (min-width: 992px) {
+    .sidebar-mini .main-panel .content,
+    .sidebar-mini footer {
+      padding-left: 130px !important;
+    }
+  }
+}

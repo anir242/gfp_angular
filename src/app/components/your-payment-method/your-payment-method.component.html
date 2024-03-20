@@ -1,0 +1,152 @@
+<div class="container text-white p-3">
+  <div class="row">
+    <div class="col-12">
+      <div class="chivo md">{{'subscription.howPay'|translate}}</div>
+      <div class="paymentsMethods mt-3">
+        <mat-radio-group [formControl]="cardType" class="d-md-flex justify-content-between">
+          <mat-radio-button value="creditCard">
+            <div>
+              <span class="chivo xs text-white">{{'subscription.creditCard'|translate}}</span>
+            </div>
+          </mat-radio-button>
+          <!-- <div *ngIf="(!environment.production)">
+            <mat-radio-button value="paypal">
+              <div>
+                <span class="chivo xs text-white">{{'subscription.paypal'|translate}}</span>
+              </div>
+            </mat-radio-button>
+            <mat-radio-button value="applePay">
+              <div>
+                <span class="chivo xs text-white">{{'subscription.applePay'|translate}}</span>
+              </div>
+            </mat-radio-button>
+            <mat-radio-button value="googlePay">
+              <div>
+                <span class="chivo xs text-white">{{'subscription.googlePay'|translate}}</span>
+              </div>
+            </mat-radio-button>
+          </div> -->
+        </mat-radio-group>
+        <ng-container class="cardData" *ngIf="cardType.value == 'creditCard'">
+          <div *ngIf="savedPaymentMethodEnabled == true; else stripeCardInput">
+            <div
+              *ngIf="allPaymentMethods.length === 0; else atLeastOnePaymentMethod">
+              <div class="container" ngxStripeCardGroup>
+                <div class="row paymentInput">
+                  <div class="col-12">
+                    <div class="my-3">
+                      <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ng-template #atLeastOnePaymentMethod>
+              <mat-checkbox (change)="onIsPreviousCardCheckboxChange($event)">
+                <span class="text-white xs chivo">Use Previously Added Cards</span>
+                </mat-checkbox>
+              <mat-form-field *ngIf="isPreviousPaymentMethod" appearance="outline">
+                <mat-label>Select a card</mat-label>
+                <mat-select [(value)]="selectedPaymentMethodId" class="text-white">
+                  <div *ngFor="let paymentMethod of allPaymentMethods">
+                    <mat-option [value]="paymentMethod.id">
+                      {{ paymentMethod?.card?.brand | titlecase }} {{ "**** **** ****" }} {{
+                      paymentMethod?.card?.last4 }}
+                    </mat-option>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+
+              <div class="container" ngxStripeCardGroup *ngIf="!isPreviousPaymentMethod">
+                <div class="row paymentInput">
+                  <div class="col-12">
+                    <div class="my-3">
+                      <ngx-stripe-card 
+                        [options]="cardOptions" 
+                        [elementsOptions]="elementsOptions">
+                      </ngx-stripe-card>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+
+          <ng-template #stripeCardInput>
+            <div class="container" ngxStripeCardGroup>
+              <div class="row paymentInput">
+                <div class="col-12">
+                  <div class="my-3">
+                    <ngx-stripe-card
+                      [options]="cardOptions"
+                      [elementsOptions]="elementsOptions">
+                    </ngx-stripe-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+        </ng-container>
+
+        <ng-container class="cardData" *ngIf="cardType.value == 'googlePay'">
+          <ngx-stripe-payment-request-button [paymentOptions]="paymentRequestOptions"
+            (paymentMethod)="onPaymentMethod($event)" (shippingaddresschange)="onShippingAddressChange($event)"
+            (notavailable)="onNotAvailable()">
+          </ngx-stripe-payment-request-button>
+        </ng-container>
+
+        <ng-container class="cardData" *ngIf="cardType.value == 'applePay'">
+          <ngx-stripe-payment-request-button [paymentOptions]="paymentRequestOptions"
+            (paymentMethod)="onPaymentMethod($event)" (shippingaddresschange)="onShippingAddressChange($event)"
+            (notavailable)="onNotAvailable()">
+          </ngx-stripe-payment-request-button>
+        </ng-container>
+
+        <ng-container class="cardData" *ngIf="cardType.value == 'paypal'">
+          <ngx-stripe-payment-request-button [paymentOptions]="paymentRequestOptions"
+            (paymentMethod)="onPaymentMethod($event)" (shippingaddresschange)="onShippingAddressChange($event)"
+            (notavailable)="onNotAvailable()">
+          </ngx-stripe-payment-request-button>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="promo mt-4" *ngIf="summaryType !== cartTypes.GIFT && summaryType !== cartTypes.SUBSCRIPTION && integrationType !== 'nativa'">
+        <span class="mat-subheading-2">{{'subscription.addPromoCode'|translate}}</span>
+        <app-mat-input class="mt-4 mb-4" label="subscription.promoCodeNumber" [control]="code">
+        </app-mat-input>
+      </div>
+    </div>
+    <div class="col-12">
+      <mat-checkbox [formControl]="agreeTermsOfUse" *ngIf="integrationType !== 'nativa'">
+        <span class="mat-caption text-white">
+          {{'singleDonations.agreeTermsOfUse'| translate}}
+        </span>
+      </mat-checkbox>
+      <mat-checkbox [formControl]="agreeTermsOfUse" [required]="true" *ngIf="integrationType === 'nativa'" >
+        <span class="mat-caption text-white fw-bold" >
+          *{{'nativa.privacyConsent'| translate}} 
+          <span class="mat-caption fw-bold" id="click-here" (click)="navigateToPrivacyPolicy()">{{'nativa.privacyPolicy'| translate}}</span>
+        </span>
+      </mat-checkbox>
+      <mat-checkbox [formControl]="marketingConsentControl" *ngIf="integrationType === 'nativa'">
+        <span class="mat-caption text-white">
+          {{'nativa.marketingConsent'| translate}}
+        </span>
+      </mat-checkbox>
+      <div class="d-md-none my-3" style="background-color: #8fdf82;">
+        <app-order-summary [costDescription]="summaryCostDescription" [title]="summaryTitle"
+          [summaryType]="summaryType"></app-order-summary>
+      </div>
+      <div class="text-end save">
+        <button class="mt-2 proceedCheckout" mat-raised-button color="yellow" [disabled]="!agreeTermsOfUse.valid" *ngIf="integrationType !== 'nativa'"
+          matStepperNext (click)="sendData()">{{buttonText}}</button>
+        <button class="mt-2 proceedCheckout mb-3 mb-md-0 me-md-3" mat-stroked-button color="yellow"  *ngIf="integrationType === 'nativa'"
+          matStepperPrevious >{{ "nativa.prevSection" | translate }}</button>
+        <button class="mt-2 proceedCheckout " mat-raised-button color="yellow" [disabled]="!agreeTermsOfUse.valid" *ngIf="integrationType === 'nativa'"
+          matStepperNext (click)="sendData()">{{ "nativa.stepThree.proceedPayment" | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

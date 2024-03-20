@@ -1,0 +1,462 @@
+<div id="impact_card_preview_wrapper" class="">
+  <carousel
+    [height]="720"
+    [cellWidth]="windowWidth > 992 ? 540 : 300"
+    [width]="windowWidth > 992 ? 694 : 370"
+    [cellsToShow]="1"
+  >
+    <div class="carousel-cell" [ngClass]="{ 'w-auto': windowWidth < 412 }">
+      <div [style]="windowWidth > 992 ? 'width:542px;' : 'width:302px;'">
+        <h1 class="fw-semibold fs-2 black">{{
+          "yourImpact.previewYourImpactCards" | translate
+        }}</h1>
+      <mat-icon class="close"  mat-dialog-close >clear</mat-icon>
+      </div>
+      <div
+        #total
+        id="impact_card"
+        class="img_summary pt-lg-4 mb-5 bg-cover pt-2"
+        [ngClass]="{ 'w-300 h-300': windowWidth < 992 }"
+      >
+        <div
+          id="top_bar"
+          class="d-flex justify-content-between align-items-center my-0 mx-4"
+        >
+          <span id="your_impact">{{
+            "orderSummary.totalTitle" | translate | uppercase
+          }}</span>
+          <div id="impact_type_parent" class="d-flex align-items-center">
+            <img
+              src="../../../../../assets/images/mark_only_logo.webp"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <div class="fw-light p-1 p-lg-4 mt-1  chivo summary-main">
+          <span [class]=" windowWidth > 992 ?'fw-light fs-4 lh-1' : 'body'">{{
+            "dashboard.co2Offset" | translate
+          }}</span>
+          <div class="d-flex gap-2 my-lg-3 summary-main-subtitle align-items-center">
+            <img src="assets/images/icons/co2.svg" alt="" />
+            <span *ngIf="co2.unit === 'tonne'; else kgc" [class]="windowWidth > 992 ? 'title-2 fw-lighter' : 'title-4 fw-lighter'"><span class="fw-normal">{{co2.value}}</span> {{
+              "subscriptionDetails.tonnes" | translate
+            }}</span>
+            <ng-template #kgc>
+              <span [class]="windowWidth > 992 ? 'title-3' : 'title-4'"><span>{{co2.value}}</span>kg</span>
+            </ng-template>
+          </div>
+          <div class="d-flex gap-lg-5 gap-1 my-1 totals my-lg-3 ">
+            <div class="d-flex gap-2 align-items-end">
+              <img class="icon" src="assets/images/icons/science.svg" alt="" />
+              <div class="d-flex flex-column">
+                <span [class]="windowWidth > 992 ? 'title-3 fw-lighter' : 'title-4 fw-lighter'"><span class="fw-normal">{{co2NotCertified}}</span> {{
+                  "subscriptionDetails.tonnes" | translate
+                }}</span>
+                <span  class="title-4 fs-6 fw-lighter">{{
+                  "yourImpact.scienceBackedDescription" | translate
+                }}</span>
+              </div>
+            </div>
+            <div class="d-flex gap-2 align-items-end">
+              <img
+                class="icon"
+                src="assets/images/icons/certified.svg"
+                alt=""
+              />
+              <div class="d-flex flex-column">
+                <span  [class]="windowWidth > 992 ? 'title-3 fw-lighter' : 'title-4 fw-lighter'"><span class="fw-normal">{{co2Certified}}</span> {{
+                  "subscriptionDetails.tonnes" | translate
+                }}</span>
+                <span class="title-4 fw-lighter"> {{
+                  "yourImpact.tonsCertifiedDescription" | translate
+                }}</span>
+              </div>
+            </div>
+          </div>
+          <hr class="my-1 my-lg-5"/>
+          <span [class]=" windowWidth > 992 ?'fw-light fs-4 lh-1' : 'body'">{{
+            "yourImpact.howYouOffsetIt" | translate
+          }}</span>
+          <div class="d-flex gap-lg-5 gap-1 my-1 totals my-lg-3">
+            <div class="d-flex gap-2 align-items-end">
+              <img class="icon" src="assets/images/icons/restoration.svg" alt="" />
+              <div class="d-flex flex-column">
+                <span [class]="windowWidth > 992 ? 'title-3 fw-lighter fs-6' : 'title-4 fw-lighter'">{{
+                  "yourImpact.byplanting" | translate
+                }}</span>
+                <span class="title-4 fw-lighter"><span class="fw-normal">{{trees}}</span> {{
+                  "gift.tree" | translate
+                }}</span>
+              </div>
+            </div>
+            <div class="d-flex gap-2 align-items-end">
+              <img
+                class="icon"
+                src="assets/images/icons/preservation.svg"
+                alt=""
+              />
+              <div class="d-flex flex-column">
+                <span [class]="windowWidth > 992 ? 'title-3 fw-lighter  fs-6' : 'title-4 fw-lighter'">{{
+                  "yourImpact.byprotecting" | translate
+                }}</span>
+                <span class="title-4 fw-lighter"><span class="fw-normal">{{hectares.value?.toFixed(2)}}</span> {{
+                  "about.hectares" | translate
+                }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex gap-2 totals my-0 align-items-end">
+            <img class="icon" src="assets/images/icons/renewable.svg" alt="" />
+           <div class="d-flex flex-column">
+            <span [class]="windowWidth > 992 ? 'title-3 fw-lighter fs-6' : 'title-4 fw-lighter fs-6'">{{
+              "yourImpact.byproducing" | translate
+            }}</span>
+            <span class="title-4"><span class="fw-normal">{{kwh}}</span> kw/h</span>
+           </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end px-2 mt-1">
+          <div class="d-flex gap-2 align-items-center offset">
+              <span [class]="windowWidth > 992 ? 'fs-5 fw-light': 'fs-7 fw-light'">{{
+                "yourImpact.offsetBreakdown" | translate
+              }}</span>
+              <img class="icon" src="assets/images/icons/long-arrow.svg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-4 justify-content-center"   [ngClass]="{ 'flex-column':windowWidth < 992 }">
+        <button
+          mat-raised-button
+          [disabled]="shareClicked"
+          color="yellow"
+          (click)="download('total_Summary.jpeg',0)"
+        >
+        <img class="download-icon mx-1" src="assets/images/icons/arrow-down.svg" alt="">
+          {{
+            "yourImpact.downloadImpactCard" | translate
+          }}
+        </button>
+        <button
+          mat-stroked-button
+          [disabled]="downloadClicked"
+          color="green"
+          (click)="downloadAll()"
+        >
+        {{
+          "yourImpact.downloadAllImpactCards" | translate
+        }}
+        </button>
+      </div>
+    </div>
+
+    <div class="carousel-cell" [ngClass]="{ 'w-auto': windowWidth < 412 }">
+      <div [style]="windowWidth > 992 ? 'width:542px;' : 'width:302px;'">
+        <h1 class="fw-semibold fs-2">{{
+          "yourImpact.previewYourImpactCards" | translate
+        }}</h1>
+      <mat-icon class="close"  mat-dialog-close >clear</mat-icon>
+      </div>
+      <div
+        id="impact_card"
+        class="img_preservation mb-5 pt-4"
+        [ngClass]="{ 'w-300 h-300': windowWidth < 992 }"
+      >
+        <div
+          id="top_bar"
+          class="d-flex justify-content-between align-items-center my-0 mx-4"
+        >
+          <span id="your_impact">{{
+            "orderSummary.title" | translate | uppercase
+          }}</span>
+          <div id="impact_type_parent" class="d-flex align-items-center">
+            <span id="impact_type" class="bg_preservation lato">{{
+              "breadcrumb.preservation" | translate
+            }}</span>
+            <img
+              src="../../../../../assets/images/mark_only_logo.webp"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <div id="lines" class="d-flex flex-column m-4">
+          <div *ngIf="hectares.unit === 'ha'; else m2">
+            <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+              {{
+                "impactCard.preservation.line1_hectare"
+                  | translate : { value: hectares.value | number }
+              }}
+            </div>
+          </div>
+          <ng-template #m2>
+            <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+              {{
+                "impactCard.preservation.line1_m2"
+                  | translate : { value: hectares.value | number }
+              }}
+            </div>
+          </ng-template>
+          <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+            {{ "impactCard.preservation.line2" | translate }}
+          </div>
+          <div [class]="windowWidth > 992 ? 'example_line mt-3 text_preservation' : 'title-3 text_preservation'">
+            {{
+              "impactCard.preservation.line3"
+                | translate : { value: tennisCourts | number }
+            }}
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-4 justify-content-center" [ngClass]="{ 'flex-column':windowWidth < 992 }">
+        <button
+          mat-raised-button
+          [disabled]="shareClicked"
+          color="yellow"
+          (click)="download('preservation.jpeg',1)"
+        >
+      <img class="download-icon mx-1" src="assets/images/icons/arrow-down.svg" alt="">
+      {{
+        "yourImpact.downloadImpactCard" | translate
+      }}
+      </button>
+        <button
+          mat-stroked-button
+          [disabled]="downloadClicked"
+          color="green"
+          (click)="downloadAll()"
+        >
+        {{
+          "yourImpact.downloadAllImpactCards" | translate
+        }}
+        </button>
+      </div>
+    </div>
+
+    <div class="carousel-cell" [ngClass]="{ 'w-auto': windowWidth < 412 }">
+      <div [style]="windowWidth > 992 ? 'width:542px;' : 'width:302px;'">
+        <h1 class="fw-semibold fs-2">{{
+          "yourImpact.previewYourImpactCards" | translate
+        }}</h1>
+      <mat-icon class="close"  mat-dialog-close >clear</mat-icon>
+      </div>
+      <div
+        id="impact_card"
+        class="img_carbon_offset mb-5 pt-4"
+        [ngClass]="{ 'w-300 h-300': windowWidth < 992 }"
+      >
+        <div
+          id="top_bar"
+          class="d-flex justify-content-between align-items-center my-0 mx-4"
+        >
+          <span id="your_impact">{{
+            "orderSummary.title" | translate | uppercase
+          }}</span>
+          <div id="impact_type_parent" class="d-flex align-items-center">
+            <span id="impact_type" class="bg_carbon_offset lato">{{
+              "landingPublic.menu.children.co2" | translate
+            }}</span>
+            <img
+              src="../../../../../assets/images/mark_only_logo.webp"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <div id="lines" class="d-flex flex-column m-4">
+          <div *ngIf="co2.unit === 'tonne'; else kg">
+            <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+              {{
+                "impactCard.carbon_offset.line1_tonne"
+                  | translate : { value: co2.value | number }
+              }}
+            </div>
+          </div>
+          <ng-template #kg>
+            <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+              {{
+                "impactCard.carbon_offset.line1_kg"
+                  | translate : { value: co2.value | number }
+              }}
+            </div>
+          </ng-template>
+          <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+            {{ "impactCard.carbon_offset.line2" | translate }}
+          </div>
+          <div [class]="windowWidth > 992 ? 'example_line mt-3 text_carbon_offset' : 'title-3 text_carbon_offset'">
+            {{
+              "impactCard.carbon_offset.line3"
+                | translate : { value: flights | number }
+            }}
+          </div>
+          <div [class]="windowWidth > 992 ? 'example_line text_carbon_offset' : 'title-3 text_carbon_offset'">
+            {{ "impactCard.carbon_offset.line4" | translate }}
+          </div>
+          <div [class]="windowWidth > 992 ? 'smaller_line text_carbon_offset' : 'title-3 text_carbon_offset'">
+            {{ "impactCard.carbon_offset.line5" | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-4 justify-content-center" [ngClass]="{ 'flex-column':windowWidth < 992 }">
+        <button
+          mat-raised-button
+          [disabled]="shareClicked"
+          color="yellow"
+          (click)="download('carbon_offset.jpeg',2)"
+        >
+      <img class="download-icon mx-1" src="assets/images/icons/arrow-down.svg" alt="">
+      {{
+        "yourImpact.downloadImpactCard" | translate
+      }}
+      </button>
+        <button
+          mat-stroked-button
+          [disabled]="downloadClicked"
+          color="green"
+          (click)="downloadAll()"
+        >
+        {{
+          "yourImpact.downloadAllImpactCards" | translate
+        }}
+        </button>
+      </div>
+    </div>
+
+    <div class="carousel-cell" [ngClass]="{ 'w-auto': windowWidth < 412 }">
+      <div [style]="windowWidth > 992 ? 'width:542px;' : 'width:302px;'">
+        <h1 class="fw-semibold fs-2">{{
+          "yourImpact.previewYourImpactCards" | translate
+        }}</h1>
+      <mat-icon class="close"  mat-dialog-close >clear</mat-icon>
+      </div>
+      <div
+        id="impact_card"
+        class="img_restoration mb-5 pt-4"
+        [ngClass]="{ 'w-300 h-300': windowWidth < 992 }"
+      >
+        <div
+          id="top_bar"
+          class="d-flex justify-content-between align-items-center my-0 mx-4"
+        >
+          <span id="your_impact">{{
+            "orderSummary.title" | translate | uppercase
+          }}</span>
+          <div id="impact_type_parent" class="d-flex align-items-center">
+            <span id="impact_type" class="bg_restoration lato">{{
+              "breadcrumb.restoration" | translate
+            }}</span>
+            <img
+              src="../../../../../assets/images/mark_only_logo.webp"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <div id="lines" class="d-flex flex-column m-4">
+          <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+            {{
+              "impactCard.restoration.line1"
+                | translate : { value: trees | number }
+            }}
+          </div>
+          <div [class]="windowWidth > 992 ? 'line' : 'title-3'">
+            {{ "impactCard.restoration.line2" | translate }}
+          </div>
+          <div [class]="windowWidth > 992 ? 'example_line mt-3 text_restoration' : 'title-3 text_restoration'">
+            {{
+              "impactCard.restoration.line3"
+                | translate : { value: tennisCourts | number }
+            }}
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-4 justify-content-center" [ngClass]="{ 'flex-column':windowWidth < 992 }">
+        <button
+          mat-raised-button
+          [disabled]="shareClicked"
+          color="yellow"
+          (click)="download('restoration.jpeg',3)"
+        >
+      <img class="download-icon mx-1" src="assets/images/icons/arrow-down.svg" alt="">
+      {{
+        "yourImpact.downloadImpactCard" | translate
+      }}
+      </button>
+        <button
+          mat-stroked-button
+          [disabled]="downloadClicked"
+          color="green"
+          (click)="downloadAll()"
+        >
+        {{
+          "yourImpact.downloadAllImpactCards" | translate
+        }}
+        </button>
+      </div>
+    </div>
+    
+    <div class="carousel-cell" [ngClass]="{ 'w-auto': windowWidth < 412 }">
+      <div [style]="windowWidth > 992 ? 'width:542px;' : 'width:302px;'">
+        <h1 class="fw-semibold fs-2">{{
+          "yourImpact.previewYourImpactCards" | translate
+        }}</h1>
+      <mat-icon class="close"  mat-dialog-close >clear</mat-icon>
+      </div>
+      <div
+        id="impact_card"
+        class="img_renewable mb-5 pt-4"
+        [ngClass]="{ 'w-300 h-300': windowWidth < 992 }"
+      >
+        <div
+          id="top_bar"
+          class="d-flex justify-content-between align-items-center my-0 mx-4"
+        >
+          <span id="your_impact">{{
+            "orderSummary.title" | translate | uppercase
+          }}</span>
+          <div id="impact_type_parent" class="d-flex align-items-center">
+            <span id="impact_type" class="bg_renewable lato">{{
+              "breadcrumb.renewable_energy" | translate
+            }}</span>
+            <img
+              src="../../../../../assets/images/mark_only_logo.webp"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <div id="lines" class="d-flex flex-column m-4">
+          <div [class]="windowWidth > 992 ? 'line' : 'title-3'">{{ "impactCard.renewable.line1" | translate }}</div>
+          <div [class]="windowWidth > 992 ? 'line' : 'title-3'">{{ "impactCard.renewable.line2" | translate }}</div>
+          <div [class]="windowWidth > 992 ? 'example_line mt-3 text_renewable' : 'title-3 text_renewable'">
+            {{
+              "impactCard.renewable.line3"
+                | translate : { value: households | number }
+            }}
+          </div>
+          <div [class]="windowWidth > 992 ? 'smaller_line text_renewable' : 'title-3 text_renewable'">
+            {{ "impactCard.renewable.line4" | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-4 justify-content-center" [ngClass]="{ 'flex-column':windowWidth < 992 }">
+        <button
+          mat-raised-button
+          [disabled]="shareClicked"
+          color="yellow"
+          (click)="download('renewable_energy.jpeg',4)"
+        >
+      <img class="download-icon mx-1" src="assets/images/icons/arrow-down.svg" alt="">
+      {{
+        "yourImpact.downloadImpactCard" | translate
+      }}
+      </button>
+        <button
+          mat-stroked-button
+          [disabled]="downloadClicked"
+          color="green"
+          (click)="downloadAll()"
+        >
+        {{
+          "yourImpact.downloadAllImpactCards" | translate
+        }}
+        </button>
+      </div>
+    </div>
+  </carousel>
+</div>

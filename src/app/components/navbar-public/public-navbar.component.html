@@ -1,0 +1,125 @@
+<mat-toolbar class="fixed-top" [ngClass]="{'px-4 pt-4 overflow-hidden': windowWidth < 600}" #toolbar [color]="((router.url === '/article') || scrollY > 0) ? 'dark': ''">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid p-0">
+        <div class="d-flex justify-content-between w-100 d-lg-none">
+          <div class="logo me-0">
+            <a class="navbar-brand me-0" href="#">
+              <img src="/assets/images/svg/logo_full.svg">
+            </a>
+          </div>
+          <div class="d-flex justify-content-end">
+           <div *ngIf="!opened">
+            <button mat-icon-button [color]="lang =='en'?'yellow':'transparent'" (click)="setLang('en')">
+              <img width="24" src="assets/images/en.svg" />
+            </button>
+            <button  mat-icon-button [color]="lang =='it'?'yellow':'transparent'" (click)="setLang('it')">
+              <img width="24" src="assets/images/it.svg" />
+            </button>
+           </div>
+            <button mat-icon-button color="transparent" (click)="toggleSidenav.emit();isOpened()">
+              <mat-icon  *ngIf="!opened">menu</mat-icon>
+              <!-- <mat-icon  *ngIf="opened">clear</mat-icon> -->
+              <!-- <img *ngIf="opened"  src="../../../assets/images/close.svg"></img> -->
+              <img style="width: 20px"  *ngIf="opened" src="../../../assets/images/close.svg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="logo d-none d-lg-block me-0">
+          <a class="navbar-brand me-0" href="#">
+
+            <img class="logoDesktop" src="/assets/images/svg/logo.svg">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse ms-3">
+          <ul class="navbar-nav">
+            <li class="nav-item" [class.dropdown]="item.children" [class.active]="item.active" *ngFor="let item of menuItemsApp">
+              <ng-container *ngIf="item.children && item.visible !== false">
+                <a class="title-4 nav-link mat-subheading-1 nav-item-title" [ngClass]="item.children ? 'dropdown-toggle' : ''" [href]="item.route" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{'landingPublic.menu.' + item.displayName | translate}}
+                </a>
+                <ul class="dropdown-menu" *ngIf="item.children">
+                    <div class="dropdown-title lato xxs p-2" *ngIf="item.displayName == 'home'">
+                      <span>{{'landingPublic.menu.iAmA' | translate}}</span>
+                      <mat-divider class="mt-2 mb-2" color="gray"></mat-divider>
+                    </div>
+                  <ng-container *ngFor="let drop of item.children">
+                    <li *ngIf="drop.visible != false && !drop.store && (!drop.type || drop.type == clientType)">
+                        <a class="dropdown-item bg-white" [class.active]="drop.active" [href]="lang == 'it' && drop.route_it ? item.route + drop.route_it : item.route + drop.route" (click)="item.store ? store(item.store) : null" [target]="drop.displayName == 'blog'? '_blank':''">
+                          <div class="d-flex align-items-center w-100 pt-1 pb-1">
+                            <img [src]="'/assets/images/public/menu/'+drop.image+'.svg'" class="me-3" *ngIf="drop.image">
+                            <span class="text-black nav-item-item" [innerHTML]="'landingPublic.menu.children.' + drop.displayName | translate"></span>
+                          </div>
+                        </a>
+                    </li>
+                    <li *ngIf="drop.visible != false && drop.store && (!drop.type || drop.type == clientType)">
+                      <a class="dropdown-item text-black nav-item-item" (click)="store(drop.store)">
+                        {{'landingPublic.menu.children.' + drop.displayName | translate}}
+                      </a>
+                    </li>
+                  </ng-container>
+                </ul>
+              </ng-container>
+              <ng-container *ngIf="!item.children && item.visible !== false">
+                <ng-container *ngIf="item.displayName !== 'logout'">
+                  <a class="title-4 nav-link mat-subheading-1 nav-item-title" [href]="item.route" role="button" aria-expanded="false">{{'landingPublic.menu.' + item.displayName | translate}}</a>
+                </ng-container>
+              </ng-container>
+            </li>
+          </ul>
+        </div>
+
+        <!--        <div class="d-md-none">
+                  <button mat-icon-button color="transparent" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="beforeMenu">
+                    <mat-icon [matBadge]="nElements" [matBadgeHidden]="nElements===0" matBadgeColor="warn">shopping_cart
+                    </mat-icon>
+                  </button>
+                  <mat-menu class="d-none d-md-block" #beforeMenu="matMenu" xPosition="before">
+                    &lt;!&ndash;<app-gift-cart-popup (closed)="setState($event)"></app-gift-cart-popup>&ndash;&gt;
+                  </mat-menu>
+                </div>-->
+        <div class="d-flex">
+          <!-- TODO: popup languages change -->
+          <div class="configbar d-none d-lg-flex" (click)="openLocaleModal()">
+            <div class="d-flex align-items-center">
+              <img src="assets/images/{{lang}}.svg" class="flag" />
+            </div>
+
+            <div class="d-flex align-items-center">
+              <img src="/assets/images/svg/globe_light.svg" height="16px" width="16px">
+              <span class="title-4 ms-2">{{selectedRegion}}</span>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <span class="title-4">{{selectedCurrency}}</span>
+            </div>
+          </div>
+          <div class="d-none d-lg-block">
+            <button mat-icon-button color="transparent" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="beforeMenu" class="me-3">
+              <mat-icon [matBadge]="nElements" [matBadgeHidden]="nElements===0" matBadgeColor="warn">
+                shopping_cart
+              </mat-icon>
+            </button>
+            <mat-menu #beforeMenu="matMenu" xPosition="before">
+              <app-gift-cart-popup (closed)="setState($event)"></app-gift-cart-popup>
+            </mat-menu>
+          </div>
+          <ng-container *ngIf="username || authenticated, else noLog">
+            <div class="d-none d-lg-block">
+              <button mat-button class="login" color='white' (click)="admin()">
+                {{username}}
+              </button>
+            </div>
+          </ng-container>
+          <ng-template #noLog>
+            <div class="d-none d-lg-block access">
+              <button mat-raised-button color="yellow" [routerLink]="['admin']">
+                {{'landingPublic.menu.access'|translate}}
+              </button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </nav>
+  </div>
+</mat-toolbar>

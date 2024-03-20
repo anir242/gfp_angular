@@ -1,0 +1,19 @@
+<div class="container-fluid text-white">
+  <div class="row gy-1">
+    <div class="col-12">
+      <p class="mat-body-2 mb-1">{{'singleDonations.billing'|translate}}</p>
+    </div>
+    <ng-container *ngFor="let item of items">
+      <div class="col-12" *ngIf="item?.show !== false">
+        <div class="d-flex">
+          <div class="me-1">
+            <p class="mat-body-2 mb-0">{{item.title}}:</p>
+          </div>
+          <div>
+            <p class="mat-body-1 mb-0">{{item.value}}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

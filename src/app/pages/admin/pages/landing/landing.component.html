@@ -1,0 +1,364 @@
+<div class="container-fluid p-0">
+  <div class="row g-0">
+    <div class="col-12">
+      <div class="gradientHome position-relative">
+        <div
+          class="position-absolute top-0 pt-4 container d-flex justify-content-end"
+        >
+          <div class="d-lg-block d-none">
+            <div
+              class="configbar d-none d-lg-flex align-items-center justify-content-end d-inline-block"
+              (click)="openLocaleModal()"
+            >
+              <div class="d-flex align-items-center">
+                <img src="assets/images/{{ lang }}.svg" class="flag" />
+              </div>
+
+              <div class="d-flex align-items-center">
+                <img
+                  src="/assets/images/svg/globe_light.svg"
+                  height="16px"
+                  width="16px"
+                />
+                <span class="title-4 ms-2">{{ selectedRegion }}</span>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <span class="title-4">{{ selectedCurrency }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="page">
+                <div class="hello mb-3">
+                  <h1 class="chivo xxl text-uppercase fw-light text-white">
+                    {{
+                      "landing.hi"
+                        | translate : { name: firstName ? firstName : "" }
+                    }}
+                  </h1>
+                </div>
+                <div class="container-fluid p-0" *ngIf="countersInterface">
+                  <div class="row">
+                    <div class="col-12 col-lg-6">
+                      <div class="subtitle">
+                        <p class="lato sm">
+                          {{ "landing.subtitle" | translate }}
+                        </p>
+                      </div>
+                      <div class="subscriptionUser">
+                        <span class="mat-body-2">{{ userSubscription }}</span>
+                      </div>
+                      <div class="statistics mt-5">
+                        <div class="row">
+                          <div
+                            class="col-12 mt-3 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="chivo md bold text-white">
+                              {{ "projectDetails.yourImpact" | translate }}
+                            </div>
+                            <a
+                              mat-raised-button
+                              href="/admin/projects/"
+                              color="yellow"
+                              matTooltip="{{ 'admin.addImpact' | translate }}"
+                              aria-label="Button that displays a tooltip when focused or hovered over"
+                            >
+                              <div class="d-flex align-items-center mt-1">
+                                <svg-icon
+                                  src="assets/images/svg/impact.svg"
+                                ></svg-icon>
+                                <span>{{ "admin.addImpact" | translate }}</span>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="col-12 col-xl-6 mt-3">
+                            <div class="d-block statistic p-3">
+                              <img
+                                src="assets/images/icons/co2.svg"
+                                alt="CO2"
+                              />
+                              <div class="mt-4">
+                                <div class="d-none d-md-block">
+                                  <!-- problema font -->
+                                  <p class="chivo xl mb-2" *ngIf="totalTons >= 1">
+                                    {{ "admin.tons" | translate : {tons: totalTons} }}
+                                  </p>
+                                  <p class="chivo xl mb-2" *ngIf="totalTons < 1">
+                                    {{"admin.kg" | translate : {kg: totalKg} }}
+                                  </p>
+                                </div>
+                                <div class="d-md-none">
+                                  <p class="chivo xl mb-2" *ngIf="totalTons >= 1">
+                                    {{"admin.tons" | translate : { tons: totalTons } }}
+                                  </p>
+                                  <p class="chivo xl mb-2" *ngIf="totalTons < 1">
+                                    {{"admin.kg" | translate : { kg: totalKg } }}
+                                  </p>
+                                </div>
+                                <p class="lato xs m-0">
+                                  {{ "admin.total" | translate }}
+                                  CO<sub>2</sub>
+                                  {{ "admin.offset" | translate }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xl-6 mt-3">
+                            <div class="d-block statistic p-3">
+                              <img
+                                src="assets/images/icons/restoration.svg"
+                                alt="Restoration"
+                              />
+                              <div class="mt-4">
+                                <p
+                                  class="chivo xl mb-2"
+                                  *ngIf="totalTrees == 1"
+                                >
+                                  {{
+                                    "admin.tree"
+                                      | translate : { trees: totalTrees }
+                                  }}
+                                </p>
+                                <p
+                                  class="chivo xl mb-2"
+                                  *ngIf="totalTrees != 1"
+                                >
+                                  {{
+                                    "admin.trees"
+                                      | translate : { trees: totalTrees }
+                                  }}
+                                </p>
+                                <p class="lato xs m-0">
+                                  {{ "admin.planted" | translate }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xl-6 mt-3">
+                            <div class="d-block statistic p-3">
+                              <img
+                                src="assets/images/icons/preservation.svg"
+                                alt="Preservation"
+                              />
+                              <div class="mt-4">
+                                <p
+                                  class="chivo xl mb-2"
+                                  *ngIf="totalHectares > 1"
+                                >
+                                  {{
+                                    "admin.hectares"
+                                      | translate : { hectares: totalHectares }
+                                  }}
+                                </p>
+                                <p
+                                  class="chivo xl mb-2"
+                                  *ngIf="totalHectares == 1"
+                                >
+                                  {{
+                                    "admin.hectare"
+                                      | translate : { hectares: totalHectares }
+                                  }}
+                                </p>
+                                <p
+                                  class="chivo xl mb-2"
+                                  *ngIf="totalHectares < 1"
+                                >
+                                  {{
+                                    "admin.m2" | translate : { m2: totalM2 }
+                                  }}m<sup>2</sup>
+                                </p>
+                                <p class="lato xs m-0">
+                                  {{ "admin.protected" | translate }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xl-6 mt-3">
+                            <div class="d-block statistic p-3">
+                              <img
+                                src="assets/images/icons/renewable.svg"
+                                alt="Renewable"
+                              />
+                              <div class="mt-4">
+                                <p class="chivo xl mb-2">
+                                  {{
+                                    "admin.kw" | translate : { kw: totalKwH }
+                                  }}
+                                </p>
+                                <p class="lato xs m-0">
+                                  {{ "admin.produced" | translate }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex mt-3">
+                          <fa-icon
+                            [icon]="['far', 'circle-exclamation']"
+                            size="lg"
+                          ></fa-icon>
+                          <span style="margin-left: 6px">{{
+                            "admin.disclaimer" | translate
+                          }}</span>
+                        </div>
+                      </div>
+                      <div class="buttons mt-4 d-none">
+                        <button
+                          mat-stroked-button
+                          (click)="this.inviteAFriend()"
+                          class="noFill"
+                          color="yellow"
+                        >
+                          {{ "admin.inviteAFriend" | translate }}
+                          <svg-icon
+                            src="assets/images/svg/letter.svg"
+                          ></svg-icon>
+                        </button>
+                        <button
+                          color="yellow"
+                          mat-icon-button
+                          class="ms-2 noFill"
+                          (click)="retrieveUrlReport()"
+                        >
+                          <svg-icon
+                            class="share"
+                            src="assets/images/svg/share.svg"
+                          ></svg-icon>
+                        </button>
+                      </div>
+                      <app-invite-code></app-invite-code>
+                    </div>
+                    <div class="col-12 col-lg-6 order-3 order-md-2">
+                      <div class="globe d-none d-md-block">
+                        <app-globe [isDashboardHome]="true"></app-globe>
+                      </div>
+                      <div class="d-flex justify-content-center order-md-5">
+                        <div class="mt-2 d-none d-md-block">
+                          <svg-icon
+                            class="rotation"
+                            src="assets/images/svg/rotation.svg"
+                          ></svg-icon>
+                          <span class="ms-2 mat-caption text-center">{{
+                            "admin.clickAndDrag" | translate
+                          }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="projectsContainers">
+              <app-project-list
+                [projectsInterface]="projectsInterface"
+                [isAdmin]="true"
+              ></app-project-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="text-start">
+        <mat-tab-group
+          mat-align-tabs="start"
+          *ngIf="countersInterface"
+          id="carousel"
+        >
+          <mat-tab label="{{ 'subscription.totalC02OffStetted' | translate }}">
+            <app-co2-offsetted
+              [id]="0"
+              [kwh]="totalKwH"
+              [hectares]="totalHectares"
+              [trees]="totalTrees"
+              [totalCo2]="totalTons"
+              [co2Certified]="tonsCertified"
+              [co2NotCertified]="tonsNotCertified"
+              [name]="
+                firstName
+                  ? isItalian()
+                    ? firstName
+                    : firstName + '\'s'
+                  : translate.instant('projectDetails.your')
+              "
+            >
+            </app-co2-offsetted>
+          </mat-tab>
+          <mat-tab label="{{ 'subscription.treesPlanted' | translate }}">
+            <app-real-data
+            [kwh]="totalKwH"
+            [hectares]="totalHectares"
+              [trees]="totalTrees"
+              [id]="0"
+              [totalCo2]="totalTons"
+              [countersInterface]="countersInterface"
+              [type]="projectTypes.restoration"
+              [co2Certified]="tonsCertified"
+              [co2NotCertified]="tonsNotCertified"
+              [name]="
+                firstName
+                  ? isItalian()
+                    ? firstName
+                    : firstName + '\'s'
+                  : translate.instant('projectDetails.your')
+              "
+            ></app-real-data>
+          </mat-tab>
+          <mat-tab label="{{ 'subscription.hectaresProtected' | translate }}">
+            <app-real-data
+              [trees]="totalTrees"
+              [hectares]="totalHectares"
+              [kwh]="totalKwH"
+              [id]="0"
+              [totalCo2]="totalTons"
+              [countersInterface]="countersInterface"
+              [type]="projectTypes.preservation"
+              [co2Certified]="tonsCertified"
+              [co2NotCertified]="tonsNotCertified"
+              [name]="
+                firstName
+                  ? isItalian()
+                    ? firstName
+                    : firstName + '\'s'
+                  : translate.instant('projectDetails.your')
+              "
+            ></app-real-data>
+          </mat-tab>
+          <mat-tab label="{{ 'settings.kwhProduced' | translate }}">
+            <app-real-data
+              [trees]="totalTrees"
+              [kwh]="totalKwH"
+              [hectares]="totalHectares"
+              [id]="0"
+              [totalCo2]="totalTons"
+              [countersInterface]="countersInterface"
+              [type]="projectTypes.renewable_energy"
+              [co2Certified]="tonsCertified"
+              [co2NotCertified]="tonsNotCertified"
+              [name]="
+                firstName
+                  ? isItalian()
+                    ? firstName
+                    : firstName + '\'s'
+                  : translate.instant('projectDetails.your')
+              "
+            ></app-real-data>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

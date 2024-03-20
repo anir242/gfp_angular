@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin account-billing-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .accountBilling {
+    /*background: $background1 !important;*/
+    /*background-image: url('../../../../../assets/images/bg_dashboard.jpg');*/
+    /*background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;*/
+
+    .mat-divider {
+      display: none;
+
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+    }
+
+    .image {
+      overflow: hidden;
+      background-color: $background-image-color;
+      width: 74px;
+      height: 74px;
+      border-radius: 50px;
+    }
+
+    .edit {
+      width: 5rem;
+    }
+
+    .spaceBetween {
+      margin-top: 1rem;
+    }
+
+    .statistics {
+      background-color: rgba(240,240,240,.05);
+      border-radius: 12px;
+      padding: 0px 20px 20px;
+    }
+  }
+}
+
+

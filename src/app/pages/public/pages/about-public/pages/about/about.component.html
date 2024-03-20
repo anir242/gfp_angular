@@ -1,0 +1,93 @@
+<div class="content" id="aboutPublic">
+  <div class="bannerGrad">
+    <div class="container pt-5">
+      <div class="row g-0 pt-5">
+        <div class="col-12 pt-5">
+          <div class="mb-1">
+            <span [ngClass]="isSmallScreen ? 'title-1' : 'headline'">{{'aboutGFP.about'|translate | uppercase }}</span>
+          </div>
+          <div class="mb-4">
+            <span [ngClass]="isSmallScreen ? 'body' : 'large-body'">{{'aboutGFP.we'| translate }}</span>
+          </div>
+
+          <!-- carousel loop is not working -->
+          <div class="d-flex justify-content-center ">
+          <carousel [arrows]="isMediumScreen ? isMobile ? false : true : false " [height]="220" [width]="isMediumScreen ? isMobile ? '' : 500 : '' " [dots]="true" [margin]="15" [cellsToScroll]="1" [cellsToShow]="isMediumScreen ? 1 : 3 ">
+            <!-- <ng-container *ngFor="let item of infiniteArr"> -->
+              <div class="box">
+                <div class="d-flex align-items-center">
+                  <img src="/assets/images/public/about/purpose_blue.svg">
+                  <div class="title-2 ms-3">{{'aboutGFP.ourPurpose' | translate}}</div>
+                </div>
+                <div class="small-body mt-3">
+                  {{'aboutGFP.toReverse' | translate}}
+                </div>
+              </div>
+              <div class="box">
+                <div class="d-flex align-items-center">
+                  <img src="/assets/images/public/about/mission_blue.svg">
+                  <div class="title-2 ms-3">{{'aboutGFP.ourMission' | translate}}</div>
+                </div>
+                <div class="small-body mt-3">
+                  {{'aboutGFP.toSimplify' | translate}}
+                </div>
+              </div>
+              <div class="box">
+                <div class="d-flex align-items-center">
+                  <img src="/assets/images/public/about/vision_blue.svg">
+                  <div class="title-2 ms-3">{{'aboutGFP.ourVision' | translate}}</div>
+                </div>
+                <div class="small-body mt-3">
+                  {{'aboutGFP.is' | translate}}
+                </div>
+              </div>
+            <!-- </ng-container> -->
+          </carousel>
+        </div>
+      </div>
+
+        <div id="about-content">
+          <div class="col-12">
+            <div class="btn-holder">
+              <button mat-raised-button class="mat-elevation-z0" [color]="'yellow'" [class.grey]="!isTeamPage" (click)="isTeamPage = true">
+                {{'aboutPublicTeam.ourTeam' | translate}}
+              </button>
+              <button mat-raised-button class="mat-elevation-z0" [color]="'yellow'" [class.grey]="isTeamPage" (click)="isTeamPage = false">
+                {{'aboutPublicTeam.ourManifesto' | translate}}
+              </button>
+            </div>
+          </div>
+
+          <div class="about-content-wrapper" *ngIf="isTeamPage">
+            <div class="col-12" id="team" *ngIf="teamInterface">
+              <div class="container">
+                <app-our-team [team]="teamInterface" [business]="'business'"></app-our-team>
+              </div>
+            </div>
+
+            <!-- TODO: Meet our advisors -->
+
+            <div class="col-12 mt-3" id="ambassadors" *ngIf="ambassadorInterface">
+              <div class="container">
+                <!-- TODO: overflow dealing method -->
+                <!-- TODO: carousel library loop issue -->
+                <app-our-ambassadors [ambassadors]="ambassadorInterface" [business]="'business'"></app-our-ambassadors>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-content-wrapper" *ngIf="!isTeamPage">
+            <div class="col-12">
+              <div class="container">
+                <app-manifesto></app-manifesto>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="contact-form">
+    <app-contact-form pageName="About Page"></app-contact-form>
+  </div>
+</div>

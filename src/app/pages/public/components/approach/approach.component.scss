@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin approach-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+  #approach {
+    padding: 30px 20px 40px;
+
+    cdk-virtual-scroll-viewport{
+      height: 460px;
+      .cdk-virtual-scroll-content-wrapper {
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+      }
+    }
+    .itemBody{
+      overflow: hidden;
+      border-radius: 4px;
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+    #carouselApproach{
+      .itemImage{
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover
+      }
+      .carousel-indicators{
+        bottom: -60px;
+        top: auto;
+        .active{
+          background-color: #AFC5BD;
+        };
+        > button {
+          border-radius: 50%;
+          margin: 8px;
+          height: 12px;
+          width: 12px;
+          opacity: 1;
+          background-color: mat.get-color-from-palette($background, 'app-bar');
+        }
+      }
+    }
+  }
+}

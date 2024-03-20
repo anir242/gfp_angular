@@ -1,0 +1,47 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin plans-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .landingPlans {
+    .singlePlan {
+      border-radius: 4px;
+      background-color: white;
+      padding: 1.5em;
+
+      .green {
+        color: mat.get-color-from-palette($accent);
+      }
+
+      .mat-title {
+        color: mat.get-color-from-palette($foreground, 'base');
+        font-weight: bold;
+      }
+      .include {
+        color: mat.get-color-from-palette($foreground, 'base');
+
+      }
+    }
+    .mat-tab-labels{
+      .mat-tab-label-content{
+        color: white;
+      }
+    }
+    .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+      background-color: $bar-yellow;
+    }
+    .mat-tab-header {
+      margin-bottom: 2rem;
+    }
+
+  }
+
+
+}

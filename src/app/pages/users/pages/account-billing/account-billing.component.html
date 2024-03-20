@@ -1,0 +1,148 @@
+<div class="content accountBilling text-white" *ngIf="user">
+  <div class="paddingUser">
+    <div class="container">
+      <div class="header">
+        <h1 class="chivo xxl mb-5 text-uppercase fw-light">{{'accountBilling.accountBilling'|translate}}</h1>
+      </div>
+      <div class="statistics p-4">
+        <div class="d-flex justify-content-between mb-4">
+          <p class="mat-title">{{'accountBilling.account'|translate}}</p>
+          <button (click)="openDialog(editTypes?.user.value)" mat-icon-button color="yellow" class="noFill">
+            <svg-icon src="assets/images/svg/edit.svg"></svg-icon>
+          </button>
+        </div>
+        <div class="d-flex align-items-center mb-4">
+          <div class="image align-self-center">
+            <app-upload-logo [imageUrl]="user.imageUrl" imageTypes="profile"></app-upload-logo>
+          </div>
+          <div class="ms-3">
+            <div class="lato lg">{{user?.firstname}} {{user?.lastname}}</div>
+            <div class="lato sm mt-2" *ngIf="companyEmployee">{{companyEmployee?.company.name}}</div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <div>
+              <div class="p-2 fw-bold ps-0">{{'accountBilling.email'|translate}}</div>
+              <div class="p-2 ps-0">{{user.email}}</div>
+            </div>
+            <div></div>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <div>
+              <div class="p-2 fw-bold ps-0">{{'accountBilling.password'|translate}}</div>
+              <div class="p-2 ps-0">{{'accountBilling.hiddenPassword'|translate}}</div>
+            </div>
+            <div class="ms-3">
+              <button (click)="openDialog(editTypes?.password)" mat-icon-button color="yellow" class="noFill">
+                <svg-icon src="assets/images/svg/edit.svg"></svg-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="statistics p-4 mt-4" *ngIf="user.type === userTypes.business && canSeeCompanyData()">
+        <div class="d-flex justify-content-between mb-4">
+          <p class="mat-title">{{'accountBilling.companyInfo'|translate}}</p>
+          <button (click)="openDialog(editTypes?.company.value)" mat-icon-button color="yellow" class="noFill">
+            <svg-icon src="assets/images/svg/edit.svg"></svg-icon>
+          </button>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="row w-100">
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.name'|translate}}</div>
+              <div class="p-2 ps-0">{{companyEmployee?.company.name}}</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.vat'|translate}}</div>
+              <div class="p-2 ps-0">{{companyEmployee?.company.vatNumber}}</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class=" p-2 fw-bold ps-0">PEC</div>
+              <div class="p-2 ps-0">{{companyEmployee?.company.pec}}</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.address'|translate}}</div>
+              <div class="p-2 ps-0">
+                {{companyAddressesInfo?.street}},
+                {{companyAddressesInfo?.city}},
+                {{companyAddressesInfo?.zip}}
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.country'|translate}}</div>
+              <div class="p-2 ps-0">{{companyAddressesInfo?.country}}</div>
+            </div>
+          </div>
+          <button (click)="openDialog(editTypes?.type.address)" mat-icon-button color="yellow" class="noFill">
+            <svg-icon src="assets/images/svg/edit.svg"></svg-icon>
+          </button>
+        </div>
+      </div>
+      <div class="statistics p-4 mt-4" *ngIf="user.type === userTypes.individual">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="mat-title">{{'accountBilling.billing'|translate}}</p>
+          <button (click)="openDialog(editTypes?.type.billing)" mat-icon-button color="yellow" class="noFill">
+            <svg-icon src="assets/images/svg/edit.svg"></svg-icon>
+          </button>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="row w-100">
+            <!-- <div class="col-12 col-md-6 col-lg-3">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.email'|translate}}</div>
+              <div class="p-2 ps-0">{{companyEmployee?.company.companyEmail}}</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.sdi'|translate}}</div>
+              <div class="p-2 ps-0">-</div>
+            </div> -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.address'|translate}}</div>
+              <div class="p-2 ps-0">
+                {{userAddress?.street}},
+                {{userAddress?.city}},
+                {{userAddress?.zip}}
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.country'|translate}}</div>
+              <div class="p-2 ps-0">{{userAddress?.country}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="statistics p-4 mt-4">
+        <button (click)="openDialogPaymentMethod()" mat-raised-button
+          class="mat-focus-indicator buttonCustom mat-raised-button mat-button-base mat-yellow">
+          {{'paymentMethod.add'|translate}}
+        </button>
+        <ng-container *ngFor="let paymentMethod of paymentMethods; let i = index">
+          <mat-divider></mat-divider>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+              <div class=" p-2 fw-bold ps-0">{{'accountBilling.paymentMethod'|translate}} {{i == 0 ? ' (default)' : ''}}</div>
+              <div class="p-2 ps-0">
+                <span *ngIf="paymentMethod">
+                  {{paymentMethod?.card?.brand.toUpperCase()}}
+                  {{'accountBilling.ending'|translate}}
+                  {{'accountBilling.hiddenPassword'|translate}}
+                  {{paymentMethod?.card?.last4}}
+                </span>
+              </div>
+            </div>
+            <button *ngIf="paymentMethods.length > 1" (click)="confirmEliminationPaymentMethod(paymentMethod)" color="warn" mat-raised-button
+              class="noFill">
+              Delete
+            </button>
+          </div>
+        </ng-container>
+      </div>
+      <div class="statistics p-4 mt-4">
+        <a class="mat-body-1 fw-bold text-danger" style="cursor:pointer;"
+          (click)="confirmElimination()">{{'accountBilling.deleteMyAccount'|translate}}</a>
+      </div>
+    </div>
+  </div>
+</div>

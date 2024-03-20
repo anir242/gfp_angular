@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29.369" height="24.36"
+     viewBox="0 0 29.369 24.36">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="29.369" height="24.36" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect width="29.369" height="14.815" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Griglia_di_ripetizione_7" data-name="Griglia di ripetizione 7" clip-path="url(#clip-path)">
+    <g id="Raggruppa_143" data-name="Raggruppa 143" transform="translate(-49.633 -614.034)">
+      <g id="Griglia_di_ripetizione_8" data-name="Griglia di ripetizione 8" transform="translate(49.633 623.579)"
+         clip-path="url(#clip-path-2)">
+        <g transform="translate(-49.633 -623.579)">
+          <path id="Tracciato_42" data-name="Tracciato 42" d="M55.1,625.532l-4.962,13.675H78.5L73.54,625.532H69.3"
+                transform="translate(0 -1.313)" fill="none"  stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+      <g id="Raggruppa_142" data-name="Raggruppa 142" transform="translate(57.219 614.547)">
+        <g id="Raggruppa_141" data-name="Raggruppa 141">
+          <g id="Raggruppa_140" data-name="Raggruppa 140">
+            <path id="Tracciato_43" data-name="Tracciato 43"
+                  d="M67.951,617.7v3.624a1.246,1.246,0,0,1-.667,1.1l-3.64,1.91a1.245,1.245,0,0,1-1.157,0l-2.862-1.5-.777-.408a1.246,1.246,0,0,1-.667-1.1V617.7a1.244,1.244,0,0,1,.667-1.1l3.64-1.911a1.239,1.239,0,0,1,1.157,0l3.64,1.911A1.244,1.244,0,0,1,67.951,617.7Z"
+                  transform="translate(-58.181 -614.547)" fill="none"  stroke-linecap="round"
+                  stroke-linejoin="round" stroke-width="1"/>
+            <line id="Linea_62" data-name="Linea 62" y2="10.425" transform="translate(4.885 3.145)" fill="none"
+                   stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+            <line id="Linea_63" data-name="Linea 63" x1="2.301" y2="1.389" transform="translate(4.885 4.598)"
+                  fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+            <line id="Linea_64" data-name="Linea 64" x2="1.857" y2="0.98" transform="translate(2.976 6.832)" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

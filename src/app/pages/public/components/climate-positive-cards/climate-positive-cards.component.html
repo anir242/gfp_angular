@@ -1,0 +1,32 @@
+<mat-card>
+    <div class="layer headingContainerClimate">
+        <span class="text-white title-2">{{ mainheading | translate }}</span>
+        <img class="me-0" style="margin-left: auto;" [src]="imgURL" id="headingImage">
+    </div>
+    <div class="container-fluid p-0">
+        <div class="row p-4 g-0">
+            <div class="col-12">
+                <p class="body">{{ description | translate }}</p>
+                <img [src]="statsIconURL" class="iconStyle">
+            </div>
+            <div class="col-12">
+                <span class="title-3 bold">{{ valuePerMonth | translate }}</span>
+                <p class="title-4">{{ 'climatePositiveSubscription.perEmployee' | translate }}</p>
+            </div>
+            <mat-divider class="p-3 mt-4"></mat-divider>
+            <div class="col-12">
+                <p class="small-body bold mb-4">{{ 'climatePositiveSubscription.montlyImpactBreakdown' | translate }}</p>
+                <ng-container *ngFor="let unit of supported | keyvalue">
+                    <app-summary-unit
+                        [key]="unit.key"
+                        [items]="unit.value">
+                    </app-summary-unit>
+                </ng-container>
+                <app-summary-unit
+                    [key]="'CO2'"
+                    [items]="co2Values">
+                </app-summary-unit>
+            </div>
+        </div>
+    </div>
+</mat-card>

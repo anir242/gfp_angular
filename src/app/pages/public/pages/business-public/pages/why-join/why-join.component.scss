@@ -1,0 +1,65 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin why-join-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #whyJoin {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-size: cover;
+    position: relative;
+
+    .mainPadding{
+      padding-top: 55px;
+      padding-bottom: 55px;
+      @include media-breakpoint-up(md){
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+    }
+    #why{
+      background-color: mat.get-color-from-palette($background, 'background');
+    }
+    #progress{
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+      @include media-breakpoint-up(md){
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+    #whatGet{
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+    #additionalServices{
+      padding-left: 10px;
+      padding-right: 10px;
+      @include media-breakpoint-up(md){
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+    }
+
+    #clientPartners{
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+
+    #campaigns{
+      .campaignsHeight{
+        min-height: 400px;
+        height: 100%;
+      }
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+  }
+
+}

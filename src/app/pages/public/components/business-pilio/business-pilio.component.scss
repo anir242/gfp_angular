@@ -1,0 +1,886 @@
+
+#pilio-business {
+  padding: 118px 130px;
+
+  p {
+    margin: 0;
+  }
+
+  .pilio-circle {
+    max-width: 435px;
+    a{
+      transition: 0.3s;
+      &:hover{
+        background-color: #FFE274;
+        transition: 0.3s;
+      }
+    }
+  }
+  .ring {
+    width: 382px;
+    height: 382px;
+    display: grid;
+    grid-template-columns: repeat(2, 191px);
+    grid-template-rows: repeat(2, 191px);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-radius: 50%;
+    position: relative;
+    margin-top: 64px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50px;
+      right: 50px;
+      top: 50px;
+      bottom: 50px;
+      z-index: 10;
+      background-image: url('../../../../../assets/images/circle_bg.png');
+      border-radius: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .center-logo {
+      content: "";
+      left: 80px;
+      right: 80px;
+      top: 80px;
+      bottom: 80px;
+      z-index: 11;
+      position: absolute;
+      border-radius: 100%;
+      background-image: url("../../../../../assets/images/pilio/icons/logo.svg");
+      background-position: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -32px;
+        right: -32px;
+        top: -33px;
+        bottom: -33px;
+        background-color: transparent;
+        z-index: 10;
+        border-radius: 100%;
+        background-size: cover;
+        background-image: url("../../../../../assets/images/pilio/icons/esg.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: 0s;
+      }
+
+      &:hover::before {
+        background-image: url("../../../../../assets/images/pilio/icons/hovered-esg.svg");
+        background-size: contain;
+        transition: 0.2s;
+      }
+    }
+    .center-logo-h{
+      &::before {
+        background-image: url("../../../../../assets/images/pilio/icons/hovered-esg.svg");
+        background-size: contain;
+        transition: 0.2s;
+      }
+    }
+    .center-logo-it-h{
+      &::before {
+        background-image: url("../../../../../assets/images/pilio/icons/hovered-esg_it.svg") !important;
+        background-size: contain;
+      }
+    }
+    .center-logo-it {
+      &::before {
+        background-image: url("../../../../../assets/images/pilio/icons/esg_it.svg");
+      }
+
+      &:hover::before {
+        background-image: url("../../../../../assets/images/pilio/icons/hovered-esg_it.svg");
+      }
+    }
+
+    .position-1 {
+      .part1 {
+        font-size: 30px;
+        width: 191px;
+        height: 191px;
+        position: relative;
+        z-index: 9;
+        border-top-left-radius: 100%;
+        background: linear-gradient(180deg, #ff9900 0%, #d07000 100%) #ffffff;
+        transition: 0.2s;
+
+        .button-helper {
+          position: absolute;
+          border-top-left-radius: 100%;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          background: linear-gradient(180deg, #ffb648 0%, #ff9900 100%), #ffffff;
+          transition: opacity 0.2s linear;
+        }
+
+        .text1 {
+          position: absolute;
+          top: 36px;
+          right: 52px;
+          transform: rotate(358.5deg);
+        }
+      }
+
+      .icon1 {
+        width: 64px;
+        height: 64px;
+        background: #fff5e7
+          url("../../../../../assets/images/pilio/icons/orange.svg") no-repeat
+          center;
+        position: absolute;
+        bottom: 159px;
+        left: -7px;
+        z-index: 14;
+        border-radius: 100%;
+        transition: 0.2s;
+      }
+
+      &:hover {
+        .part1 {
+          .button-helper {
+            opacity: 1;
+            transition: 0.2s;
+          }
+        }
+        .icon1 {
+          width: 72px;
+          height: 72px;
+          left: -16px;
+          background-color: white;
+          background-image: url("../../../../../assets/images/pilio/icons/hovered-orange.svg");
+        }
+      }
+    }
+
+    .position1-h{
+        .part1 {
+          .button-helper {
+            opacity: 1;
+            transition: 0.2s;
+          }
+        }
+        .icon1 {
+          width: 72px;
+          height: 72px;
+          left: -16px;
+          background-color: white;
+          background-image: url("../../../../../assets/images/pilio/icons/hovered-orange.svg");
+        }
+    }
+
+    .position-2 {
+      .part2 {
+        width: 191px;
+        height: 191px;
+        position: relative;
+        z-index: 9;
+        border-top-right-radius: 100%;
+        background: linear-gradient(180deg, #15c8dc 0%, #128e9c 100%), #ffffff;
+        transition: 0.2s;
+
+        .button-helper {
+          position: absolute;
+          border-top-right-radius: 100%;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          background: linear-gradient(180deg, #23e9ff 0%, #03bbcf 100%), #ffffff;
+          transition: opacity 0.2s linear;
+        }
+
+        .text2 {
+          position: absolute;
+          top: 38px;
+          left: 59px;
+        }
+      }
+
+      .icon2 {
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        top: -7px;
+        left: 159px;
+        z-index: 14;
+        border-radius: 100%;
+        background: #e9fdff
+          url("../../../../../assets/images/pilio/icons/Blue.svg") no-repeat
+          center;
+        transition: 0.2s;
+      }
+
+      &:hover {
+        .part2 {
+          .button-helper {
+            opacity: 1;
+            transition: 0.2s;
+          }
+        }
+        .icon2 {
+          width: 72px;
+          height: 72px;
+          left: 156px;
+          top: -18px;
+          background-color: white;
+          background-image: url("../../../../../assets/images/pilio/icons/hovered-Blue.svg");
+        }
+      }
+    }
+
+    .position2-h{
+      .part2 {
+        .button-helper {
+          opacity: 1;
+          transition: 0.2s;
+        }
+      }
+      .icon2 {
+        width: 72px;
+        height: 72px;
+        left: 156px;
+        top: -18px;
+        background-color: white;
+        background-image: url("../../../../../assets/images/pilio/icons/hovered-Blue.svg");
+      }
+    }
+
+    .position-3 {
+      .part3 {
+        width: 191px;
+        height: 191px;
+        position: relative;
+        z-index: 9;
+        border-bottom-left-radius: 100%;
+        background: linear-gradient(180deg, #42bca2 0%, #2d8975 100%), #ffffff;
+        transition: 0.2s;
+
+        .button-helper {
+          position: absolute;
+          border-bottom-left-radius: 100%;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          background: linear-gradient(180deg, #56f0cf 0%, #40b89e 100%), #ffffff;
+          transition: opacity 0.2s linear;
+        }
+
+        .text3 {
+          top: 73px;
+          position: absolute;
+          left: 50px;
+        }
+
+        .text3-it {
+          top: 45px;
+          position: absolute;
+          left: 32px;
+        }
+      }
+
+      .icon3 {
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        bottom: -7px;
+        left: 159px;
+        z-index: 14;
+        border-radius: 100%;
+        background: #effffc
+          url("../../../../../assets/images/pilio/icons/Track.svg") center
+          no-repeat;
+        transition: 0.2s;
+      }
+
+      &:hover {
+        .part3 {
+          .button-helper {
+            opacity: 1;
+            transition: 0.2s;
+          }
+        }
+        .icon3 {
+          width: 72px;
+          height: 72px;
+          position: absolute;
+          bottom: -15px;
+          left: 156px;
+          background-color: white;
+          background-image: url("../../../../../assets/images/pilio/icons/hovered-Track.svg");
+        }
+      }
+    }
+
+    .position3-h{
+      .part3 {
+        .button-helper {
+          opacity: 1;
+          transition: 0.2s;
+        }
+      }
+      .icon3 {
+        width: 72px;
+        height: 72px;
+        position: absolute;
+        bottom: -15px;
+        left: 156px;
+        background-color: white;
+        background-image: url("../../../../../assets/images/pilio/icons/hovered-Track.svg");
+      }
+    }
+
+    .position-4 {
+      .part4 {
+        width: 191px;
+        height: 191px;
+        position: relative;
+        z-index: 9;
+        border-bottom-right-radius: 100%;
+        background: linear-gradient(180deg, #9bca46 0%, #659b02 100%), #ffffff;
+
+        .button-helper {
+          position: absolute;
+          border-bottom-right-radius: 100%;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          background: linear-gradient(180deg, #bcf753 0%, #7bbe02 100%), #ffffff;
+          transition: opacity 0.2s linear;
+        }
+
+        .text4 {
+          position: absolute;
+          right: 32px;
+          top: 52px;
+        }
+      }
+      .icon4 {
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        bottom: 159px;
+        right: -7px;
+        z-index: 14;
+        border-radius: 100%;
+        transition: 0.2s;
+        background: #f6ffe5
+          url("../../../../../assets/images/pilio/icons/CloudOffset.svg") center
+          no-repeat;
+      }
+
+      &:hover {
+        .part4 {
+          .button-helper {
+            opacity: 1;
+            transition: 0.2s;
+          }
+        }
+        .icon4 {
+          width: 72px;
+          height: 72px;
+          bottom: 156px;
+          right: -16px;
+          background-color: white;
+          background-image: url("../../../../../assets/images/pilio/icons/hovered-CloudOffset.svg");
+        }
+      }
+    }
+    .position4-h{
+      .part4 {
+        .button-helper {
+          opacity: 1;
+          transition: 0.2s;
+        }
+      }
+      .icon4 {
+        width: 72px;
+        height: 72px;
+        bottom: 156px;
+        right: -16px;
+        background-color: white;
+        background-image: url("../../../../../assets/images/pilio/icons/hovered-CloudOffset.svg");
+      }
+    }
+  }
+
+  .container {
+    max-width: 700px;
+
+    .close{
+      color: #00734F;
+      border: 1px solid;
+      padding: 4px;
+      display: flex;
+      border-radius: 4px;
+    }
+
+   ::ng-deep{
+    .title-part{
+      .mat-button-wrapper{
+        color: white !important;
+      }
+    }
+   }
+    .row {
+      margin: 22px 0;
+    }
+    .measure-main {
+      border-radius: 24px;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      background-color: #ffffff70;
+      border: 1px solid transparent;
+      transition: 0.2s all;
+      &:hover{
+        border: 1px solid #128e9c !important;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+    }
+    .offset-main {
+      border-radius: 24px;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      background-color: #ffffff70;
+      border: 1px solid transparent;
+      transition: 0.2s all;
+
+      &:hover{
+        border: 1px solid #659b02 !important;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+    }
+    .track-main {
+      border-radius: 24px;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      background-color: #ffffff70;
+      border: 1px solid transparent;
+      transition: 0.2s all;
+
+      &:hover{
+        border: 1px solid #2d8975 !important;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+    }
+    .comunicate-main {
+      border-radius: 24px;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      background-color: #ffffff70;
+      border: 1px solid transparent;
+      transition: 0.2s all;
+
+
+      &:hover{
+        border: 1px solid #d07000 !important;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+    }
+    .esg-main {
+      border-radius: 24px;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      background-color: #ffffff70;
+      border: 1px solid transparent;
+      transition: 0.2s all;
+
+      &:hover{
+        border: 1px solid #00734F !important;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+    }
+
+    
+
+    .open-modal {
+      border: 1px solid #00734f;
+      top: 24px;
+      right: 24px;
+      min-width: 32px;
+      height: 32px;
+      background-image: url("../../../../../assets/images/pilio/icons/arrow-up-down.svg");
+      border-radius: 4px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .business-modal {
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      border-radius: 24px;
+      padding: 32px;
+
+      button{
+        box-shadow: none;
+      }
+    }
+
+    .card{
+      width: 256px;
+      height: 262px;
+      border: none;
+      margin: 0 auto;
+    }
+
+    .measure {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-color: #e9fdff;
+      background-image: url("../../../../../assets/images/pilio/icons/Blue.svg");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .comunicate {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-color: #fff5e7;
+      background-image: url("../../../../../assets/images/pilio/icons/orange.svg");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .track {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-color: #effffc;
+      background-image: url("../../../../../assets/images/pilio/icons/Track.svg");
+      background-size: 55%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .offset {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-color: #f6ffe5;
+      background-image: url("../../../../../assets/images/pilio/icons/CloudOffset.svg");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .esg {
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-color: #dffff5;
+      background-image: url("../../../../../assets/images/pilio/icons/Chess-knight.svg");
+      background-size: 45%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    ::ng-deep {
+      .carousel-arrow-disabled {
+        display: none;
+      }
+      .carousel-arrow-next{
+        right: -20px !important;
+        box-shadow: none;
+      }
+      .carousel-arrow-prev{
+        left: -20px !important;
+        box-shadow: none;
+      }
+    }
+
+    .esg-card{
+      width: auto;
+      height: 208px;
+      background-color: #DFFFF5;
+      border-radius: 12px;
+      min-height: 50px;
+    }
+
+    .esg-card-main{
+      width: 270px;
+      border-radius: 28px;
+      display: flex;
+      justify-content: end;
+      flex-direction: column;
+      padding: 15px;
+      &:hover{
+        border: 1px solid #00734F;
+        transition: border 0.5s;
+      }
+    }
+
+    .show-text{
+      height: 0;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.5s;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      p{
+        height: 100%;
+      }
+    }
+
+    .carousel-cell{
+      display: flex;
+      border-radius: 28px;
+      justify-content: end;
+      flex-direction: column;
+      width: 270px !important;
+      padding: 24px;
+      margin-left: 10px;
+      
+      .offset-icon{
+        width: 48px;
+        height: 48px;
+      }
+
+      .card-img{
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+      transition: 1s ease-in-out;
+      }
+
+      &:hover{
+
+        &:has(.measure) {
+          border: 1px solid #128e9c;
+          transition: border 0.5s;
+        }
+        &:has(.offset) {
+          border: 1px solid #659b02;
+          transition: border 0.5s;
+        }
+        &:has(.track) {
+          border: 1px solid #2d8975;
+          transition: border 0.5s;
+        }
+        &:has(.comunicate) {
+          border: 1px solid #d07000;
+          transition: border 0.5s;
+        }
+
+        
+        .show-text{
+          height: 100%;
+          visibility: visible;
+          opacity: 1;
+        }  
+      }
+
+      a{
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .mat-raised-button{
+        transition: 0.3s;
+        &:hover{
+          background-color: #FFE274;
+          transition: 0.3s;
+        }
+      }
+    }
+    .carousel{
+      width: 90%;
+      margin: 0 auto;
+ 
+
+      button{
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none;
+      }
+
+    }
+
+    .track-modal{
+      border: 1px solid #00734F;
+      border-radius: 24px;
+      padding: 24px;
+      margin: 40px 0;
+      // transition: 1s all;
+      .track-text{
+        height: 0;
+        visibility: hidden;
+        opacity: 0;
+        // transition: 0.5s;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        p{
+          height: 100%;
+        }
+      }
+      &:hover{
+       .track-text{
+        height: 100%;
+        visibility: visible;
+        opacity: 1;
+        transition: 0.5s;
+        p{
+          height: 100%;
+        }
+       }
+      }
+    }
+
+  }
+
+  .lh-20{
+    line-height: 20px;
+  }
+
+  .lh-24{
+    line-height: 24px;
+  }
+
+  .lh-18{
+    line-height: 18px;
+  }
+
+  .fs-20{
+    font-size: 20px;
+  }
+
+  .hovered-card{
+    border:1px solid transparent !important;
+    .show-text{
+      height: 0 !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      transition: 1s ease-in-out !important;
+      p{
+        height: 0 !important;
+    }
+    }
+}
+
+  
+@media screen and (max-width: 600px) {
+  .track-modal{
+
+    .track-text{
+      height: 100% !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      p{
+        height: 100%;
+      }
+    }
+  }
+  
+  .carousel-cell{
+    &:has(.measure) {
+      border: 1px solid #128e9c;
+      transition: border 0.5s;
+    }
+    &:has(.offset) {
+      border: 1px solid #659b02;
+      transition: border 0.5s;
+    }
+    &:has(.track) {
+      border: 1px solid #2d8975;
+      transition: border 0.5s;
+    }
+    &:has(.comunicate) {
+      border: 1px solid #d07000;
+      transition: border 0.5s;
+    }
+    &:has(.esg) {
+      border: 1px solid #00734F;
+      transition: border 0.5s;
+    }
+
+  }
+}
+}
+
+
+@media screen and (max-width: 600px) {
+  #pilio-business{
+    padding:10px 5px ;
+
+    .cards-height{
+     max-height: 800px !important;
+     overflow: hidden;
+    }
+    .cards-height1{
+     max-height: 820px !important;
+     overflow: hidden;
+    }
+    .cards-height2{
+     max-height: 800px !important;
+     overflow: hidden;
+    }
+    .cards-height2_it{
+     max-height: 835px !important;
+     overflow: hidden;
+    }
+
+    .cards-height3{
+      max-height: 810px !important;
+     overflow: hidden;
+    }
+    .cards-height3_it{
+      max-height: 850px !important;
+     overflow: hidden;
+    }
+    .cards-height4{
+      max-height: 775px !important;
+     overflow: hidden;
+    }
+
+    .ring,.pilio-circle{
+      margin: 20px auto;
+    }
+
+    .show-text{
+      height: 100% !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      transition: 0.5s !important;
+      p{
+        height: 0 !important;
+      }
+    }
+
+    .container{
+      .row{
+        margin: 0 !important;
+      }
+    }
+    .track-modal{
+      margin: 24px 0 !important;
+     
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin project-data-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .containerUserValues {
+    color: mat.get-color-from-palette($primary, 'main-contrast');
+
+    .renewable{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(248, 197, 175);
+      }
+    }
+    .preservation{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(181, 231, 234);
+      }
+    }
+    .restoration{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(195, 232, 193);
+      }
+    }
+    .marine{
+      .mat-progress-bar-fill::after{
+        background-color: rgb(203, 228, 246);
+      }
+    }
+
+    .data {
+      width: 200px;
+    }
+
+    .mat-divider {
+      border-width: 2px;
+      border-color: white;
+    }
+
+    .mat-progress-bar {
+      width: 100%;
+    }
+    .infoPoint{
+      cursor: pointer;
+      }
+    svg-icon {
+      stroke: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+
+    p {
+      color: mat.get-color-from-palette($primary, 'main-contrast');
+
+    }
+  }
+}

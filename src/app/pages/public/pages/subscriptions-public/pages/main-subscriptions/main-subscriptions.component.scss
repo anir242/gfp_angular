@@ -1,0 +1,61 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin main-subscriptions-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .mainSubscriptions {
+    background-image: url('../../../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .containerButtons {
+      text-align: center;
+    }
+
+    .texts {
+      .description {
+        color: mat.get-color-from-palette($primary, 'text')
+      }
+
+      .advise {
+        svg-icon {
+          svg {
+            fill: mat.get-color-from-palette($accent)
+          }
+        }
+
+        span {
+          font-weight: bold;
+          color: mat.get-color-from-palette($accent)
+        }
+      }
+    }
+
+    .mat-card {
+      @include mat.elevation(0)
+    }
+
+    .explainSubscriptions {
+      background-color: mat.get-color-from-palette($background, 'disabled-button-toggle');
+
+      .fakeCard {
+        background-color: transparent;
+        border-radius: 4px;
+        padding: 0;
+
+        @include media-breakpoint-up(md) {
+          background-color: mat.get-color-from-palette($primary, 'main-contrast');
+          padding: 32px;
+        }
+      }
+    }
+  }
+
+}

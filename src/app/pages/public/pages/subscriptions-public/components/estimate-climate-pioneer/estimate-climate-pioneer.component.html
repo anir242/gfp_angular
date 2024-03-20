@@ -1,0 +1,72 @@
+<div class="estimatePioneer">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <span class="mat-subheading-1">{{'estimateClimatePioneer.title' | translate}}</span>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="pb-2 mb-0">
+      <div *ngIf="pioneerModel == 'treePerItem'; else revenuePercentage">
+        <div class="d-flex justify-content-between">
+          <span class="mt-20">{{'estimateClimatePioneer.itemsSold'|translate}}</span>
+          <app-mat-input
+            [control]="itemsOrRevenues"
+            labelError="authentication.requiredField"
+            labelPatternError="authentication.pattern"></app-mat-input>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="mt-20">
+            <span class="d-block">{{'estimateClimatePioneer.wouldLikePlant'|translate}}</span>
+            <span class="mat-caption">{{'estimateClimatePioneer.manualCaption'|translate}}</span>
+          </div>
+          <app-mat-input
+            [control]="percentageOrItemToPlant"
+            labelError="authentication.requiredField"
+            labelPatternError="authentication.pattern"
+          ></app-mat-input>
+        </div>
+      </div>
+      <ng-template #revenuePercentage>
+        <div class="d-flex justify-content-between">
+          <span class="mt-20">{{'estimateClimatePioneer.monthlyRevenue'|translate}}</span>
+          <app-mat-input
+            [control]="itemsOrRevenues"
+            prefix="€"
+            labelError="authentication.requiredField"
+            labelPatternError="authentication.pattern"
+          ></app-mat-input>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="mt-20">
+            <span class="d-block">{{'estimateClimatePioneer.wishDonate'|translate}}</span>
+            <span class="mat-caption">{{'estimateClimatePioneer.automaticCaption'|translate}}</span>
+          </div>
+          <app-mat-input
+            [control]="percentageOrItemToPlant"
+            suffix="%"
+            labelError="authentication.requiredField"
+            labelPatternError="authentication.pattern"
+          ></app-mat-input>
+        </div>
+      </ng-template>
+      <ng-container>
+        <ng-container *ngFor="let unit of supported | keyvalue">
+          <app-summary-unit
+            [border]="false"
+            [key]="unit.key"
+            [items]="unit.value"></app-summary-unit>
+        </ng-container>
+        <app-summary-unit
+          [border]="false"
+          [key]="'CO2'"
+          [items]="co2Values"></app-summary-unit>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="d-flex justify-content-between px-3 text-black">
+        <span class="mat-subheading-1 m-0 text-black">{{'mainSubscriptions.employeesImpact.costPerMonth' | translate}}</span>
+        <span class="mat-subheading-2 m-0 text-black">{{roundNumber(costPerMonth)}}€</span>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>

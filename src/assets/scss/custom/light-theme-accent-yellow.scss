@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+
+
+$custom-primary: (
+  50 : #fdfdfd,
+  100 : #faf9f9,
+  200 : #f7f6f6,
+  300 : #f4f2f2,
+  400 : #f1efef,
+  500 : #efecec,
+  600 : #edeaea,
+  700 : #ebe7e7,
+  800 : #e8e4e4,
+  900 : #e4dfdf,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$custom-accent: (
+  50 : #fcf7e7,
+  100 : #f8ecc3,
+  200 : #f4df9b,
+  300 : #f0d272,
+  400 : #ecc854,
+  500 : #e9be36,
+  600 : #e6b830,
+  700 : #e3af29,
+  800 : #dfa722,
+  900 : #d99916,
+  A100 : #ffffff,
+  A200 : #fff1d7,
+  A400 : #ffdfa4,
+  A700 : #ffd68b,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$custom-warn: (
+  50 : #f7e7e7,
+  100 : #ecc3c3,
+  200 : #df9b9b,
+  300 : #d27373,
+  400 : #c95555,
+  500 : #bf3737,
+  600 : #b93131,
+  700 : #b12a2a,
+  800 : #a92323,
+  900 : #9b1616,
+  A100 : #ffcfcf,
+  A200 : #ff9c9c,
+  A400 : #ff6969,
+  A700 : #ff5050,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$custom-theme-primary: mat.define-palette($custom-primary);
+$custom-theme-accent: mat.define-palette($custom-accent);
+$custom-theme-warn: mat.define-palette($custom-warn);
+
+$mat-theme-ignore-duplication-warnings: true;
+
+$light-theme-yellow: mat.define-light-theme((
+  color : (
+    primary: $custom-theme-primary,
+    accent: $custom-theme-accent,
+    warn: $custom-theme-warn
+  )
+));

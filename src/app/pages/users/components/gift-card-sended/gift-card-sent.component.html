@@ -1,0 +1,43 @@
+<div class="d-block py-3">
+  <p class="date mat-subheading-1 m-0">{{gift.createdAt | moment}}</p>
+  <span class="mat-title">{{gift.giftCardPack.giftCard.title}}</span>
+  <div class="d-flex justify-content-between mt-3">
+    <span class="mat-subheading-1">{{'settings.to'|translate}}</span>
+    <span class="mat-subheading-2">{{gift.recipientEmail}}</span>
+  </div>
+  <div class="d-flex justify-content-between">
+    <span class="mat-subheading-1 m-0">{{'settings.amount'|translate}}</span>
+    <span class="mat-subheading-2 m-0">{{gift.transaction.amount / 100 | number: '1.2-2'}}</span>
+  </div>
+  <ng-container *ngIf="getUnitByType(unitTypes.TREE, gift.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.treesProtected'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.TREE, gift.createdAt)}}</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType(unitTypes.ACRE, gift.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.acresProtected'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.ACRE, gift.createdAt)}}</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType(unitTypes.KWH, gift.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.kwhProduced'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.KWH, gift.createdAt)}}</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType(unitTypes.CORAL, gift.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.coralPlanted'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.CORAL, gift.createdAt)}}</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType('CO2', gift.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.co2offsetted'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType('CO2', gift.createdAt)}}</span>
+    </div>
+  </ng-container>
+</div>
+<mat-divider></mat-divider>

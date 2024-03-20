@@ -1,0 +1,105 @@
+<!-- TODO: routing links -->
+<div class="bannerTitle">
+  <div class="layer">
+    <div class="d-flex align-items-center">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-12 col-lg-6">
+            <div class="p-4 title" [ngClass]="{'pb-0': windowWidth < 600}">
+              <ng-container *ngIf="business; else title">
+                <span class="title-1 bold" innerHTML="{{'landingPublic.hitYourESG'|translate}}">
+                </span>
+                <p class="large-body" [ngClass]="windowWidth > 600 ? 'my-4' : 'my-2'" innerHTML="{{'landingPublic.trackVisualize'|translate}}"></p>
+                <div class="d-flex">
+                  <button mat-stroked-button color="yellow" class="mt-2 me-4" (click)="scrollToId('pilio-business')">{{'landingPublic.learnMore'|translate}}</button>
+                  <button mat-raised-button color="yellow" class="mt-2" (click)="routeToCalendly()">{{'landingPublic.book'|translate}}</button>
+                </div>
+              </ng-container>
+              <ng-template #title>
+                <span class="title-1 bold">
+                  {{'landingPublic.simplifyAction'|translate}}
+                </span>
+                <p class="large-body m-2 mb-3">{{'landingPublic.reduceLifestyle'|translate}}</p>
+                <div class="d-flex">
+                  <button mat-stroked-button color="lime" class="mt-2 me-4" (click)="scrollTo(tools, 'sectionTools')">{{'landingPublic.learnMore'|translate}}</button>
+                  <button mat-raised-button color="lime" class="mt-2" (click)="scrollTo(explore, 'sectionExplore')">{{'landingPublic.freeTrial'|translate}}</button>
+                </div>
+              </ng-template>
+
+              <div class="label-box mt-5 d-md-block d-lg-block d-none">
+                <div class="row" *ngIf="business; else solutions">
+                  <div class="col-12">
+                    <p class="title-4 text-white">
+                      {{'landingPublic.simple'|translate}}
+                    </p>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <ul class="business title-4">
+                      <li [routerLink]="lang == 'it'? routingTypes.ENERGY_IT : routingTypes.ENERGY">{{'landingPublic.Invest'|translate}}</li>
+                      <li [routerLink]="routingTypes.OFFSET">{{'landingPublic.CO2'|translate}}</li>
+                      <li [routerLink]="routingTypes.BUSINESS_SUBSCRIPTION">{{'landingPublic.Corporate'|translate}}</li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <ul class="business title-4">
+                      <li [routerLink]="routingTypes.ECOMMERCE">{{'landingPublic.Ecommerce'|translate}}</li>
+                      <li [routerLink]="routingTypes.NFT">{{'landingPublic.Green'|translate}}</li>
+                      <li [routerLink]="routingTypes.GIFT">{{'landingPublic.Gifts'|translate}}</li>
+                    </ul>
+                  </div>
+                </div>
+                <ng-template #solutions>
+                  <div class="row">
+                    <div class="col-12">
+                      <p class="title-4 text-white">
+                        {{'landingPublic.hand'|translate}}
+                      </p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <ul class="individual title-4 ">
+                        <li [routerLink]="routingTypes.INDIVIDUAL_SUBSCRIPTION">{{'landingPublic.Individual'|translate}}</li>
+                        <li [routerLink]="routingTypes.OFFSET">{{'landingPublic.CO2'|translate}}</li>
+                        <li [routerLink]="['/gift']">{{'landingPublic.Gifts'|translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <ul class="individual title-4">
+                        <!-- Hide for Now -->
+                        <!-- <li [routerLink]="routingTypes.PROJECTS_PUBLIC">{{'landingPublic.Projects'|translate}}</li> -->
+                        <li [routerLink]="routingTypes.NFT">{{'landingPublic.Green'|translate}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 d-flex justify-content-center">
+            <div class="globe-wrapper position-relative">
+              <app-globe></app-globe>
+              <div class="d-flex justify-content-center position-relative">
+                <div class="globe-text position-absolute">
+                  <svg-icon class="rotation me-2" src="assets/images/public/home/rotation.svg"></svg-icon>
+                  <span class="text-white lato xs">{{'landingPublic.experience' | translate}}</span>
+                </div>
+              </div>
+              <div class="position-absolute logos">
+                <div class="d-none d-md-flex align-items-center justify-content-end">
+                  <img src="/assets/images/public/home/b-corp-logo.png" alt="B Corp" class="me-4">
+                  <img src="/assets/images/public/home/rina.png" alt="BFTW">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="position-relative title-arrow my-4" *ngIf="windowWidth < 600">
+      <app-arrow-scroll [id]="!business ?'sectionExplore':'pilio-business'" [business]="business"></app-arrow-scroll>
+    </div>
+    <div class="container pt-4" [ngClass]="{'mt-5 ms-4 ps-3': windowWidth < 600}">
+      <div class="chivo md mb-2 text-white">{{'landingPublic.trusted'|translate}}</div>
+    </div>
+    <app-title-public-logo></app-title-public-logo>
+    <app-arrow-scroll [id]="!business ?'sectionExplore':'pilio-business'" [business]="business" *ngIf="windowWidth > 600"></app-arrow-scroll>
+  </div>

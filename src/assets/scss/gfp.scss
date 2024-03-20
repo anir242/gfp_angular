@@ -1,0 +1,121 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+//@import 'ngx-sharebuttons/themes/default';
+
+@use 'node_modules/ngx-toastr/toastr';
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "custom/vendor/plugin-ngx-toastr";
+@import "custom/vendor/plugin-sweetalert2";
+@import "custom/vendor/plugin-fullcalendar";
+@import "custom/vendor/plugin-chartjs";
+@import "custom/vendor/plugin-model-viewer";
+@import "custom/vendor/plugin-shared-popup";
+
+@import "custom/components/rating";
+@import "custom/components/variables";
+@import "custom/components/classes";
+@import "custom/components/animations";
+@import "custom/components/_material/material-button-toggle";
+@import "custom/components/_material/material-buttons";
+@import "custom/components/_material/material-chips";
+@import "custom/components/_material/material-input";
+@import "custom/components/_material/material-toolbar";
+@import "custom/components/_material/material-checkbox";
+@import "custom/components/_material/material-radio";
+@import "custom/components/_material/material-card";
+@import "custom/components/_material/material-sidenav";
+@import "custom/components/_material/material-form-field";
+@import "custom/components/_material/material-nav-list";
+@import "custom/components/_material/material-select";
+@import "custom/components/_material/material-dialog";
+@import "custom/components/_material/material-stepper";
+@import "custom/components/_material/material-expansion-panel";
+@import "custom/components/_material/material-table";
+@import "custom/components/_material/material-divider";
+@import "custom/components/_material/material-text";
+@import "custom/components/_material/material-slider";
+@import "custom/components/_material/material-progress-bar";
+@import "custom/components/_material/material-tab-group";
+@import "custom/components/_material/material-slide-toggle";
+@import "custom/components/_material/material-paginator";
+@import "custom/components/_material/material-calendar";
+
+@mixin material-theme-property($theme) {
+
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  @include material-buttons-new($theme);
+  @include material-sidenav($theme);
+  @include material-checkbox($theme);
+  @include material-chips($theme);
+  @include material-divider($theme);
+  @include material-inputs($theme);
+  @include material-nav-list($theme);
+  @include material-progress-bar($theme);
+  @include material-button-toggle($theme);
+  @include material-paginator($theme);
+  @include material-radio($theme);
+  @include material-select($theme);
+  @include material-slide-toggle($theme);
+  @include material-slider($theme);
+  @include material-stepper($theme);
+  @include material-table($theme);
+  @include material-text($theme);
+  @include material-toolbar($theme);
+  @include material-tab-group($theme);
+  @include rating($theme);
+
+  @include ngx-toastr($theme);
+  @include sweet-alert($theme);
+  @include chartjs($theme);
+  @include model-viewer($theme);
+  @include share-popup($theme);
+}
+
+@mixin material-theme-property-public($theme) {
+
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  @include material-dialog-new($theme);
+  @include material-form-field($theme);
+  @include material-buttons-new($theme);
+  @include material-button-toggle($theme);
+  @include material-toolbar-new($theme);
+  @include material-inputs-new($theme);
+  @include material-checkbox-new($theme);
+  @include material-card-new($theme);
+  @include material-radio-new($theme);
+  @include material-sidenav($theme);
+  @include material-stepper-new($theme);
+  @include material-nav-list($theme);
+  @include material-select-new($theme);
+  @include material-expansion-panel($theme);
+  @include material-chips($theme);
+  @include material-divider($theme);
+  @include material-progress-bar($theme);
+  @include material-paginator($theme);
+  @include material-slide-toggle($theme);
+  @include material-slider($theme);
+  @include material-table($theme);
+  @include material-text($theme);
+  @include material-tab-group($theme);
+  @include rating($theme);
+  @include material-calendar($theme);
+
+  @include ngx-toastr($theme);
+  @include sweet-alert($theme);
+  @include chartjs($theme);
+  @include model-viewer($theme);
+  @include share-popup($theme);
+
+}
+

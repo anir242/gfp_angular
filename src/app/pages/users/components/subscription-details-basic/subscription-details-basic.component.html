@@ -1,0 +1,18 @@
+<div class="d-flex py-md-3">
+  <div class="flex-grow-1">
+    <div class="py-3 d-flex justify-content-between flex-column flex-md-row">
+      <div>
+        <span class="mat-body-1 fw-bold">{{firstText|translate}}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{secondText|translate}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="edit d-flex align-items-center">
+    <div *ngIf="displayEdit">
+      <button mat-button>{{'subscriptionDetails.edit'|translate}}</button>
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>

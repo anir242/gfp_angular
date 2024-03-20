@@ -1,0 +1,36 @@
+<div class="container p-xl-0">
+  <div class="project-wrapper">
+    <span class="link bold" [routerLink]="'projects'" >{{'landingPublicProject.go' | translate}}</span>
+    <div class="title-1 bold" [ngClass]="{'text-start': windowWidth < 600}">{{'landingPublicProject.the' | translate}}</div>
+    <div class="large-body my-3 py-2" [ngClass]="{'text-start': windowWidth < 600}">{{ 'landingPublicProject.we' | translate}}</div>
+
+  <div class="col-12 d-flex justify-content-center my-4">
+    <carousel
+        [arrows]="isLargeScreen ? true : false"
+        [margin]="25"
+        [height]="carouselHeight"
+        [cellWidth]="cardWidth"
+        [cellsToShow]="cellsToShow"
+        [class.individualArrows]="!business"
+        class="d-flex align-items-center">
+
+      <div class="carousel-cell" *ngFor="let item of data">
+        <div class="card-container">
+          <div [style.background-image]="'url(' + item?.image?.url + ')'">
+            <div class="img-holder">
+              <img [src]="'/assets/images/public/home/' + item.slug + '.svg'">
+            </div>
+            <!-- TODO: Pillars -->
+            <!-- <span class="tiny-body">{{ | uppercase}}</span> -->
+            <span class="title-3 bold">{{item.name}}</span>
+          </div>
+          <div class="d-flex flex-column justify-content-between pt-4" [style]="{'border-top': '4px solid '+item.colorLabel}">
+            <span class="small-body">{{item.description}}</span>
+            <button mat-stroked-button color="green" [routerLink]="['projects']" [queryParams]="{'type': item.slug}">{{'landingPublicProject.learn'|translate}}</button>
+          </div>
+        </div>
+      </div>
+    </carousel>
+  </div>
+</div>
+</div>

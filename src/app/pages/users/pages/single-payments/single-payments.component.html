@@ -1,0 +1,22 @@
+<div class="content singlePayments">
+  <div class="paddingUser">
+    <div class="container">
+      <div class="d-block">
+        <p class="mat-headline mb-4 text-white">{{'settings.singlePayments'|translate}}</p>
+        <mat-divider></mat-divider>
+      </div>
+      <div class="d-block">
+        <ng-container *ngIf="!payments || payments.length == 0; else gifts">
+          <span class="mat-body-2 pt-3 d-inline-block">{{'settings.noSinglePayments'|translate}}</span>
+        </ng-container>
+        <ng-template #gifts>
+          <ng-container *ngFor="let item of payments">
+          <app-single-payment-bought
+            [transaction]="item"
+          ></app-single-payment-bought>
+          </ng-container>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

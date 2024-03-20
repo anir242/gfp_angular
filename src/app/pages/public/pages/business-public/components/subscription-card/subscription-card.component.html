@@ -1,0 +1,19 @@
+<mat-card id="subscriptionCard" class="text-center">
+  <mat-card-header class="justify-content-center">
+    <mat-card-title>
+      <span class="mat-headline fw-bold">{{title}}</span>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span class="mat-subheading-1">{{subtitle}}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <div class="d-flex justify-content-center mt-4 mb-3">
+    <img mat-card-image [src]="url">
+  </div>
+
+  <mat-card-content>
+    <p class="mat-subheading-1">
+      {{description}}
+    </p>
+  </mat-card-content>
+</mat-card>

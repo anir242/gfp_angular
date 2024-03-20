@@ -1,0 +1,57 @@
+<div id="localeModal" class="text-start py-2">
+  <div [ngClass]="modalWidth">
+    <div mat-dialog-title>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="chivo xl bold">{{'locale.title'|translate}}</p>
+        <div class="mb-3 ms-4">
+          <button mat-icon-button color="transparent" [mat-dialog-close]="false">
+            <fa-icon [icon]="faClose"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-content class="my-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <label>{{'locale.language'|translate}}</label>
+            <mat-form-field appearance="outline">
+              <img matPrefix [src]="'assets/images/' + lang + '.svg'" class="me-3 flag imagePrefix">
+              <mat-select [(value)]="lang" (selectionChange)="update()">
+                <mat-option *ngFor="let l of languages" [value]="l.code">
+                  <img class="me-2" src="assets/images/{{l.code}}.svg" alt="{{l.code}}" width="16px"> {{'locale.'+l.code|translate}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <label>{{'locale.location'|translate}}</label>
+            <mat-form-field appearance="outline">
+              <fa-icon matPrefix
+                [icon]="faGlobe"
+                class="me-3">
+              </fa-icon>
+              <mat-select [(value)]="region" (selectionChange)="update()">
+                <mat-option *ngFor="let r of regions" [value]="r.code">{{r.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <label>{{'locale.currency'|translate}}</label>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="currency" (selectionChange)="update()">
+                <mat-option *ngFor="let c of currencies" [value]="c.code">
+                  ({{c.symbol}}) {{c.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions class="my-2" [align]="modalWidth===modalTypes.small ? 'center' : 'end'">
+      <button mat-button (click)="cancel()">{{'locale.cancel'|translate}}</button>
+      <button mat-raised-button color="green" (click)="confirm()" [disabled]="!updated">{{'locale.save'|translate}}</button>
+    </div>
+  </div>
+</div>

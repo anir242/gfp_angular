@@ -1,0 +1,77 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin support-project-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .mat-dialog-content {
+    overflow: unset;
+  }
+
+  .mat-dialog-container{
+    background-color: #FAFAFA;
+    border-radius: 16px;
+    max-width: 1000px;
+    padding: 10px 24px;
+    overflow: hidden;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px 32px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: 40px 64px;
+    }
+
+    #supportProject {
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      .mat-tab-header {
+        border: 0;
+
+        .mat-ink-bar {
+          background-color: $bar-yellow;
+        }
+      }
+
+      
+
+      .tabContent {
+        border-radius: 8px;
+      }
+
+      .close{
+        top: 5px;
+        right: 5px;
+        position: absolute;
+
+      }
+      .line{
+        flex: 1;
+      }
+      .item {
+        background-color: mat.get-color-from-palette($background, 'background');
+      }
+      .supportDialog {
+       .item {
+         background-color: mat.get-color-from-palette($primary, 'main-contrast');
+       }
+      }
+      .donationButton{
+        width: 100%;
+        @include media-breakpoint-up(md){
+          width: auto;
+        }
+      }
+      max-height: 700px;
+    }
+  }
+
+}

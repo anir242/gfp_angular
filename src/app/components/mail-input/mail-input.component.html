@@ -1,0 +1,18 @@
+<div class="row g-2 align-items-start" [className]="theme" [ngClass]="position === 'start' ? 'justify-content-start' : 'justify-content-center'" id="mailInput">
+  <div class="col-8">
+    <app-mat-input
+      [control]="control"
+      type="email"
+      [required]="required"
+      labelError="authentication.requiredField"
+      labelPatternError="authentication.pattern"
+      autocomplete="autocomplete ?? ''"
+      label="{{'email'|translate}}">
+    </app-mat-input>
+  </div>
+  <div class="buttonContainer col-4">
+    <div class="d-flex justify-content-start mt-2">
+      <button (click)="buttonClicked.emit()" [disabled]="!control?.valid" mat-raised-button color="yellow">{{buttonText}}</button>
+    </div>
+  </div>
+</div>

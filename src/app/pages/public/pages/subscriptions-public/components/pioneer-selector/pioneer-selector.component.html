@@ -1,0 +1,21 @@
+<div class="pioneerSelector mb-2" (click)="click.emit(value)" [ngClass]="pioneerModel == value ? 'active': ''">
+
+  <div class="d-flex justify-content-between">
+    <div class="info d-flex justify-content-start">
+      <div class="customRadio d-flex align-items-center">
+        <div class="customBorder">
+          <div class="customCircle"></div>
+        </div>
+      </div>
+      <div class="">
+        <span class="mat-headline d-block fw-bold title text-white">{{title}}</span>
+        <span class="mat-subheading-1 subtitle text-white" [innerHTML]="subtitle"></span>
+      </div>
+
+    </div>
+    <div class="imageSrc">
+      <svg-icon [src]="imageSrc"></svg-icon>
+    </div>
+  </div>
+
+</div>

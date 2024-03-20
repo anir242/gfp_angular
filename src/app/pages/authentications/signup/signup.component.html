@@ -1,0 +1,142 @@
+<div class="main-content" id="signup">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-7">
+        <div class="container p-0">
+          <div class="row g-0">
+            <div class="col-12">
+              <div class="signUpContainer">
+                <div class="container p-0">
+                  <div class="row g-0">
+                    <div class="col-12" *ngIf="giftCardRecipientInterface">
+                      <div class="mt-5">
+                        <app-banner type="accent"
+                                    url="assets/images/svg/gift.svg"
+                                    [title]="translate.instant('giftLoginBanner.unwrap', {value: giftCardRecipientInterface.senderFirstname})">
+                        </app-banner>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="titles">
+                        <div class="title">
+                          <span class="title-2 text-white">{{'signup.title'|translate}}</span>
+                        </div>
+                        <div class="subtitle">
+                          <span class="small-body text-white">{{'signup.alreadyHaveAnAccount'|translate}}</span>
+                          <button mat-button (click)="logIn()">{{'login.title'|translate}}</button>
+                        </div>
+                        <br>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <mat-radio-group class="my-3 d-flex flex-column" [(ngModel)]="userType"
+                                       (ngModelChange)="userOrBusiness()">
+                        <mat-radio-button
+                          [value]="userTypes.individual">{{'signup.asIndividual'| translate}} {{'signup.individual'| translate}}</mat-radio-button>
+                        <mat-radio-button [hidden]="!showBusiness"
+                          [value]="userTypes.business">{{'signup.asBusiness'| translate}} {{'signup.business'| translate}}</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                    <ng-container *ngIf="userType == userTypes.individual">
+                      <div class="col-12" *ngIf="showSocials">
+                        <app-social-buttons></app-social-buttons>
+                      </div>
+                      <div class="col-12 signUpContent">
+                        <app-divider-text [text]="translate.instant('login.or')"></app-divider-text>
+                        <form (ngSubmit)="signupV2()" [formGroup]="subscriptionData">
+                          <div class="mt-3">
+                            <app-about-you [form]="aboutYou"></app-about-you>
+                          </div>
+                          <div class="mt-3">
+                            <app-about-your-account [form]="user"></app-about-your-account>
+                          </div>
+                          <div>
+                            <mat-checkbox class="mt-3" [formControl]="marketingConsent">
+                              <span class="text-white">
+                                {{ "contactForm.marketingConsent" | translate }}
+                              </span>
+                            </mat-checkbox>
+                          </div>
+                          <div>
+                            <mat-checkbox class="mt-3" [formControl]="privacyConsent">
+                              <span class="text-white">
+                                {{ "contactForm.privacyConsent" | translate }}
+                              </span>
+                            </mat-checkbox>
+                          </div>
+                          <div class="col-12">
+                            <div class="submit text-end my-4">
+                              <button 
+                              mat-raised-button color="yellow" 
+                              type="submit"
+                              #submit
+                              [disabled]="!privacyConsent.valid"
+                              >
+                                {{'signup.title'|translate}}
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="userType == userTypes.business">
+                      <div class="col-12">
+                        <form (ngSubmit)="signupV2()" [formGroup]="user">
+                          <div class="mt-3">
+                            <app-about-you [form]="aboutYou"></app-about-you>
+                          </div>
+                          <div class="mt-3">
+                            <app-about-your-company [form]="aboutYourCompany"></app-about-your-company>
+                          </div>
+                          <div class="mt-3">
+                            <app-about-your-account [form]="user"></app-about-your-account>
+                          </div>
+                          <div>
+                            <mat-checkbox class="mt-3" [formControl]="marketingConsent">
+                              <span class="text-white">
+                                {{ "contactForm.marketingConsent" | translate }}
+                              </span>
+                            </mat-checkbox>
+                          </div>
+                          <div>
+                            <mat-checkbox class="mt-3" [formControl]="privacyConsent">
+                              <span class="text-white">
+                                {{ "contactForm.privacyConsent" | translate }}
+                              </span>
+                            </mat-checkbox>
+                          </div>
+                          <div class="col-12">
+                            <div class="submit text-end my-4">
+                              <button 
+                              mat-raised-button color="yellow"
+                              type="submit"
+                              [disabled]="!privacyConsent.valid"
+                              >
+                              {{'signup.title'|translate}}
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </ng-container>
+                    
+                    <div class="col-12">
+                      <div class="d-flex justify-content-between">
+
+                      </div>
+
+                      <div class="col-12 py-4">
+                        <app-footer-authentication></app-footer-authentication>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-5 d-none d-md-flex backgroundLogin"></div>
+    </div>
+  </div>
+</div>

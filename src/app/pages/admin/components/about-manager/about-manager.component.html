@@ -1,0 +1,183 @@
+<div class="about" xmlns:https="http://www.w3.org/1999/xhtml">
+  <div class="container-fluid p-0 softImage">
+    <div class="row g-0">
+      <div class="col-12 overview">
+        <div class="container">
+          <div class="row g-3">
+            <div class="d-flex justify-content-between col-lg-6 col-12">
+              <div class="texts my-3 pt-4 px-4">
+                <p class="title-1 bold">{{'about.overview'|translate}}</p>
+                <p class="body">{{projectData.overview}}</p>
+              </div>
+              <div class="d-flex">
+                <mat-divider [vertical]="true"
+                             class="verticalDivider my-4"></mat-divider>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start align-items-center texts col-lg-6 col-12">
+              <!-- <div class="container-fluid"> -->
+                <div class="row g-0 texts my-3 p-4 px-4">
+                  <p class="title-1 bold">{{'about.specialCharacteristics'|translate}}</p>
+                  <p class="body">{{projectData.specialCharacteristics}}</p>
+                  <div class="col-12" *ngIf="!isRenewable()">
+                    <div class="d-flex justify-content-start py-3 px-4" [style]="{'background-color': project?.type.colorLabel+'70'}" style="border-radius: 8px;">
+                      <img [src]="'assets/images/svg/acres_special_'+projectType.slug+'.svg'">
+                      <div class="ms-3 align-self-center">
+                        <p class="body mb-0">{{'about.hectares'|translate}}</p>
+                        <p class="title-2 mb-0">{{projectData.acres}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <div class="d-flex justify-content-start py-3 px-4" [style]="{'background-color': project?.type.colorLabel+'70'}" style="border-radius: 8px;">
+                      <img [src]="'assets/images/svg/altitude_special_'+projectType.slug+'.svg'">
+                      <div class="ms-3 align-self-center">
+                        <p class="body mb-0">{{'about.altitude'|translate}}</p>
+                        <p class="title-2 mb-0">{{projectData.altitude}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <div class="justify-content-start d-flex py-3 px-4" [style]="{'background-color': project?.type.colorLabel+'70'}" style="border-radius: 8px;">
+                      <img [src]="'assets/images/svg/ecosystem_special_'+projectType.slug+'.svg'">
+                      <div class="ms-3 align-self-center">
+                        <p class="body mb-0">{{'about.ecosystem'|translate}}</p>
+                        <p class="title-2 mb-0">{{projectData.ecosystem}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 gradientHome">
+        <div class="container">
+          <p class="title-1 bold text-start my-3 p-4 px-4">{{'about.superpowers'|translate}}</p>
+          <div class="row g-3 d-flex justify-content-start">
+            <div class="col-12 col-lg-4" *ngIf="!isRenewable() && projectData.biodiversity !== null">
+              <div class="superpower ms-lg-4 box statistics">
+                <p class="title-3 bold">{{'about.biodiversity'|translate}}</p>
+                <app-rating [rating]="projectData.biodiversityRating"></app-rating>
+                <mat-divider class="mt-3 mb-3"></mat-divider>
+                <p class="body">{{projectData.biodiversity}}</p>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4" *ngIf="!isMarine() && projectData.absorption !== null">
+              <div class="superpower ms-lg-4 box statistics">
+                <p class="title-3 bold">{{'about.co2Absorption'|translate}}</p>
+                <app-rating [rating]="projectData.absorptionRating"></app-rating>
+                <mat-divider class="mt-3 mb-3"></mat-divider>
+                <p class="body">{{projectData.absorption}} </p>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4" *ngIf="projectData.economicDevelopment !== null">
+              <div class="superpower ms-lg-4 box statistics">
+                <p class="title-3 bold">{{'about.economicDevelopment'|translate}}</p>
+                <app-rating [rating]="projectData.economicDevelopmentRating"></app-rating>
+                <mat-divider class="mt-3 mb-3"></mat-divider>
+                <p class="body">{{projectData.economicDevelopment}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <!--[style]="{'background': projectType?.colorSecondary}" [ngClass]="projectType.slug"-->
+        <!--[ngStyle]="{background: 'linear-gradient(90deg, #002622 50%,' + projectType.colorSecondary +' 50%)'}"-->
+        <div class="problemSupport py-5" [ngClass]="projectType.slug">
+          <div class="container py-4 mb-4">
+            <div class="row g-3">
+              <div class="d-flex justify-content-between col-lg-6 col-12">
+                <div class="theProblem my-3 pt-4 px-4">
+                  <p class="pb-2">
+                    <svg-icon src="assets/images/icons/problem.svg"></svg-icon>
+                  </p>
+                  <p class="title-1 bold">{{'about.theProblem'|translate}}</p>
+                  <p #problem (window:resize)="onResize($event)" [style.height]="max == 0 ? 'auto': max + 'px'" class="body">{{projectData.problem}}</p>
+                </div>
+                <div class="d-flex">
+                  <mat-divider [vertical]="true"
+                               class="verticalDivider my-4"></mat-divider>
+                </div>
+              </div>
+              <div class="d-flex justify-content-start col-lg-6 col-12">
+                <div class="yourSupport my-3 pt-4 px-4">
+                  <p class="pb-2">
+                    <svg-icon src="assets/images/icons/support.svg"></svg-icon>
+                  </p>
+                  <p class="title-1 bold">{{'about.yourSupport'|translate}}</p>
+                  <p #support [style.height]="max == 0 ? 'auto': max + 'px'" class="body">{{projectData.support}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div id="projectsDetailsSlider" *ngIf="carouselImages.length > 0">
+          <carousel [height]="640"
+                    [images]="carouselImages"
+                    [objectFit]="'contain'"
+                    [cellWidth]="'100%'"
+                    [autoplay]="false"
+                    [dots]="true"
+                    [loop]="false">
+          </carousel>
+        </div>
+      </div>
+
+      <div class="col-12 d-none">
+        <app-map [latitude]="this.projectData.latitude"
+                 [longitude]="this.projectData.longitude"
+                 dynamic="cooperative"></app-map>
+      </div>
+      <div class="col-12 goals py-5">
+        <div class="container py-4 mb-4">
+          <div class="row g-3">
+            <div class="d-flex justify-content-between col-lg-6 col-12">
+              <div class="my-3 pt-4 px-4">
+                <p class="title-1 bold">{{'about.unSustainable'|translate}}</p>
+                <div class="mt-3">
+                  <div *ngIf="project">
+                    <div class="d-flex flex-wrap">
+                      <div class="me-2 mt-2" *ngFor="let item of project.projectData.goals">
+                        <img style="width: 100px" [src]="item.image.url" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex">
+                <mat-divider [vertical]="true"
+                               class="verticalDivider my-3"></mat-divider>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start col-lg-6 col-12">
+              <div class="my-3 pt-4 px-4">
+                <p class="col-3 col-md-12 title-1 bold">{{'about.partners'|translate}}</p>
+                <div *ngIf="project">
+                  <div class="d-flex flex-wrap">
+                    <div class="me-2 mt-2" *ngFor="let item of project.projectData.partners">
+                      <img style="height: 70px" [src]="item.image.url" />
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="url != null" class="d-flex justify-content-center py-4 my-5">
+                  <button (click)="downloadReport()" mat-stroked-button class="noFill">
+                    {{'about.projectReport'|translate}}
+                    <svg-icon src="assets/images/svg/paper.svg" [svgClass]="''"></svg-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

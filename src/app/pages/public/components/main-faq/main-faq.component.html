@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="my-3">
+    <p class="mat-display-1 mb-4">{{translate.instant('faq.title')}}</p>
+    <p class="mat-subheading-2 mb-0">{{translate.instant('faq.mainFaqDescription')}}</p>
+  </div>
+  <app-faq-item
+    theme="light"
+    [mockFaq]="mockFaq"
+    [faqs]="singleFaqInterface">
+  </app-faq-item>
+  <button mat-button (click)="goTo(routingTypes.FAQ)">{{'faq.viewAll'|translate}}</button>
+</div>

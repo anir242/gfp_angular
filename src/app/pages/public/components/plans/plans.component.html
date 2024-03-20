@@ -1,0 +1,166 @@
+<div class="layer landingPlans">
+  <div class="customPadding">
+    <div class="d-md-none text-center">
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab [label]="translate.instant('landingPublicPlans.individuals')">
+          <div class="container">
+            <div class="row g-0">
+              <div class="col singlePlan">
+                <div class="d-flex flex-column text-start">
+                  <div class="mb-auto">
+                    <p class="mat-title">
+                      {{'landingPublicPlans.forIndividuals'|translate}}
+                    </p>
+                    <p class="mat-body-1">{{'landingPublicPlans.starting'|translate}}</p>
+                    <span class="mat-display-2 green">{{'landingPublicPlans.price'|translate}}</span>
+                    <span class="mat-subheading-2">{{'landingPublicPlans.month'|translate}}</span>
+                    <p class="mt-3 mat-body-1">{{'landingPublicPlans.doing'|translate}}</p>
+                    <mat-divider></mat-divider>
+                    <p class="include mat-body-2 pt-2">{{'landingPublicPlans.included'|translate}}</p>
+                    <app-included [text]="'landingPublicPlans.plant'"></app-included>
+                    <app-included [text]="'landingPublicPlans.dashboard'"></app-included>
+                    <app-included [text]="'landingPublicPlans.shareable'"></app-included>
+                  </div>
+                  <div class="w-100">
+                    <ng-container *ngIf="showStartNowPlan">
+                      <button class="w-100" mat-raised-button color="yellow" [routerLink]="routingTypes.SUBSCRIPTIONS" [queryParams]="{type: userTypes.individual}">
+                        {{'landingPublicPlans.start' | translate}}
+                      </button>
+                    </ng-container>
+                    <ng-container *ngIf="!showStartNowPlan">
+                      <button class="w-100" mat-stroked-button disabled>
+                        {{'landingPublicPlans.comingSoon' | translate}}
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="translate.instant('landingPublicPlans.business')">
+          <div class="container">
+            <div class="row g-0">
+              <div class="col singlePlan">
+                <div class="d-flex flex-column text-start">
+                  <div class="mb-auto">
+                    <p class="mat-title">
+                      {{'landingPublicPlans.forBusiness'|translate}}
+                    </p>
+                    <p class="mat-body-1">{{'landingPublicPlans.modular'|translate}}</p>
+                    <span class="mat-display-2 green">{{'landingPublicPlans.create'|translate}}</span>
+                    <p class="mt-3 mat-body-1">{{'landingPublicPlans.set'|translate}}</p>
+                    <mat-divider></mat-divider>
+                    <p class="mat-body-2 pt-2">{{'landingPublicPlans.included'|translate}}</p>
+                    <app-included [text]="'landingPublicPlans.dashboard2'"></app-included>
+                    <app-included [text]="'landingPublicPlans.infographic'"></app-included>
+                    <app-included [text]="'landingPublicPlans.integration'"></app-included>
+                  </div>
+                  <div class="w-100">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-12">
+                          <ng-container *ngIf="showStartNowPlan">
+                          <button mat-stroked-button class="w-100" [routerLink]="routingTypes.BUSINESS_WHY_JOIN">
+                            {{'landingPublicPlans.tell'|translate}}
+                          </button>
+                          </ng-container>
+                        </div>
+                        <div class="col-12 mt-2">
+                          <ng-container *ngIf="showStartNowPlan">
+                          <button mat-raised-button color="yellow" class="w-100" [routerLink]="routingTypes.SUBSCRIPTIONS" [queryParams]="{type: userTypes.business}">
+                            {{'landingPublicPlans.start' | translate}}
+                          </button>
+                          </ng-container>
+                          <ng-container *ngIf="!showStartNowPlan">
+                            <button class="w-100" mat-stroked-button disabled>
+                              {{'landingPublicPlans.comingSoon' | translate}}
+                            </button>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="container d-none d-md-block">
+      <div class="row g-4 justify-content-center">
+        <div class="col-5 me-2 singlePlan d-flex align-items-start flex-column">
+          <div class="mb-auto">
+            <p class="mat-title">
+              {{'landingPublicPlans.forIndividuals'|translate}}
+            </p>
+            <p class="mat-body-1">{{'landingPublicPlans.starting'|translate}}</p>
+            <span class="mat-display-2 green">{{'landingPublicPlans.price'|translate}}</span>
+            <span class="mat-subheading-2">{{'landingPublicPlans.month'|translate}}</span>
+            <p class="mt-3 mat-body-1">{{'landingPublicPlans.doing'|translate}}</p>
+            <mat-divider></mat-divider>
+            <p class="mat-body-2 pt-2">{{'landingPublicPlans.included'|translate}}</p>
+            <app-included [text]="'landingPublicPlans.plant'"></app-included>
+            <app-included [text]="'landingPublicPlans.dashboard'"></app-included>
+            <app-included [text]="'landingPublicPlans.shareable'"></app-included>
+          </div>
+          <div class="w-100">
+            <ng-container *ngIf="showStartNowPlan">
+              <button class="w-100" mat-raised-button color="yellow" [routerLink]="routingTypes.SUBSCRIPTIONS"  [queryParams]="{type: userTypes.individual}">
+                {{'landingPublicPlans.start' | translate}}
+              </button>
+            </ng-container>
+            <ng-container *ngIf="!showStartNowPlan">
+              <button class="w-100" mat-stroked-button disabled>
+                {{'landingPublicPlans.comingSoon' | translate}}
+              </button>
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-5 ms-2 singlePlan d-flex align-items-start flex-column">
+          <div class="mb-auto">
+            <p class="mat-title">
+              {{'landingPublicPlans.forBusiness'|translate}}
+            </p>
+            <p class="mat-body-1">{{'landingPublicPlans.modular'|translate}}</p>
+            <span class="mat-display-2 green">{{'landingPublicPlans.create'|translate}}</span>
+            <p class="mt-3 mat-body-1">{{'landingPublicPlans.set'|translate}}</p>
+            <mat-divider></mat-divider>
+            <p class="mat-body-2 pt-2">{{'landingPublicPlans.included'|translate}}</p>
+            <app-included [text]="'landingPublicPlans.dashboard2'"></app-included>
+            <app-included [text]="'landingPublicPlans.infographic'"></app-included>
+            <app-included [text]="'landingPublicPlans.integration'"></app-included>
+          </div>
+          <div class="w-100">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-lg-6">
+                  <ng-container *ngIf="showStartNowPlan">
+                    <button mat-stroked-button class="w-100" [routerLink]="routingTypes.BUSINESS_WHY_JOIN">
+                      {{'landingPublicPlans.tell'|translate}}
+                    </button>
+                  </ng-container>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <ng-container *ngIf="showStartNowPlan">
+                    <button mat-raised-button color="yellow" class="mt-2 mt-lg-auto w-100" [routerLink]="routingTypes.SUBSCRIPTIONS" [queryParams]="{type: userTypes.business}">
+                      {{'landingPublicPlans.start' | translate}}
+                    </button>
+                  </ng-container>
+                </div>
+                <div class="col-12">
+                  <ng-container *ngIf="!showStartNowPlan">
+                    <button class="w-100" mat-stroked-button disabled class="mt-2 mt-lg-auto w-100">
+                      {{'landingPublicPlans.comingSoon' | translate}}
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

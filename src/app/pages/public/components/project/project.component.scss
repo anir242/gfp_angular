@@ -1,0 +1,148 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin project-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+  $is-dark-theme: map.get($color-config, "is-dark");
+
+  .project-wrapper {
+    width: 100%;
+    background: transparent;
+    position: relative;
+    text-align: center;
+    overflow-x: hidden;
+
+    @include media-breakpoint-up(md) {
+      text-align: left;
+    }
+
+    .carousel {
+      width: 75%;
+      display: flex;
+      justify-content: center;
+      background-color: transparent;
+
+      @include media-breakpoint-up(md) {
+        width: 100%;
+      }
+    }
+
+    .carousel{
+      &.individualArrows {
+        .carousel-arrows .carousel-arrow-next, .carousel-arrows .carousel-arrow-prev{
+          background-color: $bar-lime;
+        }
+      }
+      .carousel-arrows .carousel-arrow-next{
+        //There is a problem with screen under 300px ( es: Galaxy Fold )
+        @include media-breakpoint-down(md) {
+          right: -30px;
+        }
+      }
+
+      .carousel-arrows .carousel-arrow-prev{
+        //There is a problem with screen under 300px ( es: Galaxy Fold )
+        @include media-breakpoint-down(md) {
+          left: -30px;
+        }
+      }
+    }
+
+    .carousel-container {
+      background-color: transparent;
+      overflow: visible;
+
+      @include media-breakpoint-up(md) {
+        overflow: hidden;
+      }
+    }
+
+    .carousel-cells {
+      background-color: transparent;
+    }
+
+    .carousel-cell {
+      align-items: center;
+      box-shadow: 0px 10px 20px 0px #7B7B7B26;
+      display: flex;
+      border-radius: 8px;
+      height: 374px;
+    }
+
+    .carousel-arrow-disabled {
+      visibility: hidden;
+    }
+
+    .carousel-arrows-outside .carousel-arrow-prev {
+      left: -25px;
+    }
+
+    .carousel-arrows-outside .carousel-arrow-next {
+      right: -25px;
+    }
+
+    .card-container {
+      height: 100%;
+      width: 100%;
+      text-align: left;
+
+      >div {
+        padding: 16px;
+      }
+
+      > :first-child {
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        height: 162px;
+        justify-content: flex-end;
+        position: relative;
+        width: 100%;
+
+        >span {
+          height: fit-content;
+        }
+
+        .img-holder {
+          width: fit-content;
+          height: fit-content;
+          position: absolute;
+          right: 16px;
+          top: 16px;
+
+          >img {
+            width: 56px;
+            height: 56px;
+            float: right;
+          }
+        }
+      }
+
+      > :last-child {
+        height: calc(100% - 162px);
+        background-color: $grey7;
+      }
+    }
+
+    .link {
+      bottom: 20px;
+      color: $forest-green;
+      cursor: pointer;
+      float: right;
+      position: absolute;
+      right: 20px;
+
+      @include media-breakpoint-up(md) {
+        margin-top: 1rem;
+        position: relative;
+      }
+    }
+  }
+}

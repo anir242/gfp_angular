@@ -1,0 +1,24 @@
+<div id="footerAuth mt-2">
+  <div class="container p-0">
+    <div class="d-flex justify-content-between linkContainer">
+      <span class="mat-caption" (click)="goTo(routingTypes.TERMS_AND_CONDITIONS)">
+        {{'footerAuthentication.terms'|translate}}
+      </span>
+      <span class="mat-caption" (click)="goTo(routingTypes.PRIVACY_POLICY_PUBLIC)">
+        {{'footerAuthentication.privacy'|translate}}
+      </span>
+      <span class="mat-caption" (click)="goTo(routingTypes.COOKIE_POLICY)">
+        {{'footerAuthentication.cookies'|translate}}
+      </span>
+      <span class="mat-caption">
+        <a href="mailto:{{'footerPublic.email'|translate}}">{{'footerAuthentication.contact'|translate}}</a>
+      </span>
+    </div>
+    <mat-divider class="my-2"></mat-divider>
+    <div class="text-center mb-2">
+      <span class="tiny-body bold text-center">
+        {{'footerAuthentication.rights'|translate: {value: year} }}
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="bg">
+  <div id="welcome" class="main-content">
+    <div class="onboard container p-3 pt-5 pt-lg-0">
+      <div class="row g-5">
+        <div class="col-12 col-lg-7 text-white">
+           <div class="mapContainer">
+            <div class="text-center text-lg-start">
+              <img src="/assets/images/logo-square-white.png" class="mt-5">
+              <div class="title mt-4">
+                <span class="title-1 bold">{{title}}</span>
+              </div>
+              <div class="description mb-5">
+                <span class="large-body" [innerHTML]="subtitle"></span>
+              </div>
+            </div>
+            <div class="row g-2">
+              <div class="col-12 col-lg-6">
+                <ng-container *ngIf="button1Action === 'share' else noShare">
+                  <button [hidden]="!shareButtonEnabled" shareButtonsPopup mat-stroked-button class="w-100" color="yellow"
+                          [theme]="'default'"
+                          [include]="['facebook','twitter','linkedin','telegram','messenger','whatsapp','sms','email','print','copy']"
+                          [show]="5"
+                          [url]="url"
+                          [description]="'share gift'"
+                          [autoSetMeta]="false">
+                    {{button1}}
+                  </button>
+                </ng-container>
+                <ng-template #noShare>
+                  <button mat-stroked-button color="yellow" class="w-100" (click)="navigateToUrl1(button1Action)">
+                    {{button1}}
+                  </button>
+                </ng-template>
+              </div>
+              <div class="col-12 col-lg-6">
+                <button mat-raised-button color="yellow" class="w-100" (click)="navigateToUrl2(button2Action)">
+                  {{button2}}
+                </button>
+              </div>
+            </div>
+            <div class="imgWrapper">
+              <img src="/assets/images/flights.png" class="mt-5" id="flightImg">
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5 align-items-end">
+          <div class="summary w-100 ms-lg-5 mb-lg-5" [ngClass]="cartType ===  cartTypes.GIFT ? 'order-1 order-lg-2' : ''">
+            <div class="large-body mb-3 text-white">{{'welcomeOnBoard.checkoutSummary'|translate}}</div>
+            <div class="box p-3">
+              <app-summary-welcome-on-board
+                [items]="items"
+                [type]="cartType">
+              </app-summary-welcome-on-board>
+            </div>
+          </div>
+          <div class="my-4" [ngClass]="cartType ===  cartTypes.GIFT ? 'order-2 order-lg-1' : ''">
+            <div class="container p-0">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-white text-center p-5 flex-column d-flex justify-content-center align-items-center" style="margin-top: -6rem; padding-top: 6rem;">
+  <div class="large-body mt-5 mx-4">{{'welcomeOnBoard.sentEmail'|translate}}</div>
+  <div class="small-body mt-2 py-2">{{'welcomeOnBoard.notReceive'|translate}}</div>
+  <button mat-raised-button class="mb-5" color="yellow">{{'welcomeOnBoard.assistance'|translate}}</button>
+</div>

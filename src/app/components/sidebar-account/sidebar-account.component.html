@@ -1,0 +1,17 @@
+<div class="sidebar-wrapper">
+  <div class="sidebar-container-menu-buttons ">
+    <mat-nav-list>
+      <div class="">
+        <app-menu-item *ngFor="let item of menuItemsApp" [item]="item"
+                       (toggleItemSidenav)="toggleSidenav.emit()"></app-menu-item>
+        <mat-divider class="my-3"></mat-divider>
+      </div>
+      <app-menu-item *ngFor="let item of menuItemsGen" [item]="item" (toggleItemSidenav)="toggleSidenav.emit()">
+      </app-menu-item>
+    </mat-nav-list>
+    <div class="mt-5 mx-4 d-flex justify-content-between">
+      <button mat-raised-button color="yellow" [hidden]="true">{{'landingSubscribe.subscribe' | translate}}</button>
+      <button mat-button [routerLink]="login" hidden>{{'login.title' | translate}}</button>
+    </div>
+  </div>
+</div>

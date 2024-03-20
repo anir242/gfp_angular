@@ -1,0 +1,339 @@
+<div
+  class="d-flex flex-md-row flex-column justify-content-center"
+  [ngClass]="{'mb-5': windowWidth < 600}"
+  id="pilio-business"
+>
+  <div id="pilio-circle" class="d-flex flex-column pilio-circle">
+    <div class="ps-4">
+      <p class="title-1 text-dark bold">
+        {{ "businessSolutions.sustainability" | translate }}
+      </p>
+      <p class="body mt-2 mb-4 lh-20">
+        {{ "businessSolutions.ourComprehensive" | translate }}
+      </p>
+        <a class="shadow-none pt-1" [ngClass]="{'mb-4': windowWidth < 600}"  mat-raised-button color="yellow" [href]=" lang == 'it'?'/soluzioni_carbon_neutral':'/carbon_neutral_solutions'">{{ "businessSolutions.exploreSolutions" | translate }}</a>
+    </div>
+    <div>
+      <div id="ring" class="ring">
+        <div
+          class="position-1 position"
+          (mouseenter)="mouseEnter($event)"
+          (mouseleave)="mouseleave($event)"
+          id="0"
+          (click)="openM(0,'position1-h')"
+        >
+          <div class="icon1"></div>
+          <div class="part part1">
+            <span class="button-helper"></span>
+            <img
+              class="text1"
+              [src]="lang == 'it'?'../../../../../assets/images/pilio/text/text1_it.svg':'../../../../../assets/images/pilio/text/text1.svg'"
+              alt=""
+            />
+          </div>
+        </div>
+        <div
+          class="position-2 position"
+          (mouseenter)="mouseEnter($event)"
+          (mouseleave)="mouseleave($event)"
+          id="1"
+          (click)="openM(1,'position2-h')"
+        >
+          <div class="icon2"></div>
+          <div class="part part2">
+            <span class="button-helper"></span>
+            <img
+              class="text2"
+              [src]="lang == 'it'?'../../../../../assets/images/pilio/text/text2_it.svg':'../../../../../assets/images/pilio/text/text2.svg'"
+              alt=""
+            />
+          </div>
+        </div>
+        <div
+          class="position-3 position"
+          (mouseenter)="mouseEnter($event)"
+          (mouseleave)="mouseleave($event)"
+          id="2"
+          (click)="openM(2,'position3-h')"
+        >
+          <div class="icon3"></div>
+          <div class="part part3">
+            <span class="button-helper"></span>
+            <img
+              [class]="lang == 'it' ? 'text3-it' : 'text3'"
+              [src]="lang == 'it'?'../../../../../assets/images/pilio/text/text3_it.svg':'../../../../../assets/images/pilio/text/text3.svg'"
+              alt=""
+            />
+          </div>
+        </div>
+        <div
+          class="position-4 position"
+          (mouseenter)="mouseEnter($event)"
+          (mouseleave)="mouseleave($event)"
+          id="3"
+          (click)="openM(3,'position4-h')"
+        >
+          <div class="icon4"></div>
+          <div class="part part4">
+            <span class="button-helper"></span>
+            <img
+              class="text4"
+              [src]="lang == 'it'?'../../../../../assets/images/pilio/text/text4_it.svg':'../../../../../assets/images/pilio/text/text4.svg'"
+              alt=""
+            />
+          </div>
+        </div>
+        <div
+          class="center-logo position"
+          [ngClass]="{'center-logo-it': lang==='it'}"
+          (mouseenter)="mouseEnter($event)"
+          (mouseleave)="mouseleave($event)"
+          id="4"
+          (click)="openM(4, lang == 'it'?'center-logo-it-h':'center-logo-h')"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div id="cards-height" class="container ms-0" [ngClass]="{'mt-5': windowWidth < 600}">
+    <div class="row justify-content-md-center mt-0">
+      <div class="col-md-6  py-1">
+        <div
+          class="measure-main p-4 position-relative h-100"
+          id="tab-1"
+          (click)="openM(1,'position2-h')"
+        >
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <div class="measure"></div>
+              <p class="title-3 bold text-dark lh-24" innerHtml="{{ 'businessSolutions.measure.measure' | translate }}">
+               
+              </p>
+            </div>
+            <div class="open-modal"></div>
+          </div>
+          <p class="small-body pt-2">
+            {{ "businessSolutions.measure.measureYourScope" | translate }}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6  py-1">
+        <div
+          class="offset-main p-4 position-relative h-100"
+          id="tab-3"
+          (click)="openM(3,'position4-h')"
+        >
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <div class="offset"></div>
+              <p class="title-3 bold text-dark lh-24" innerHtml="{{ 'businessSolutions.offset.offset' | translate }}">
+                
+              </p>
+            </div>
+            <div class="open-modal"></div>
+          </div>
+          <p class="small-body pt-2">
+            {{ "businessSolutions.offset.fromCertified" | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6  py-1">
+        <div
+          class="track-main p-4 position-relative h-100"
+          id="tab-2"
+          (click)="openM(2,'position3-h')"
+        >
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <div class="track"></div>
+              <p class="title-3 bold text-dark lh-24" innerHtml="{{ 'businessSolutions.track.track' | translate }}">
+                
+              </p>
+            </div>
+            <div class="open-modal"></div>
+          </div>
+          <p class="small-body pt-2">
+            {{ "businessSolutions.track.trackReport" | translate }}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6  py-1">
+        <div
+          class="comunicate-main p-4 position-relative h-100"
+          id="tab-0"
+          (click)="openM(0,'position1-h')"
+        >
+              <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="comunicate"></div>
+                  <p class="title-3 bold text-dark lh-24" innerHtml="{{ 'businessSolutions.communicate.communicate' | translate }}">
+
+                  </p>
+                </div>
+                <div class="open-modal"></div>
+              </div>
+          <p class="small-body pt-2">
+            {{ "businessSolutions.communicate.showcaseAspects" | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center mb-0">
+      <div class="col-md-12 h-100 py-1" >
+        <div
+          class="esg-main p-4 position-relative"
+          id="tab-4"
+          (click)="openM(4, lang == 'it'?'center-logo-it-h':'center-logo-h')"
+        >
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <div class="esg"></div>
+              <p class="title-3 bold text-dark lh-24" innerHtml="{{ 'businessSolutions.esg.esg' | translate }}">
+                
+              </p>
+            </div>
+            <div class="open-modal"></div>
+          </div>
+          <p class="small-body pt-2">
+            {{ "businessSolutions.esg.ourCarbon" | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+    id="business-modal"
+      [style]="windowWidth > 600 ? 'width: 110%;':'width: 95%;'"
+      class="h-100 position-absolute bottom-0 bg-white business-modal text-dark"
+      [ngClass]="{ invisible: !openModal }"
+    >
+      <button
+        class="position-absolute end-0 top-0 mt-3 me-3 close"
+        (click)="closeM()"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+      <div class="title-part">
+        <div class="d-flex gap-3 align-items-center">
+          <div [class]="showData?.type"></div>
+          <div>
+            <p class="mb-1 small-body chivo bold" [ngClass]="{'pe-4': windowWidth < 600}">
+              {{ showData?.name | translate }}
+            </p>
+            <p class="large-body">{{ showData?.title | translate }}</p>
+          </div>
+        </div>
+        <div>
+          <p class="body my-4 lh-20">{{ showData?.subtitle | translate }}</p>
+        </div>
+        <button
+          [class]=" windowWidth > 600 ? 'w-50' : 'w-100'"
+          mat-raised-button
+          *ngIf="showData?.button"
+          [routerLink]="showData?.type !== 'track'?[showData?.url]:showData?.type !== 'comunicate'?[showData?.url]:''"
+          (click)="showData?.type == 'track'? openMeet() : showData?.type == 'comunicate'|| showData?.type == 'esg'?scrollToId('contact-form'):''"
+        >
+          {{ showData?.button | translate }}
+      </button>
+      </div>
+      <div
+        class="my-3"
+        *ngIf="
+          showData?.type == 'measure' ||
+          showData?.type == 'offset' ||
+          showData?.type == 'comunicate'
+        "
+      >
+        <carousel *ngIf="isOpened" [cellsToShow]="windowWidth > 1200 ? 2 : 1" [height]="windowWidth > 600 ? 350 : windowWidth < 600 && showData?.type == 'comunicate' ? 470 : 515 " [ngClass]="{'mt-3':windowWidth < 600}">
+          <div
+            *ngFor="let card of showData?.cards"
+            class="carousel-cell"
+          >
+          <div [class]="showData?.type + ' d-none'"></div>
+            <!-- <div class="mw-100 h-100 card-img" [ngStyle]="{'background-image': 'url(' + card.img + ')'}">
+            </div> -->
+            <!-- <img class="card-img" [src]="card.img" alt=""> -->
+            <div [style]=" windowWidth > 600 ? 'height: 100%; margin-bottom: 16px;':'height: 100%; margin-bottom: 16px;'">
+              <div class="h-100 card-img"  [ngStyle]="{'background-image': 'url(' + card.img + ')'}">
+              </div>
+            </div>
+            <p class="fs-20 bold lh-24 chivo" style="margin-bottom: 8px;" innerHTML="{{ card.title | translate }}"></p>
+            <div class="show-text">
+              <p class="lato">{{ card.text | translate }}</p>
+            </div>
+            <div *ngIf="card?.button" class="w-100" style="margin-top: 16px;">
+              <a
+                [href]="lang == 'it'?card.url_it:card.url"
+                class="w-100 shadow-none"
+                *ngIf="card.buttonType == 'raised'; else stroked"
+                mat-raised-button
+                color="yellow"
+              >
+                {{ card.button | translate }}
+            </a>
+              <ng-template #stroked>
+                <a
+                  class="w-100 shadow-none"
+                  mat-stroked-button
+                  [href]="lang == 'it'?card.url_it:card.url"
+                >
+                  {{ card.button | translate }}
+              </a>
+              </ng-template>
+            </div>
+          </div>
+        </carousel>
+      </div>
+      <div *ngIf="showData?.type == 'track'" class="track-modal" [ngClass]="{'d-none': !isOpened}">
+        <div [ngClass]="{'d-flex': windowWidth > 600}" >
+          <img class="mw-100 w-100" [src]="showData?.img" alt="" [style]="windowWidth < 600 ? 'min-height: 125px; object-fit: cover;' : ''"/>
+        </div>
+        <p class="title-3 bold my-2">
+          {{ "businessSolutions.clickedTrack.scientific" | translate }}
+        </p>
+        <div class="track-text">
+          <p class="small-body my-2">
+            {{ "businessSolutions.clickedTrack.platform" | translate }}
+          </p>
+          <p class="small-body my-3">
+            {{ "businessSolutions.clickedTrack.ourSatellite" | translate }}
+          </p>
+        </div>
+      </div>
+      <div
+        *ngIf="showData?.type == 'esg'"
+        [class]="windowWidth > 600 ? 'd-flex justify-content-around w-100 py-5 gap-1':'d-flex justify-content-around w-100 gap-1'"
+      >
+        <ng-container *ngIf="windowWidth > 600, else slide">
+          <div *ngFor="let card of showData?.cards" class="esg-card-main carousel-cell" style="height: 350px;" [ngClass]="{'d-none': !isOpened}">
+            <div [style]=" windowWidth > 600 ? 'height: 100%; margin-bottom: 16px;':'height: 100%; margin-bottom: 16px;'">
+              <div class="h-100 card-img"  [ngStyle]="{'background-image': 'url(' + card.img + ')'}">
+              </div>
+            </div>
+            <p class="mt-2 title-3 bold lh-24 mb-2">{{ card.title | translate }}</p>
+            <div class="show-text">
+              <p class="lato">{{ card.text | translate }}</p>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #slide>
+            <carousel [cellsToShow]="1" [height]="windowWidth > 600 ? 350 : 420" class="mt-5" [ngClass]="{'d-none': !isOpened}">
+              <div *ngFor="let card of showData?.cards" class="esg-card-main carousel-cell" (click)="windowWidth < 600 ? changeStyle($event.currentTarget) : ''">
+                <div [class]="showData?.type + ' d-none'"></div>
+                <div [style]=" windowWidth > 600 ? 'height: 100%; margin-bottom: 16px;':'height: 100%; margin-bottom: 16px;'">
+                  <div class="h-100 card-img"  [ngStyle]="{'background-image': 'url(' + card.img + ')'}">
+                  </div>
+                </div>
+                <p class="mt-2 title-3 bold lh-24 mb-2">{{ card.title | translate }}</p>
+                <div class="show-text">
+                  <p class="lato">{{ card.text | translate }}</p>
+                </div>
+              </div>
+            </carousel>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

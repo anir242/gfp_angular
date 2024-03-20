@@ -1,0 +1,39 @@
+<div class="container p-0">
+  <div class="row gx-2">
+    <div class="col-12 col-md-6">
+      <app-mat-input
+        [label]="'firstName'"
+        [control]="firstName"
+        autocomplete="given-name"
+        labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-mat-input
+        label="lastName"
+        [control]="lastName"
+        autocomplete="family-name"
+        [labelError]="'authentication.requiredField'"
+        [required]="true"></app-mat-input>
+    </div>
+    <div class="col-12">
+      <app-mat-input
+        label="Mail address"
+        [control]="email"
+        autocomplete="email"
+        labelError="authentication.requiredField"
+        labelPatternError="authentication.pattern"
+        [required]="true"></app-mat-input>
+    </div>
+    <div class="col-12">
+      <app-mat-input
+        textAreaHeight="124px"
+        textAreaLength="250"
+        inputType="textarea"
+        label="Message"
+        [control]="message"
+        [labelError]="'authentication.requiredField'"
+        [required]="true"></app-mat-input>
+    </div>
+  </div>
+</div>

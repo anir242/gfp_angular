@@ -1,0 +1,27 @@
+<div class="mt-5">
+  <div class="stages statistics">
+    <div class="statistic p-3 d-flex justify-content-between align-items-center">
+      <div>
+        <div class="title-2">{{'stages.stage'|translate}} {{'stages.of4'|translate: {value: stageNumber} }}</div>
+        <div class="body mt-3">{{description}}</div>
+      </div>
+      <img class="ms-3" src="assets/images/icons/ecosystem_{{type}}.png" alt="ecosystem" />
+    </div>
+    <div class="mt-4 statistic p-3">
+      <div class="d-flex justify-content-between mb-3 chivo md">
+        <span class="title-4">{{'stages.levelProgress'|translate}}</span>
+        <span class="body">{{progress}}{{'stages.%'|translate}}</span>
+      </div>
+      <div>
+        <mat-progress-bar [ngClass]="type" mode="determinate" value="{{progress}}"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+      <button [hidden]="false" (click)="goToCheckout(slug)" class="open-dialog" mat-raised-button color="yellow">
+        <svg-icon src="assets/images/icons/impact.svg" [svgClass]="'align-left'"></svg-icon>
+        <span class="title-4 bold">{{'projectDetails.addImpact'|translate}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,86 @@
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="mb-3 d-flex justify-content-start">
+      <svg-icon src="assets/images/svg/logoTitle.svg"></svg-icon>
+    </div>
+    <div class="d-flex row">
+      <div class="col-md-3 me-auto">
+        <p class="mat-body-1 text-start">{{'footer.description'|translate}}</p>
+      </div>
+      <div class="col-12 col-md-2">
+        <div class="accordion-item d-md-none">
+          <span class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSitemap">
+              <span class="mat-body-1 fw-bolder">{{'footer.sitemap'|translate}}</span>
+            </button>
+          </span>
+          <div id="collapseSitemap" class="accordion-collapse collapse" data-bs-parent="#collapseSitemap">
+            <div class="accordion-body">
+              <a href="" class="mat-body-1">{{'footer.dashboard'|translate}}</a>
+              <a href="" class="mat-body-1">{{'footer.projects'|translate}}</a>
+              <a href="" class="mat-body-1">{{'footer.profile'|translate}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-md-block">
+          <a class="mat-body-1 fw-bold">{{'footer.sitemap'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.dashboard'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.projects'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.profile'|translate}}</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-2">
+        <div class="accordion-item d-md-none">
+          <span class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAbout">
+              <span class="mat-body-1 fw-bolder">{{'footer.aboutGFP'|translate}}</span>
+            </button>
+          </span>
+          <div id="collapseAbout" class="accordion-collapse collapse" data-bs-parent="#collapseSitemap">
+            <div class="accordion-body">
+              <a href="" class="mat-body-1">{{'footer.whatWeDo'|translate}}</a>
+              <a href="" class="mat-body-1">{{'footer.theTeam'|translate}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-md-block">
+          <a class="mat-body-1 fw-bold">{{'footer.aboutGFP'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.whatWeDo'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.theTeam'|translate}}</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-2">
+        <div class="accordion-item d-md-none">
+          <span class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLegal">
+              <span class="mat-body-1 fw-bolder">{{'footer.theLegalStuff'|translate}}</span>
+            </button>
+          </span>
+          <div id="collapseLegal" class="accordion-collapse collapse" data-bs-parent="#collapseSitemap">
+            <div class="accordion-body">
+              <a href="" class="mat-body-1">{{'footer.terms'|translate}}</a>
+              <a href="" class="mat-body-1">{{'footer.privacy'|translate}}</a>
+              <a href="" class="mat-body-1">{{'footer.cookies'|translate}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-md-block">
+          <a class="mat-body-1 fw-bold">{{'footer.theLegalStuff'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.terms'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.privacy'|translate}}</a>
+          <a href="" class="mat-body-1">{{'footer.cookies'|translate}}</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-2">
+        <div class="mt-2">
+          <a class="mat-body-1 text-start fw-bolder">{{'footer.contact'|translate}}</a>
+          <a class="mat-body-1" href="mailto:{{'footer.email'|translate}}" class="text-break mat-body-1 text-start">{{'footer.email'|translate}}</a>
+        </div>
+      </div>
+    </div>
+    <mat-divider class="my-3"></mat-divider>
+    <div class="mat-body-1">
+      <span >{{'footer.rights'|translate: {value: year} }}</span>
+    </div>
+  </div>
+</footer>

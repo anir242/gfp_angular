@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use '../../../../node_modules/@angular/material/index' as mat;
+
+
+@mixin your-payment-method($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+
+  .paymentsMethods {
+    .mat-radio-button {
+      display: block;
+    }
+  }
+  .paymentInput {
+    background: rgba(250,250,250,.05);
+    border-radius: 4px;
+  }
+  .promo {
+    span{
+      color: $bar-yellow;
+    }
+    padding: 24px;
+  }
+  .proceedCheckout{
+    width: 100%;
+    @include media-breakpoint-up(md){
+      width: auto;
+    }
+  }
+}

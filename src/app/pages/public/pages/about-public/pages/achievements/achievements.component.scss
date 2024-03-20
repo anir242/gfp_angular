@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin achievements-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #achievements {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-size: cover;
+    position: relative;
+    .verified{
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+    #doneSoFar{
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+
+    }
+  }
+}

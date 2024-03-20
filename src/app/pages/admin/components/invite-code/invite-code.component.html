@@ -1,0 +1,30 @@
+<div class="statistics mt-4">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="mat-headline m-0 text-white">{{'projectDetails.inviteAFriend' | translate}}</div>
+        <app-info [selector]="'inviteFriend'"
+                  [title]="translate.instant('projectDetails.inviteAFriend')"
+                  [body]="translate.instant('projectDetails.inviteAFriendPlant')"
+                  [link]="'/about'"></app-info>
+      </div>
+    </div>
+    <div class="col-12 mb-3 mat-body text-white">{{'projectDetails.inviteAFriendPlant' | translate}}</div>
+    <div class="col-12 col-xl-9">
+      <div class="statistic p-3 invite-code" id="inviteCode" (click)="copy()" (mouseenter)="hover()" (mouseleave)="leave()">
+        <div class="d-flex justify-content-between">
+          <span>{{inviteCode?.token}}</span>
+          <span *ngIf="!copied && !copyError && !hovering">{{inviteCode?.uses}}/10</span>
+          <span *ngIf="copied" class="text-green text-uppercase">{{'projectDetails.inviteAFriendCopied' | translate}}</span>
+          <span *ngIf="copyError" class="text-red text-uppercase">{{'projectDetails.inviteAFriendCopyError' | translate}}</span>
+          <span *ngIf="hovering && !copied && !copyError" class="text-yellow text-uppercase">CLICK</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <button mat-stroked-button (click)="renew()" color="yellow" *ngIf="inviteCode?.uses >= 8 || !inviteCode">
+        Reset
+      </button>
+    </div>
+  </div>
+</div>

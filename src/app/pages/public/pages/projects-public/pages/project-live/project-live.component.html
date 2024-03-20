@@ -1,0 +1,146 @@
+<ng-container *ngIf="project">
+  <div id="projectDetail">
+    <div class="container-fluid projectData">
+      <div class="videoBackground" *ngIf="videoURL != null">
+        <div class="videoForeground">
+          <iframe [src]="videoURL | safe" frameborder="0" allow="autoplay; fullscreen" allowfullscreen muted playsinline loading="eager"></iframe>
+        </div>
+      </div>
+      <div class="photoBackground" *ngIf="!videoURL && photoURL">
+        <div class="photoForeground" [ngStyle]="{'background-image': photoURL}">
+        </div>
+      </div>
+      <div class="row h-100">
+        <div class="col-12 ps-0 pe-0">
+          <div class="layer h-100" [ngClass]="timeSelected.value">
+            <div class="container h-100 p-0">
+              <div class="row h-100">
+                <div class="col-12">
+                  <div class="projectInfo mt-5">
+                    <span class="nation mat-caption text-uppercase">
+                      {{'projectLive.liveExperience'|translate}}
+                    </span>
+                    <div [ngClass]="isSmallScreen ? 'title-1 bold text-wrap' : 'headline text-nowrap'" class="mt-2 mb-3 text-white">{{project.name}}</div>
+                  </div>
+                  <button mat-stroked-button class="mt-3" color="yellow" (click)="goToProject(project.slug)">
+                    {{'projectLive.goToProject'|translate}}
+                  </button>
+                </div>
+                <div class="col-12 col-md-10 col-lg-8 col-xl-7 mt-5">
+                  <div class="statistics p-3 weather mt-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <div class="title-3 bold text-white">{{'projectLive.todayWeather'|translate}}</div>
+                      <div class="liveData p-1 d-flex justify-content-center align-items-center">
+                        <div class="ball"></div>
+                        <span class="small-body text-uppercase text-white">{{'projectLive.liveData'|translate}}</span>
+                      </div>
+                    </div>
+                    <div class="row g-2 align-items-stretch">
+                      <div class="col-12 col-lg-4">
+                        <div class="statistic p-3 h-100">
+                          <div class="d-flex align-items-center mb-2">
+                            <img class="me-2" src="assets/images/icons/weather.png" alt="weather" />
+                            <span class="title-2 text-white">{{temperature}}{{'projectLive.degreesC'|translate}}</span>
+                          </div>
+                          <div class="date text-white body">
+                            {{time}}
+                            <div *ngIf="timezone">
+                              ({{timezone.timeZoneName}})
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-8">
+                        <div class="statistic p-3 h-100">
+                          <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="title-4 text-white">{{'projectLive.humidity'|translate}}</div>
+                            <div class="body text-white">{{weather?.main.humidity}}% / Average</div>
+                          </div>
+                          <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="title-4 text-white">{{'projectLive.wind'|translate}}</div>
+                            <div class="body text-white">{{weather?.wind.speed}} km/h / Gentle</div>
+                          </div>
+                          <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="title-4 text-white">{{'projectLive.precipitation'|translate}}</div>
+                            <div class="body text-white">{{weather?.weather[0].description}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="row mt-4 mb-5 g-3">
+                    <div class="col-12 col-lg-4 d-flex justify-content-center justify-content-md-start align-items-center">
+                      <audio id="sound" class="d-none" [src]="audioLink" controls></audio>
+                      <button mat-stroked-button (click)="toggleMute()" color="yellow" class="small-button" style="height: 32px">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 30px">
+                          <img src="assets/images/icons/mute.svg" class="me-2">
+                          <span *ngIf="!stopped">Mute experience</span>
+                          <span *ngIf="stopped">Unmute experience</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center d-none">
+                      <div class="containerButtons">
+                        <mat-button-toggle-group [formControl]="timeSelected" appearance="legacy" class="yellow">
+                          <mat-button-toggle
+                            [value]="day" class="title-4 bold">{{'projectLive.day' | translate}}</mat-button-toggle>
+                          <mat-button-toggle
+                            [value]="night" class="title-4 bold">{{'projectLive.night' | translate}}</mat-button-toggle>
+                        </mat-button-toggle-group>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="projectMap">
+    <div class="container p-0">
+      <div class="chivo lg bold text-white pt-5 pb-4">
+        {{'projectLive.explore'|translate}}
+      </div>
+    </div>
+    <ng-container *ngIf="orbifyURL else googleMap">
+      <iframe [src]="orbifyURL | safe" 
+      frameborder="0" allow="fullscreen" allowfullscreen loading="eager"
+      referrerPolicy="no-referrer-when-downgrade"></iframe>
+    </ng-container>
+    <ng-template #googleMap>
+      <app-map [latitude]="this.project.projectData.latitude"
+             [longitude]="this.project.projectData.longitude"
+             dynamic="cooperative"></app-map>
+    </ng-template>
+  </div>
+  <div id="projectBlog" class="pt-4" [ngClass]="{'d-none': pressData.length == 0}">
+    <div class="container p-0">
+      <div class="latest title-1 bold mt-5">
+        {{'projectLive.latestNews'|translate:{name: project.name } }}
+      </div>
+      <div class="row g-3 articles justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-4 d-flex justify-content-center"  *ngFor="let press of pressData">
+          <div class="article p-4">
+            <div class="d-flex align-items-center h-100">
+              <img [src]="press.image.url">
+            </div>
+            <div class="articleText p-3 small-body">
+              <h1>{{press.name}}</h1>
+              <p>{{press.description}}</p>
+              <div class="read pt-3">
+                <a [href]="press.url" class="link bold">{{'campaigns.readMore'|translate}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex py-4 justify-content-center align-items-center">
+        <button mat-stroked-button>Read more on our blog</button>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,127 @@
+<div class="projectList mb-4">
+  <div *ngIf="selected==true; else notSelected" class="selected-project mt-4">
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn-close" (click)="selected=false"></button>
+    </div>
+    <div class="project activeProject position-relative" [style]="getBackground(activeProject)">
+      <div class="position-absolute start-0 ms-3">
+        <span class="px-3 py-1 bold type mat-caption" [style]="{'background-color': activeProject.type.colorLabel}">{{activeProject.type?.name}}</span>
+      </div>
+      <div class="position-absolute bottom-0 py-4 pe-4 mb-0">
+        <div class="d-flex flex-row align-items-center mb-1">
+          <span class="nation tiny-body text-uppercase text-white"><img src="/assets/images/svg/location_dot.svg" class="mb-1 me-1" style="width: 12px !important; height:12px !important;"/>{{activeProject.country.name}}</span>
+        </div>
+        <span class="place title-3 bold text-white">{{activeProject.name}}</span>
+      </div>
+    </div>
+    <div>
+      <div class="mt-4">
+        <span class="mat-body-2">{{'about.superpowers' | translate}}</span>
+      </div>
+      <div class="mt-4">
+        <div class="row" *ngIf="!isRenewable(activeProject)">
+          <div class="col">
+            <div>
+              <p class="mat-caption">{{'about.biodiversity'|translate}}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="float-end">
+              <app-rating [rating]="activeProject.projectData.biodiversityRating"></app-rating>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="!isMarine(activeProject)">
+          <div class="col">
+            <div>
+              <p class="mat-caption">{{'about.co2Absorption'|translate}}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="float-end">
+              <app-rating [rating]="activeProject.projectData.absorptionRating"></app-rating>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div>
+              <p class="mat-caption">{{'about.economicDevelopment'|translate}}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="float-end">
+              <app-rating [rating]="activeProject.projectData.economicDevelopmentRating"></app-rating>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-divider class="my-4"></mat-divider>
+      <div class="d-flex justify-content-between">
+        <button class="px-3 text-center" (click)="goToCheckout(activeProject.slug)" mat-stroked-button color="green" [hidden]="!enableSupport">
+          {{'projectList.supportPlus' | translate}}
+        </button>
+        <button mat-raised-button color="yellow" (click)="openProject(activeProject.slug)">
+          {{'projectList.goToProject' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #notSelected>
+    <ng-container>
+      <div class="p-4">
+        <div class="d-flex justify-content-between pb-2">
+          <span class="title-1 bold my-4">{{'landing.projects'| translate}}</span>
+          <button mat-button [hidden]="true">{{'seeAll'|translate}}</button>
+        </div>
+        <carousel [height]="280" [cellWidth]="280" [margin]="20" [dots]="true" [loop]="true">
+          <div class="carousel-cell" *ngFor="let project of projectsInterface; let i = index">
+            <div class="project position-relative" [style]="getBackground(project)">
+             <div>
+              <div class="overlay" *ngIf="!project.isActive && public">
+                <span class="title-3">{{'projectList.unsupported' | translate}}</span>
+              </div>
+              <div class="position-absolute start-0 ms-3">
+                <span class="px-3 py-1 bold type mat-caption" [style]="{'background-color': project.type.colorLabel}">{{project.type?.name}}</span>
+              </div>
+              <div class="position-absolute go-live-main">
+                <div (click)="projectSuperpowers(project)">
+                  <div class="d-flex flex-row align-items-center mb-1">
+                    <span class="nation tiny-body text-uppercase text-white"><img src="/assets/images/svg/location_dot.svg" class="mb-1 me-1"/>{{project.country.name}}</span>
+                  </div>
+                  <span class="place title-3 bold text-white">{{project.name}}</span>
+                </div>
+                <button *ngIf="project.isActive" (click)="goToLive(project.slug)"  mat-stroked-button color="yellow" class="noFill mr-1 mt-1">
+                  <mat-icon class="fs-6 h-auto">fiber_manual_record</mat-icon>
+                  <span>{{'admin.goLive'|translate}}</span>
+                </button>
+              </div>
+             </div>
+             <div *ngIf="!project.isActive && !public" class="shadow">
+              <button *ngIf="!project.isActive && !public" (click)="projectSuperpowers(project)"  mat-stroked-button color="yellow" class="unlock">
+                <span>Unlock project</span>
+              </button>
+             </div>
+            </div>
+          </div>
+        </carousel>
+        <!-- <div class="row project-list-grid d-none">
+          <div *ngFor="let project of projectsInterface; let i = index" class="col-12 col-md-4 col-lg-3">
+            <div class="project position-relative" (click)="projectSuperpowers(project)" [style]="getBackground(project)">
+              <div class="position-absolute start-0 ms-3">
+                <span class="type mat-caption text-uppercase" [style]="{'background-color': project.type.colorLabel}">{{project.type?.name}}</span>
+              </div>
+              <div class="position-absolute bottom-0 p-4 mb-0">
+                <div class="d-flex flex-row align-items-center mb-1">
+                  <span class="nation tiny-body text-uppercase text-white"><img src="/assets/images/svg/location_dot.svg" class="mb-1 me-1" style="width: 12px; height:12px;">{{project.country.name}}</span>
+                </div>
+                <span class="place title-3 bold text-white">{{project.name}}</span>
+                <button mat-raised-button class="unlock text-white" color="green" (click)="projectSuperpowers(project)" *ngIf="!project.isActive && !public">unlock</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </ng-container>
+  </ng-template>
+</div>

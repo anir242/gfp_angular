@@ -1,0 +1,31 @@
+<div class="provider-offset-wrapper-2">
+  <!-- TODO: Wording -->
+  <div class="small-body mb-5 text-white">{{'carbonDioxideOffset.chooseTo'| translate}}</div>
+
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedData">
+    <div class="row align-items-center" style="cursor: pointer;">
+      <ng-container *ngFor="let item of data">
+        <div class="col-lg-4 mb-5 mb-lg-1" (click)="selectedData = item.id" [class.selected]="selectedData === item.id">
+          <div>
+            <div class="top">
+              <img [src]="item.image" [alt]="item.name">
+              <mat-radio-button [value]="item.id"></mat-radio-button>
+            </div>
+            <div class="bottom">
+              <div>
+                <span class="title-3">
+                  {{item.name}}
+                </span>
+                <br>
+                <span class="small-link">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </mat-radio-group>
+
+</div>

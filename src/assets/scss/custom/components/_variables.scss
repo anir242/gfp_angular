@@ -1,0 +1,85 @@
+$sidebar-transition: 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+
+$general-transition-time: 300ms !default;
+
+$topbar-x: topbar-x !default;
+$topbar-back: topbar-back !default;
+$bottombar-x: bottombar-x !default;
+$bottombar-back: bottombar-back !default;
+
+$main-text-dark: #002622;
+$main-text-light: #FAFAFA;
+
+$background-scrollbar: $main-text-light;
+
+$icon-color: #0B2522;
+$background-image-color: #B8C3BD;
+$disabled-color: #707070;
+
+$transition-ease: ease 0s;
+
+$restoration-one: #C3E8C1;
+$restoration-two: rgba(41, 73, 65, .2);
+
+$preservation-one: #B5E7EA;
+$preservation-two: rgba(154, 217, 199, .2);
+
+$renewable-one: #F4B68C;
+$renewable-two: rgba(178, 95, 69, .2);
+
+$marine-one: #446E8F;
+$marine-two: #9FBEDA;
+
+$landing-blue: radial-gradient(126.53% 286.38% at 123.19% 129.89%, #124155 32.6%, #051622 73.62%);/*#003146;*/
+$dark-button: #003046;
+
+$facebook: #28507F;
+$google: #387CE8;
+$google-red: #DF4930;
+$twitter: #64CCF1;
+$linkedin: #2867B2;
+$facebook_new: #507CC0;
+
+$clickableLink: #38BAFF;
+$captionColor: #646464;
+
+$notificationDot: #E6C153;
+$notificationHeader: #022838;
+$notificationUnRead: #04425D;
+$notificationRead: #022838;
+
+$invite-friend-progress: #EEF5E7;
+$green-hover: #00BA80;
+$forest-green: #00734F;
+$footer-public-old: #153331;
+$footer-public: radial-gradient(54.79% 190.63% at 75.28% 9.38%, #23563C 0%, #020F19 100%);
+$deep-green: #002822;
+$bar-yellow: #F2BF00;
+$bar-lime: #DBF794;
+$card-yellow: #FFE274;
+$support-dialog: #E8E8E8;
+$single-donation-item: #FAFAFA;
+$summary-title: #D3DFDB;
+$blue-secondary: #D7ECF9;
+
+$teal: #D3DFDB;
+$E8E8E8: #E8E8E8;
+
+$font-chivo: 'Chivo', 'Lato', sans-serif;
+$font-lato: 'Lato', sans-serif;
+
+
+$font-xxl: 44px;
+$font-xl: 34px;
+$font-lg: 24px;
+$font-md: 18px;
+$font-sm: 16px;
+$font-xs: 14px;
+$font-xxs: 12px;
+$line-xxl: 52px;
+$line-xl: 42px;
+$line-lg: 32px;
+$line-md: 26px;
+$line-sm: 20px;
+$line-xs: 22px;
+$line-xxs: 20px;

@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /dist/green-future-project-frontend-prod
+    destination: /var/www/deploy/
+hooks:
+  AfterInstall:
+    - location: scripts/post_install.sh
+      timeout: 900
+      runas: ubuntu

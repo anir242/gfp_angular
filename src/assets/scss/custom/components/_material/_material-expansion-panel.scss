@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../light-theme-public-yellow";
+
+
+@mixin material-expansion-panel($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  $accent2: map.get($light-theme-public-yellow, 'accent');
+
+  $buttonHeight: 42px;
+  $buttonYellowHover: #FFE274;
+  $buttonGreenHover: #00BA80;
+  $buttonTextDark: #002822;
+  $buttonDisabled: #E8E8E8;
+  $buttonDisabledText: #8A8A8A;
+
+  .mat-expansion-panel {
+    .mat-expansion-panel-header {
+      .mat-expansion-panel-header-title {
+        display: flex;
+        align-items: center;
+        .justify-content-between {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

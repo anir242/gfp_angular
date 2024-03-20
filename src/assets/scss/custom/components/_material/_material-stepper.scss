@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../light-theme-accent-yellow";
+
+@mixin material-stepper-new($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  .mat-stepper-vertical {
+    background-color: mat.get-color-from-palette($primary, 'main-contrast');
+
+    .mat-stepper-vertical-line {
+      &:before {
+        border-style: dashed;
+        border-width: 1px;
+        border-spacing: 4px;
+      }
+    }
+
+    .mat-step-header {
+      background: rgba(250, 250, 250, .05);
+      border-radius: 40px;
+      padding: 16px;
+      margin-bottom: 10px;
+
+      .mat-step-icon {
+        border: 2px solid white;
+        background-color: transparent;
+        width: 32px;
+        height: 32px;
+
+        &.mat-step-icon-selected {
+          background-color: white;
+          
+          span {
+            color: #002822;
+          }
+        }
+
+        span {
+          color: white;
+        }
+      }
+    }
+  }
+}

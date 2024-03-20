@@ -1,0 +1,48 @@
+<div id="supportProject" class="p-2 p-md-4">
+  <div mat-dialog-content>
+    <div class="">
+      <div class="close">
+        <button mat-icon-button color="transparent" mat-dialog-close>
+          <mat-icon class="close-icon">close</mat-icon>
+        </button>
+      </div>
+      <p class="title-1 bold">
+        {{'supportProject.title'|translate}}
+      </p>
+      <span class="large-body bold">
+        {{'supportProject.description'|translate: {value: this.data.name} }}
+      </span>
+      <mat-tab-group class="mt-4" (selectedTabChange)="setDisabled($event)">
+        <mat-tab [label]="translate.instant('supportProject.selectAmount')">
+          <div class="bg-white tabContent p-3">
+            <app-single-donation-price [items]="data.items" (emitter)="check($event)" class="supportDialog"></app-single-donation-price>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="translate.instant('supportProject.chooseAmount')">
+          <div class="p-3 bg-white tabContent">
+            <app-single-donation-price [items]="data.items" (emitter)="check($event)" class="supportDialog" [selectAmount]="false"></app-single-donation-price>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <div>
+        <button mat-dialog-close (click)="goToDonations()" [disabled]="buttonDisabled" class="mt-2 donationButton" mat-raised-button color="yellow">
+          <div class="d-flex align-items-center justify-content-center">
+            <img src="/assets/images/icons/thunder_grey.svg" width="24" height="24">
+            <div class="ms-2">{{'projectList.investNow' | translate}}</div>
+          </div>
+        </button>
+        <div class="d-none d-md-block" *ngIf="showSubscriptionPlans">
+          <div class="my-3">
+            <app-divider-text [text]="translate.instant('supportProject.or')"></app-divider-text>
+          </div>
+          <p class="body">
+            {{'supportProject.support' | translate}}
+          </p>
+          <button class="mt-2 mb-4" mat-raised-button color="yellow" (click)="goToSubscription()">
+            {{'supportProject.subscription' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

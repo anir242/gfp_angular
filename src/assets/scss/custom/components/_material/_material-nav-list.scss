@@ -1,0 +1,97 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use "src/assets/scss/custom/light-theme-accent-yellow";
+
+@mixin material-nav-list($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  .flag {
+    border-radius: 2px;
+  }
+
+  .mat-list-base.mat-nav-list {
+    padding-top: 50px;
+    .mat-list-item {
+      height: 50px;
+
+      &:hover {
+        background: rgba(255, 226, 116, 0.2);
+      }
+
+      .mat-list-item-content {
+        padding: 0;
+        margin: 0;
+
+        .mat-list-item-ripple {
+          bottom: -1px;
+          border-radius: 4px;
+          margin: 0 16px;
+        }
+
+        .nav-link {
+
+          color: mat.get-color-from-palette($primary, 'main-contrast');
+          opacity: .86;
+          border-radius: 4px;
+          display: block;
+          width: 100%;
+          margin: 0;
+          padding: 0px 15px;
+          position: relative;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.13);
+            opacity: 1;
+          }
+
+          &.active {
+
+            color: mat.get-color-from-palette($background);
+            opacity: 1;
+            width: 100%;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.23);
+            $accent2: map.get($light-theme-yellow, 'accent');
+
+            p {
+              border-left: 4px solid mat.get-color-from-palette($accent2);
+              font-weight: bold;
+            }
+          }
+
+          &.enabled{
+            cursor: not-allowed;
+            opacity: 0.5;
+            text-decoration: none;
+            pointer-events: none;
+
+          }
+
+          fa-icon {
+            color: #2b2b2b;
+            font-size: 1.2rem;
+          }
+
+          mat-icon {
+            color: mat.get-color-from-palette($primary, 'main-contrast');
+            position: absolute;
+            right: 10px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+          }
+
+          p {
+            display: inline-flex;
+            margin: 0 20px 0 10px;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

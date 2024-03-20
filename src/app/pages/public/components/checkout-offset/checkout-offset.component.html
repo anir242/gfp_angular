@@ -1,0 +1,67 @@
+<div id="checkoutOffset">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="openPanel === 1" hideToggle>
+      <mat-expansion-panel-header>
+        <div>1</div>
+        <mat-panel-title>
+          {{'carbonDioxideOffset.selectProvider' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="offset-wrapper mt-3">
+        <app-provider-offset></app-provider-offset>
+        <button mat-raised-button color="yellow" class="mt-5">
+          {{'carbonDioxideOffset.save' | translate}}
+        </button>
+      </div>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel (opened)="openPanel === 2" hideToggle>
+      <mat-expansion-panel-header>
+        <div>2</div>
+        <mat-panel-title>
+          {{'carbonDioxideOffset.selectProject' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="offset-wrapper mt-3">
+        <app-project-offset></app-project-offset>
+      </div>
+      <button mat-raised-button color="yellow" class="mt-5">
+        {{'carbonDioxideOffset.save' | translate}}
+      </button>
+      <button mat-stroked-button color="yellow" class="me-3 mt-5">
+        {{'carbonDioxideOffset.go' | translate}}
+      </button>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel (opened)="openPanel === 3" hideToggle>
+      <mat-expansion-panel-header>
+        <div>3</div>
+        <mat-panel-title>
+          {{'carbonDioxideOffset.choose' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel (opened)="openPanel === 4" hideToggle>
+      <mat-expansion-panel-header>
+        <div>4</div>
+        <mat-panel-title>
+          {{'carbonDioxideOffset.signup' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel (opened)="openPanel === 5" hideToggle>
+      <mat-expansion-panel-header>
+        <div>5</div>
+        <mat-panel-title>
+          {{'carbonDioxideOffset.complete' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+</div>

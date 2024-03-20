@@ -1,0 +1,206 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+$fontConfigMobile: mat.define-typography-config($display-4: mat.define-typography-level(54px, 60px, 400, 'Chivo', -0.0250em),
+    $display-3: mat.define-typography-level(44px, 51px, 300, 'Chivo', -0.0093em),
+    $display-2: mat.define-typography-level(34px, 40px, 400, 'Chivo', 0.0000em),
+    $display-1: mat.define-typography-level(24px, 32px, 400, 'Chivo', 0.0074em),
+    $headline: mat.define-typography-level(20px, 28px, 400, 'Chivo', 0.0000em),
+    $title: mat.define-typography-level(20px, 28px, 400, 'Chivo', 0.0075em),
+    $subheading-2: mat.define-typography-level(16px, 28px, 400, 'Chivo', 0.0094em),
+    $subheading-1: mat.define-typography-level(16px, 24px, 400, 'Chivo', 0.0063em),
+    $body-2: mat.define-typography-level(14px, 22px, 700, 'Lato', 0.0179em),
+    $body-1: mat.define-typography-level(14px, 20px, 400, 'Lato', 0.0179em),
+    $button: mat.define-typography-level(16px, 24px, 700, 'Chivo', 0.0781em),
+    $caption: mat.define-typography-level(12px, 18px, 400, 'Lato', 0.0333em),
+    $input: mat.define-typography-level(14px, 1.125, 400, 'Chivo', 1.5px));
+
+/*$fontConfigMobile: mat.define-typography-config( //Public
+  $display-4: mat.define-typography-level(42px, 45px, 400, 'Chivo', -0.0250em), //
+  $display-3: mat.define-typography-level(38px, 45px, 300, 'Chivo', -0.0093em), //
+  $display-2: mat.define-typography-level(44px, 21px, 400, 'Chivo', 0.0000em), //
+  $display-1: mat.define-typography-level(25px, 33px, 400, 'Chivo', 0.0074em), //
+  $headline: mat.define-typography-level(20px, 26px, 400, 'Chivo', 0.0000em), //
+  $title: mat.define-typography-level(20px, 28px, 400, 'Chivo', 0.0075em),
+  $subheading-2: mat.define-typography-level(18px, 22px, 400, 'Chivo', 0.0094em), //
+  $subheading-1: mat.define-typography-level(18, 26px, 400, 'Chivo', 0.0063em), //
+  $body-2: mat.define-typography-level(14px, 22px, 700, 'Lato', 0.0179em), //
+  $body-1: mat.define-typography-level(16px, 23px, 400, 'Lato', 0.0179em), //
+  $button: mat.define-typography-level(16px, 24px, 700, 'Chivo', 0.0781em), //
+  $caption: mat.define-typography-level(12px, 18px, 400, 'Lato', 0.0333em),
+  $input: mat.define-typography-level(14px, 1.125, 400, 'Chivo', 1.5px)
+);*/
+
+@import "src/app/components/footer/footer.component";
+@import "src/app/components/sidebar/sidebar.component";
+@import "src/app/components/sidebar-account/sidebar-account.component";
+@import "src/app/components/modal/modal.component";
+@import "src/app/components/progress/progress.component";
+@import "src/app/components/social-buttons/social-buttons.component";
+@import "src/app/components/footer-authentication/footer-authentication.component";
+@import "src/app/components/tick-and-text/tick-and-text.component";
+@import "src/app/components/mail-input/mail-input.component";
+@import "app/components/share-friends/share-friends.component";
+@import "src/app/components/modal-edit/modal-edit.component";
+@import "src/app/pages/authentications/login/login.component";
+@import "src/app/pages/authentications/forgot-password/forgot-password.component";
+@import "src/app/pages/authentications/reset-password/reset-password.component";
+@import "src/app/pages/authentications/signup/signup.component";
+@import "src/app/pages/public/components/single-donation-price/single-donation-price.component";
+@import "src/app/pages/public/dialogs/banner-dialog/banner-dialog.component";
+@import "src/app/pages/public/dialogs/gift-edit/gift-edit.component";
+@import "src/app/pages/public/pages/gift-public/components/gift-pick-info/gift-pick-info.component";
+@import "src/app/pages/public/pages/gift-public/components/gift-cart-popup/gift-cart-popup.component";
+@import "src/app/pages/admin/components/add-sales/add-sales.component";
+@import "src/app/components/locale/locale.component";
+@import "src/app/components/mat-input/mat-input.component";
+@import "app/pages/public/dialogs/support-project/support-project.component";
+@import "src/app/layouts/auth-layout/auth-layout.component";
+@import "src/app/layouts/public-layout/public-layout.component";
+@import "src/app/layouts/admin-layout/admin-layout.component";
+@import "src/app/layouts/user-layout/user-layout.component";
+@import "src/app/components/footer-public/footer-public.component";
+@import "src/app/components/breadcrumb/breadcrumb.component";
+@import "src/app/components/upload-logo/upload-logo.component";
+@import "src/app/components/chip-label/chip-label.component";
+@import "src/app/pages/welcome/welcome.component";
+@import "assets/scss/custom/light-theme-accent-green";
+@import "assets/scss/custom/light-theme-accent-yellow";
+@import "assets/scss/custom/light-theme-public-green";
+@import "assets/scss/custom/light-theme-public-yellow";
+
+@import "assets/scss/color.scss";
+@import "assets/scss/font.scss";
+
+@import "assets/scss/gfp";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+@mixin custom-components-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  background-color: mat.get-color-from-palette($background, 'background');
+
+  // @include material-theme-property($theme);
+  @include material-theme-property-public($theme);
+  @include admin-layout-theme($theme);
+  @include users-layout-theme($theme);
+  @include footer-theme($theme);
+
+  @include mail-input-theme($theme);
+
+  @include reset-password-theme($theme);
+  @include html-theme($theme);
+  @include modal-theme($theme);
+  @include locale-theme($theme);
+  @include share-friends-theme($theme);
+  @include progress-theme($theme);
+  @include modal-edit-theme($theme);
+  @include social-buttons-theme($theme);
+  @include footer-authentication-theme($theme);
+  @include tick-and-text-theme($theme);
+
+  @include upload-logo-theme($theme);
+}
+
+@mixin custom-components-theme-public($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  background-color: mat.get-color-from-palette($background, 'background');
+
+  @include material-theme-property-public($theme);
+  @include public-layout-theme($theme);
+  @include auth-layout-theme($theme);
+  @include sidebar-theme($theme);
+  @include login-theme($theme);
+  @include forgot-password-theme($theme);
+  @include footer-public-theme($theme);
+  @include reset-password-theme($theme);
+  @include signup-theme($theme);
+  @include html-theme($theme);
+  @include modal-theme($theme);
+  @include share-friends-theme($theme);
+  @include progress-theme($theme);
+  @include modal-edit-theme($theme);
+  @include social-buttons-theme($theme);
+  @include footer-authentication-theme($theme);
+  @include single-donation-price-theme($theme);
+  @include mat-input-theme($theme);
+  @include support-project-theme($theme);
+  @include breadcrumb-theme($theme);
+  @include chip-label-theme($theme);
+  @include social-buttons-theme($theme);
+  @include tick-and-text-theme($theme);
+
+}
+
+@mixin html-theme($theme) {
+  & {
+    $color-config: mat.get-color-config($theme);
+    $color-config-public: mat.get-color-config($light-theme-public-green);
+    $foreground: map.get($color-config, 'foreground');
+    $background: map.get($color-config-public, 'background');
+
+    background-color: mat.get-color-from-palette($background, 'background');
+    color: mat.get-color-from-palette($foreground, 'text');
+
+    // other html element styling here
+  }
+
+  .pre-line {
+    white-space: pre-line;
+  }
+}
+
+@include mat.core($fontConfigMobile);
+
+@media (min-width: 768px) {
+  @include mat.core($fontConfig);
+
+}
+
+html {
+  height: 100%;
+
+  body,
+  app-root {
+    margin: 0;
+    height: 100%;
+    font-family: Lato, "Helvetica Neue", sans-serif;
+  }
+
+  body#app {
+
+    @include mat.all-component-themes($light-theme-public-green);
+    @include custom-components-theme($light-theme-public-green);
+    @include custom-components-theme-public($light-theme-public-green);
+
+    @include banner-dialog-theme($light-theme-public-green);
+    @include gift-edit-theme($light-theme-public-green);
+    @include add-sales-theme($light-theme-public-green);
+    @include single-donation-price-theme($light-theme-public-green);
+    @include support-project-theme($light-theme-public-green);
+    @include gift-pick-info-theme($light-theme-public-green);
+    @include homepage-popup-theme($light-theme-public-green);
+    @include gift-cart-popup-theme($light-theme-public-green);
+    @include welcome-theme($light-theme-public-green);
+
+    .auth-layout,
+    .public-layout {
+      @include mat.all-component-themes($light-theme-public-green);
+      @include custom-components-theme-public($light-theme-public-green);
+
+      .mt-20 {
+        margin-top: 20px;
+      }
+    }
+  }
+}

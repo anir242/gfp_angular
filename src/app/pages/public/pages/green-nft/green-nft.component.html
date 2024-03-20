@@ -1,0 +1,141 @@
+<div class="softImage">
+  <div class="content pt-0">
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-12">
+          <app-short-banner [title]="translate.instant('greenNFT.green')" [subtitle]="translate.instant('greenNFT.we')" [buttonText]="translate.instant('greenNFT.contact')" background="green_nft.jpg" [showButton]="true" (button)="scrollToSection()">
+          </app-short-banner>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="nft" class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-lg-10 px-4 my-5">
+          <p class="title-1 bold text-center">
+            {{ 'greenNFT.are' | translate}}
+          </p>
+          <p class="large-body my-4 text-center">
+            {{ 'greenNFT.creators' | translate}}
+          </p>
+        </div>
+        <div class="col-10">
+          <div class="row g-2">
+            <div class="col-12 col-lg-6">
+              <div class="box mx-1">
+                <div class="d-flex align-items-center mb-3">
+                  <img class="me-3" src="/assets/images/icons/solution_green_painter.svg">
+                  <span class="title-2">{{ 'greenNFT.how' | translate }}</span>
+                </div>
+                <p class="body mb-4">{{ 'greenNFT.our' | translate }}</p>
+                <p class="large-body bold">{{ 'greenNFT.track' | translate }}</p>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="box mx-1">
+                <div class="d-flex align-items-center mb-3">
+                  <img class="me-3" src="/assets/images/icons/solution_green_earth.svg">
+                  <span class="title-2">{{ 'greenNFT.why' | translate }}</span>
+                </div>
+                <p class="body mb-4">{{ 'greenNFT.nft' | translate }}</p>
+                <p class="large-body bold">{{ 'greenNFT.the' | translate }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="big-picture" class="content">
+    <div class="container-fluid px-0">
+      <div class="d-flex justify-content-center text-white">
+        <div class="py-5 background1 border-round">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <p class="title-1 text-center mb-4 bold">
+                {{ 'greenNFT.theBig' | translate}}
+              </p>
+            </div>
+          </div>
+          <div class="px-5 row justify-content-center align-items-center">
+            <div class="col-12 col-lg-4">
+              <div class="box">
+                <img class="mb-3" src="/assets/images/icons/solution_green_nft.svg">
+                <p class="large-body mb-3">
+                  {{ 'greenNFT.context' | translate}}
+                </p>
+                <p class="body">
+                  {{ 'greenNFT.enabled' | translate}}
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="box">
+                <img class="mb-3" src="/assets/images/icons/solution_green_alert.svg">
+                <p class="large-body mb-3">
+                  {{ 'greenNFT.problem' | translate}}
+                </p>
+                <p class="body">
+                  {{ 'greenNFT.NFTs' | translate}}
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="box">
+                <img class="mb-3" src="/assets/images/icons/solution_green_checked.svg">
+                <p class="large-body mb-3">
+                  {{ 'greenNFT.solution' | translate}}
+                </p>
+                <p class="body">
+                  {{ 'greenNFT.designed' | translate}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="buttonNotMobile" class="px-5 col-12 mt-3 px-0">
+            <button class="w-100" mat-raised-button color="yellow" (click)="scrollToSection()">
+              <div class="d-flex justify-content-center">
+                <span class="d-none d-md-block me-1">
+                  {{ 'greenNFT.want' | translate}}
+                </span>
+                <span>
+                  {{ 'greenNFT.contactUs' | translate}}
+                </span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="buttonMobile" class="col-12 mt-3 px-0">
+    <p class="body text-center text-dark">
+      {{ "greenNFT.want" | translate }}
+    </p>
+    <button
+      class="auto"
+      mat-raised-button
+      color="yellow"
+      (click)="scrollToSection()"
+    >
+      <div class="d-flex justify-content-center">
+        <span class="d-none d-md-block me-1">
+          {{ "greenNFT.want" | translate }}
+        </span>
+        <span>
+          {{ "greenNFT.contactUs" | translate }}
+        </span>
+      </div>
+    </button>
+  </div>
+
+  <div id="contact-form">
+    <app-contact-form pageName="Green NFT Page"></app-contact-form>
+  </div>
+
+  <app-faq-public [showHeader]="true" [queryTitle]="'Solutions for All'"> </app-faq-public>
+</div>

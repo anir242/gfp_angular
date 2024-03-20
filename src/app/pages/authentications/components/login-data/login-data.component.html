@@ -1,0 +1,27 @@
+<div class="row gx-2">
+  <div class="col-12 mb-3">
+    <app-mat-input
+      [control]="email"
+      type="email"
+      labelError="authentication.requiredField"
+      labelPatternError="authentication.pattern"
+      autocomplete="email"
+      label="{{'email'|translate}}"
+    ></app-mat-input>
+  </div>
+  <div class="col-12">
+    <app-mat-input
+      [control]="password"
+      [type]="hidePassword ? 'password' : 'text'"
+      labelError="authentication.requiredField"
+      autocomplete="current-password"
+      label="{{'password'|translate}}">
+      <button class="hidePassword"
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword = !hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </app-mat-input>
+  </div>
+</div>

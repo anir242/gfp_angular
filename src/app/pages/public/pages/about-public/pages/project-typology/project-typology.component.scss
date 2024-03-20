@@ -1,0 +1,113 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin project-typology-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #projectTypology {
+
+    #title {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    #data {
+      padding: 6rem 0 0;
+      background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/assets/images/bg_noise_low.png');
+
+      .box {
+        background-color: #FAFAFA;
+        border-radius: 16px;
+        width: auto;
+      }
+    }
+
+    #contribute {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-size: cover;
+    position: relative;
+
+    .square {
+      width: 40px;
+      height: 40px;
+      background-color: #F2BF00;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+    }
+
+    .project {
+      padding: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      position: relative;
+      height: 240px;
+      width: 240px;
+      box-shadow: inset 0px -90px 150px 0px #1f1e1e;
+
+      .unlock {
+        position: absolute;
+        top: 40%;
+        left: 35%;
+
+        span {
+          color: #fafafa !important;
+        }
+      }
+
+      .place {
+        display: block;
+      }
+
+      .nation {
+        display: block;
+        text-transform: uppercase;
+        margin-top: 120px;
+      }
+
+      .type {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 15px;
+        color: mat.get-color-from-palette($primary);
+      }
+    }
+
+    .img-3d {
+      max-width: 100%;
+    }
+
+    .solution {
+      @include media-breakpoint-up(lg) {
+        padding-top: 88px;
+        padding-bottom: 88px;
+      }
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .backgroundGrey {
+      background-color: mat.get-color-from-palette($background, 'disabled-list-option');
+    }
+
+    .contribute-wrapper {
+      border-radius: 24px;
+    }
+
+  }
+}

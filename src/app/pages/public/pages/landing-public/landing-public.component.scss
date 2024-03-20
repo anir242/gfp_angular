@@ -1,0 +1,72 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin landing-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #landingPublic {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    position: relative;
+    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/assets/images/bg_noise_low.png');
+    overflow: visible;
+
+    &.individual {
+      .layer {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("../../../../../assets/images/bg_individual.jpg"), url('/assets/images/bg_noise_low.png');
+      }
+    }
+
+    .ngx-marquee {
+      width: 200%;
+      > span {
+        margin-left: -100%;
+      }
+    }
+
+    .power {
+      background-color: #D3DFDB;
+    }
+
+    .unsure {
+      background: url("../../../../../assets/images/bg_unsure.png") no-repeat;
+      background-size: cover;
+    }
+
+    #clientPartners {
+      background-color: #fff;
+      padding: 40px 0;
+    }
+
+    .bg-forest {
+      background: url("../../../../../assets/images/bg_forest.png") no-repeat;
+      background-size: cover;
+
+      &.individual {
+        background-image: url("../../../../../assets/images/bg_forest_2.jpg");
+      }
+    }
+
+    .bg-white-noise {
+      background-image: url('/assets/images/bg_noise_low.png'), linear-gradient($grey7, $grey7);
+      background-blend-mode: color;
+      background-size: contain;
+    }
+
+    .instagram {
+      width: 100%;
+    }
+  }
+}

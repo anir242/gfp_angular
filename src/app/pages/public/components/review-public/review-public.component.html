@@ -1,0 +1,53 @@
+<div class="review-public-wrapper" [class.individual]="!business">
+  <div class="title-1">
+    {{'landingPublicReviews.what' | translate}}
+  </div>
+  <div class="col-12 d-flex justify-content-center justify-content-lg-start my-5">
+    <carousel
+      [arrowsOutside]="true"
+      [height]="carouselHeight"
+      [cellWidth]="cardWidth"
+      [class.individualArrows]="!business">
+      <div class="carousel-cell" *ngFor="let item of reviews">
+        <div class="card-container justify-content-start">
+          <div class="tiny-body">{{item.date | date}}</div>
+          <img [src]="item.image.url" height="50px">
+          <div class="title-3" *ngIf="!item.description">{{item.name}}</div>
+          <div class="title-4 bold" *ngIf="item.description">{{item.description}}</div>
+          <div class="position-absolute" style="bottom:40px;right:40px;">
+            <div>
+              <a class="link bold"href={{item.url}} target="_blank">{{item.linkText | translate}}</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </carousel>
+  </div>
+  <div class="title-4">{{'landingPublicReviews.we' | translate}}</div>
+  <!-- <ngx-marquee class="marquee" [duration]="'200s'" [pauseOnHover]="false">
+    <mark class="logo" *ngFor="let item of partners">
+      <img class="mw-100" [src]="item.image.url">
+    </mark>
+    <mark class="logo" *ngFor="let item of partners">
+      <img class="mw-100" [src]="item.image.url">
+    </mark>
+    <mark class="logo" *ngFor="let item of partners">
+      <img class="mw-100" [src]="item.image.url">
+    </mark>
+  </ngx-marquee> -->
+  <div class="marquee">
+    <div>
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+      <img *ngFor="let item of partners" class="mw-100" [src]="item.image.url">
+     </div>
+ </div>
+</div>

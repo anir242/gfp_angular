@@ -1,0 +1,188 @@
+<div class="content softImage" id="ecommAPI">
+  <div class="container-fluid p-0">
+    <div class="row g-0" style="height: 550px;">
+      <div class="col-12">
+        <app-short-banner
+            [title]="translate.instant('ecommAPI.title')"
+            [subtitle]="translate.instant('ecommAPI.subtitle')"
+            [buttonText]="translate.instant('ecommAPI.getStarted')"
+            [showButton]="true"
+            [background]="'ecomm_api.png'"
+            [url]="routingTypes.PIONEER_CHECKOUT"
+        >
+        </app-short-banner>
+      </div>
+     </div>
+      <div id="cardComponent" class="col-12">
+        <mat-card class="d-flex flex-row flex-wrap">
+          <div class="col-lg-4 d-flex flex-row align-items-start">
+            <app-grouped-card-content
+                imgUrl="assets/images/for-whom.svg"
+                [headerText]="translate.instant('ecommAPI.forWhom')"
+                [bodyText]="translate.instant('ecommAPI.forWhomContent')"
+            >
+            </app-grouped-card-content>
+            <mat-divider class="d-none d-lg-block my-auto" vertical style="height:80%"></mat-divider>
+          </div>
+          <div class="col-lg-4 d-flex flex-row align-items-start">
+            <app-grouped-card-content
+                imgUrl="assets/images/what-we-do.svg"
+                [headerText]="translate.instant('ecommAPI.whatWeDo')"
+                [bodyText]="translate.instant('ecommAPI.whatWeDoContent')"
+            >
+            </app-grouped-card-content>
+            <mat-divider class="d-none d-lg-block my-auto" vertical style="height:80%"></mat-divider>
+          </div>
+          <div class="col-lg-4 d-flex flex-row align-items-start">
+            <app-grouped-card-content
+                imgUrl="assets/images/why-we-do.svg"
+                [headerText]="translate.instant('ecommAPI.whyWeDo')"
+                [bodyText]="translate.instant('ecommAPI.whyWeDoContent')"
+            >
+            </app-grouped-card-content>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+  <!-- Decarbonise section -->
+  <div class="container-fluid marginReverse">
+    <div class="row mx-1 d-flex justify-content-center">
+      <div class="col-12 my-5 text-center">
+          <span class="title-1 bold text-center">{{'ecommAPI.decarbonise' | translate}}</span>
+      </div>
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="w-100 my-3">
+            <app-layer-header-card
+                [value]="1"
+                [headingText]="translate.instant('ecommAPI.decarbonCardHeaderText')"
+                [bodyText]="translate.instant('ecommAPI.decarbonCardBodyText')"
+                leftContentImgURL="assets/images/badge-percent-duotone.png"
+                rightContentImgURL="assets/images/bag-shopping-duotone.png"
+                [leftBodyText]="translate.instant('ecommAPI.percentageBody')"
+                [rightBodyText]="translate.instant('ecommAPI.setAmountBody')"
+            >
+            </app-layer-header-card>
+          </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-stretch">
+          <div class="w-100 my-3">
+            <app-layer-header-card
+                [value]="2"
+                [headingText]="translate.instant('ecommAPI.integrationCardHeaderText')"
+                [bodyText]="translate.instant('ecommAPI.integrationCardBodyText')"
+                [leftHeadingText]="translate.instant('ecommAPI.automaticIntegration')"
+                [leftBodyText]="translate.instant('ecommAPI.automaticIntegrationDesc')"
+                [rightHeadingText]="translate.instant('ecommAPI.manualIntegration')"
+                [rightBodyText]="translate.instant('ecommAPI.manualIntegrationDesc')"
+                leftContentImgURL="assets/images/bolt-auto-duotone.png"
+                rightContentImgURL="assets/images/user-gear-duotone.png"
+            >
+            </app-layer-header-card>
+          </div>
+        </div>
+    </div>
+  </div>
+
+        <!-- Automatic Integration -->
+        <div class="container-fluid mt-5 p-0">
+            <div class="row g-0">
+                <div class="col-12 d-flex justify-content-center align-items-center flex-column p-4">
+                    <span class="title-1 bold text-center">{{'ecommAPI.automaticIntegrationAlternatives' | translate}}</span>
+                    <p class="body text-center">{{'ecommAPI.automaticIntegrationAlternativesDesc' | translate}}</p>
+                </div>
+                <div class="col-12 p-4">
+                    <mat-card class="d-flex flex-row flex-wrap">
+                        <div class="col-md-6 col-lg-4 offset-lg-2 d-flex flex-row align-items-center">
+                            <app-grouped-card-content
+                                imgUrl="assets/images/gfp_frame.png"
+                                [bodyText]="translate.instant('ecommAPI.gfpDesc')"
+                                customContentStyle="customContentStyle"
+                                imgStyle="imgStyle"
+                            >
+                            </app-grouped-card-content>
+                            <mat-divider vertical style="height:100px"></mat-divider>
+                        </div>
+                        <div class="col-md-4 d-flex flex-row align-items-center" *ngIf="false">
+                            <app-grouped-card-content
+                                imgUrl="assets/images/shopify_frame.png"
+                                [bodyText]="translate.instant('ecommAPI.shopifyDesc')"
+                                customContentStyle="customContentStyle"
+                                imgStyle="imgStyle"
+                            >
+                            </app-grouped-card-content>
+                            <mat-divider vertical style="height:100px"></mat-divider>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <app-grouped-card-content
+                                imgUrl="assets/images/zapier_frame.png"
+                                [bodyText]="translate.instant('ecommAPI.zapierDesc')"
+                                customContentStyle="customContentStyle"
+                                imgStyle="imgStyle"
+                            >
+                            </app-grouped-card-content>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <!-- Get Started Button -->
+        <div class="container-fluid py-3">
+            <div class="row g-0">
+                <div class="text-center">
+                    <button mat-raised-button color="yellow" (click)="goToCheckout()">
+                        {{'ecommAPI.getStarted' | translate}}
+                    </button>
+                </div>
+                <div class="col-12 p-4">
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </div>
+
+        <!-- Positive Impact -->
+        <div class="col-12">
+            <app-tools-public [business]="business"
+                headingText="ecommAPI.positiveImpactHeading"
+                headingDesc="ecommAPI.positiveImpactDesc"
+                buttonTxt="ecommAPI.getStarted"
+                [fetchData]="true"
+            >
+            </app-tools-public>
+        </div>
+
+        <!-- Stats section -->
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="px-4 text-center">
+                    <span class="title-1 bold">{{'ecommAPI.showPositiveImpactHeading' | translate}}</span>
+                    <p class="body pt-3 text-center">{{'ecommAPI.showPositiveImpactDesc' | translate}}</p>
+                </div>
+                <div>
+                    <app-achievements-data></app-achievements-data>
+                </div>
+            </div>
+        </div>
+
+        <!-- Get started section -->
+        <div class="container-fluid p-4 d-flex flex-column justify-content-center align-items-center">
+          <mat-card class="background-leaves">
+              <div class="content-container">
+                  <h1 class="text-white mat-title-2 text-center">{{'ecommAPI.readyToMakeImpact' | translate}}</h1>
+                  <p class="text-white mat-body text-center">{{'ecommAPI.readyToMakeImpactDesc' | translate}}</p>
+                  <button mat-raised-button color="yellow" class="mt-3" (click)="goToCheckout()">
+                      {{'ecommAPI.getStarted' | translate}}
+                  </button>
+              </div>
+          </mat-card>
+          <!-- FAQ -->
+          <div class="container-fluid p-0">
+            <app-faq-public
+                [showHeader]="true"
+                [queryTitle]="'Solutions for Businesses'"
+            >
+            </app-faq-public>
+          </div>
+        </div>
+</div>

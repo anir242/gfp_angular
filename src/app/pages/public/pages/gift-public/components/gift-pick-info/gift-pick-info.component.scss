@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-pick-info-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #giftPick{
+    position: relative;
+    .close{
+      .mat-icon{
+        color:  mat.get-color-from-palette($foreground, 'text');
+      }
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .green{
+      color: mat.get-color-from-palette($accent);
+    }
+  }
+}

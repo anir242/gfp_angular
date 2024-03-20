@@ -1,0 +1,135 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin individual-subscriptions-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+  .individualCheckout {
+    background-image: url('../../../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include media-breakpoint-down(lg) {
+      overflow: hidden !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: white;
+    }
+
+    .titles{
+      .mat-button-wrapper{
+        color: $bar-lime;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        font-family: $font-lato;
+        text-decoration:underline;
+        text-decoration-color: $bar-lime;
+      }
+    }
+
+    .mat-card {
+      background-color: rgba(250, 250, 250, 0.08) !important;
+      border-radius: 8px;
+      color: white;
+      @include mat.elevation(0);
+      border: 2px solid transparent;
+      box-shadow: none !important;
+
+      .subTypeWrapper {
+        &.selected {
+          #subscription {
+            border: 2px solid $bar-lime;
+          }
+        }
+      }
+
+      .mat-card-content{
+        padding: 1.5rem 1.5rem;
+      }
+
+      .mat-vertical-content {
+        padding: 0;
+      }
+
+      .mat-stepper-vertical {
+        background: transparent;
+
+        .mat-vertical-content-container {
+          margin: 0;
+        }
+
+        .mat-stepper-vertical-line {
+          &:before {
+            border-width: 0;
+          }
+        }
+
+        .mat-step-header {
+          background-color: rgba(250, 250, 250, 0.15);
+          border-radius: 40px;
+          padding: 0;
+          margin-bottom: 20px;
+          height: 32px;
+
+          .mat-step-icon {
+            width: 32px;
+            height: 32px;
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+          }
+
+          .mat-step-icon-selected {
+            background-color: white;
+            border-color: white;
+            color: $deep-green;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 18px;
+            font-family: $font-lato;
+          }
+        }
+
+        .mat-form-field {
+          .mat-form-field-outline > * {
+            background: rgba(42, 29, 29, 0.05);
+          }
+          .mat-form-field-label, .mat-input-element {
+            color: white;
+          }
+        }
+
+        .mat-step-label-selected {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .summary {
+      padding: 20px;
+      min-width: 300px;
+      @include media-breakpoint-up(md) {
+        padding: unset;
+      }
+
+      &.fixed {
+        position: fixed;
+      }
+
+      &.absolute {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+  }
+}

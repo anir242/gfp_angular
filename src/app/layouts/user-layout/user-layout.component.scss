@@ -1,0 +1,160 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import "src/app/components/navbar/navbar.component";
+@import "src/app/pages/users/pages/settings/settings.component";
+@import "src/app/pages/users/pages/account-billing/account-billing.component";
+@import "src/app/pages/users/pages/manage-employees/manage-employees.component";
+@import "src/app/pages/users/pages/subscriptions/subscriptions.component";
+@import "src/app/pages/users/pages/manage-employees/manage-employees.component";
+@import "src/app/pages/users/pages/subscription-details/subscription-details.component";
+@import "../../pages/users/components/subscription-details-projects/subscription-details-projects.component";
+@import "../../pages/users/components/subscription-details-supporting/subscription-details-supporting.component";
+@import "../../pages/users/components/subscription-details-summary/subscription-details-summary.component";
+@import "../../pages/users/components/subscription-type/subscription-type.component";
+@import "../../components/sidebar-account/sidebar-account.component";
+
+
+@mixin users-layout-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+  .background {
+    background: $background1 !important;
+    position: fixed;
+    width: 200vw;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .background::after {
+    background-image: url('../../../assets/images/noise.png');
+    background-repeat: repeat;
+    content: "";
+    position: fixed;
+    overflow: hidden;
+    width: 200vw;
+    height: 200%;
+    opacity: 0.9;
+    left: -50%;
+    top: -50%;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .centerContent {
+    justify-content: center;
+  }
+
+  .header {
+    padding-top: 65px;
+    padding-left: 32px;
+  }
+
+  .users-layout {
+
+    .container {
+      position: relative;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    .paddingUser {
+      padding: 32px;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 0px;
+      }
+    }
+
+    .content {
+      height: 100%;
+      overflow: auto;
+      position: relative;
+    }
+
+    .mat-tab-label-active {
+      opacity: 1 !important;
+    }
+
+    .mat-tab-link {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #E8E8E8 !important;
+      border-bottom: solid 3px #FFF;
+      opacity: 0.7;
+    }
+
+    .mat-ink-bar {
+      background-color: #F2BF00 !important;
+      transform: scaleX(1.06);
+    }
+
+    // @include projects-theme($theme);
+    @include navbar-theme($theme);
+    @include settings-theme($theme);
+    @include account-billing-theme($theme);
+    @include manage-employees-theme($theme);
+    @include subscription-theme($theme);
+    @include subscription-details-theme($theme);
+    @include subscription-details-projects($theme);
+    @include subscription-details-supporting($theme);
+    @include subscription-details-summary($theme);
+    @include subscription-type($theme);
+    @include sidebar-account-theme($theme);
+
+
+    span.date {
+      color: mat.get-color-from-palette($accent);
+    }
+  }
+
+  .wrapper {
+
+    mat-sidenav-container {
+
+      mat-sidenav {
+        width: auto;
+        padding: 0px;
+        border: 0;
+        background-color: transparent;
+      }
+
+      mat-sidenav-content {
+        .content {
+
+          &#manageEmployees,
+          &.subscriptionDetails,
+          &#apiWidget,
+          &.singlePayments,
+          &.giftCards {
+            background-color: $landing-blue;
+            background-image: url('../../../assets/images/bg_dashboard.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 64px 8px 8px;
+
+            .mat-divider {
+              border-color: rgba(255, 255, 255, .4);
+            }
+          }
+        }
+      }
+    }
+  }
+}

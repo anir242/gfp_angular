@@ -1,0 +1,84 @@
+<div class="top-banner">
+  <div class="parent">
+    <div class="container-fluid">
+        <div class="mb-3 d-flex justify-content-start">
+          <a href="/">
+            <svg-icon src="assets/images/svg/logo_full.svg" alt=""></svg-icon>
+          </a>
+        </div>
+        <div class="text-white mt-4" id="nativa-heading">
+          {{ 'nativa.heading' | translate | uppercase }}
+      </div>
+        <div class="text-white mb-3" id="nativa-subheading">{{ 'nativa.subheading' | translate }}</div>
+      </div>
+  </div>
+</div>
+
+      <div class="bg">
+        <div id="welcome" class="main-content">
+          <div class="onboard container p-3 pt-5 pt-lg-0">
+            <div class="row g-5">
+              <div class="col-12 col-lg-7 text-white">
+                  <div class="text-center text-lg-start">
+                    <div class="title mt-3">
+                      <span class="title-1 bold">{{ "nativa.welcomePage.titleOne" | translate }}</span>
+                    </div>
+                    <div class="description mb-5">
+                      <span class="large-body">{{ "nativa.welcomePage.titleTwo" | translate }}</span>
+                    </div>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col-12 text-center text-lg-start">
+                      <button mat-raised-button color="yellow" (click)="navigateToHomePage()">
+                        {{ "nativa.welcomePage.button" | translate }}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="row g-2">
+                    <div class="text-center text-lg-start">
+                      <div class="description mt-4">
+                          <span class="tiny-body">{{ "nativa.welcomePage.smallBody" | translate }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row g-2">
+                    <div class="text-center text-lg-start">
+                      <div class="description">
+                          <span class="tiny-body" id="click-here" (click)="navigateToFaq()">{{ "nativa.welcomePage.clickHere" | translate }}</span>
+                          <span class="tiny-body">{{ "nativa.welcomePage.forAssisstance" | translate }}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="py-4 mt-5 mb-3" id="logo-container">
+                    <div class="d-flex justify-content-between mb-3 align-items-center gap-3">
+                      <div class="flex-shrink-1">
+                        <img src="../../../../../assets/images/logo_chiesi.png">
+                      </div>
+                      <div class="flex-shrink-1">
+                        <img src="../../../../../assets/images/logo_nativa.png">
+                      </div>
+                      <div class="flex-shrink-1">
+                        <img src="../../../../../assets/images/logo_CEF.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-12 col-lg-5 align-items-end">
+                <div class="summary w-100 ms-lg-5 mb-lg-5">
+                  <div>
+                    <app-order-summary
+                    [summaryType]="'singleDonation'" [offset]="false" [integrationType]="'nativa'" [freeAvailable]="isFreeAvailable" [freeQuantity]="3" [pageType]="'welcome'" [countryPolicy]="countryPolicy">
+                    </app-order-summary>
+                    <!-- <app-summary-welcome-on-board
+                      [items]="items"
+                      [type]="cartType">
+                    </app-summary-welcome-on-board> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,226 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import "../../../../../pages/admin/components/your-impact/your-impact.component";
+@import "../../../../../pages/admin/components/co2-offsetted/co2-offsetted.component";
+@import "../../../../../pages/admin/components/real-data/real-data.component";
+
+@mixin company-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  @include your-impact-theme($theme);
+  @include real-data-theme($theme);
+  @include co2-offsetted-theme($theme);
+
+  .info {
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .gradientHome {
+    padding-top: 16px;
+    position: relative;
+    background-color: $landing-blue;
+    background-image: url('../../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003348', endColorstr='#011d26', GradientType=0); /* IE6-9 */
+    display: block;
+    color: mat.get-color-from-palette($primary, 'main-contrast');
+
+    .page {
+      padding: 1.5rem;
+
+      @media(min-width:768px) {
+        padding: 0px 1.5rem 1.5rem;
+      }
+
+      .rotation {
+        stroke: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+
+      .statistics {
+        background-color: rgba(240,240,240,.05);
+        border-radius: 12px;
+        padding: 0px 20px 20px;
+
+        .row {
+          align-items: center;
+        }
+
+        .clouds {
+          stroke: mat.get-color-from-palette($primary, 'main-contrast');
+        }
+
+        .statistic {
+          background-color: rgba(240,240,240,.15);
+          border-radius: 8px;
+        }
+
+        img {
+          width: 48px !important;
+          height: 48px !important;
+          display: block;
+          position: relative;
+        }
+
+        svg-icon {
+          display: table-cell;
+          vertical-align: middle;
+        }
+        /*        .bubble {
+                  display: table;
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 25px;
+
+                  &.green {
+                    background-color: mat.get-color-from-palette($accent);
+                  }
+
+                  &.red {
+                    background-color: #C97658;
+                  }
+
+                  &.aquamarine {
+                    background-color: #008480;
+                  }
+                }*/
+      }
+
+      .projectsContainers {
+        height: 100%;
+
+        .subtitle {
+          display: inline-block;
+        }
+
+        mat-divider {
+          background: mat.get-color-from-palette($primary, 'main-contrast');
+        }
+      }
+    }
+  }
+
+  .carousel-arrow {
+    background-color: #f2bf00;
+    border-radius: 6px;
+  }
+
+  .carousel-dots {
+    bottom: -30px;
+
+    .carousel-dot {
+      width: 28px;
+
+      &.carousel-dot-active {
+        background-color: #f2bf00;
+      }
+    }
+  }
+
+  #carousel, #carousel-tabs {
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+
+    //
+    @include media-breakpoint-up(xxl) {
+
+      min-height:600px;
+      .mapsImg {
+        img {
+          max-height: 600px;
+        }
+      }
+    }
+    @include media-breakpoint-between(xl, xxl){
+      min-height:600px;
+    }
+    @include media-breakpoint-between(lg, xl){
+      min-height:850px;
+    }
+    @include media-breakpoint-between(md, lg){
+      min-height:1500px;
+      .mapsImg {
+        img {
+          max-height: 30%;
+        }
+      }
+    }
+    @include media-breakpoint-between(sm, md){
+      min-height:1500px;
+      .yourImpact, .offsetFlight, .realData {
+        min-height: 1500px;
+      }
+      .mapsImg {
+        img {
+          max-height: 30%;
+        }
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      min-height:1200px;
+      .title-2 {
+        font-size: x-large;
+      }
+      .mapsImg {
+        img {
+          max-height: 10%;
+        }
+      }
+    }
+    //
+
+    .yourImpact, .offsetFlight, .realData {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: $main-text-light !important;
+      min-height: 600px;
+    }
+
+    .mapsImg {
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .carousel-indicators {
+      bottom: 0;
+      top: auto;
+      align-items: center;
+
+      .active {
+        background-color: $main-text-light;
+      }
+
+      ;
+
+      > button {
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: $main-text-light;
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      @include media-breakpoint-up(md) {
+        top: auto;
+        bottom: 1em;
+      }
+    }
+
+    .horizontal-legend {
+      overflow-x: visible;
+    }
+  }
+}

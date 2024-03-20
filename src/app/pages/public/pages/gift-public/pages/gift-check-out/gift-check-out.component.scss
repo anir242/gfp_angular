@@ -1,0 +1,111 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-check-out-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+  $my-typography: mat.define-typography-config();
+
+  #giftCheckOut {
+    background-image: url('../../../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include media-breakpoint-up(md) {
+      padding-top: 80px;
+    }
+    .mainCheckOut {
+      @include media-breakpoint-down(md){
+        padding-top: 40px;
+      }
+    }
+
+    .mat-card {
+      background-color: rgba(250, 250, 250, 0.05) !important;
+      border-radius: 8px;
+      color: white;
+      @include mat.elevation(0);
+
+      .mat-stepper-vertical {
+        background: transparent;
+
+        .mat-step-header {
+          background: rgba(250, 250, 250, .05);
+          border-radius: 40px;
+          padding: 16px;
+          margin-bottom: 10px;
+
+          .mat-step-icon {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        .mat-form-field {
+          .mat-form-field-outline > * {
+            background: rgba(250,250,250,.05);
+          }
+          .mat-form-field-label, .mat-input-element {
+            color: white;
+          }
+        }
+
+        .mat-step-label-selected {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .mat-step:first-child {
+      .mat-vertical-stepper-content {
+        visibility: visible !important;
+        height: 100% !important;
+      }
+    }
+
+    .mat-stepper-vertical-line::before {
+      /*      border: 0;
+            @include media-breakpoint-up(md){
+              margin-left: 36px;
+              border: 0;
+              position: relative;
+            }*/
+      border: 0;
+      @include media-breakpoint-up(md) {
+        border-style: dashed;
+        border-width: 1px;
+        border-spacing: 4px;
+        color: $green-hover;
+
+      }
+    }
+
+    .mat-vertical-content-container {
+      margin-left: 0;
+      @include media-breakpoint-up(md) {
+        margin-left: 36px;
+      }
+    }
+
+    .mat-step-icon {
+      span {
+        font-family: mat.font-family($my-typography, 'subheading-1');
+        font-size: mat.font-size($my-typography, 'subheading-1');
+        color: white;
+      }
+
+      background-color: $forest-green;
+    }
+
+    .mat-step-icon-selected {
+      background-color: $green-hover;
+      border-color: $green-hover;
+    }
+  }
+
+}

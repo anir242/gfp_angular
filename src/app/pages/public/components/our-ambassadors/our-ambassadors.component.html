@@ -1,0 +1,37 @@
+<div id="ourAmbassadors">
+  <div class="mt-5">
+    <div class="container p-0">
+      <div class="row g-0">
+        <div class="col-12">
+          <div class="mb-5 mx-2">
+            <p class="title-1 bold mb-2 text-center">{{'aboutPublicTeam.meetAmbassadors'|translate}}</p>
+            <p class="large-body text-center">{{'aboutPublicTeam.ambassadorsDescription'|translate}}</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <carousel [arrowsOutside]="true"
+                    [dots]="false"
+                    [height]="carouselHeight"
+                    [cellWidth]="cardWidth"
+                    [cellsToScroll]="1"
+                    [cellsToShow]=" isMediumScreen ? isSmallScreen ? isMobile ? 1 : 2 : 3 : 4 "
+                    [class.individualArrows]="!business">
+            <div class="carousel-cell" *ngFor="let item of ambassadors">
+              <div class="card-container">
+                <app-flip-card
+                  [name]="item.firstname+' '+item.lastname"
+                  [image]="item.image.url"
+                  [caption]="item.role"
+                  [description]="item.description"
+                  cardType="small"
+                  [business]="business"
+                ></app-flip-card>
+              </div>
+            </div>
+          </carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

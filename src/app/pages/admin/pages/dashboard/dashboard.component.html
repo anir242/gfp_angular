@@ -1,0 +1,236 @@
+<div class="gradientHome">
+  <div class="container-fluid p-4 pt-0">
+    <h1 class="chivo xxl light text-uppercase">{{'dashboard.title'|translate}}</h1>
+    <div class="row g-3">
+      <div class="col-12">
+        <div class="d-flex justify-content-end mb-3">
+          <button mat-stroked-button color="yellow" (click)="downloadReport()" class="noFill">
+            <div class="d-flex justify-content-between align-items-center">
+              <img src="assets/images/icons/download.png" />
+              <span>Download Impact Report</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <app-dashboard-statistic [label]="'daysMember'"
+                                 [value]=daysAsMember
+                                 [icon]="'assets/images/icons/days.png'"></app-dashboard-statistic>
+      </div>
+      <div class="col-12 col-lg-4">
+        <app-dashboard-statistic [label]="'projectsBacked'"
+                                 [value]=projectsBacked
+                                 [icon]="'assets/images/icons/co2.png'"></app-dashboard-statistic>
+      </div>
+      <div class="col-12 col-lg-4">
+        <app-dashboard-statistic [label]="'levelsCompleted'"
+                                 [value]=levelsCompleted
+                                 [icon]="'assets/images/icons/ecosystems.png'"></app-dashboard-statistic>
+      </div>
+    </div>
+    <div class="row g-3 mt-3">
+      <div class="col-12 col-xl-6">
+        <div class="statistics chart">
+          <div class="d-flex justify-content-between">
+            <div class="chart-title">
+              <div class="chivo sm mb-3">Total CO<sub>2</sub> offset</div>
+              <div class="chivo xl">{{totalTons}} t</div>
+            </div>
+            <img src="assets/images/icons/co2.png" alt="CO2" />
+          </div>
+          <mat-divider class="divider mt-4 mb-3"></mat-divider>
+          <div class="d-flex justify-content-around wrapper">
+            <div class="pie-wrapper">
+              <ngx-charts-pie-chart [results]="results"
+                                    [gradient]="true"
+                                    [arcWidth]="0.3"
+                                    [scheme]="colorScheme"
+                                    [labels]="false"
+                                    [doughnut]="true"
+                                    [tooltipDisabled]="true"
+                                    [legendPosition]="'right'"></ngx-charts-pie-chart>
+            </div>
+            <div class="statistic legend p-3">
+              <div class="chivo sm mb-4">Project Typology</div>
+              <div class="type restoration">Restoration</div>
+              <div class="type preservation">Preservation</div>
+              <div class="type renewable">Renewable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-6">
+        <div class="statistics chart">
+          <div class="d-flex justify-content-between">
+            <div class="chart-title">
+              <div class="chivo sm mb-3">{{'subscription.treesPlanted'|translate}}</div>
+              <div class="chivo xl">{{totalTrees}}</div>
+            </div>
+            <img src="assets/images/icons/restoration.png" alt="Restoration" />
+          </div>
+          <mat-divider class="divider mt-4 mb-3"></mat-divider>
+          <ng-container *ngIf="monthsTrees">
+            <div class="d-flex wrapper">
+              <ngx-charts-line-chart [results]="monthsTrees"
+                                     [scheme]="restorationColorScheme"
+                                     [schemeType]="'linear'"
+                                     [labels]="false"
+                                     [tooltipDisabled]="false"
+                                     [curve]="curve"
+                                     [xAxis]="true"
+                                     [yAxis]="true"
+                                     [timeline]="false"
+                                     [showGridLines]="false"
+                                     style="fill: #AFB7C8;"></ngx-charts-line-chart>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-3">
+      <div class="col-12 col-lg-6">
+        <div class="statistics chart">
+          <div class="d-flex justify-content-between">
+            <div class="chart-title">
+              <div class="chivo sm mb-3">{{'subscription.hectaresProtected'|translate}}</div>
+              <div class="chivo xl" *ngIf="totalHectares > 1">
+                {{'admin.hectares'| translate: {hectares: totalHectares} }}
+              </div>
+              <div class="chivo xl" *ngIf="totalHectares == 1">
+                {{'admin.hectare'| translate: {hectares: totalHectares} }}
+              </div>
+              <div class="chivo xl" *ngIf="totalHectares < 1">
+                {{'admin.m2'| translate: {m2: totalM2} }}m<sup>2</sup>
+              </div>
+            </div>
+            <img src="assets/images/icons/preservation.png" alt="Preservation" />
+          </div>
+          <mat-divider class="divider mt-4 mb-3"></mat-divider>
+          <ng-container *ngIf="monthsM2">
+            <div class="d-flex wrapper">
+              <ngx-charts-line-chart [results]="monthsM2"
+                                     [scheme]="preservationColorScheme"
+                                     [schemeType]="'linear'"
+                                     [labels]="false"
+                                     [tooltipDisabled]="true"
+                                     [curve]="curve"
+                                     [xAxis]="true"
+                                     [yAxis]="true"
+                                     [timeline]="false"
+                                     [showGridLines]="false"
+                                     style="fill: #AFB7C8;"></ngx-charts-line-chart>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="statistics chart">
+          <div class="d-flex justify-content-between">
+            <div class="chart-title">
+              <div class="chivo sm mb-3">{{'settings.kwhProduced'|translate}}</div>
+              <div class="chivo xl">{{'admin.kw'| translate: {kw: totalKwH} }}</div>
+            </div>
+            <img src="assets/images/icons/renewable.png" alt="Renewable" />
+          </div>
+          <mat-divider class="divider mt-4 mb-3"></mat-divider>
+          <div>
+            <ng-container *ngIf="monthsKwh">
+              <div class="d-flex wrapper">
+                <ngx-charts-line-chart [results]="monthsKwh"
+                                       [scheme]="renewableColorScheme"
+                                       [schemeType]="'linear'"
+                                       [labels]="false"
+                                       [tooltipDisabled]="true"
+                                       [curve]="curve"
+                                       [xAxis]="true"
+                                       [yAxis]="true"
+                                       [timeline]="false"
+                                       [showGridLines]="false"
+                                       style="fill: #AFB7C8;"></ngx-charts-line-chart>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="co2-section p-3">
+  <h2 class="chivo xl mt-4 mb-4">Your CO<sub>2</sub> offset</h2>
+  <div class="row g-3">
+    <div class="col-12 col-lg-8">
+      <div class="statistics co2 chart me-xl-4">
+        <div class="d-flex justify-content-between">
+          <div class="chart-title">
+            <div class="chivo sm mb-3">Total CO<sub>2</sub> offset</div>
+            <div class="chivo xl">{{totalTons}} t</div>
+          </div>
+          <img src="assets/images/icons/co2.png" alt="CO2" />
+        </div>
+        <mat-divider class="mt-4 mb-3"></mat-divider>
+        <div class="d-flex wrapper">
+          <ngx-charts-line-chart [results]="monthsCo2"
+                                [scheme]="co2ColorScheme"
+                                [schemeType]="'linear'"
+                                [labels]="false"
+                                [tooltipDisabled]="true"
+                                [curve]="curve"
+                                [xAxis]="true"
+                                [yAxis]="true"
+                                [timeline]="false"
+                                [showGridLines]="false"
+                                style="fill: #636363;"></ngx-charts-line-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="statistics co2">
+        <div class="d-block">
+          <div class="statistic p-3">
+            <div class="d-flex justify-content-between align-items-start">
+              <img src="assets/images/icons/certified.svg" alt="Certified" />
+              <app-info [selector]="'certified'"
+                        [title]="translate.instant('yourImpact.certifiedTitle')"
+                        [body]="translate.instant('yourImpact.certifiedBody')"
+                        [link]="'/about'"
+                        [positionY]="'bottom'"
+                        [positionX]="'left'"
+                        invert="y"></app-info>
+            </div>
+            <div class="chivo xl mt-4 mb-2">{{'yourImpact.tonsCertified'|translate : {value: tonsCertified} }}</div>
+            <p class="lato xs m-0">
+              {{'yourImpact.tonsCertifiedDescription'|translate }}
+            </p>
+          </div>
+          <div class="statistic p-3 mt-3">
+            <div class="d-flex justify-content-between align-items-start">
+              <img src="assets/images/icons/science.svg" alt="Science" />
+              <app-info [selector]="'science'"
+                        [title]="translate.instant('yourImpact.scienceBacked')"
+                        [body]="translate.instant('yourImpact.scienceBackedDescription')"
+                        [link]="'/about'"
+                        [positionY]="'bottom'"
+                        [positionX]="'left'"
+                        invert="y"></app-info>
+            </div>
+            <div class="chivo xl mt-4 mb-2">{{'yourImpact.scienceBacked'|translate : {value: tonsNotCertified} }}</div>
+            <p class="lato xs m-0">
+              {{'yourImpact.scienceBackedDescription'|translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sdg-section p-3 bg-white">
+  <app-title-images [title]="translate.instant('dashboard.supported')"
+                    [images]="goalsImages"></app-title-images>
+</div>
+<div class="p-3" style="background: #fafafa;">
+  <div class="col-12">
+    <div class="d-flex justify-content-center align-items-center">
+      <app-achievements-data></app-achievements-data>
+    </div>
+  </div>
+</div>

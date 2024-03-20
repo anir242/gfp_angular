@@ -1,0 +1,70 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin material-checkbox-new($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+  $accent2: map.get($light-theme-public-yellow, 'accent');
+
+  $color: mat.get-color-from-palette($foreground, text);
+  $my-typography: mat.define-typography-config();
+
+  .mat-checkbox {
+    color: $color;
+    font-family: mat.font-family($my-typography, 'body-1');
+    font-size: mat.font-size($my-typography, 'body-1');
+    font-weight: mat.font-weight($my-typography, 'body-1');
+    border-radius: 8px;
+    padding: 8px;
+
+    &:active:focus {
+      background-color: mat.get-color-from-palette($primary);
+      border-radius: 8px;
+      outline: none !important;
+    }
+
+    .mat-checkbox-label {
+      white-space: initial;
+      color: mat.get-color-from-palette($primary);
+    }
+    &.mat-checkbox-checked {
+      .mat-checkbox-label {
+        font-weight: mat.font-weight($my-typography, 'body-2');
+        white-space: initial;
+        color: mat.get-color-from-palette($primary);
+      }
+    }
+
+
+    &.mat-checkbox-disabled {
+      .mat-checkbox-label {
+        color: $color;
+        opacity: 0.7;
+
+      }
+    }
+    .mat-checkbox-frame {
+      border-radius: 4px;
+      border-color: mat.get-color-from-palette($accent2);
+    }
+
+    &.mat-checkbox-checked {
+      .mat-checkbox-background {
+        border-radius: 4px;
+        background-color: mat.get-color-from-palette($accent2);
+        svg {
+          fill: $color;
+
+          .mat-checkbox-checkmark-path {
+            stroke: mat.get-color-from-palette($primary, 'main-contrast') !important;
+
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,15 @@
+<div class="pb-2">
+  <span class="title-4 text-white">{{'signup.about'| translate}}</span>
+</div>
+<app-mat-input
+  [label]="'firstName'"
+  [control]="firstName"
+  autocomplete="given-name"
+  labelError="authentication.requiredField"
+  [required]="true"></app-mat-input>
+<app-mat-input
+  label="lastName"
+  [control]="lastName"
+  autocomplete="family-name"
+  [labelError]="'authentication.requiredField'"
+  [required]="true"></app-mat-input>

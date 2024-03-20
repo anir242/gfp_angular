@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin material-chips($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  $color: mat.get-color-from-palette($foreground, 'secondary-text');
+
+  .mat-chip {
+    &.mat-standard-chip {
+      background-color: mat.get-color-from-palette($primary, 'lighter');
+      border-radius: 6px;
+
+      &.mat-chip-selected {
+        &.mat-primary {
+          background-color: mat.get-color-from-palette($accent);
+          color: mat.get-color-from-palette($primary);
+        }
+      }
+    }
+  }
+
+}

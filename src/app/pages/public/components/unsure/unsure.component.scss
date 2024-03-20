@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin unsure-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+  .deviceImg {
+    @include media-breakpoint-up(md) {
+      width: 80%;
+    }
+    width: 100%;
+  }
+  .unsure {
+    .title {
+      span, p {
+        color: mat.get-color-from-palette($foreground, 'base');
+      }
+    }
+
+    .texts {
+      span {
+        color: mat.get-color-from-palette($foreground, 'base');
+      }
+
+      p {
+        color: mat.get-color-from-palette($foreground, 'text');
+
+      }
+    }
+  }
+
+
+
+}

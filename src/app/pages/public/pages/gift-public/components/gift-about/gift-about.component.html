@@ -1,0 +1,23 @@
+<div class="container-fluid p-0">
+  <div class="row gx-2">
+    <div class="col-12">
+      <span class="mat-title">{{'gift.aboutYou'| translate}}</span>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-mat-input
+        [label]="translate.instant('gift.name')"
+        [control]="name"
+        autocomplete="given-name"
+        labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-mat-input
+        [label]="translate.instant('gift.surname')"
+        [control]="surname"
+        autocomplete="family-name"
+        labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+  </div>
+</div>

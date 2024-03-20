@@ -1,0 +1,59 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin done-so-far-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #doneSoFar {
+    .paddingAchievements {
+      padding: 2em 2em;
+      @include media-breakpoint-up(md) {
+        padding: 4em 3em;
+      }
+
+      p {
+        color: mat.get-color-from-palette($foreground, 'base');
+      }
+
+      background: url("../../../../../assets/images/about_achievements_bg.png") no-repeat;
+      background-size: cover;
+
+      .square {
+        background: url("../../../../../assets/images/svg/achievements_square.svg") no-repeat 45% 0%;
+        @include media-breakpoint-up(md) {
+          background: url("../../../../../assets/images/svg/achievements_square.svg") no-repeat 40% 0%;
+        }
+      }
+
+      .squareCenter {
+        background: url("../../../../../assets/images/svg/achievements_square.svg") no-repeat 53% 0%;
+        @include media-breakpoint-up(md) {
+          background: url("../../../../../assets/images/svg/achievements_square.svg") no-repeat 40% 0%;
+        }
+      }
+
+      .square,
+      .squareCenter {
+        span {
+          color: mat.get-color-from-palette($foreground, 'text');
+        }
+
+        p {
+          color: mat.get-color-from-palette($foreground, 'base');
+          font-weight: lighter;
+        }
+      }
+
+      .linkViewAll {
+        cursor: pointer;
+        color: mat.get-color-from-palette($accent);
+      }
+    }
+  }
+}

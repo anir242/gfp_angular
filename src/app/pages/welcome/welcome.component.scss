@@ -1,0 +1,188 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin welcome-theme($theme) {
+
+  .welcome-wrapper {
+    height: 100%;
+    width: 100%;
+    min-height: max-content;
+    background-image: $background1, url('/assets/images/bg_noise_low.png');
+    background-blend-mode: color;
+    overflow: hidden;
+    color: white;
+
+    .languages {
+      position: fixed;
+      right: 20px;
+      top: 10px;
+      z-index: 10;
+
+      .langToggle{
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        border: 0;
+      }
+    }
+
+    .btn-holder {
+      cursor: pointer;
+      width: fit-content;
+      margin-inline: auto;
+
+      .grey {
+        color: $grey3;
+        background-color: $grey5;
+
+        .mat-button-wrapper {
+          color: inherit;
+        }
+      }
+
+      :first-child {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      :last-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+
+    .heading1 {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 40px;
+
+      @include media-breakpoint-up(md) {
+        font-size: 32px;
+      }
+    }
+
+    .heading2 {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+    }
+
+    .heading3 {
+      font-size: 16px;
+      padding-right: 3rem;
+
+      @include media-breakpoint-up(lg) {
+        padding-right: 0;
+      }
+    }
+
+    $padding-lg-left: 70px;
+    $padding-md: 24px;
+    $padding-sm: 15px;
+
+    .upper {
+      padding-left: $padding-md;
+      z-index: 1;
+      width: 85%;
+
+      @include media-breakpoint-up(lg) {
+        width: 50%;
+        padding-left: $padding-lg-left;
+      }
+    }
+
+    .lower {
+      background: #FAFAFA0D;
+      width: fit-content;
+      padding: $padding-sm;
+      border-radius: 0 8px 8px 0;
+      z-index: 1;
+
+      @include media-breakpoint-up(md) {
+        padding: $padding-md;
+      }
+
+      @include media-breakpoint-up(lg) {
+        padding: 40px 40px 40px $padding-lg-left;
+      }
+    }
+
+    .logo {
+      height: 76px;
+      position: absolute;
+      z-index: 1;
+      bottom: $padding-sm;
+      right: $padding-sm;
+      margin-right: 0;
+
+      @include media-breakpoint-up(md) {
+        bottom: 24px;
+        right: 24px;
+        height: 96px;
+      }
+
+      @include media-breakpoint-up(md) {
+        bottom: 40px;
+        right: 24px;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+
+  .welcome-wrapper .globe-wrapper {
+    width: fit-content;
+    bottom: -8rem;
+    right: -18rem;
+    position: absolute;
+
+    @media (max-height: 700px) {
+      bottom: -18rem;
+      right: -22rem;
+    }
+
+    @include media-breakpoint-up(sm) {
+      bottom: -9rem;
+      right: -17rem;
+    }
+
+    @include media-breakpoint-up(md) {
+      bottom: -10rem;
+      right: -15rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+      bottom: -12rem;
+      right: -10rem;
+    }
+
+    .globe {
+      model-viewer {
+        height: 580px;
+        width: 580px;
+
+        @include media-breakpoint-up(md) {
+          height: 600px;
+          width: 600px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          height: 750px;
+          width: 750px;
+        }
+
+        @include media-breakpoint-up(xl) {
+          height: 820px;
+          width: 820px;
+        }
+      }
+
+
+    }
+  }
+}

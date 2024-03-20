@@ -1,0 +1,129 @@
+#  Template npm-publish
+
+#  This template allows you to publish your npm package, as defined in package.json, to npmjs.com or any other npm-like registry.
+#  The workflow allows running tests, code linting and security scans on feature branches (as well as master).
+#  The npm package will be validated and published after the code is merged to master.
+
+# Prerequisites: $NPM_TOKEN setup in the Deployment variables.
+# For advanced cases, please, follow examples from the pipe's README https://bitbucket.org/atlassian/npm-publish/src/master/README.md
+
+image: node:16.11.0
+
+pipelines:
+  branches:
+    staging:
+      - step:
+          name: Install dependencies
+          #caches:
+          #  - node
+          script: # Modify the commands below to build your repository.
+            - npm config set "@fortawesome:registry" https://npm.fontawesome.com
+            - npm config set "//npm.fontawesome.com/:_authToken" CFBA2807-C696-4C33-87F5-D93F0F21176D 
+            - npm install --force
+          artifacts:
+            - node_modules/**  # copy these files to later steps
+      - step:
+          name: Check Build
+          script:
+            - npm run build
+            - cp appspec_dev.yml appspec.yml
+          artifacts:
+            - dist/**
+            - scripts/**
+            - appspec.yml
+      - step:
+          name: Compress project
+          image: atlassian/default-image:2
+          script:
+            - zip -r green-future-project.zip dist scripts appspec.yml
+          artifacts:
+            - green-future-project.zip
+      - step:
+          name: Upload to S3
+          script:
+            - pipe: atlassian/aws-code-deploy:1.1.0
+              variables:
+                AWS_ACCESS_KEY_ID: '$AWS_ACCESS_KEY' # Optional if already defined in the context or OIDC used.
+                AWS_SECRET_ACCESS_KEY: '$AWS_ACCESS_SECRET_KEY' # Optional if already defined in the context or OIDC used.
+                AWS_DEFAULT_REGION: '$AWS_REGION' # Optional if already defined in the context or OIDC used.
+                APPLICATION_NAME: 'frontend'
+                S3_BUCKET: '$bucket'
+                FOLDER: 'gfp-dev-fe'
+                COMMAND: 'upload'
+                ZIP_FILE: 'green-future-project.zip'
+      - step:
+          name: Deploy with CodeDeploy
+          deployment: staging
+          script:
+            - pipe: atlassian/aws-code-deploy:1.1.0
+              variables:
+                AWS_ACCESS_KEY_ID: '$AWS_ACCESS_KEY' # Optional if already defined in the context.
+                AWS_SECRET_ACCESS_KEY: '$AWS_ACCESS_SECRET_KEY' # Optional if already defined in the context.
+                AWS_DEFAULT_REGION: '$AWS_REGION' # Optional if already defined in the context.
+                APPLICATION_NAME: 'frontend'
+                IGNORE_APPLICATION_STOP_FAILURES: 'true'
+                FOLDER: 'gfp-dev-fe'
+                COMMAND: 'deploy'
+                WAIT: 'true'
+                DEPLOYMENT_GROUP: 'staging'
+                FILE_EXISTS_BEHAVIOR: 'OVERWRITE'
+                S3_BUCKET: '$bucket'
+  tags:
+    '*':
+      - step:
+          name: Install dependencies
+          #caches:
+          #  - node
+          script: # Modify the commands below to build your repository.
+            - npm config set "@fortawesome:registry" https://npm.fontawesome.com
+            - npm config set "//npm.fontawesome.com/:_authToken" CFBA2807-C696-4C33-87F5-D93F0F21176D 
+            - npm install --force
+          artifacts:
+            - node_modules/**  # copy these files to later steps
+      - step:
+          name: Check Build
+          script:
+            - npm run production
+            - cp appspec_prod.yml appspec.yml
+          artifacts:
+            - dist/**
+            - scripts/**
+            - appspec.yml
+      - step:
+          name: Compress project
+          image: atlassian/default-image:2
+          script:
+            - zip -r green-future-project.zip dist scripts appspec.yml
+          artifacts:
+            - green-future-project.zip
+      - step:
+          name: Upload to S3
+          script:
+            - pipe: atlassian/aws-code-deploy:1.1.0
+              variables:
+                AWS_ACCESS_KEY_ID: '$AWS_ACCESS_KEY' # Optional if already defined in the context or OIDC used.
+                AWS_SECRET_ACCESS_KEY: '$AWS_ACCESS_SECRET_KEY' # Optional if already defined in the context or OIDC used.
+                AWS_DEFAULT_REGION: '$AWS_REGION' # Optional if already defined in the context or OIDC used.
+                APPLICATION_NAME: 'frontend'
+                FOLDER: 'gfp-prod-fe'
+                S3_BUCKET: '$bucket'
+                COMMAND: 'upload'
+                ZIP_FILE: 'green-future-project.zip'
+      - step:
+          name: Deploy with CodeDeploy
+          deployment: production
+          script:
+            - pipe: atlassian/aws-code-deploy:1.1.0
+              variables:
+                AWS_ACCESS_KEY_ID: '$AWS_ACCESS_KEY' # Optional if already defined in the context.
+                AWS_SECRET_ACCESS_KEY: '$AWS_ACCESS_SECRET_KEY' # Optional if already defined in the context.
+                AWS_DEFAULT_REGION: '$AWS_REGION' # Optional if already defined in the context.
+                APPLICATION_NAME: 'frontend'
+                IGNORE_APPLICATION_STOP_FAILURES: 'true'
+                COMMAND: 'deploy'
+                WAIT: 'true'
+                FOLDER: 'gfp-prod-fe'
+                DEPLOYMENT_GROUP: 'production'
+                FILE_EXISTS_BEHAVIOR: 'OVERWRITE'
+                S3_BUCKET: '$bucket'
+ 

@@ -1,0 +1,36 @@
+<div class="container-fluid p-0">
+  <div class="row gx-2">
+    <div class="col-12">
+      <span class="mat-title">{{'gift.contact'| translate}}</span>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-mat-input
+        [label]="translate.instant('gift.yourEmail')"
+        [control]="email"
+        autocomplete="email"
+        labelMismatchError="authentication.differentEmail"
+        labelError="authentication.requiredField"
+        labelPatternError="authentication.pattern"
+        [required]="true"></app-mat-input>
+    </div>
+    <div *ngIf="confirmEmail" class="col-12 col-md-6">
+      <app-mat-input
+        [label]="translate.instant('gift.confirmEmail')"
+        [control]="confirmEmail"
+        autocomplete="email"
+        labelMismatchError="authentication.differentEmail"
+        labelError="authentication.requiredField"
+        labelPatternError="authentication.pattern"
+        [required]="true"></app-mat-input>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-mat-input
+        [label]="translate.instant('gift.yourPhone')"
+        [control]="phone"
+        autocomplete="phone"
+        labelError="authentication.requiredField"
+        labelPatternError="authentication.patternPhone"
+        [required]="true"></app-mat-input>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<mat-form-field [appearance]="appearance" color="white" [ngClass]="prefix ? 'with-prefix': ''">
+  <mat-label>{{label| translate}}</mat-label>
+  <textarea
+    [maxLength]="textAreaLength"
+    [style.height.px]="textAreaHeight"
+    style="resize: none;"
+    *ngIf="type==='textarea' else input" matInput
+    [name]="label"
+    [formControl]="control"
+    [required]="required">
+  </textarea>
+  <ng-template #input>
+    <input matInput [name]="label" [type]="type"
+      [formControl]="control"
+      [autocomplete]="autocomplete ?? ''"
+      [required]="required"
+      [min]="min"
+      [max]="max"
+      [placeholder]="placeholder">
+  </ng-template>
+  <span *ngIf="prefix" matPrefix class="me-2">{{prefix}}</span>
+  <span *ngIf="suffix" matSuffix class="mx-2">{{suffix}}</span>
+  <mat-hint *ngIf="hint" style="letter-spacing: 0.05em; font-size: 0.65rem" class="text-white">{{hint| translate}}</mat-hint>
+  <mat-error *ngIf="control.errors?.required" >
+    {{labelError | translate}}
+  </mat-error>
+  <mat-error *ngIf="control.errors?.pattern">
+    {{labelPatternError | translate}}
+  </mat-error>
+  <mat-error *ngIf="control.errors?.mismatch">
+    {{labelMismatchError | translate}}
+  </mat-error>
+  <mat-error *ngIf="control.errors?.min">
+    {{labelMinError | translate}}
+  </mat-error>
+  <mat-error *ngIf="control.errors?.max">
+    {{labelMaxError | translate}}
+  </mat-error>
+</mat-form-field>

@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-cart-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #giftList {
+    margin-bottom: 30px;
+    margin-top: 56px;
+    @include media-breakpoint-up(md){
+      padding-top: 80px;
+      margin-bottom: 88px;
+    }
+    .cardContainer{
+      @include media-breakpoint-down(md){
+        padding-top: 30px;
+      }
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      border-radius: 4px;
+    }
+    mat-divider{
+      // background-color: #BABABA;
+      background-color: #BABABA;
+    }
+  }
+
+}

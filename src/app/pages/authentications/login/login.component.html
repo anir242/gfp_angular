@@ -1,0 +1,106 @@
+<div class="main-content" id="login">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="container p-0">
+          <div class="row g-0">
+            <div class="col-12">
+              <div class="loginDataContainer">
+                <div class="container p-0">
+                  <div class="row g-0">
+                    <div class="col-12" *ngIf="giftCardRecipientInterface">
+                      <div class="mt-5">
+                        <app-banner type="accent" url="assets/images/svg/gift.svg" [title]="
+                            translate.instant('giftLoginBanner.unwrap', {
+                              value: giftCardRecipientInterface.senderFirstname
+                            })
+                          ">
+                        </app-banner>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="container-fluid loginContainer">
+                        <div class="loginContent">
+                          <div class="row">
+                            <div class="titles">
+                              <span class="title-1 bold">{{
+                                'login.title' | translate
+                                }}</span>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="large-body subtitle d-none d-lg-block">
+                              {{ 'login.enterDetails' | translate }}
+                            </div>
+                            <div class="body subtitle d-lg-none">
+                              {{ 'login.enterDetails' | translate }}
+                            </div>
+                          </div>
+                          <form (ngSubmit)="login()" [formGroup]="subscriptionData">
+                            <div class="container-fluid">
+                              <div class="row">
+                                <div class="col-12">
+                                  <app-login-data [form]="user"></app-login-data>
+                                </div>
+                              </div>
+                              <div class="col-12 col-md-6">
+                                <div class="rememberMe">
+                                  <mat-checkbox formControlName="remember">{{
+                                    'login.rememberMe' | translate
+                                    }}</mat-checkbox>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="submit my-3">
+                              <button type="submit" #submit mat-raised-button color="yellow">
+                                {{ 'login.title' | translate }}
+                              </button>
+                            </div>
+                            <div class="row">
+                              <span class="clickable fw-bold underline mat-caption link forgotYourPassword"
+                                [routerLink]="'/forgotPassword'">
+                                {{ 'login.forgotYourPassword' | translate }}
+                              </span>
+                            </div>
+                          </form>
+                          <hr />
+                          <div class="body">
+                            {{ 'login.or' | translate }}
+                          </div>
+                          <app-social-buttons></app-social-buttons>
+                          <hr />
+                          <div class="body">
+                            <span> {{ 'login.notUser' | translate }}</span>
+                            <!--<span
+                              class="clickable link subscription"
+                              [routerLink]="'/subscriptions'"
+                            >-->
+                            <span *ngIf="userType == UserTypes.business" class="clickable link subscription"
+                              [routerLink]="'/subscriptions/business/climateLeader'">
+                              {{
+                              'login.exploreSubscriptionPlans' | translate
+                              }}</span>
+                            <span *ngIf="userType == UserTypes.individual"  class="clickable link subscription"
+                              [routerLink]="'/subscriptions/individual/checkout'">
+                              {{
+                              'login.exploreSubscriptionPlans' | translate
+                              }}</span>
+                            <span> {{ 'login.toSignUp' | translate }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="col-12">
+                      <app-footer-authentication></app-footer-authentication>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

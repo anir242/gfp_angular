@@ -1,0 +1,89 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../app.component";
+
+@mixin menu-item-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  a{
+    img{
+      height: 36px;
+    }
+  }
+
+  #info{
+    width: 212px;
+    position: absolute;
+    background-color: #002822;
+    padding: 16px;
+    top: 40px;
+    left: 66px;
+    z-index: 10;
+    border-radius: 4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    p{
+    color: white !important;
+    }
+  }
+
+  #info::after{
+    content: '';
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 7px solid #002822;
+    position: absolute;
+    top: -7px;
+    left: 19px;
+  }
+  
+  #new:hover #info{
+    visibility: visible;
+    opacity: 1;
+  } 
+
+  #wrong-info{
+    width: 290px;
+    position: absolute;
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 16px;
+    top: 35px;
+    left: 0;
+    z-index: 10;
+    border-radius: 4px;
+    transition: 0.5s;
+    box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.15);
+    --bs-bg-opacity: 1;
+    .mat-icon{
+      width: 30px;
+      overflow: visible;
+      position: static;
+      height: 32px;
+    }
+
+    .small-body{
+      font-weight: 400;
+    }
+
+    button{
+      height: 32px;
+    }
+  }
+
+  #wrong-info::after{
+    content: '';
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 7px solid #ffffff;
+    position: absolute;
+    top: -7px;
+    left: 19px;
+  }
+
+}

@@ -1,0 +1,15 @@
+<div id="inactive" [style]="{'background-color': bgColor}">
+  <div class="bgInactive">
+    <div class="h-100 d-flex justify-content-center align-items-center">
+      <div>
+        <div>
+          <p class="mb-0 text-center mat-body-2">{{'inactiveStage.yourSubscription'|translate}}</p>
+          <p class="mt-1 text-center mat-body-2">{{'inactiveStage.makeDonation'|translate}}</p>
+        </div>
+        <div class="mt-4 d-flex justify-content-center">
+          <button [hidden]="!addImpactEnabled" style="width: 10rem" mat-raised-button color="yellow" (click)="goToCheckout(slug)">{{'projectDetails.addImpact'|translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin power-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .points {
+    padding: 3em 1em;
+    @include media-breakpoint-up(md) {
+      padding: 4em 7em;
+    }
+
+    .green {
+      color: mat.get-color-from-palette($accent);
+    }
+  }
+  .step {
+    p.mat-body-1 {
+      color: mat.get-color-from-palette($foreground, 'base');
+    }
+  }
+}

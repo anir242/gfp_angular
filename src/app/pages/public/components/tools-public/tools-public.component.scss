@@ -1,0 +1,60 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin tools-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+  $is-dark-theme: map.get($color-config, "is-dark");
+
+  .tools-public-wrapper {
+
+    background: transparent;
+
+    .box {
+      background: $grey6;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 2px solid transparent;
+      cursor: pointer;
+
+      &.selected, &.selected:hover {
+        border: 2px solid #F2BF00;
+        background: white;
+
+        &.individual {
+          border: 2px solid #DBF794;
+        }
+      }
+
+      .icon {
+        width: 52px;
+        height: 52px;
+      }
+
+    }
+
+     .box:hover{
+       border: 2px solid rgba(#F2BF00, 0.3);
+
+       &.individual {
+         border: 2px solid rgba(#DBF794, 0.6);
+       }
+     }
+
+    .img-holder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+

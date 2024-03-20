@@ -1,0 +1,100 @@
+<mat-card>
+  <div class="container p-0">
+    <div class="row g-0">
+      <div class="col-md-5 position-relative">
+        <div class="shadow"></div>
+        <img mat-card-image [src]="project.image.url" [alt]="project.slug">
+        <div class="d-inline-block text-center px-3 py-2 position-absolute top-0 mt-3 ms-2" [ngStyle]="{'background-color': project.type.colorSecondary}" style="border-radius: 20px; width: max-content">
+          <span class="small-body bold">
+            {{project.type.name}}
+          </span>
+        </div>
+        <div class="position-absolute bottom-0 mb-4 ms-3 grey7">
+          <div class="d-flex align-items-center mb-1">
+            <img src="/assets/images/svg/location_dot.svg" width="12px" class="me-2">
+            <span class="tiny-body">
+              {{project.country.name | uppercase}}
+            </span>
+          </div>
+          <span class="title-3 bold">{{project.name}}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-7">
+        <div class="card-content">
+          <div class="card-text position-relative">
+            <mat-card-content>
+              <p class="small-body mb-0 description" [ngClass]="openClass">
+                {{project.projectData.overview}}
+              </p>
+              <ng-template #completed>
+                <p class="mat-body-1 pt-5 mb-2">{{'projectList.goalReached'|translate}}</p>
+                <p class="mat-body-1 mb-2 bold">{{'projectList.amazing'|translate}}</p>
+              </ng-template>
+              <div class="d-none d-md-block">
+                <div *ngIf="value; else completed">
+                  <p class="small-body mb-0 mt-3 description" [ngClass]="openClass">
+                    {{'projectList.starting' | translate}}
+                  </p>
+                  <p class="title-2 mb-0 mt-2">{{'projectList.euro' | translate}}{{value}}</p>
+                  <p class="small-body bold mb-0 mt-1" [ngClass]="openClass">
+                    =  {{quantity}} <span *ngIf="unit != 'm2'">{{unit}}</span><span *ngIf="unit == 'm2'">m<sup>2</sup></span>
+                  </p>
+                </div>
+              </div>
+              <div class="row g-2 my-3 d-none d-md-flex position-absolute bottom-0" style="padding-right: 1rem">
+                <div class="col-12 col-xl-6">
+                  <button mat-stroked-button color="green" class="w-100 d-flex align-items-center justify-content-center" style="min-width:120px" (click)="openProject(project.slug)">
+                    <span *ngIf="value">{{'projectList.visit' | translate}}</span>
+                    <span *ngIf="!value">{{'projectList.learn' | translate}}</span>
+                  </button>
+                </div>
+                <div class="col-12 col-xl-6">
+                  <button mat-raised-button color="yellow" class="w-100" (click)="goToCheckout(project.slug)" *ngIf="value">
+                    <div class="d-flex align-items-center d-flex align-items-center justify-content-center">
+                      <img src="/assets/images/icons/thunder_grey.svg" width="24" height="24">
+                      <div class="ms-2">{{'projectList.investNow' | translate}}</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-accordion *ngIf="size === 'big'">
+              <mat-expansion-panel class="d-flex flex-column" (opened)="setClass(true)" (closed)="setClass(false)">
+                <mat-expansion-panel-header class="order-2">
+                </mat-expansion-panel-header>
+                <div class="mb-3 order-1">
+                  <div class="container-fluid p-0">
+                    <div class="row gx-2">
+                      <div class="col-12" *ngIf="value; else completed">
+                        <p class="small-body mb-0 mt-3 description" [ngClass]="openClass">
+                          {{'projectList.starting' | translate}}
+                        </p>
+                        <p class="title-2 mb-0 mt-2">{{'projectList.euro' | translate}}{{value}}</p>
+                        <p class="small-body bold mb-0 mt-1" [ngClass]="openClass">
+                          =  {{quantity}} {{unit}}
+                        </p>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <button mat-stroked-button color="green" class="w-100 mt-4 mb-2" (click)="openProjectPage(project.slug)">
+                          {{'projectList.visit' | translate}}
+                        </button>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <button mat-raised-button color="yellow" class="w-100" (click)="goToCheckout(project.slug)" *ngIf="value">
+                          <div class="d-flex align-items-center justify-content-center">
+                            <img src="/assets/images/icons/thunder_grey.svg" width="24" height="24">
+                            <div class="ms-2">{{'projectList.investNow' | translate}}</div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

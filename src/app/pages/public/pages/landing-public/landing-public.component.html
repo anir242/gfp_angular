@@ -1,0 +1,72 @@
+<div class="content" id="landingPublic" [ngClass]="business ? 'business' : 'individual'">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-12">
+        <app-title-public arrow="power" [business]="business"></app-title-public>
+      </div>
+      <div  *ngIf="!business, else businessPilio"class="col-12" class="bg-forest" [ngClass]="business ? 'business' : 'individual'" id="sectionExplore" #explore>
+        <app-explore [business]="business"></app-explore>
+      </div>
+      <ng-template #businessPilio>
+        <app-business-pilio></app-business-pilio>
+      </ng-template>
+      <div class="col-12">
+        <app-review-public [business]="business"></app-review-public>
+      </div>
+      <div class="col-12">
+        <app-tools-public [business]="business"
+          headingText="landingPublicTools.discover"
+          headingDesc="landingPublicTools.get"
+          buttonTxt="landingPublicTools.book"
+          [fetchData]="true"
+        >
+        </app-tools-public>
+      </div>
+      <div class="col-12 pt-5 text-start">
+        <app-project [business]="business"></app-project>
+      </div>
+      <div class="col-12">
+        <app-achievements-data [showCTA]="false"></app-achievements-data>
+      </div>
+      <ng-container *ngIf="business; else ambassadors">
+        <div class="col-12">
+          <app-case-studies></app-case-studies>
+        </div>
+      </ng-container>
+      <ng-template #ambassadors>
+        <div class="col-12">
+          <app-our-ambassadors
+            [ambassadors]="ambassadorInterface"
+            [business]="business"
+          ></app-our-ambassadors>
+        </div>
+      </ng-template>
+      <div class="col-12" id="contact-form">
+        <app-contact-form pageName="Home Page"></app-contact-form>
+      </div>
+      <div class="col-12" *ngIf="!business">
+        <div class="p-5 mt-4 mb-2">
+          <div class="chivo xl bold">
+            {{ "landingPublic.stayTuned" | translate }}
+          </div>
+          <div class="lato sm">{{ "landingPublic.follow" | translate }}</div>
+        </div>
+        <a href="https://www.instagram.com/green.futureproject" target="_blank">
+          <div class="row g-0">
+            <div
+              class="col-12 col-md-6 col-lg-3"
+              *ngFor="let number of [1, 2, 3, 4]"
+            >
+              <img
+                [src]="
+                  '/assets/images/public/home/instagram-' + number + '.jpg'
+                "
+                class="instagram"
+              />
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin order-summary-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+  .orderSummary {
+    border-radius: 8px;
+    overflow: hidden;
+    .title {
+      span {
+        color: mat.get-color-from-palette($primary);
+      }
+      padding: 1.0625rem;
+      background-color: $summary-title;
+    }
+    .total {
+      background-color: white;
+      padding: 1.0625rem;
+    }
+    .donation {
+      padding: 1.0625rem;
+      background-color: $bar-yellow;
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    .donationNativa {
+      padding: 1.0625rem;
+      background-color: #00734F;
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+  }
+}

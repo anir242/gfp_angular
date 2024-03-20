@@ -1,0 +1,14 @@
+<div class="counterComponent pb-3">
+  <div class="d-none title text-center mt-4">
+    <span class="mat-subheading-1">{{title}}</span>
+  </div>
+  <button mat-icon-button (click)="remove()" [disabled]="control?.value == 0">
+    <mat-icon>remove</mat-icon>
+  </button>
+  <mat-card class="mx-2">
+    <span class="body mx-3">{{control?.value}}</span>
+  </mat-card>
+  <button mat-icon-button (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

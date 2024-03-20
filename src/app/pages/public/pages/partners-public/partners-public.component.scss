@@ -1,0 +1,129 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin partner-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #partnersPublic {
+    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/assets/images/bg_noise_low.png');
+    color: white;
+
+    .bannerGrad{
+      background-image: $background3;
+      background-repeat: no-repeat;
+      background-size: 100% 480px;
+    }
+
+    @include media-breakpoint-up(lg) {
+       padding-bottom: 2rem;
+    }
+
+    .mat-expansion-panel {
+      border-radius: 8px;
+      padding-bottom: 2rem;
+      @include mat.elevation(0);
+      background: #ffffff;
+
+      .mat-expansion-panel-header {
+        color: inherit;
+        font-size: inherit;
+        padding: 0;
+        position: initial;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: inherit;
+      }
+
+      .mat-content {
+        display: inline-block;
+        text-overflow: ellipsis;
+      }
+
+      .mat-expansion-panel-body {
+        color: inherit;
+        padding: 0;
+        background: inherit;
+      }
+
+      .mat-expansion-indicator {
+        position: absolute;
+        bottom: 0;
+        font-size: 2rem;
+        width: fit-content;
+        height: 1.5rem;
+        left: calc(50% - 0.5rem);
+      }
+    }
+
+    .mat-card {
+      box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15);
+      width: 100%;
+      padding-bottom: 1rem;
+      padding: 0;
+      border-radius: 8px;
+
+      .mat-card-title{
+        background: #FAFAFA;
+        border-radius: 8px;
+      }
+
+      .img-holder {
+        margin-top: 1rem;
+        margin-inline: auto;
+        // padding-inline: 10px;
+        width: fit-content;
+      }
+
+      img {
+        width: 100%;
+        height: 80px;
+        object-fit: contain;
+      }
+
+      .nameAboveDesc{
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      @include media-breakpoint-up(lg) {
+        .nameAboveDesc{
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+
+      .mat-expansion-indicator {
+        position: absolute;
+        bottom: 0;
+        font-size: 2rem;
+        width: fit-content;
+        height: 1.5rem;
+        left: calc(50% - 0.5rem);
+      }
+    }
+  }
+
+  .strategic{
+    margin-bottom: 2rem;
+
+    @include media-breakpoint-up(lg) {
+      .strategic{
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .background-leaves {
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/images/bg_leaves.png');
+    width: 100%;
+    border-radius: 24px;
+  }
+}

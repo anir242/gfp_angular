@@ -1,0 +1,85 @@
+<ng-container *ngIf="clientPartnersInterface">
+  <div class="content" id="whyJoin">
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlWhyJoin)">
+          <div class="layer">
+            <app-about-title-public
+              [title]="translate.instant('whyJoin.title')"
+              [buttonText]="translate.instant('whyJoin.button')"
+              [linkText]="translate.instant('whyJoin.link')"
+              [linkUrl]="translate.instant('whyJoin.url')"
+              [name]="translate.instant('whyJoin.description')"
+              (button)="this.scrollToId('why')"
+              arrow="why"></app-about-title-public>
+          </div>
+        </div>
+        <div class="col-12 mainPadding" id="why">
+          <div class="container p-0">
+            <div class="row gx-0 gy-3">
+              <div class="col-12 text-center">
+                <p class="mat-display-1">{{'whyJoin.whyShouldBusiness'|translate}}</p>
+              </div>
+              <ng-container *ngFor="let item of cardQualities">
+                <div class="col-md-3 col-12">
+                  <div class="mx-3 mx-md-1 h-100">
+                    <app-card-icon-small
+                      [title]="item.title"
+                      [description]="item.description"
+                      [url]="item.url"></app-card-icon-small>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mainPadding" id="progress">
+          <app-progress-scroller
+            [progressType]="progressTypes.numberUpTextBelow"
+            [items]="progress"
+            [title]="translate.instant('whyJoin.progressTitle')">
+          </app-progress-scroller>
+        </div>
+        <div class="col-12 mainPadding" style="background-color: #D3DFDB">
+          <app-subscription-types></app-subscription-types>
+        </div>
+        <div class="col-12" id="whatGet">
+          <app-unsure
+            [items]="whatGet"
+            [title]="translate.instant('whyJoin.whatGet')"></app-unsure>
+        </div>
+        <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlApi)">
+          <div class="layer">
+            <app-api-available></app-api-available>
+          </div>
+        </div>
+        <div class="col-12 mainPadding" id="additionalServices">
+          <app-additional-services></app-additional-services>
+        </div>
+        <div class="col-12 mainPadding" id="clientPartners">
+          <div class="container">
+            <p class="text-center mat-display-1 mb-0 mb-md-5">{{'whyJoin.clientsPartners'|translate}}</p>
+            <app-partners [items]="partnersImages"></app-partners>
+          </div>
+        </div>
+        <div class="col-12" id="campaigns" [ngStyle]="setBg(url)">
+          <div class="campaignsHeight">
+            <app-campaigns
+              (updated)="update($event)"></app-campaigns>
+          </div>
+        </div>
+        <div class="col-12" id="mainFaq">
+          <app-main-faq></app-main-faq>
+        </div>
+        <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlReadyJoin)">
+          <app-make-gift
+            [disabledButton]="!disabledJoin"
+            [buttonAction]="goToJoin"
+            [title]="translate.instant('whyJoin.join')"
+            [subtitle]="translate.instant('whyJoin.joinDescription')"
+            [button]="translate.instant('whyJoin.joinButton')"></app-make-gift>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

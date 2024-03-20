@@ -1,0 +1,11 @@
+.country-select {
+    color: #FFF !important;
+}
+
+:host ::ng-deep .mat-select-placeholder {
+    color: #FFF !important;
+}
+
+:host ::ng-deep .mat-select-value-text {
+    color: #FFF !important;
+}

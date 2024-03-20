@@ -1,0 +1,85 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin manifesto-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #manifesto {
+
+    // box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15);
+    .mat-expansion-panel {
+      border-radius: 8px;
+      padding-bottom: 2rem;
+      @include mat.elevation(0);
+      background: #ffffff;
+
+      .mat-expansion-panel-header {
+        color: inherit;
+        font-size: inherit;
+        padding: 0;
+        position: initial;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: inherit;
+      }
+
+      .mat-content {
+        display: inline-block;
+        text-overflow: ellipsis;
+      }
+
+      .mat-expansion-panel-body {
+        color: inherit;
+        padding: 0;
+        background: inherit;
+      }
+
+      .mat-expansion-indicator {
+        position: absolute;
+        bottom: 0;
+        font-size: 2rem;
+        width: fit-content;
+        height: 1.5rem;
+        left: calc(50% - 0.5rem);
+        &::after{
+          height: 5px;
+          width: 5px;
+          color: grey;
+        }
+      }
+    }
+
+    .mat-card {
+      box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15);
+      text-align: left;
+
+      &.singleCard {
+        @include media-breakpoint-up(lg) {
+          height: 100%;
+        }
+      }
+    }
+
+    .title-2 {
+      color: $grey1;
+    }
+  }
+
+  .backgroundManifesto {
+    background: url("https://green-future-project.s3.eu-central-1.amazonaws.com/manifesto_35179f12-88c6-4c71-9d84-f210b687b4d7") no-repeat left center;
+    background-size: cover;
+    height: 540px;
+
+    @include media-breakpoint-up(lg) {
+      min-height: 700px
+    }
+  }
+}

@@ -1,0 +1,98 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin blog-list-item-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #blogItem{
+
+    cursor: pointer;
+
+    .mat-expansion-panel {
+      border-radius: 8px;
+      padding-bottom: 2rem;
+      @include mat.elevation(0);
+      background: #ffffff;
+
+      .mat-expansion-panel-header {
+        color: inherit;
+        font-size: inherit;
+        padding: 0;
+        position: initial;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: inherit;
+      }
+
+      .mat-content {
+        display: inline-block;
+        text-overflow: ellipsis;
+      }
+
+      .mat-expansion-panel-body {
+        color: inherit;
+        padding: 0;
+        background: inherit;
+      }
+
+      .mat-expansion-indicator {
+        position: absolute;
+        bottom: 1rem;
+        font-size: 2rem;
+        width: fit-content;
+        height: 1.5rem;
+        left: calc(50% - 0.5rem);
+      }
+    }
+
+    .boxBlog{
+      background-color: white;
+      border-radius: 4px;
+      height: 260px;
+      box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15);
+      position: relative;
+
+      @include media-breakpoint-down(sm){
+        height: auto;
+      }
+
+      .descBlog{
+        color: black;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+      }
+
+      .typeBlog{
+        color: $bar-yellow;
+      }
+
+      .imgBlog{
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        height: 230px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        box-shadow: inset 0 0 10em 1em #000;
+        position: relative;
+
+        @include media-breakpoint-up(md){
+          height: inherit;
+          box-shadow: none;
+          border-top-left-radius: 0;
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+        }
+      }
+    }
+  }
+}

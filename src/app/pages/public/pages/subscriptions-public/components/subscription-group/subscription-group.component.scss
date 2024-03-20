@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin subscription-group-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #subscriptionGroup{
+    text-align: center;
+    .description{
+      min-height: 48px;
+      color: mat.get-color-from-palette($primary, 'text');
+    }
+  }
+}

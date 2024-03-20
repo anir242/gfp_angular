@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin subscription-details-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .subscriptionDetails {
+    .edit {
+      width: 4rem;
+    }
+
+    .image {
+      overflow: hidden;
+      background-color: $background-image-color;
+      width: 74px;
+      height: 74px;
+      border-radius: 50px;
+    }
+
+    #addSales {
+      background: #f2bf00 !important;
+      float: right;
+      padding-top: 2px;
+    }
+  }
+}

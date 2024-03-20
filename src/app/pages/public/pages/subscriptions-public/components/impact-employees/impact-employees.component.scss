@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin impact-employees-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .employeesImpact {
+    padding: 0;
+    overflow: hidden;
+
+    .mat-card-header {
+      padding: 1rem;
+      background-color: $teal;
+
+      .mat-card-header-text {
+        margin: 0;
+      }
+    }
+
+    .mat-card-content {
+      .mat-expansion-panel {
+        @include mat.elevation(0);
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+
+        .mat-expansion-panel-header {
+          padding: 0 12px;
+        }
+      }
+    }
+
+    .mat-card-footer {
+      background-color: $footer-public;
+      padding: 1rem;
+      margin: 0;
+
+      span {
+        color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+  }
+}

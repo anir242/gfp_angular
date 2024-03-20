@@ -1,0 +1,37 @@
+<div id="highLightDiv" class="p-3 mx-md-2 mx-0 my-2" (click)="clickDiv.emit()"
+     [ngClass]="{ 'selected': giftCardPack.id === highlightId}" [ngStyle]="{'border-color': color}">
+  <p class="mat-subheading-1" *ngIf="subscriptionTitle">
+    {{subscriptionTitle}}
+  </p>
+  <div class="quantitiesPack">
+    <ng-container *ngFor="let item of finalItems | keyvalue">
+      <div class="quantity d-flex align-items-center my-3">
+        <div class="me-2">
+          <svg-icon [src]="getImageProjectPack(item.value[0])" [svgStyle]="{'height.px':'34', 'width.px':'34'}"></svg-icon>
+        </div>
+        <div class="title d-flex flex-column">
+          <div>
+            <span class="small-body mb-1">{{'gift.' + item.value[0].unit.slug + 'Value' | translate}}</span>
+          </div>
+          <div>
+            <ng-container *ngIf="item.value[0].unit.slug === 'acre' || item.value[0].unit.slug === 'hectare', else noAcre">
+              <span class="small-body mb-1">{{getPreservationValue(getQuantity(item.value))}}</span>
+            </ng-container>
+            <ng-template #noAcre>
+              <span class="small-body mb-1">{{getQuantity(item.value)}} {{'giftHighlightDiv.' + item.value[0].unit.slug | translate}}</span>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="description">
+      <div>
+        <span class="mat-caption">{{co2String}}</span>
+      </div>
+      <div>
+        <span class="small-body fw-bold">{{'gift.cost'|translate}}</span>
+        <span class="small-body">{{'gift.€'|translate: {value: giftCardPack.giftCardValue | number: '1.2-2'} }}</span>
+      </div>
+    </div>
+  </div>
+</div>

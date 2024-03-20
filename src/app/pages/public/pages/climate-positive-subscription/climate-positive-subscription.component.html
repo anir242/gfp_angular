@@ -1,0 +1,178 @@
+<div class="content g-0 softImage">
+    <div class="container-fluid p-0">
+      <!-- Banner component -->
+      <div class="row g-0" style="height: 550px;">
+        <div class="col-12">
+          <app-short-banner
+              [title]="translate.instant('climatePositiveSubscription.title')"
+              [subtitle]="translate.instant('climatePositiveSubscription.subtitle')"
+              [url]="checkoutUrl"
+              [buttonText]="translate.instant('climatePositiveSubscription.getStarted')"
+              [showButton]="true"
+              [background]="'climate_positive.png'"
+          >
+          </app-short-banner>
+        </div>
+      </div>
+
+        <!-- Card component -->
+        <div id="cardComponent" class="col-12">
+            <mat-card class="d-flex flex-row flex-wrap">
+                <div class="col-lg-4 d-flex flex-row align-items-start">
+                    <app-grouped-card-content
+                        imgUrl="assets/images/for-whom.svg"
+                        [headerText]="translate.instant('climatePositiveSubscription.forWhom')"
+                        [bodyText]="translate.instant('climatePositiveSubscription.forWhomContent')"
+                    >
+                    </app-grouped-card-content>
+                    <mat-divider [ngClass]="isSmallScreen ? 'd-none' : 'my-auto'" vertical style="height:80%"></mat-divider>
+                </div>
+                <div class="col-lg-4 d-flex flex-row align-items-start">
+                    <app-grouped-card-content
+                        imgUrl="assets/images/what-we-do.svg"
+                        [headerText]="translate.instant('climatePositiveSubscription.whatWeDo')"
+                        [bodyText]="translate.instant('climatePositiveSubscription.whatWeDoContent')"
+                    >
+                    </app-grouped-card-content>
+                    <mat-divider [ngClass]="isSmallScreen ? 'd-none' : 'my-auto'" vertical style="height:80%"></mat-divider>
+                </div>
+                <div class="col-lg-4 d-flex flex-row align-items-start">
+                    <app-grouped-card-content
+                        imgUrl="assets/images/why-we-do.svg"
+                        [headerText]="translate.instant('climatePositiveSubscription.whyWeDo')"
+                        [bodyText]="translate.instant('climatePositiveSubscription.whyWeDoContent')"
+                    >
+                    </app-grouped-card-content>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- Decarbonise Section -->
+    <div class="container-fluid p-4 marginReverse">
+        <div class="row mx-4 g-0">
+            <!-- Heading -->
+            <div class="col-12">
+                <div class="py-3 mb-3 text-center">
+                    <span class="title-1 bold">{{'climatePositiveSubscription.decarboniseHeader' | translate}}</span>
+                    <p class="large-body text-center pt-3">{{'climatePositiveSubscription.decarboniseDesc' | translate}}</p>
+                </div>
+                <div class="col-lg-12">
+                    <mat-card>
+                        <mat-card-content class="d-flex flex-row justify-content-center align-items-center flex-wrap p-3">
+                          <div class="row g-2 d-flex flex-row justify-content-center align-items-center">
+                            <ng-container *ngFor="let subType of group?.subscriptionsTypes">
+                                <div class="col-lg-3 p-2">
+                                    <ng-container>
+                                        <app-climate-positive-cards
+                                            [mainheading]="subType.name"
+                                            [description]="subType.description"
+                                            [imgURL]="'/assets/images/' + subType.slug + '.svg'"
+                                            [statsIconURL]="'/assets/images/' + subType.slug + '_icons.png'"
+                                            [valuePerMonth]="'€' + subType.costMonthly?.toString()"
+                                            [supported]="subType.supported"
+                                            [co2Values]="subType.co2Values">
+                                        </app-climate-positive-cards>
+                                    </ng-container>
+                                </div>
+                                <div class="col-auto" *ngIf="subType.slug != 'globeTrotter'">
+                                    <img src="assets/images/icons/plus_icon.png" style="height: 32px;" />
+                                </div>
+                            </ng-container>
+                          </div>
+                        </mat-card-content>
+                        <mat-card-footer>
+                          <div class="p-3 text-center">
+                            <button  mat-raised-button color="yellow" (click)="goToCheckout()">
+                              {{translate.instant('climatePositiveSubscription.getStarted')}}
+                            </button>
+                          </div>
+                          <div class="footerContainer">
+                            <img src="assets/images/icons/buttons.svg" class="p-1 me-3" height="40px" width="40px"/>
+                            <span class="large-body bold">{{'climatePositiveSubscription.personalisedPlan' | translate}}</span>
+                          </div>
+                        </mat-card-footer>
+                    </mat-card>
+                </div>
+                <div class="p-5">
+                    <p class="lato sm text-center">{{'climatePositiveSubscription.decarboniseHighlight' | translate}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Project List -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <span class="title-1 bold">{{'climatePositiveSubscription.supportedProjectsHeader' | translate}}</span>
+                        <p class="large-body pt-2 text-center">{{'climatePositiveSubscription.supportedProjectsDesc' | translate}}</p>
+                    </div>
+                    <div class="row g-3 mt-3 mb-5">
+                      <div class="col-0 col-lg-2 col-xl-3"></div>
+                        <div *ngFor="let project of projects; let i = index" class="col-12 col-lg-4 col-xl-3">
+                          <div class="project position-relative" (click)="openProject(project.slug)" [style]="getBackground(project)">
+                              <!-- <span class="small-body bold text-uppercase" [style]="{'background-color': project.type.colorLabel}">{{project.type?.name}}</span> -->
+                              <div class="d-inline-block text-center px-3 py-2 position-absolute top-0 mt-3 ms-2" [ngStyle]="{'background-color': project.type.colorSecondary}" style="border-radius: 20px; width: max-content">
+                                <span class="small-body bold">
+                                  {{project.type.name}}
+                                </span>
+                              </div>
+                            <div class="position-absolute bottom-0 p-4 mb-0">
+                              <span class="nation tiny-body text-uppercase text-white mb-1">{{project.country?.name}}</span>
+                              <span class="place title-3 bold text-white">{{project.name}}</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button mat-raised-button color="yellow" class="mt-3" (click)="goToCheckout()">
+                            {{'climatePositiveSubscription.getStarted' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Track positive impact -->
+    <div class="col-12">
+      <app-tools-public [business]="business"
+          headingText="climatePositiveSubscription.positiveImpactHeading"
+          headingDesc="climatePositiveSubscription.positiveImpactDesc"
+          buttonTxt="climatePositiveSubscription.getStarted"
+          [fetchData]="true"
+      >
+      </app-tools-public>
+  </div>
+
+    <!-- Impact counter -->
+    <div class="container-fluid p-0">
+        <div class="row g-0 p-5">
+            <mat-card>
+                <div class="text-center">
+                    <span class="title-1 bold">{{'climatePositiveSubscription.impactCounterHeader' | translate}}</span>
+                    <p class="large-body text-center my-4">{{'climatePositiveSubscription.impactCounterDesc' | translate}}</p>
+                    <p class="body text-center">{{'climatePositiveSubscription.impactCounterDesc2' | translate}}</p>
+                </div>
+                <div>
+                    <app-achievements-data></app-achievements-data>
+                </div>
+            </mat-card>
+      </div>
+
+  <!-- Get started section -->
+  <div class="container-fluid px-5 d-flex flex-column justify-content-center align-items-center">
+      <mat-card class="background-leaves">
+          <div class="content-container">
+              <h1 class="text-white mat-title-2 text-center">{{'climatePositiveSubscription.bigCompany' | translate}}</h1>
+              <p class="text-white mat-body text-center">{{'climatePositiveSubscription.contactUsDesc' | translate}}</p>
+              <button mat-raised-button color="yellow" class="mt-3" (click)="routeToCalendly()">
+                  {{'climatePositiveSubscription.contactUs' | translate}}
+              </button>
+          </div>
+      </mat-card>
+      <app-faq-public [showHeader]="true" [queryTitle]="'Solutions for Businesses'"></app-faq-public>
+  </div>
+  </div>
+</div>

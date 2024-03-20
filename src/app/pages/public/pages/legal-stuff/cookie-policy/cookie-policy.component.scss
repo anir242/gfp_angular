@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin cookie-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $background: map.get($color-config, 'background');
+
+  #tnc {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-size: cover;
+    position: relative;
+    background-color: mat.get-color-from-palette($background, 'app-bar');
+
+    .container{
+      margin-left: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    #title {
+      padding-top: 10rem;
+
+      @include media-breakpoint-up(lg) {
+        padding-top: 185px 0px;
+      }
+      span {
+        color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+  }
+
+  .legal-content {
+      margin-top: 80px;
+      padding: 0px 30px;
+  }
+}

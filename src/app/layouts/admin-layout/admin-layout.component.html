@@ -1,0 +1,20 @@
+<div class="wrapper admin-layout">
+  <app-navbar [tabColor]="colorNavbar" (toggleSidenav)="sidenav.toggle()" [firstname]="user?.firstname" [lastname]="user?.lastname" [imgUrl]="user?.imageUrl"></app-navbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="mode"
+                 [opened]="toggleOpen"
+                 (openedStart)="hideNav()"
+                 (closedStart)="showNav()"
+                 (window:resize)="onResize($event)">
+      <div class="sidebar admin">
+        <app-sidebar
+          (toggleSidenav)="this.sidenav.close()"
+          [menuItemsApp]="menuItemsApp"
+          [menuItemsGen]="menuItems"></app-sidebar>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

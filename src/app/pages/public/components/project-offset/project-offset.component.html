@@ -1,0 +1,47 @@
+<div class="project-offset-wrapper">
+  <!-- TODO: Wording -->
+<div class="row justify-content-between mb-5">
+  <div class="col-md-9 col-lg-9">
+    <div class="title-4 mb-3 text-white">{{'carbonDioxideOffset.selectProject' | translate}}</div>
+    <div class="small-body mb-5 text-white">{{'carbonDioxideOffset.invest'| translate}}</div>
+  </div>
+  <div class="col-lg-3" [style.width]="'fit-content'">
+    <div class="title-4 mb-3">{{'carbonDioxideOffset.selectedProvider' | translate}}</div>
+    <!-- TODO: change when API ready -->
+    <img src="/assets/images/svg/invest_conversation.svg">
+  </div>
+</div>
+
+<mat-radio-group aria-label="Select an option" [(ngModel)]="selectedData">
+  <div class="row align-items-center" style="cursor: pointer;">
+    <ng-container *ngFor="let item of data">
+      <div class="col-lg-4 mb-5 mb-lg-1" (click)="selectedData = item.id" [class.selected]="selectedData === item.id">
+        <div [ngStyle]="{'border-radius': '8px', 'height': 'fit-content', 'background-color': 'rgba(250, 250, 250, .15)'}" class="p-3">
+          <div class="position-relative">
+            <img class="background" [src]="'/assets/images/test_project.jpg'">
+            <div class="d-inline-block text-center px-3 py-2 position-absolute top-0 start-0 mt-2 ms-2" [ngStyle]="{'background-color': project ? project.type.colorSecondary : aquamarine}" style="border-radius: 20px; width: max-content">
+              <span class="mat-body-2 fw-bold">
+                Lorem, ipsum
+              </span>
+            </div>
+            <div class="d-inline-block position-absolute bottom-0 start-0 mb-4 ms-3 grey7">
+              <div class="d-flex align-items-center">
+                <img src="/assets/images/svg/location_dot.svg" width="9.02px" height="12px" class="me-1">
+                <span class="tiny-body">
+                  {{'lorem3' | uppercase}}
+                </span>
+              </div>
+              <span class="title-3">Lorem ipsum dolor sit.</span>
+            </div>
+          </div>
+          <div class="btn-holder">
+            <button mat-stroked-button color="yellow" class="mt-0 w-100">
+              {{'carbonDioxideOffset.visit' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</mat-radio-group>
+</div>

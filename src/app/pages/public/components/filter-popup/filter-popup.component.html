@@ -1,0 +1,46 @@
+<!--
+<mat-dialog-content id="filterPopup">
+  <div>
+    <span class="mat-title">{{'projectList.filter'|translate}}</span>
+  </div>
+  <div>
+    <app-filter
+      (eventEmitter)="filterService.addFilter($event, 'typology',true)"
+      [label]="translate.instant('projectList.typology'|translate)"
+      [items]="data.projectTypes"
+      [selected]="filterService.getFiltersByType('typology')"></app-filter>
+  </div>
+  <div>
+    <app-filter
+      (eventEmitter)="filterService.addFilter($event, 'continent',true)"
+      [label]="translate.instant('projectList.continent'|translate)"
+      [items]="data.continent"
+      [selected]="filterService.getFiltersByType('continent')"></app-filter>
+  </div>
+  <div>
+    <button [mat-dialog-close]="true" mat-raised-button color="yellow" class="w-100">{{'projectList.apply'|translate}}</button>
+  </div>
+</mat-dialog-content>
+-->
+<mat-dialog-content id="filterPopup">
+  <div>
+    <span class="mat-title">{{'projectList.filter'|translate}}</span>
+  </div>
+  <div>
+    <app-filter
+      (eventEmitter)="filterService.addFilter($event, data.type1,true)"
+      [label]="data.label1"
+      [items]="data.projectTypes"
+      [selected]="filterService.getFiltersByType(data.type1)"></app-filter>
+  </div>
+  <div>
+    <app-filter
+      (eventEmitter)="filterService.addFilter($event, data.type2,true)"
+      [label]="data.label2"
+      [items]="data.continent"
+      [selected]="filterService.getFiltersByType(data.type2)"></app-filter>
+  </div>
+  <div>
+    <button [mat-dialog-close]="true" mat-raised-button color="yellow" class="w-100">{{'projectList.apply'|translate}}</button>
+  </div>
+</mat-dialog-content>

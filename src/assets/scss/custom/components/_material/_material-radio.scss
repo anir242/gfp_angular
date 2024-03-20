@@ -1,0 +1,57 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin material-radio-new($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+  $accent2: map.get($light-theme-yellow, 'accent');
+  $typography-config: mat.get-typography-config($theme);
+
+  .mat-radio-button {
+    margin-bottom: 8px;
+
+    .mat-radio-label {
+      white-space: normal;
+      align-items: flex-start;
+      color: #fafafa;
+
+      span {
+        color: #fafafa;
+        transition: font-weight ease $general-transition-time;
+        font: {
+          family: mat.font-family($typography-config, 'subheading-1');
+          size: mat.font-size($typography-config, 'subheading-1');
+          weight: mat.font-weight($typography-config, 'subheading-1');
+        };
+      }
+    }
+    &.mat-radio-checked {
+      .mat-radio-label {
+        span {
+          transition: font-weight ease $general-transition-time;
+          font: {
+            family: mat.font-family($typography-config, 'button');
+            size: mat.font-size($typography-config, 'button');
+            weight: mat.font-weight($typography-config, 'button');
+          };
+        }
+      }
+    }
+
+
+    &.mat-radio-checked .mat-radio-container,
+    .mat-radio-container {
+      .mat-radio-outer-circle,
+      .mat-radio-inner-circle {
+        border-color: mat.get-color-from-palette($accent2);
+      }
+      .mat-radio-inner-circle {
+        background-color: mat.get-color-from-palette($accent2);
+      }
+    }
+  }
+
+}

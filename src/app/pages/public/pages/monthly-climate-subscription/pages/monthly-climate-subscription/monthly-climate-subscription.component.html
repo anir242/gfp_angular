@@ -1,0 +1,127 @@
+<div class="content g-0 softImage">
+    <div class="container-fluid p-0">
+        <!-- Banner Component -->
+        <div class="row g-0" style="height: 550px;">
+            <div class="col-12">
+                <app-short-banner
+                    [title]="'monthlyClimateSubscription.title' | translate"
+                    [subtitle]="'monthlyClimateSubscription.subtitle' | translate"
+                    [buttonText]="'monthlyClimateSubscription.getStarted' | translate"
+                    [showButton]="true"
+                    [background]="'monthly_climate.png'"
+                    [url]="'/subscriptions/individual/checkout'"
+                    btnStyle="background: #DBF794"
+                >
+                </app-short-banner>
+            </div>
+        </div>
+
+        <!-- Card Component -->
+        <div id="cardComponent" class="col-12">
+            <mat-card class="d-flex flex-row flex-wrap justify-content-start">
+                <div class="col-lg-4 d-flex flex-row align-items-start">
+                    <app-grouped-card-content
+                        imgUrl="assets/images/for-whom.svg"
+                        [headerText]="'monthlyClimateSubscription.forWhom' | translate"
+                        [bodyText]="'monthlyClimateSubscription.forWhomDesc' | translate"
+                    >
+                    </app-grouped-card-content>
+                    <mat-divider [ngClass]="isSmallScreen ? 'd-none' : 'my-auto'" vertical style="height:80%"></mat-divider>
+                </div>
+                <div class="col-lg-4 d-flex flex-row align-items-start">
+                    <app-grouped-card-content
+                        imgUrl="assets/images/what-we-do.svg"
+                        [headerText]="'monthlyClimateSubscription.whatWeDo' | translate"
+                        [bodyText]="'monthlyClimateSubscription.whatWeDoDesc' | translate"
+                    >
+                    </app-grouped-card-content>
+                    <mat-divider [ngClass]="isSmallScreen ? 'd-none' : 'my-auto'" vertical style="height:80%"></mat-divider>
+                </div>
+                <div class="col-lg-4 d-flex flex-row align-items-start">
+                    <app-grouped-card-content
+                        imgUrl="assets/images/icons/solution_green_earth.svg"
+                        [headerText]="'monthlyClimateSubscription.whyWeDoIt' | translate"
+                        [bodyText]="'monthlyClimateSubscription.whyWeDoItDesc' | translate"
+                    >
+                    </app-grouped-card-content>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- Decarbonise section -->
+    <div class="container-fluid marginReverse">
+        <div class="row d-flex justify-content-center">
+          <!-- Heading -->
+          <div class="col-12 my-5 text-center">
+              <span class="title-1 bold ">{{ 'monthlyClimateSubscription.decarboniseHeading' | translate }}</span>
+          </div>
+            <div class="col-lg-5 d-flex align-items-stretch">
+              <div class="w-100">
+                  <app-personal-plan-card></app-personal-plan-card>
+              </div>
+            </div>
+            <div class="col-lg-auto align-self-center">
+              <p class="body m-3 text-center">{{ 'monthlyClimateSubscription.or' | translate }}</p>
+            </div>
+            <div class="col-lg-5 d-flex align-items-stretch">
+              <div class="w-100">
+                  <app-family-plan-card></app-family-plan-card>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Track positive impact -->
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- <app-positive-impact></app-positive-impact> -->
+            <div class="col-12 pt-5">
+                <app-tools-public
+                    headingText="monthlyClimateSubscription.positiveImpactHeading"
+                    headingDesc="monthlyClimateSubscription.positiveImpactDesc"
+                    buttonTxt="monthlyClimateSubscription.startFreeTrial"
+                    [fetchData]="false"
+                    customBtnStyle="background-color: #DBF794"
+                    [customData]="customData"
+                >
+                </app-tools-public>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share on Socials -->
+    <div id="shareOnSocials" class="container-fluid">
+        <div class="row mx-2 g-0">
+            <div class="col-12">
+                <div>
+                    <span class="title-1 bold text-left">{{'monthlyClimateSubscription.socialShareHeading' | translate}}</span>
+                    <p class="pt-2 large-body text-left">{{'monthlyClimateSubscription.socialShareDesc' | translate}}</p>
+                </div>
+                <div class="mapsImg">
+                  <ng-container>
+                    <img src="assets/images/monthly_climate_mockup.png" alt="health earth"/>
+                  </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Get started section -->
+    <div class="container-fluid px-5 d-flex flex-column justify-content-center align-items-center">
+        <mat-card class="background-leaves">
+            <div class="content-container">
+                <h1 class="text-white title-2 text-center">{{'monthlyClimateSubscription.readyToMakeImpact' | translate}}</h1>
+                <p class="text-white body text-center">{{'monthlyClimateSubscription.readyToMakeImpactDesc' | translate}}</p>
+                <button mat-raised-button color="lime" class="mt-3" (click)="goToCheckout()">
+                    {{'monthlyClimateSubscription.getStarted' | translate}}
+                </button>
+            </div>
+        </mat-card>
+        <app-faq-public
+            [showHeader]="true"
+            [queryTitle]="'Solutions for Individuals'"
+        >
+        </app-faq-public>
+    </div>
+</div>

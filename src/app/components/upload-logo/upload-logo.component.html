@@ -1,0 +1,36 @@
+<!--
+<div class="center" id="uploadLogo">
+  <ng-container *ngIf="!imageUrl">
+    <ngx-file-drop dropZoneLabel="" (onFileDrop)="dropped($event)"
+                   (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+        <button mat-icon-button color="transparent" (click)="openFileSelector()">
+          <mat-icon>add_a_photo</mat-icon>
+        </button>
+      </ng-template>
+    </ngx-file-drop>
+  </ng-container>
+  <ng-container *ngIf="imageUrl">
+    <div class="imageLoaded">
+      <img [src]="imageUrl" alt=""/>
+    </div>
+  </ng-container>
+</div>
+-->
+<div class="center" id="uploadLogo">
+    <ngx-file-drop dropZoneLabel="" (onFileDrop)="dropped($event)"
+                   (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+        <ng-container *ngIf="imageUrl, else noPhoto">
+          <div class="imageLoaded">
+            <img [src]="imageUrl" alt="" (click)="openFileSelector()"/>
+          </div>
+        </ng-container>
+        <ng-template #noPhoto>
+          <button mat-icon-button color="transparent" (click)="openFileSelector()" class="upload-btn">
+            <mat-icon>add_a_photo</mat-icon>
+          </button>
+        </ng-template>
+      </ng-template>
+    </ngx-file-drop>
+</div>

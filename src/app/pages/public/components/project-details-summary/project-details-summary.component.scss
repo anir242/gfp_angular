@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin projects-details-summary-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #projectsDetailsSummary {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    #carouselSummary {
+      .carousel-indicators {
+        bottom: -60px;
+        top: auto;
+
+        .active {
+          background-color: $green-hover // $summary-title;
+        }
+      ;
+
+        > button {
+          border-radius: 50%;
+          margin: 8px;
+          height: 12px;
+          width: 12px;
+          opacity: 1;
+          background-color: $support-dialog;
+        }
+      }
+    }
+  }
+}

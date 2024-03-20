@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin what-we-do-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #aboutPublic {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-size: cover;
+    position: relative;
+    .features{
+      background-color: $blue-secondary;
+    }
+    .approach{
+      background-color: $summary-title;
+    }
+    .impact{
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+    }
+    .manifesto{
+      background-color: $summary-title;
+    }
+  }
+}

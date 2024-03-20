@@ -1,0 +1,70 @@
+<div class="content" id="apiIntegration">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlBg)">
+        <app-about-title-public
+          [title]="translate.instant('apiIntegration.title')"
+          [buttonText]="translate.instant('apiIntegration.button')"
+          [name]="translate.instant('apiIntegration.description')"
+          (button)="this.scrollToId('apiStep1')"
+          arrow="apiStep1"></app-about-title-public>
+      </div>
+      <div class="col-12 apiStep green" id="apiStep1">
+        <app-api-step-item
+          [title]="translate.instant('apiIntegration.stepTitle1')"
+          [description]="translate.instant('apiIntegration.stepDescription1')">
+        </app-api-step-item>
+      </div>
+      <div class="col-12 apiProgress">
+        <app-progress-scroller
+          itemTheme="dark"
+          [progressType]="progressTypes.numberUpTextBelow"
+          [items]="progressData"
+          [title]="translate.instant('apiIntegration.progressDataTitle')">
+        </app-progress-scroller>
+      </div>
+      <div class="col-12 apiStep blue">
+        <app-api-step-item
+          [showReadMore]="true"
+          imgPosition="right"
+          [title]="translate.instant('apiIntegration.stepTitle2')"
+          [description]="translate.instant('apiIntegration.stepDescription2')"
+          [url]="step2Url">
+        </app-api-step-item>
+      </div>
+      <div class="col-12 apiProgress">
+        <app-progress-scroller
+          itemTheme="dark"
+          [progressType]="progressTypes.numberUpTextBelow"
+          [items]="progressClimate"
+          [title]="translate.instant('apiIntegration.progressClimateTitle')"
+          [buttonText]="translate.instant('apiIntegration.start')"
+          [buttonAction]="startNow"
+          [buttonDisabled]="!enabledStartNow">
+        </app-progress-scroller>
+      </div>
+      <div class="col-12" id="cms">
+        <div class="container">
+          <p class="text-center mat-display-1 mb-0">{{'apiIntegration.cms'|translate}}</p>
+          <app-partners bgColor="light" [items]="cmsImages"></app-partners>
+          <div class="mt-3 d-flex flex-md-row flex-column align-items-center justify-content-center">
+            <div>
+              <span class="accentText mat-subheading-2 mb-0">{{'apiIntegration.cantFind'|translate}}</span>
+            </div>
+            <div>
+              <button mat-button (click)="contact()">{{'apiIntegration.contactUs'|translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlReadyJoin)">
+        <app-make-gift
+          [disabledButton]="!disabledJoin"
+          [buttonAction]="goToJoin"
+          [subtitle]="translate.instant('apiIntegration.joinDescription')"
+          [title]="translate.instant('apiIntegration.shape')"
+          [button]="translate.instant('apiIntegration.subscribe')"></app-make-gift>
+      </div>
+    </div>
+  </div>
+</div>

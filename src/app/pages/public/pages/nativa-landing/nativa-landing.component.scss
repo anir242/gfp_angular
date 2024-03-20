@@ -1,0 +1,513 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin nativa-donation-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  $my-typography: mat.define-typography-config();
+  $border-sm: #BABABA;
+  .parent {
+      padding: 1.5rem 1.875rem;
+
+      #nativa-heading {
+        word-break: break-word;
+        font-family: $font-chivo;
+        font-style: normal;
+        font-size: 3rem;
+        font-weight: 600;
+        line-height: 3.5rem;
+      }
+
+      #nativa-subheading {
+        font-family: $font-lato;
+        font-style: normal;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.75rem;
+      }
+  }
+
+  #nativaDonation {
+      background-color: $landing-blue;
+      background-image: url('../../../../../assets/images/bg-gradient-new.png');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+
+    &>.main-content {
+
+      .w-18{
+        width: 18%;
+      }
+
+      .w-10{
+        width: 10%;
+      }
+
+      .heading {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 2.5rem;
+      }
+      
+      .text {
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.75rem;
+        font-family: $font-lato;
+      }
+      
+      .heading-2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 2.5rem;
+        font-family: $font-lato;
+      }
+      
+      .text-2 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+        font-family: $font-lato;
+      }
+
+      .cta-1{
+        border-radius: 0 0 8px 8px;
+      }
+
+      .selectBox {
+        width: 270px;
+        &.selected {
+          .mat-card {
+            border: $bar-yellow 2px solid;
+          }
+        }
+      }
+
+      .providers {
+        text-align: center;
+        color: rgba(51, 51, 51, 0.87) !important;
+        cursor: pointer;
+        border-radius: 8px;
+
+        .imgWrapper {
+          img {
+            max-height: 50px;
+          }
+        }
+
+        .mat-card-header {
+          display: block;
+          flex-direction: unset;
+          border-radius: 8px;
+          background-color: #fafafa;
+
+          .radio {
+            right: 0;
+          }
+        }
+
+        .mat-card-content {
+          .body {
+            .content {
+              border-radius: 8px;
+              background: #fafafa;
+
+              @include media-breakpoint-up(lg){
+                min-height: 220px;
+              }
+            }
+          }
+        }
+
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white;
+      }
+
+      .p24{
+        padding-bottom: 24px;
+      }
+
+      .mat-card {
+        background-color: rgba(250, 250, 250, 0.08) !important;
+        border-radius: 8px;
+        @include mat.elevation(0);
+        border: 2px solid transparent;
+        box-shadow: none !important;
+
+        #project-data {
+          >div:nth-child(1) {
+            flex-basis: 40%;
+          }
+          >div:nth-child(2) {
+            flex-basis: 60%;
+          }
+        }
+
+        .carousel-item {
+          >img{
+            border-radius: 8px;
+            object-fit: cover;
+            aspect-ratio: 1.25/1;
+          }
+        }
+
+        >#rimba-raya{
+          background: url('../../../../../assets/images/rimba_raya_0.png') no-repeat center;
+          background-size: cover;
+          border-radius: 8px 8px 0 0;
+
+          #tag {
+            font-family: $font-lato;
+            letter-spacing: 0.03em;
+            font-size: 0.875rem;
+            color: #333333;
+            font-weight: 700;
+            background: #B5E7EA;
+            border-radius: 1rem;
+            width: fit-content;
+          }
+
+          #project-location {
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: $font-lato;
+            line-height: 1rem;
+            font-style: normal;
+          }
+
+          #project-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            max-width: 8rem;
+            line-height: 1.5rem;
+          }
+
+          #cost-per-credit {
+            color: $bar-yellow;
+            font-size: 1rem;
+            font-weight: 600;
+            font-style: normal;
+            line-height: 1.25rem;
+          }
+        }
+
+        .credit-content {
+          font-family: $font-lato;
+          font-weight: 400;
+          font-size: 1rem;
+          line-height: 1.25rem;
+        }
+
+        #quantity {
+          background-color: rgba(250, 250, 250, 0.08) !important;
+          border-radius: 8px;
+          @include mat.elevation(0);
+          border: 2px solid transparent;
+          box-shadow: none !important;
+          color: white;
+        }
+
+        #quantity-hint {
+          margin-top: 0.1rem;
+          margin-left: 1rem;
+          font-weight: 600;
+          font-size: 0.75rem;
+          line-height: 1rem;
+          font-family: $font-lato;
+        }
+
+        #credit-show-card{
+          width: 100%;
+          background: rgba(250, 250, 250, 0.15);
+          border-radius: 8px;
+          height: auto;
+          border: $yellow 1px solid;
+        }
+
+        @include media-breakpoint-up(md){
+          #credit-show-card{
+            width: 50%;
+          }
+        }
+
+        .carousel-button{
+          position: absolute;
+          top: 45%;
+          border-radius: 0.5rem;
+          &:disabled{
+            display: none;
+          }
+          &.left-carousel-button{
+            left: -15px;
+          }
+          &.right-carousel-button{
+            right: -15px;
+          }
+        }
+
+
+        .card-details-big{
+          font-weight: 600;
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+          font-family: $font-chivo;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .card-details-small{
+          font-family: $font-lato;
+          font-size: 0.875rem;
+          line-height: 1.125rem;
+          font-style: normal;
+          letter-spacing: 0.03em;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+
+      .carousel-arrow-disabled {
+        display: none;
+      }
+
+      .carousel-cell {
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .mat-card-content{
+        padding: 1.5rem;
+
+        @include media-breakpoint-down(md){
+          padding: 1rem;
+        }
+      }
+
+      .mat-vertical-content {
+        padding: 0;
+      }
+
+      .mat-step-header {
+        background-color: rgba(250, 250, 250, 0.15);
+        border-radius: 40px;
+        padding: 0;
+        margin-bottom: 20px;
+        height: 32px;
+
+        .mat-step-icon {
+          width: 32px;
+          height: 32px;
+          background-color: transparent;
+          border: 2px solid white;
+          color: white;
+        }
+
+        .mat-step-icon-selected {
+          background-color: white;
+          border-color: white;
+          color: $deep-green;
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 18px;
+          font-family: $font-lato;
+        }
+      }
+
+
+      .projects {
+
+        .imgWrapper {
+          img {
+            max-height: 50px;
+          }
+        }
+
+        .mat-radio-outer-circle{
+          background-color: white;
+        }
+
+        .project {
+          min-height: 200px;
+          border-radius: 0;
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          box-shadow: inset 0px -40px 90px 20px #1f1e1e;
+
+          .content {
+            margin-top: 120px;
+          }
+        }
+
+        .imgWrapper {
+          border-radius: 8px;
+        }
+
+        .btn-holder {
+          .mat-stroked-button {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+          }
+        }
+      }
+
+      .project-offset-wrapper {
+
+        .mat-radio-button {
+          float: right;
+        }
+
+        .selected>div {
+          border-radius: 8px;
+          border: $bar-yellow 1px solid;
+        }
+
+        .grey7 {
+          color: white;
+        }
+
+        img.background {
+          width: 100%;
+          height: 200px;
+          z-index: -1;
+          border-radius: 8px;
+        }
+
+        .btn-holder {
+          height: 38px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+
+
+      .donationField {
+        margin-bottom: 60px;
+
+        .saveButton {
+          max-width: 250px;
+          box-shadow: none;
+
+          @include media-breakpoint-down(md){
+            width: 100%;
+          }
+
+        }
+
+        #outerCard {
+          background-color: rgba(250, 250, 250, 0.05) !important;
+          border-radius: 8px;
+
+          background-color: mat.get-color-from-palette($primary, 'main-contrast');
+          @include mat.elevation(0);
+
+          .mat-tab-header {
+            border: 0;
+
+            .mat-tab-label-content {
+              color: #FAFAFA;
+            }
+
+            .mat-ink-bar {
+              background-color: $bar-yellow;
+            }
+          }
+
+          .tabContent {
+            border-radius: 8px;
+          }
+
+          .mat-form-field {
+            .mat-form-field-outline > * {
+              background: rgba(250,250,250,.05);
+            }
+            .mat-form-field-suffix {
+              color: white;
+            }
+            .mat-form-field-label, .mat-input-element {
+              color: white;
+            }
+          }
+
+          .mat-step-label-selected {
+            font-weight: bold;
+          }
+
+          .labelTitle {
+            color: mat.get-color-from-palette($foreground);
+          }
+
+          .mat-step {
+
+            &:nth-child(2){
+              .mat-vertical-content{
+                padding-bottom: 0px;
+              }
+            }
+          }
+
+          .mat-stepper-vertical {
+            .mat-step-header {
+              cursor: pointer;
+            }
+
+            background-color: transparent;
+
+            .mat-vertical-content-container {
+              margin-left: 0px;
+            }
+
+            .mat-stepper-vertical-line {
+              &:before {
+                border-width: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .summary {
+        padding: 20px;
+        min-width: 360px;
+        @include media-breakpoint-up(lg) {
+          padding: unset;
+        }
+
+        &.fixed {
+          position: fixed;
+        }
+
+        &.absolute {
+          position: absolute;
+          bottom: 0;
+          margin-bottom: 60px;
+        }
+      }
+
+      .authentication {
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+        @include media-breakpoint-up(lg) {
+          background-color: transparent;
+        }
+      }
+    }
+
+  }
+
+  .top-banner {
+    background: url('../../../../../assets/images/nativa_bg.png');
+    height: 100%;
+    background-size: cover;
+    // position: absolute;
+  }
+
+}

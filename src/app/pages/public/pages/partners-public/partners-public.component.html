@@ -1,0 +1,98 @@
+<div class="content" id="partnersPublic">
+  <div class="bannerGrad">
+    <div class="container">
+      <div class="row g-0 pt-5">
+        <div class="col-12 pt-5">
+          <div class="pt-5 mb-3">
+            <span class="headline d-none d-lg-block">{{'partners.our'|translate | uppercase }}</span>
+            <span class="title-1 d-lg-none bold">{{'partners.our'|translate | uppercase }}</span>
+          </div>
+          <div class="mb-4">
+            <span class="large-body d-none d-lg-block">{{'partners.check'| translate }}</span><br>
+            <span class="body d-lg-none bold">{{'partners.check'| translate }}</span><br>
+          </div>
+        </div>
+
+        <div class="row gx-3">
+          <div class="col-12 col-xl-3 col-md-4 mt-5" *ngFor="let item of partners">
+            <mat-card class="singleCard">
+              <mat-card-title class="px-4 pt-4">
+                  <img [src]="item.image.url">
+              </mat-card-title>
+              <mat-card-content class="px-4 pb-4">
+                <div class="d-flex overflow-hidden position-relative">
+                  <div class="row">
+                    <div class="col-12 pt-5 mb-5 pb-2 d-none d-lg-block">
+                      <span class="title-3 bold d-none d-lg-block pb-3">
+                        {{item.name}}
+                      </span>
+                      <div class="d-none d-lg-block small-body">
+                        {{item.description}}
+                      </div>
+                    </div>
+                    <div class="col-12 py-2 mb-3 d-lg-none">
+                      <span class="title-3 bold d-none d-lg-block pb-2">
+                        {{item.name}}
+                      </span>
+                      <div class="d-none d-lg-block small-body mb-3">
+                        {{item.description}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-lg-none mt-1 mb-5">
+                  <mat-accordion>
+                    <mat-expansion-panel [(expanded)]="item.isExpand">
+                      <mat-expansion-panel-header class="px-1 small-body" [ngStyle]="{'height': item.isExpand ? 0 : 'initial' }">
+                        {{ item.isExpand ? '' : sliceFirstTenWords(item.description)}}
+                      </mat-expansion-panel-header>
+                      <span class="small-body">
+                        {{item.description}}
+                      </span>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </div>
+                <!-- <a href= mat-menu-item>Item 1</a> -->
+                <button mat-stroked-button color="green" (click)="OnClick(item.url)" class="position-absolute bottom-0 my-4">
+                  {{'partners.learnMore' | translate}}
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="text-center mt-5 strategic">
+            <div class="title-4 mt-5 text-black">{{'partners.strategic'|translate}}</div>
+            <div class="row mt-5">
+              <div class="col-12 col-md-4" *ngFor="let partner of strategicPartners">
+                <img class="mw-100 h-100" [src]="partner.image.url">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="container-fluid mt-5 mb-5 px-0 bg-white-noise d-flex flex-column justify-content-center align-items-center">
+            <mat-card class="background-leaves">
+              <app-about-contribute></app-about-contribute>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Get started section
+    <div class="container-fluid px-0 bg-white-noise d-flex flex-column justify-content-center align-items-center">
+      <mat-card class="background-leaves">
+          <div class="content-container">
+              <h1 class="text-white title-2 text-center">{{'monthlyClimateSubscription.readyToMakeImpact' | translate}}</h1>
+              <p class="text-white body text-center">{{'monthlyClimateSubscription.readyToMakeImpactDesc' | translate}}</p>
+              <button mat-raised-button color="lime" class="mt-3">
+                  {{'monthlyClimateSubscription.getStarted' | translate}}
+              </button>
+          </div>
+        </mat-card>
+    </div> -->
+</div>

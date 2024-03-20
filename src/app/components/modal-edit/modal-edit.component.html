@@ -1,0 +1,24 @@
+<div class="modalEdit">
+  <h2 mat-dialog-title>{{'modalEdit.edit'|translate}}</h2>
+  <mat-dialog-content [formGroup]="obj">
+    <ng-container *ngFor="let item of obj.controls | keyvalue ">
+      <mat-form-field>
+        <mat-label>{{item.key | titlecase}}</mat-label>
+        <input autocomplete="off" matInput [type]="type" [formControlName]="item.key">
+        <mat-error *ngIf="item.value.errors?.required">
+          {{'authentication.requiredField'| translate}}
+        </mat-error>
+        <mat-error *ngIf="item.value.errors?.pattern">
+          {{'authentication.pattern'|translate}}
+        </mat-error>
+        <mat-error *ngIf="item.value.errors?.mismatch">
+          {{'authentication.differentPassword'|translate}}
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+  </mat-dialog-content>
+  <mat-dialog-actions class="justify-content-end">
+    <button mat-button [mat-dialog-close]="false">{{'modalEdit.cancel'|translate}}</button>
+    <button (click)="send()" [disabled]="disabled" [mat-dialog-close]="true" mat-button cdkFocusInitial>{{'modalEdit.edit'|translate}}</button>
+  </mat-dialog-actions>
+</div>

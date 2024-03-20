@@ -1,0 +1,22 @@
+export enum StorageName {
+  token = 'token',
+  pilioLastAccess = 'pilioLastAccess',
+  name = 'name',
+  id = 'id',
+  language = 'lang',
+  companyId = 'companyId',
+  companyName = 'companyName',
+  pilio = 'pilio',
+  userCompanyRole = 'userCompanyRole',
+  subscriptionId = 'subscriptionId',
+  cart = 'cart',
+  username = 'username',
+  userData = 'userData',
+  businessEmployees = 'businessEmployees',
+  businessPioneer = 'businessPioneer',
+  shopName = 'shopName',
+  userType = 'userType',
+  clientType = 'clientType',
+  nativaTransactionData='nativaTransactionData',
+}
+

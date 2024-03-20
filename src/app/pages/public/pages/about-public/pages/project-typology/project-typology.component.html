@@ -1,0 +1,62 @@
+<ng-container *ngIf="projectTypologyInterface">
+  <div class="content" id="projectTypology">
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-12" id="title" [style]="retrieveStyleBackgroundPublic(projectTypologyInterface.image.url)">
+          <app-project-title-public
+            [projectSlug]="projectTypologyInterface.name"
+            [description]="projectTypologyInterface.titleData"
+            [firstData]="projectTypologyInterface.firstDataDescription"
+            [secondData]="projectTypologyInterface.secondDataDescription"
+            [thirdData]="projectTypologyInterface.thirdDataDescription"
+            [borderColor]="projectTypologyInterface.colorLabel"
+            arrow="data"></app-project-title-public>
+        </div>
+        <div class="col-12" id="data">
+          <div class="container">
+            <div class="text-center title-1 bold">{{ 'projectType.supported'|translate: {value: projectTypologyInterface.name} }}</div>
+            <div class="row mt-4 g-2 align-items-center justify-content-center">
+              <div class="col-12 col-lg-6 ">
+                <div class="box p-3">
+                  <div class="row g-3">
+                    <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center" *ngFor="let project of projectTypologyInterface.projects">
+                      <div class="project position-relative" (click)="goToProject(project.slug)" [style]="getBackground(project)">
+                          <div class="square position-absolute end-0 me-3"><mat-icon>keyboard_arrow_right</mat-icon></div>
+                          <div class="position-absolute bottom-0 p-4 mb-0">
+                          <span class="nation tiny-body text-uppercase text-white mb-1">{{project.country.name}}</span>
+                          <span class="place title-3 bold text-white">{{project.name}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+                <app-achievements-data [forApi]="true" [projectType]="projectTypologyInterface.slug" [projectTypeName]="projectTypologyInterface.name + ' '"></app-achievements-data>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <button mat-stroked-button class="noFill mt-4" (click)="goToProjects()">{{'projectType.projects'|translate}}</button>
+            </div>
+          </div>
+          <div class="container d-flex justify-content-center mt-5 mb-5">
+            <img [src]="projectTypologyInterface.backgroundDataImage?.url" [alt]="projectTypologyInterface.name" class="img-3d">
+          </div>
+          <div class="container mt-4">
+            <div class="text-center title-1 bold d-none d-lg-block">{{'projectType.partners'|translate:{value:projectTypologyInterface.name} }}</div>
+            <div class="text-center title-3 bold d-lg-none">{{'projectType.partners'|translate:{value:projectTypologyInterface.name} }}</div>
+            <app-supporting-cards [title]=""
+                                  [type]="'small'"
+                                  [slug]="projectTypologyInterface.slug">
+            </app-supporting-cards>
+          </div>
+          <div class="container mt-4 mb-5" id="contribute">
+            <div class="contribute-wrapper" [ngStyle]="setBg(projectTypologyInterface.contributeImage.url)">
+              <app-about-contribute></app-about-contribute>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

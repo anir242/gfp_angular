@@ -1,0 +1,191 @@
+<div class="subscriptionDetails content" *ngIf="subscription">
+  <div class="paddingUser">
+    <div class="container">
+      <app-subscription-type
+        *ngIf="
+          subscription.subscriptionType.group.slug ==
+          subscriptionTypes.climateLeader
+        "
+        [image]="image"
+        [subscriptionType]="subscription.subscriptionType.name"
+      ></app-subscription-type>
+      <app-subscription-type
+        *ngIf="
+          subscription.subscriptionType.group.slug ==
+          subscriptionTypes.climatePioneer
+        "
+        [image]="image"
+        [subscriptionType]="subscription.subscriptionType.group.name"
+      ></app-subscription-type>
+      <app-subscription-type
+        *ngIf="
+          subscription.subscriptionType.group.slug ==
+          subscriptionTypes.individual
+        "
+        [image]="image"
+        [subscriptionType]="subscription.subscriptionType.name"
+      ></app-subscription-type>
+      <div>
+        <p class="mat-headline text-white">
+          {{ "subscriptionDetails.subscriptionDetails" | translate }}
+        </p>
+        <!--<p class="mat-body-2">{{'subscriptionDetails.loremIpsum'|translate}}</p>-->
+      </div>
+      <!-- BASIC INFO -->
+      <div>
+        <div class="row gx2" style="align-items: center">
+          <div class="col-12 col-md-6 mt-5 mb-3">
+            <p class="mat-title">
+              {{ "subscriptionDetails.basicInfo" | translate }}
+            </p>
+          </div>
+          <div
+            class="col-12 col-md-6"
+            *ngIf="subscription.subscriptionType.name == 'Manual'">
+            <a
+              mat-raised-button
+              class="mat-focus-indicator buttonCustom mat-raised-button mat-button-base mat-yellow"
+              id="addSales"
+              (click)="openDialog()">
+              {{ "subscriptionDetails.salesAdd" | translate }}
+            </a>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+          <app-subscription-details-basic
+            [firstText]="'subscriptionDetails.cost'"
+            [secondText]="
+              translate.instant('subscriptionDetails.perMonth', {
+                value: monthlyCost
+              })
+            "
+          ></app-subscription-details-basic>
+          <app-subscription-details-basic
+            [firstText]="'subscriptionDetails.renewal'"
+            [secondText]="getRenewalDate()"
+          ></app-subscription-details-basic>
+        </div>
+      </div>
+      <!-- <div *ngIf="subscription.slug == subscriptionTypes.climateLeader">
+        &lt;!&ndash; SUMMARY &ndash;&gt;
+        <div>
+          <div class="mt-5 mb-4">
+            <p class="mat-title">{{'subscriptionDetails.summary'|translate}}</p>
+          </div>
+          <div class="my-3">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center">
+                <span class="mat-body-2">{{'subscriptionDetails.totalEmployees'|translate}}&nbsp;</span>
+                <span class="mat-body-2 fw-bold">{{totalEmployees}}</span>
+              </div>
+              <div>
+                <button mat-button>{{'subscriptionDetails.viewAllEmployees'|translate}}</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <app-subscription-details-summary *ngFor="let type of subscription.subscriptionsTypes"
+              [type]="type"
+            ></app-subscription-details-summary>
+          </div>
+        </div>
+        &lt;!&ndash; INCLUDED IN PLAN &ndash;&gt;
+        <div>
+          <div class="mt-5 mb-4">
+            <p class="mat-title">{{'subscriptionDetails.includedInYourPlan'|translate}}</p>
+          </div>
+          <div class="mt-4">
+            <mat-divider class="mb-4"></mat-divider>
+            <app-subscription-details-included
+              [text]="'subscriptionDetails.offsetCarbon'"></app-subscription-details-included>
+            <app-subscription-details-included
+              [text]="'subscriptionDetails.supportNumerous'"></app-subscription-details-included>
+            <app-subscription-details-included
+              [text]="'subscriptionDetails.plantAtLeast'"></app-subscription-details-included>
+          </div>
+        </div>
+      </div>-->
+      <!-- WHAT ARE SUPPORTING -->
+      <div>
+        <div
+          class="mt-5 mb-4"
+          *ngIf="
+            subscription.subscriptionType.group.slug ===
+            subscriptionTypes.climateLeader
+          "
+        >
+          <p class="mat-title">
+            {{ "subscriptionDetails.whatAreSupporting" | translate }}
+          </p>
+        </div>
+        <div
+          class="mt-5 mb-4"
+          *ngIf="
+            subscription.subscriptionType.group.slug ===
+            subscriptionTypes.climatePioneer
+          "
+        >
+          <p class="mat-title">
+            {{ "subscriptionDetails.yourImpact" | translate }}
+          </p>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="my-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <app-subscription-details-supporting
+                  [text]="'subscriptionDetails.treesPlanted'"
+                  [value]="trees"
+                  [iconName]="'trees'"
+                ></app-subscription-details-supporting>
+              </div>
+              <div class="col-4">
+                <app-subscription-details-supporting
+                  [text]="'subscriptionDetails.hectaresProtected'"
+                  [value]="acres"
+                  [iconName]="'acres'"
+                ></app-subscription-details-supporting>
+              </div>
+              <div class="col-4">
+                <app-subscription-details-supporting
+                  [text]="'subscriptionDetails.KW/H'"
+                  [value]="kw"
+                  [iconName]="'lightings'"
+                ></app-subscription-details-supporting>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-4 mt-4">
+                <app-subscription-details-supporting
+                  [text]="'subscriptionDetails.tonsCO2'"
+                  [value]="totalTons"
+                  [iconName]="'clouds'"
+                ></app-subscription-details-supporting>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="d-flex justify-content-between my-5">
+          <div class="container">
+            <div class="row">
+              <ng-container *ngIf="countersInterface">
+                <div *ngFor="let item of countersInterface | keyvalue : keepOrder" class="col-12 col-md-4 px-4">
+                  <ng-container *ngIf="item.key != 'marine_restoration' && item.key != 'tonnes'">
+                    <app-subscription-details-projects
+                      [total]="total"
+                      [slug]="item.key"
+                      [type]="item.value">
+                    </app-subscription-details-projects>
+                  </ng-container>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

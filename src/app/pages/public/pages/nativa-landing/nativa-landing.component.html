@@ -1,0 +1,387 @@
+<div class="top-banner">
+  <div class="parent">
+    <div class="container-fluid">
+        <div class="mb-3 d-flex justify-content-start">
+          <a href="/">
+            <svg-icon src="assets/images/svg/logo_full.svg" alt=""></svg-icon>
+          </a>
+        </div>
+        <div class="text-white mt-4" id="nativa-heading">
+          {{ 'nativa.heading' | translate | uppercase }}
+      </div>
+        <div class="text-white mb-3" id="nativa-subheading">{{ 'nativa.subheading' | translate }}</div>
+      </div>
+  </div>
+</div>
+
+
+<div id="nativaDonation">
+  <div class="main-content">
+    <div class="container pt-5 pb-4">
+      <div class="row gx-lg-4 gx-0">
+        <div class="col-12 col-lg-8 donationField" #donationForm>
+          <mat-card id="outerCard">
+            <mat-card-content>
+              <div>
+                <div class="d-flex justify-content-end mb-3 align-items-start gap-3">
+                  <img src="../../../../../assets/images/logo_chiesi.png" class="w-18" alt="">
+                  <img src="../../../../../assets/images/logo_nativa.png" alt="" class="w-18">
+                  <img src="../../../../../assets/images/logo_CEF.png" alt="" class="w-10">
+                </div>
+                <p class="text-white heading" >
+                  {{ 'nativa.salutation' | translate }}
+                </p>
+                <p class="text-white text">
+                  {{ 'nativa.introduction' | translate }}
+                </p>
+                <hr style="height: 5px; border: 0px solid #D6D6D6; border-top-width: 1px;">
+                <div class="d-flex flex-column flex-md-row align-itmes-left align-items-md-center gap-4 mb-4">
+                  <div class="">
+                    <p class="text-white heading-2">
+                      {{ 'nativa.scopeHeading' | translate }}
+                    </p>
+                    <p class="text-white text-2 w-100">
+                      {{ 'nativa.projectScope' | translate }}
+                    </p>
+                  </div>
+                  <div class="w-75">
+                    <img src="../../../../../assets/images/logo_verra.png" alt="" class="w-100">
+                  </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row gap-4 align-items-center mb-4" id="project-data">
+                  <div class="d-flex flex-column flex-grow-1 p-3 mat-card" *ngIf="projectDataLoaded">
+                    <div id="rimba-raya" class="text-white p-4">
+                      <div id="content" class="d-flex flex-column justify-content-between gap-5">
+                        <p id="tag" class="py-2 px-3">
+                          {{ 'nativa.conservation' | translate }}
+                        </p>
+                        <div class="d-flex flex-column gap-1">
+                          <div class="d-flex gap-1 align-items-center">
+                            <span class="text-white">
+                              <svg-icon src="assets/images/svg/location_dot.svg" alt=""></svg-icon>
+                            </span>
+                            <div id="project-location">{{this.singlePaymentPacksInterface?.project?.country.name | uppercase }}</div>
+                         </div>
+                          <div id="project-name">{{this.singlePaymentPacksInterface?.project?.name_it}}</div>
+                          <div id="cost-per-credit">
+                            {{ this.singlePaymentPacksInterface.unit.costPerUnit | euro_currency_format}}/{{ 'nativa.carbonCredit' | translate }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button (click)="navigateToProjectPage()" mat-raised-button color="yellow" class="cta-1">{{ 'nativa.viewProject' | translate }} </button>
+                  </div>
+                  <div class="p-3 flex-grow-1">
+                    <div class="carousel slide">
+                      <div class="carousel-inner" #carousel>
+                        <div class="carousel-item" data-index="0">
+                          <img class="d-block w-100" src="../../../../../assets/images/rimba_raya_3.png" alt="">
+                        </div>
+                        <div class="carousel-item" data-index="1">
+                          <img class="d-block w-100" src="../../../../../assets/images/rimba_raya_2.png" alt="">
+                        </div>
+                        <div class="carousel-item" data-index="2">
+                          <img class="d-block w-100" src="../../../../../assets/images/rimba_raya_1.png" alt="">
+                        </div>
+                      </div>
+                      <button #prevCarouselButton mat-icon-button (click)="carouselLeft()" color="yellow" class="left-carousel-button carousel-button">
+                        <fa-icon  [icon]="faChevronLeft"></fa-icon>
+                      </button>
+                      <button #nextCarouselButton mat-icon-button (click)="carouselRight()" color="yellow" class="right-carousel-button carousel-button">
+                        <fa-icon  [icon]="faChevronRight"></fa-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <mat-stepper
+                *ngIf="tokenValidated"
+                orientation="vertical"
+                #stepper
+                [linear]="false"
+                (selectionChange)="updateStatus($event)"
+              > 
+                <mat-step>
+                  <ng-template matStepLabel>
+                    <span class="body labelTitle text-white">
+                      {{ 'nativa.stepOne.selectQuantity' | translate }}
+                    </span>
+                  </ng-template>
+
+                  <mat-card class="mb-3 px-3">
+                    <div class="credit-content mt-3 mb-4 text-white" *ngIf="isFreeAvailable"> 
+                      {{ 'nativa.stepOne.freeCreditInformation' | translate }}
+                    </div>
+                    <div class="credit-content mt-3 text-white">
+                      {{ 'nativa.stepOne.instruction' | translate }}:
+                    </div>
+                    <div class="d-flex flex-column mt-3">
+                      <div class="d-flex gap-2 align-items-center justify-content-between">
+                        <app-mat-input
+                          [appearance]="'outline'"
+                          [suffix]="'nativa.carbonCredits' | translate"
+                          [control]="quantity"
+                          [type]="'number'"
+                          [autocomplete]="'off'"
+                          [min]="1"
+                          [hint]="'nativa.stepOne.hint'"
+                          [max]="10000"
+                          class="w-100"
+                        >
+                        </app-mat-input>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 2rem" class="d-flex flex-column flex-md-row align-items-md-end justify-content-md-between" >
+                      <div  class="text-white p-4 my-3" id="credit-show-card">
+                        <div class="card-details-big">
+                          {{ 'nativa.total' | translate }}:
+                        </div>
+                        <div class="card-details-big">{{this.creditsTotalAmount | euro_currency_format }}</div>
+                        <div class="d-flex gap-2 justify-content-between card-details-small">
+                          <div class="fw-bold">
+                            {{ 'nativa.carbonCredits' | translate | titlecase }}:
+                          </div>
+                          <div class="fw-normal">{{this.quantity.value | euro_number_format }}</div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-between card-details-small">
+                          <div class="fw-bold">
+                            {{ 'nativa.compensation' | translate }}:
+                          </div>
+                          <div class="fw-normal">{{ this.co2TonnesFromActual | euro_number_format }} tonnellate di CO2</div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-between card-details-small">
+                          <div class="fw-bold">
+                            {{ 'nativa.project' | translate }}:
+                          </div>
+                          <div class="fw-normal">Riserva Rimba Raya</div>
+                        </div>
+                      </div>
+                      <button
+                        mat-raised-button
+                        color="yellow"
+                        class="mb-3"
+                        [disabled]="!quantity.valid"
+                        matStepperNext
+                      >
+                        {{ 'nativa.saveContinue' | translate }}
+                      </button>
+                    </div>
+                  </mat-card>
+                </mat-step>
+
+                <form [formGroup]="subscriptionData">
+                  <form [formGroup]="account">
+                    <mat-step stepControl="signup" *ngIf="this.showAccountForm">
+                      <ng-template matStepLabel>
+                      <span class="body labelTitle text-white" >
+                        {{ 'nativa.stepTwo.register' | translate }}
+                      </span>
+                      </ng-template>
+                      <mat-card class="mb-3 px-3">
+                        <div class="container">
+                          <div class="row mb-3 pb-3">
+                            <div class="col-12">
+                              <div class="titles pt-3">
+                                <div class="subtitle row pb-3" *ngIf="newAccount">
+                                  <div
+                                    class="col-12 col-md-6 d-flex align-items-center justify-content-start"
+                                  >
+                                    <span class="title-4 text-white">{{
+                                      "nativa.stepTwo.register" 
+                                        | translate
+                                    }}</span>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 d-flex justify-content-start justify-content-md-end gap-2 align-items-center"
+                                  >
+                                    <span class="small-body text-white">{{
+                                      "nativa.stepTwo.alreadyRegistered" | translate
+                                    }}</span>
+                                    <div
+                                      class="small-body chivo fw-bold"
+                                      style="color: #f2bf00; text-decoration: underline; cursor: pointer;"
+                                      (click)="toLogIn()"
+                                    >
+                                      {{ "nativa.stepTwo.login" | translate }}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="subtitle row pb-3"
+                                  *ngIf="!newAccount"
+                                >
+                                  <div
+                                    class="col-12 col-md-6 d-flex align-items-center justify-content-start"
+                                  >
+                                    <span class="title-4 text-white">{{
+                                      "nativa.stepTwo.login" | translate
+                                    }}</span>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 d-flex gap-2 justify-content-start justify-content-md-end align-items-center"
+                                  >
+                                    <span class="small-body text-white">{{
+                                      "nativa.stepTwo.dontHaveAccount" | translate
+                                    }}?</span>
+                                    <div
+                                      class="small-body chivo fw-bold"
+                                      style="color: #f2bf00; text-decoration: underline; cursor: pointer;"
+                                      (click)="toSignUp()"
+                                    >
+                                      {{ "nativa.stepTwo.register" | translate }}
+                                  </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <ng-container *ngIf="newAccount">
+                              <div class="mt-4">
+                                <div class="row">
+                                  <div class="col-12 col-md-6">
+                                    <app-mat-input
+                                      [label]="translate.instant('nativa.stepTwo.name')"
+                                      [control]="firstname"
+                                      [appearance]="'outline'"
+                                      autocomplete="given-name"
+                                      labelError="authentication.requiredField"
+                                      [required]="true"
+                                    ></app-mat-input>
+                                  </div>
+                                  <div class="col-12 col-md-6">
+                                    <app-mat-input
+                                      [label]="translate.instant('nativa.stepTwo.surname')"
+                                      [control]="lastname"
+                                      [appearance]="'outline'"
+                                      autocomplete="family-name"
+                                      labelError="authentication.requiredField"
+                                      [required]="true"
+                                    ></app-mat-input>
+                                  </div>
+                                </div>
+                              </div>
+                              <app-about-your-account
+                                [form]="signup"
+                                [appearance]="'outline'"
+                                [passwordHint]="
+                                  'nativa.stepTwo.passwordInstructions'"
+                              ></app-about-your-account>
+                            </ng-container>
+                            <ng-container *ngIf="!newAccount">
+                              <app-login-data [form]="login"></app-login-data>
+                            </ng-container>
+                          </div>
+                          <div *ngIf="!updated2 && newAccount">
+                          <hr style="margin:0; border: 0px solid #ffffff; border-top-width: 1px;">
+                            <div style="margin-top: 2rem" class="title-4 chivo text-white">
+                              {{ 'nativa.stepTwo.companyData' | translate }}
+                            </div>
+                            <div class="title-4 lato text-white my-3">
+                              {{ 'nativa.stepTwo.addressInstructions' | translate }}
+                            </div>
+                            <app-about-your-company
+                              [form]="aboutYourCompany"
+                              [appearance]="'outline'"
+                              (policies) = "policyChange($event)"
+                            ></app-about-your-company>
+                          </div>
+                          <div class="row my-3 d-flex justify-content-md-end">
+                            <div
+                              class="col-12 col-md-6 text-center d-md-flex align-items-md-center justify-content-md-end"
+                            >
+                              <button
+                                mat-stroked-button
+                                color="yellow"
+                                class="saveButton mb-3 mb-md-0 me-md-3"
+                                matStepperPrevious
+                              >
+                                {{ "nativa.prevSection" | translate }}
+                              </button>
+                              <ng-container *ngIf="newAccount; else loginButton">
+                                <button
+                                  class="saveButton"
+                                  [disabled]="
+                                    !signup.valid && !aboutYourCompany.valid
+                                  "
+                                  (click)="registerUser()"
+                                  mat-raised-button
+                                  color="yellow"
+                                >
+                                  {{ "nativa.saveContinue" | translate }}
+                                </button>
+                              </ng-container>
+                              <ng-template #loginButton>
+                                <button
+                                  class=""
+                                  mat-raised-button
+                                  [disabled]="!login.valid"
+                                  color="yellow"
+                                  (click)="authenticate()"
+                                  matStepperNext
+                                >
+                                  {{ "subscription.individual.login" | translate }}
+                                </button>
+                              </ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div *ngIf="updated2" class="p24">
+                          <app-about-your-company
+                            [form]="subscriptionData.yourBillingAddress"
+                            [appearance]="'outline'"
+                          ></app-about-your-company>
+                        </div> -->
+                      </mat-card>
+                    </mat-step>
+                  </form>
+                  <mat-step [stepControl]="paymentMethods">
+                    <ng-template matStepLabel>
+                      <span class="body text-white">{{
+                        "singleDonations.payment" | translate
+                      }}</span>
+                    </ng-template>
+                    <mat-card>
+                      <app-your-payment-method
+                        *ngIf="summaryItem"
+                        summaryType="singleDonation"
+                        [id]="id"
+                        [marketingConsent]="marketingConsent.value"
+                        [marketingConsentControl]="marketingConsent"
+                        [paymentMethods]="paymentMethods"
+                        [savedPaymentMethodEnabled]="savedPaymentMethodEnabled"
+                        [agreeTermsOfUse]="agreeTermsOfUse"
+                        [billingAddress]="authenticated ? null : aboutYourCompany"
+                        [billingCountry]="authenticated ? billingCountry : aboutYourCompany.get('country').value"
+                        [integrationType]="'nativa'"
+                        [customerData]="customerData"
+                        [isFreeAvailable]="isFreeAvailable"
+                        [freeTransactionData]="freeTransactionData"
+                      ></app-your-payment-method>
+                    </mat-card>
+                  </mat-step>
+                </form>
+              </mat-stepper>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div
+          class="col-12 col-lg-4 position-relative d-none d-lg-block"
+          *ngIf="summaryItem && tokenValidated"
+        >
+          <div class="summary fixed" #donationSummary>
+            <app-order-summary
+              [summaryType]="cartTypes.SINGLE_DONATION"
+              [title]="translate.instant('orderSummary.title')"
+              [costDescription]="translate.instant('nativa.orderSummary.costDescription')"
+              [offset]="offset || singlePaymentPacksInterface.unit.slug == 'tonne'"
+              [countryPolicy]="countryPolicy"
+              [integrationType]="'nativa'"
+              [freeAvailable]="isFreeAvailable"
+              [freeQuantity]="freeQuantity"
+            ></app-order-summary>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

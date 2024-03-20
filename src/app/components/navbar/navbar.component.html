@@ -1,0 +1,60 @@
+<mat-toolbar class="fixed-top" #toolbar [color]="scrollY > 0 ? 'dark': ''">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <!-- <a class="d-lg-none" [href]="routingTypes.HOME_PUBLIC">
+        <svg-icon src="assets/images/svg/logo.svg"></svg-icon>
+      </a> -->
+      <div class="d-flex align-items-center nav-menu-items justify-content-end">
+        <button mat-icon-button color="transparent" (click)="setLang('en')">
+          <img width="24" src="assets/images/en.svg" />
+        </button>
+        <button mat-icon-button color="transparent" (click)="setLang('it')">
+          <img width="24" src="assets/images/it.svg" />
+        </button>
+        <!--        <button class="image" mat-icon-button color="transparent">
+          </button>-->
+        <ng-container *ngIf="imgUrl">
+          <img [src]="imgUrl" class="image">
+        </ng-container>
+        <!--<ng-template #noImage>
+          <button class="image" mat-icon-button color="transparent">
+          </button>
+        </ng-template>-->
+
+        <div class="d-none">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <span class="mat-button text-capitalize text-decoration-none">{{firstname}} {{lastname}}</span>
+            <mat-icon>expand_more</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item
+                    [routerLink]="routingTypes.ACCOUNT_BILLING">
+              {{'menu.accountBilling'|translate}}
+            </button>
+            <button mat-menu-item
+                    [routerLink]="routingTypes.ADMIN_SUBSCRIPTIONS">
+              {{'menu.subscriptions'|translate}}
+            </button>
+            <button mat-menu-item
+                    [routerLink]="routingTypes.SINGLE_PAYMENTS">
+              {{'menu.singlePayments'|translate}}
+            </button>
+            <button mat-menu-item [routerLink]="routingTypes.GIFT_CARDS">{{'menu.giftCards'|translate}}</button>
+            <button mat-menu-item
+                    [routerLink]="routingTypes.SETTINGS">
+              {{'menu.settings'|translate}}
+            </button>
+            <button mat-menu-item [routerLink]="routingTypes.PRIVACY_POLICY">{{'menu.privacyPolicy'|translate}}</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="logout()">{{'menu.logout'|translate}}</button>
+          </mat-menu>
+        </div>
+        <div class="menu-wrapper">
+          <button class="menuOpen d-lg-none" mat-icon-button color="transparent" (click)="toggleSidenav.emit()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</mat-toolbar>

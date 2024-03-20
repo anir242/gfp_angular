@@ -1,0 +1,45 @@
+<div class="d-block py-3">
+  <p class="date mat-subheading-1 m-0">{{transaction.createdAt | moment}}</p>
+  <span class="mat-title">{{transaction.singlePayment.pack.project.name}}</span>
+  <div class="d-flex justify-content-between mt-3">
+    <span class="mat-subheading-1 m-0">{{'settings.amount'|translate}}</span>
+    <span class="mat-subheading-2 m-0">€{{transaction.amount / 100 | number: '1.2-2'}}</span>
+  </div>
+  <ng-container *ngIf="getUnitByType(unitTypes.TREE, transaction.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.treesProtected'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.TREE, transaction.createdAt)}}</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType(unitTypes.ACRE, transaction.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.acresProtected'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.ACRE, transaction.createdAt)}}m<sup>2</sup></span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType(unitTypes.HECTARE, transaction.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.acresProtected'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.HECTARE, transaction.createdAt)}}m<sup>2</sup></span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType(unitTypes.KWH, transaction.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.kwhProduced'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.KWH, transaction.createdAt)}}kWh</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType(unitTypes.CORAL, transaction.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.coralPlanted'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{getUnitByType(unitTypes.CORAL, transaction.createdAt)}}</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="getUnitByType('CO2', transaction.createdAt) > 0">
+    <div class="d-flex justify-content-between">
+      <span class="mat-subheading-1 m-0">{{'settings.co2offsetted'|translate}}</span>
+      <span class="mat-subheading-2 m-0">{{roundNumber(getUnitByType('CO2', transaction.createdAt), 2)}}kg</span>
+    </div>
+  </ng-container>
+</div>
+<mat-divider></mat-divider>

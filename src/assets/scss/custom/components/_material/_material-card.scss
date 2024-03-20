@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../light-theme-public-yellow";
+
+
+@mixin material-card-new($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  .mat-card {
+     background-color: mat.get-color-from-palette($primary, 'main-contrast');
+  }
+
+}
+

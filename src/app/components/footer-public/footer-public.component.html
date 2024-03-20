@@ -1,0 +1,131 @@
+<footer class="footer" id="footer">
+  <div class="container-fluid pt-5">
+    <div class="row gy-4 justify-content-start">
+      <div class="col-12">
+        <svg-icon src="assets/images/svg/logo_full.svg"></svg-icon>
+      </div>
+      <div class="col-lg-3 col-12">
+        <div class="social">
+          <p class="mb-4 tiny-body fw-bold">{{'footerPublic.description'|translate}}</p>
+          <svg-icon (click)="goToSocial(socialTypes.facebook)" class="me-2" src="assets/images/svg/facebook.svg"></svg-icon>
+          <svg-icon (click)="goToSocial(socialTypes.instagram)" class="me-2" src="assets/images/svg/instagram.svg"></svg-icon>
+          <svg-icon (click)="goToSocial(socialTypes.linkedin)" class="me-2" src="assets/images/svg/linkedin_footer.svg"></svg-icon>
+          <svg-icon (click)="goToSocial(socialTypes.youtube)" src="assets/images/svg/youtube.svg"></svg-icon>
+        </div>
+         <div class="mt-4">
+          <a class="tiny-body">{{'footerPublic.gfp'|translate}}</a>
+          <a class="tiny-body">{{'footerPublic.location'|translate}}</a>
+          <a class="tiny-body">{{'footerPublic.vat'|translate}}</a>
+        </div>
+      </div>
+      <div class="col-lg-5 col-12">
+        <div class="container ms-0 p-0">
+          <div class="row gy-4">
+            <div class="col-12 col-lg-4">
+              <a class="small-body fw-bold">{{'footerPublic.solutions'|translate}}</a>
+              <a [href]="lang == 'it'?routingTypes.ENERGY_IT:routingTypes.ENERGY" class="tiny-body">{{'footerPublic.energy'|translate}}</a>
+              <a [href]="routingTypes.OFFSET" class="tiny-body">{{'footerPublic.offset'|translate}}</a>
+              <a [href]="routingTypes.BUSINESS_SUBSCRIPTION" class="tiny-body">{{'footerPublic.subscriptionBusiness'|translate}}</a>
+              <a [href]="routingTypes.ECOMMERCE" class="tiny-body">{{'footerPublic.API'|translate}}</a>
+              <a [href]="routingTypes.NFT" class="tiny-body">{{'footerPublic.greenNFT'|translate}}</a>
+              <a [href]="routingTypes.GIFT" class="tiny-body">{{'footerPublic.gifts'|translate}}</a>
+              <!-- Hide for now -->
+              <!-- <a [href]="routingTypes.PROJECTS_PUBLIC" class="tiny-body">{{'footerPublic.investProject'|translate}}</a>
+              <a [href]="routingTypes.INDIVIDUAL_SUBSCRIPTION" class="tiny-body">{{'footerPublic.subscriptionIndivdual'|translate}}</a> -->
+              <!-- <a [href]="routingTypes.PROJECTS_PUBLIC" class="tiny-body">{{'footerPublic.crowdfunding'|translate}}</a> -->
+            </div>
+            <div class="col-12 col-lg-4">
+              <a class="small-body fw-bold">{{'footerPublic.projects'|translate}}</a>
+              <a [href]="routingTypes.RESTORATION" class="tiny-body">{{'footerPublic.restoration'|translate}}</a>
+              <a [href]="routingTypes.PRESERVATION" class="tiny-body">{{'footerPublic.preservation'|translate}}</a>
+              <a [href]="routingTypes.RENEWABLE" class="tiny-body">{{'footerPublic.renewable'|translate}}</a>
+              <a [href]="routingTypes.MARINE" class="tiny-body">{{'footerPublic.marine'|translate}}</a>
+              <a [href]="routingTypes.PARTNERS" class="tiny-body">{{'footerPublic.partners'|translate}}</a>
+            </div>
+            <div class="col-12 col-lg-4">
+              <a class="small-body fw-bold">{{'footerPublic.about'|translate}}</a>
+              <a [href]="routingTypes.ABOUT_PUBLIC" class="tiny-body">{{'footerPublic.aboutGFP'|translate}}</a>
+              <a [href]="routingTypes.TERMS_AND_CONDITIONS" class="tiny-body">{{'footerPublic.terms'|translate}}</a>
+              <a [href]="routingTypes.PRIVACY_POLICY_PUBLIC" class="tiny-body">{{'footerPublic.privacy'|translate}}</a>
+              <a [href]="routingTypes.COOKIE_POLICY" class="tiny-body">{{'footerPublic.cookies'|translate}}</a>
+
+              <div class="col-12 col-lg-4 mt-4">
+                <div class="mt-4 d-none d-md-block">
+                  <a class="small-body text-start fw-bolder">{{'footerPublic.contact'|translate}}</a>
+                  <a class="tiny-body" href="mailto:{{'footerPublic.email'|translate}}"
+                     class="text-nowrap tiny-body text-start">{{'footerPublic.email'|translate}}</a>
+                </div>
+              </div>
+              <div class="col-6 d-md-none">
+                <a class="small-body text-start fw-bolder">{{'footerPublic.contact'|translate}}</a>
+                <a class="tiny-body" href="mailto:{{'footerPublic.email'|translate}}"
+                   class="text-nowrap tiny-body text-start">{{'footerPublic.email'|translate}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div>
+          <p class="small-body mb-2">{{'footerPublic.subscribe'|translate}}</p>
+        </div>
+        <div class="container-fluid">
+          <div id="popup2" class="overlay">
+            <div class="popup">
+              <div class="d-flex flex-row align-items-center">
+                <div class="checkIcon text-white">
+                  <mat-icon>done</mat-icon>
+                </div>
+                <span class="ps-3 title-1 text-black">{{ 'footerPublic.thanks' | translate }}</span>
+              </div>
+              <a class="close" (click)="close()" style="cursor:pointer">&times;</a>
+              <div class="py-3 content small-body">
+                {{ 'footerPublic.confirm' | translate }}
+              </div>
+            </div>
+          </div>
+          <app-mail-input
+            theme="dark"
+            [control]="email"
+            buttonText="{{'footerPublic.subscribeButton'|translate}}"
+            label="landingSubscribe.placeholder"
+            autocomplete="off"
+            labelError="authentication.requiredField"
+            labelPatternError="authentication.pattern"
+            [required]="false"
+            (buttonClicked)="subscribeUpdate()">
+          </app-mail-input>
+        </div>
+
+        <div class="d-flex justify-content-start align-items-center flex-wrap">
+            <div class="bg-white p-2 me-1" style="border-radius: 6px; height: 50px;">
+              <a href="https://co2alizione.eco/en/home" target="_blank">
+                <img src="assets/images/public/partners/coalizione.png" alt="CO2" width="100" />
+              </a>
+            </div>
+            <div class="mx-2">
+              <a href="https://www.bcorporation.net/" target="_blank">
+                <img src="assets/images/press/B-Corp-Logo-White.png" alt="B Corp" width="120" />
+              </a>
+            </div>
+            <div class="mx-2">
+              <a href="" target="_blank">
+                <img src="assets/images/press/B-Best-World.png" alt="BWG" width="66" />
+              </a>
+            </div>
+            <div class="mx-2">
+              <a href="https://www.rina.org/en" target="_blank">
+                <img src="assets/images/press/RINA.png" alt="RINA" width="66" />
+              </a>
+            </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <mat-divider class="my-3"></mat-divider>
+        <div class="tiny-body bold text-center">
+          <span>{{'footerPublic.rights'|translate: {value: year} }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

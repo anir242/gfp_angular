@@ -1,0 +1,21 @@
+<div class="container p-0" id="impactExplained">
+  <div class="row g-0 justify-content-center">
+    <div class="col-12">
+        <div class="text-center mb-4">
+        <span class="mat-display-1">{{'aboutPublic.impact'|translate}}</span>
+      </div>
+    </div>
+    <div class="col-10 col-md-4" *ngFor="let item of items">
+      <mat-card class="m-3 singleCard">
+        <mat-card-content>
+            <div class="mb-2">
+              <span class="mat-subheading-2 fw-bold title">{{item.title}}</span>
+            </div>
+            <div>
+              <span class="mat-body-1 description">{{item.description}}</span>
+            </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

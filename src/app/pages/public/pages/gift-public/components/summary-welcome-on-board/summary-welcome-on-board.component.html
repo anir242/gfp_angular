@@ -1,0 +1,85 @@
+<div class="container p-0 sticky-top" id="summaryWelcomeOnBoard">
+  <div class="row g-0">
+    <div class="col-12">
+      <div class="orderSummary">
+        <div class="title d-flex align-items-center p-3">
+          <img [src]="productIcon">
+          <span class="chivo md bold ms-3">
+            {{productName}}
+          </span>
+        </div>
+        <div class="total">
+          <div class="summaryItem">
+            <div class="d-none d-md-block" *ngIf="type===cartTypes.GIFT">
+              <ng-container *ngFor="let item of items, let i = index">
+                <div class="my-4">
+                  <app-gift-card-summary
+                    type="welcomeOnBoard"
+                    [item]="item"></app-gift-card-summary>
+                </div>
+                <mat-divider *ngIf="i+1<items.length"></mat-divider>
+              </ng-container>
+            </div>
+            <div *ngFor="let item of groupItems | keyvalue,  let i = index" class="my-2">
+              <mat-accordion *ngIf="!tonnesOnly">
+                <mat-expansion-panel [ngStyle]="setColor(getColor(item))">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <span class="mat-body-1">{{'orderSummary.' + item.key |translate}}</span>
+                        </div>
+                        <div>
+                          <ng-container *ngIf="item.key === projectTypesName.preservation, else noAcre">
+                            <span
+                              class="mat-body-1">{{getPreservationValue(getTotalQuantity(item.value, type))}}</span>
+                          </ng-container>
+                          <ng-template #noAcre>
+                            <span class="mat-body-1">
+                              {{'orderSummary.' + item.key + 'Unit'|translate: {value: getTotalQuantity(item.value, type)} }}
+                            </span>
+                          </ng-template>
+                          <!--<span class="mat-body-1">{{'orderSummary.' + item.key + 'Unit'|translate: {value: getTotalQuantity(item.value, type)} }}</span>-->
+                        </div>
+                      </div>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div *ngFor="let x of item.value">
+                    <div class="d-flex justify-content-between">
+                      <span class="mat-caption">{{getProjectName(x) | titlecase}}</span>
+                      <div>
+                        <ng-container *ngIf="item.key === projectTypesName.preservation, else noAcre">
+                          <span class="mat-caption">{{getPreservationValue(getQuantity(x))}}</span>
+                        </ng-container>
+                        <ng-template #noAcre>
+                          <span class="mat-caption">
+                            {{'orderSummary.' + item.key + 'Unit' |translate: {value: getQuantity(x)} }}
+                          </span>
+                        </ng-template>
+                      </div>
+                      <!--<span class="mat-caption">{{'orderSummary.' + item.key + 'Unit' |translate: {value: getQuantity(x)} }}</span>-->
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+            <div id="co2">
+              <div class="d-flex justify-content-between">
+                <span class="mat-body-1">{{'orderSummary.CO2' |translate}}</span>
+                <span class="mat-body-1">{{'orderSummary.'+co2Unit | translate: {value: totalCo2} }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="donation d-flex justify-content-between text-white">
+          <div>
+            <span class="mat-subheading-1">{{'gift.totalCost'|translate}}</span>
+          </div>
+          <div>
+            <span class="mat-subheading-1">{{'orderSummary.€' |translate : {value: total | number: '1.2-2'} }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

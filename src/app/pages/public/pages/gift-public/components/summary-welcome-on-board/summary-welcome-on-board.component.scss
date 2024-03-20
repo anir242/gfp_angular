@@ -1,0 +1,67 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin summary-welcome-on-board-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+    #summaryWelcomeOnBoard{
+      #orderSummary {
+        border-radius: 8px;
+      }
+
+      .donation {
+        background-color: #00734F;
+        color: white;
+      }
+
+      .total{
+        background-color: mat.get-color-from-palette($background, 'app-bar');
+        .summaryItem{
+          background-color: mat.get-color-from-palette($background, 'app-bar');
+          .mat-expansion-panel{
+            @include mat.elevation(0);
+          }
+          mat-expansion-panel-header{
+            .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+              display: flex;
+              align-items: center;
+            }
+            background-color: mat.get-color-from-palette($primary, 'main-contrast');
+            padding-left: 15px;
+            span{
+              color: mat.get-color-from-palette($foreground, 'text');
+            }
+          }
+          .mat-expansion-panel-body{
+            background-color: mat.get-color-from-palette($primary, 'main-contrast');
+            padding-left: 15px;
+          }
+          #co2{
+            border-color: #BABABA;
+            span{
+              color: mat.get-color-from-palette($foreground, 'text');
+            }
+            border-left: 10px solid;
+            background-color: mat.get-color-from-palette($primary, 'main-contrast');
+            border-radius: 4px;
+            padding: 15px;
+          }
+        }
+
+      }
+    }
+/*  #co2{
+    border-color: #BABABA;
+    span{
+      color: mat.get-color-from-palette($foreground, 'text');
+    }
+    border-left: 10px solid;
+    background-color: $single-donation-item;
+    border-radius: 4px;
+    padding: 15px;
+  }*/
+}

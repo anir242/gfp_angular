@@ -1,0 +1,84 @@
+<div class="container p-0">
+  <div class="row">
+    <div class="col-md-6">
+      <app-mat-input
+        [label]="'nativa.stepTwo.companyName' | translate"
+        [placeholder]="'nativa.stepTwo.companyName' | translate"
+        [appearance]="appearance"
+        [control]="companyName"
+        labelError="authentication.requiredField"
+        [required]="true">
+      </app-mat-input>
+    </div>
+    <div class="col-md-6">
+      <app-mat-input
+        [label]="'nativa.stepTwo.pec'"
+        [appearance]="appearance"
+        [control]="pec"
+        labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+  </div>
+  
+</div>
+<div class="container p-0 mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <app-mat-input
+        [label]="'nativa.stepTwo.apartmentNumber'"
+        [appearance]="appearance"
+        [control]="apartment"
+        labelError="authentication.requiredField"
+        [required]="true">
+      </app-mat-input>
+    </div>
+    <div class="col-md-6">
+      <app-mat-input
+        [label]="'nativa.stepTwo.street'"
+        [appearance]="appearance"
+        [control]="street"
+        labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+  </div>
+</div>
+<div class="container p-0 mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <app-mat-input
+        [label]="'nativa.stepTwo.city'"
+        [appearance]="appearance"
+        [control]="city"
+        labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field [appearance]="appearance" class="transparent">
+        <mat-select [placeholder]="'subscription.country' | translate" (selectionChange)="countrySelected($event?.value)" id="select-country">
+          <mat-option *ngFor="let country of countries" [value]="country">{{country.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="container p-0 mt-3">
+  <div class="row">
+    <div class="col-md-6">
+    <app-mat-input
+      [label]="'nativa.stepTwo.zipCode'"
+      [appearance]="appearance"
+      [control]="zipCode"
+      labelError="authentication.requiredField"
+      [required]="true"></app-mat-input>
+
+    </div>
+    <div class="col-md-6">
+      <app-mat-input
+        [label]="'nativa.stepTwo.vatNumber'"
+        [appearance]="appearance"
+        [control]="vatNumber"
+        labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+  </div>
+</div>

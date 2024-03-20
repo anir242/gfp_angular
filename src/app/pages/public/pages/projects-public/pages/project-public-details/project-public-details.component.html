@@ -1,0 +1,138 @@
+<ng-container *ngIf="projectInterface">
+  <div class="content" id="projectsPublicDetails">
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-12" [style]="retrieveStyleBackgroundPublic(projectInterface.image.url)">
+          <app-project-details-title [projectInterface]="projectInterface"
+                                     [buttonText]="translate.instant('aboutPublic.supportProject')"
+                                     [slug]="projectSlug"
+                                     arrow="characteristics">
+          </app-project-details-title>
+        </div>
+        <div class="col-12 characteristics" id="characteristics">
+          <app-project-details-characteristics [mainTitle]="titleType"
+                                               [data]=characteristics
+                                               [buttonText]="buttonText"
+                                               [textBeforeButton]="translate.instant('aboutPublic.know')"
+                                               [projectSlug]="projectInterface.type.slug"></app-project-details-characteristics>
+        </div>
+        <div class="col-12">
+          <app-map [latitude]="projectInterface.projectData.latitude"
+                   [longitude]="projectInterface.projectData.longitude"
+                   dynamic="none"></app-map>
+        </div>
+        <div class="col-12 problemHelp" [style]="setColor('#A6F2CC')">
+          <div class="container">
+            <div class="row g-4">
+              <div class="col-12 col-md-6">
+                <app-card-icon-text url="assets/images/svg/danger.svg"
+                                    [title]="translate.instant('projectDetailsPublic.problem')"
+                                    [description]="projectInterface.projectData.problem"
+                                    type="green">
+                </app-card-icon-text>
+              </div>
+              <div class="col-12 col-md-6">
+                <app-card-icon-text url="assets/images/svg/plant.svg"
+                                    [title]="translate.instant('projectDetailsPublic.help')"
+                                    [description]="projectInterface.projectData.support"
+                                    type="green">
+                </app-card-icon-text>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 detailsSummary">
+          <app-project-details-summary [mainTitle]="translate.instant('projectDetailsSummary.characteristics')"
+                                       [items]="summary"></app-project-details-summary>
+        </div>
+        <div class="col-12">
+          <div class="container">
+            <div class="row g-0">
+              <div class="col-12 p-4">
+                <div *ngIf="isRenewable() || isMarine() || isVicenza(); else displayOther" class="d-flex justify-content-center">
+                  <div *ngIf="isRenewable()">
+                    <img class="img-fluid"
+                         src="https://green-future-project.s3.eu-central-1.amazonaws.com/a871e938-d975-4905-b54d-b2e37822f441" />
+                  </div>
+                  <div *ngIf="isMarine()">
+                    <img class="img-fluid"
+                         src="https://green-future-project.s3.eu-central-1.amazonaws.com/climate_leader_0242574f-f180-4811-8708-c5b39f61f430" />
+                  </div>
+                  <div *ngIf="isVicenza()">
+                    <img class="img-fluid"
+                         src="https://green-future-project.s3.eu-central-1.amazonaws.com/project/galleries/vicenza_2.jpg" />
+                  </div>
+                </div>
+                <ng-template #displayOther>
+                  <mat-grid-list class="d-none d-lg-flex justify-content-around texts" cols="3" rowHeight="500px">
+                    <mat-grid-tile class="w-100" *ngFor="let item of projectPublicGallery">
+                      <div class="p-0 h-100 me-2" style="position:relative;">
+                        <img class="w-100 h-100" style="object-fit: cover" [src]="item.image" />
+                        <div style="position: absolute; bottom: 0; left: 1rem;">
+                          <p class="mat-headline text-white" style="margin-bottom: 0">{{item.species}}</p>
+                          <p class="mat-title text-white">{{item.labelSpecies}}</p>
+                        </div>
+                      </div>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                  <div class="d-lg-none">
+                    <cdk-virtual-scroll-viewport *ngIf="items" orientation="horizontal" itemSize="250"
+                                                 class="scroller ps-1 pe-1" minBufferPx="1200" maxBufferPx="2000">
+                      <div *cdkVirtualFor="let item of items" class="scrollerItem">
+                        <div class="p-0 me-2 " style="position:relative;">
+                          <img class="w-100 h-100" style="object-fit: cover" [src]="item.image" />
+                          <div class="imageText">
+                            <p class="mat-headline text-white" style="margin-bottom: 0">{{item.species}}</p>
+                            <p class="mat-title text-white">{{item.labelSpecies}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </cdk-virtual-scroll-viewport>
+                  </div>
+                </ng-template>
+                <div class="goToGallery pt-4">
+                  <button [hidden]="isRenewable()" [routerLink]="'./gallery'" mat-stroked-button>
+                    {{'about.goToGallery'|translate}}
+                    <svg-icon src="assets/images/svg/arrow.svg" [svgClass]=""></svg-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 goals">
+          <app-title-images [title]="translate.instant('projectDetailsGoals')"
+                            [images]="goalsImages"></app-title-images>
+        </div>
+        <div class="col-12 projectType" [ngStyle]="setColor('#A6F2CC')">
+          <div class="container">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <div class="p-4 p-md-5">
+                  <span class="mat-subheading-1">{{'about.projectScope'|translate}}</span>
+                  <p class="mat-headline">{{projectInterface.projectData.scope}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class=" p-5 text-center position-relative">
+                  <div class="data position-absolute top-50 text-start" style="left: 25%">
+                    <p class="mat-subheading-1">{{country?.name}}</p>
+                    <span class="mat-caption">{{projectInterface.projectData.coordinates}}</span>
+                  </div>
+                  <img [src]="projectInterface.projectData.countryImage.url" [alt]="country?.name" class="country-image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <app-supporting-cards [title]="translate.instant('projectDetailsPartners')"
+                                [type]="'small'"
+                                [slug]="projectInterface.slug">
+          </app-supporting-cards>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

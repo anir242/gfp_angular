@@ -1,0 +1,92 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin welcome-on-board-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .bg{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../../../../../assets/images/bg_dashboard.jpg");
+
+    @include media-breakpoint-up(lg){
+      padding-top: 88px;
+      padding-bottom: 0;
+      background-color: $summary-title;
+    }
+
+    .mapContainer {
+
+      padding: 0 5rem 0 5rem;
+
+      @include media-breakpoint-down(md) {
+        padding: 0;
+      }
+
+      @include media-breakpoint-up(lg) {
+        padding: 0;
+      }
+    }
+
+    .summary{
+      margin-top: 40px;
+      @include media-breakpoint-up(lg) {
+        margin-top: auto;
+        margin-bottom: 5rem !important;
+      }
+      .box {
+        background-color: rgba(240, 240, 240, .15);
+        border-radius: 8px;
+      }
+    }
+    #welcome.main-content {
+      background-color: transparent;
+      margin: 0;
+
+      img {
+        max-width: 100%;
+      }
+
+      .image{
+        height: 400px;
+        @include media-breakpoint-up(lg){
+          height: 120px;
+        }
+      }
+      .onboard{
+        padding-bottom: 50px;
+      }
+
+      .mainTitle{
+        &.mobile{
+          .globe{
+            svg{
+              stroke: $green-hover;
+            }
+          }
+          .title{
+              color: #fafafa;
+          }
+          .description{
+            color: #fafafa;
+          }
+        }
+        .globe{
+          svg{
+            stroke: $forest-green;
+          }
+        }
+        .title{
+          color: #fafafa;
+        }
+      }
+    }
+  }
+}

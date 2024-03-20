@@ -1,0 +1,18 @@
+<div id="pilio-modal" class="gap-3">
+  <div  class="d-flex justify-content-between">
+    <div class="title">
+        <div>
+            <p class="title-2 text-dark bold"> {{'sidebar.energy' | translate}}</p>
+        </div>
+        <p class="title-4 lato"> {{'sidebar.enjoyTheService' | translate}}<a class="bold chivo" href="">Pilio.</a></p>
+        <div class="d-flex gap-1 my-4 align-items-center">
+          <mat-checkbox (click)="toggle($event)" class="example-margin" color="yellow"></mat-checkbox>
+          <p class="m-0 title-4 text-dark" [ngClass]="{'bold' : isChecked}"> {{'sidebar.byTicking' | translate}}</p>
+        </div>
+      </div>
+      <mat-icon class="close"  mat-dialog-close >clear</mat-icon>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button class="shadow-none" color="yellow" mat-raised-button (click)="goToPilio()" [disabled]="!isChecked"> {{'sidebar.enjoyBTN' | translate}}</button>
+  </div>
+</div>

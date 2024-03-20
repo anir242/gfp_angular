@@ -1,0 +1,231 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin contact-form-public-theme($theme) {
+
+  #contact-form {
+    background: transparent;
+    .green{
+      color: #00734F !important;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      visibility: hidden;
+      opacity: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlayShow{
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      background: #fff;
+      border-radius: 5px;
+      width: 350px;
+      position: relative;
+      z-index: 99999;
+      padding: 2rem;
+
+      .checkIcon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #82ce34;
+      }
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #F2BF00;
+    }
+    .popup .content {
+      max-height: 30%;
+      overflow: auto;
+    }
+
+      @include media-breakpoint-down(lg) {
+        .box{
+          width: 70%;
+        }
+        .popup{
+          width: 70%;
+        }
+      }
+
+    .mat-select-placeholder{
+      font-size: 16px;
+      line-height: 24px;
+      font-family: $font-lato;
+    }
+
+    .background-leaves {
+      background-size: cover !important;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/images/bg_leaves.png');
+
+      @include media-breakpoint-down(lg) {
+        width: 100%;
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+
+    @media (max-width:991px){
+
+        .large-body{
+          font-size: 16px;
+          line-height: 24px;
+          font-family: $font-lato;
+        }
+    }
+
+    .h-304 {
+      height: 550px;
+
+      @include media-breakpoint-up(lg) {
+        height: 324px;
+      }
+
+    }
+
+    .border-round {
+      border-radius: 0;
+
+      @include media-breakpoint-up(lg) {
+        border-bottom-right-radius: 24px;
+        border-top-right-radius: 24px;
+      }
+    }
+
+    .container-fluid {
+      padding-bottom: 17rem;
+
+      @include media-breakpoint-up(lg) {
+        padding-bottom: initial;
+      }
+    }
+
+    .text-container {
+      width: 100%;
+
+      @include media-breakpoint-up(lg) {
+        width: 25%;
+      }
+    }
+
+    .form-group-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      height: 53rem;
+
+      @include media-breakpoint-up(lg) {
+        flex-direction: row;
+      }
+
+      > form {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0px 10px 20px 0px #7b7b7b26;
+        color: initial;
+        height: auto;
+        padding: 2rem 1rem;
+        position: absolute;
+        top: 14rem;
+        width: 92%;
+        margin-inline: auto;
+
+        @include media-breakpoint-up(lg) {
+          top: initial;
+          padding: 1.8rem 2rem;
+          width: 38rem;
+          left: calc(50% - 10rem);
+        }
+
+        button {
+          float: right;
+        }
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-infix {
+        border-top: none;
+        color: #333333;
+      }
+
+      .mat-form-field-outline-start {
+        border-top: 0.5px solid #8A8A8A;
+        border-bottom: 0.5px solid #8A8A8A;
+        border-left: 0.5px solid #8A8A8A;
+        border-bottom-left-radius: 8px;
+        border-top-left-radius: 8px;
+        height: 40px;
+      }
+
+      .mat-form-field-outline-end {
+        border-top: 0.5px solid #8A8A8A;
+        border-bottom: 0.5px solid #8A8A8A;
+        border-right: 0.5px solid #8A8A8A;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
+        height: 40px;
+      }
+
+      .textarea .mat-form-field-outline-end,
+      .textarea .mat-form-field-outline-start {
+        height: 80px;
+      }
+
+      textarea {
+        height: calc(80px - 2em);
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    
+    #contact-form {
+      .form-group-container{
+        height: 100%;
+      }
+
+      .background-leaves{
+        height: 100%;
+        padding: 24px !important;
+
+        form{
+          padding: 24px 32px;
+          background-color: white;
+          border-radius: 8px;
+        }
+      }
+
+      .container-fluid {
+        padding-bottom: 0;
+      }
+    }
+
+  }
+}

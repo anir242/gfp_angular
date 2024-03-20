@@ -1,0 +1,49 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin homepage-popup-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, "accent");
+  $background: map.get($color-config, "background");
+  $foreground: map.get($color-config, "foreground");
+  $primary: map.get($color-config, "primary");
+  $warn: map.get($color-config, "warn");
+
+  #homepagePopup {
+    position: relative;
+    .close {
+      .mat-icon {
+        color: mat.get-color-from-palette($foreground, "text");
+      }
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .popupImage {
+      background-image: url("/assets/images/newsletter.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include media-breakpoint-up(lg) {
+        background-image: url("/assets/images/popup_2.png");
+      }
+    }
+
+    .image {
+      background-image: url("/assets/images/newsletter.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include media-breakpoint-up(lg) {
+        background-image: url("/assets/images/manifesto.jpg");
+      }
+    }
+    .itemContent {
+      background-color: mat.get-color-from-palette($primary, "main-contrast");
+      padding: 60px 40px;
+    }
+  }
+}

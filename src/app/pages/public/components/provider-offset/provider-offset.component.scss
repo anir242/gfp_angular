@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin provider-offset-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .provider-offset-wrapper-2 {
+
+    .mat-radio-button {
+      float: right;
+    }
+
+    .top {
+      height: 85px;
+      background-color: $grey6;
+      border-radius: 7px;
+      padding: 16px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
+      @include media-breakpoint-up(lg) {
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+      }
+    }
+
+    .bottom {
+      padding: 0px;
+      background-color: rgba($color: $grey1, $alpha: 0.5);
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+
+      @include media-breakpoint-up(lg) {
+        padding: 16px;
+      }
+
+      >div {
+        background-color: white;
+        border-radius: 0px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        padding: 16px;
+        color: $deep-green;
+
+        @include media-breakpoint-up(lg) {
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .selected>div {
+      border-radius: 8px;
+      border: $bar-yellow 1px solid;
+      transform: scale(1.05);
+      transition: 0.1s;
+    }
+  }
+
+}

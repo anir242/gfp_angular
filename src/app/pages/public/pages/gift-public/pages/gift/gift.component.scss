@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #gift {
+    // .softImage {
+      background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/assets/images/bg_noise_low.png');
+    // }
+    .layer {
+      padding-bottom: 40px;
+      @include media-breakpoint-up(md){
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+    }
+    .mat-form-field-infix{
+      // padding: 0.7em 0;
+    }
+    .search{
+      margin-top: 0.25em;
+      min-height: 52px;
+    }
+    background-color: mat.get-color-from-palette($background, 'dialog');
+    .title{
+      span{
+        color: mat.get-color-from-palette($background, 'primary-text');
+      }
+    }
+  }
+}

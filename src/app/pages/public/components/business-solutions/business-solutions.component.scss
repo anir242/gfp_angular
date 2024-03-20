@@ -1,0 +1,106 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin business-solutions-theme($theme) {
+
+  #businessSolutions {
+
+    &.individual {
+      .right {
+        background: linear-gradient(180deg, #00DC97 0%, #00BA80 100%);
+      }
+    }
+
+    .business-solutions-wrapper {
+      background-color: $grey6;
+      padding: 40px 24px;
+      border-radius: 24px;
+    }
+
+    .left {
+      background-color: $grey7;
+      border-radius: 16px;
+      box-shadow: 0px 10px 20px 0px #7B7B7B26;
+      color: $grey1;
+      font-weight: 400;
+      min-height: 38rem;
+
+      .icon {
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    .thunder_icon {
+      background: url('/assets/images/icons/thunder_grey.svg') no-repeat;
+      background-size: cover;
+      height: 24px;
+      width: 24px;
+    }
+
+    .right {
+      background: radial-gradient(226.7% 343.12% at 66.76% 100%, #1A4549 0%, #020F19 84.05%);
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      border-radius: 16px;
+
+      .productImage {
+        max-width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 16px;
+      }
+    }
+
+    .options {
+      margin-bottom: 2rem;
+
+      div {
+        border-radius: 24px;
+        padding: 10px 20px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 16px;
+        box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15) !important;
+        background-color: white;
+        background: -moz-radial-gradient(54.79% 190.63% at 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+        background: -webkit-radial-gradient(54.79% 190.63% 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+        background: $background3;
+        background-clip: text;
+        color: transparent;
+
+        &:hover{
+          color: #00BA80 !important;
+        }
+
+        &.selected {
+          background: -moz-radial-gradient(54.79% 190.63% at 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+          background: -webkit-radial-gradient(54.79% 190.63% 75.28% 9.38%, #23563C 0%, #020F19 100%) !important;
+          background: $background3 !important;
+          color: $grey5 !important;
+        }
+
+        p{
+          -webkit-background-clip: text;
+        }
+      }
+    }
+
+    .heading1 {
+      font-size: 32px;
+      line-height: 40px;
+      font-weight: 700;
+    }
+
+    .heading2 {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .heading3 {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}

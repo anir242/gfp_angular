@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin subscription-component-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+
+  #subscription {
+    text-align: center;
+    color: rgba(51, 51, 51, 0.87) !important;
+    cursor: pointer;
+    border-radius: 8px;
+
+    .mat-radio-inner-circle{
+      background-color: $forest-green;
+    }
+
+    .mat-radio-outer-circle{
+      border-color: $forest-green;
+    }
+
+    .mat-card-header {
+      display: block;
+      flex-direction: unset;
+      border-radius: 8px;
+      background-color: #fafafa;
+
+      .radio {
+        right: 0;
+      }
+    }
+
+    .price{
+      color: $forest-green;
+    }
+
+    .mat-card-content {
+      .body {
+        .content {
+          border-radius: 8px;
+          background: #fafafa;
+        }
+      }
+    }
+
+    .mat-expansion-panel {
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+
+      .mat-expansion-panel-content, .mat-expansion-panel-body {
+        padding: 0;
+        text-align: left;
+      }
+    }
+  }
+}

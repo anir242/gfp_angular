@@ -1,0 +1,26 @@
+<div class="layer">
+  <div class="container subscribe">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+          <div>
+            <p class="mat-display-1 mb-2">{{'landingSubscribe.title'|translate}}</p>
+          </div>
+      </div>
+      <div class="col-12">
+        <div class="mt-4">
+          <app-mail-input
+            position="center"
+            [control]="email"
+            buttonText="Subscribe"
+            label="landingSubscribe.placeholder"
+            autocomplete="off"
+            labelError="authentication.requiredField"
+            labelPatternError="authentication.pattern"
+            [required]="false"
+            (buttonClicked)="subscribeUpdate()">
+          </app-mail-input>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

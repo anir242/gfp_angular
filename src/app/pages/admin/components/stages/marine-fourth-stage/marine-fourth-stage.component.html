@@ -1,0 +1,35 @@
+<div class="position-relative">
+  <model-viewer src="assets/images/models3D/mar-stg4.glb" camera-controls auto-rotate environment-image="neutral"
+                exposure="1.81">
+    <button class="Hotspot" slot="hotspot-1"
+            (click)="clickHotspot($event.target)"
+            data-position="0.4243123442321279m 0.9082426236947096m 0.2782317569377125m"
+            data-normal="0.9132239349636121m -4.143708664452371e-8m 0.40745802803426895m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'marineFourth.hotspot1'|translate}}</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-2"
+            (click)="clickHotspot($event.target)"
+            data-position="-0.32832379130934575m 1.0796686518800018m -0.34481904577318m"
+            data-normal="-0.7389069776362295m -0.5643911761646848m -0.3680748275390974m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'marineFourth.hotspot2'|translate}}</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-3"
+            (click)="clickHotspot($event.target)"
+            data-position="0.17788612145552685m 0.8162907444374496m -0.28865196724536274m"
+            data-normal="0.7619229315000362m -0.5315907245181783m -0.3699793886970319m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'marineFourth.hotspot3'|translate}}</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-4"
+            (click)="clickHotspot($event.target)"
+            data-position="-0.12970526245056213m 0.8067704707626949m -0.545608248746523m"
+            data-normal="0.44971101853729784m -0.24146262360036078m -0.8599161594075185m"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'marineFourth.hotspot4'|translate}}</div>
+    </button>
+  </model-viewer>
+</div>
+
+

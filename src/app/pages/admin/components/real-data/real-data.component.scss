@@ -1,0 +1,79 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin real-data-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .realData {
+
+    .impact-divider {
+      background-color: #68D8D5;
+    }
+
+    &.preservation {
+      background: linear-gradient($preservation-two, $preservation-two), url(../../../../../assets/images/bg_your_impact.jpg);
+    }
+
+    &.restoration {
+      background: linear-gradient($restoration-two, $restoration-two), url(../../../../../assets/images/bg_your_impact.jpg);
+    }
+
+    &.renewable_energy {
+      background: linear-gradient($renewable-two, $renewable-two), url(../../../../../assets/images/bg_your_impact.jpg);
+    }
+
+    .type {
+      margin-left: 30px;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 15px;
+      color: mat.get-color-from-palette($primary);
+    }
+
+    .statistics {
+      margin-top: 9rem;
+      grid-gap: 10px;
+
+      .statistic {
+        background: rgba(240,240,240,.15);
+        border-radius: 8px;
+        position: relative;
+
+        &.half {
+          min-height: 200px;
+        }
+
+        .data {
+          &.restoration {
+            color: #C3E8C1;
+          }
+
+          &.preservation {
+            color: #B5E7EA;
+          }
+
+          &.renewable_energy {
+            color: #F4B68C;
+          }
+        }
+
+        img {
+          width: 48px !important;
+          height: 48px !important;
+          display: block;
+          position: relative;
+        }
+      }
+    }
+
+    .mapsImg {
+      overflow: hidden;
+    }
+  }
+}

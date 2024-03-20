@@ -1,0 +1,41 @@
+<mat-card class="employeesImpact">
+  <mat-card-header>
+    <mat-card-title>
+      <span class="mat-subheading-1">{{'mainSubscriptions.employeesImpact.title' | translate}}</span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="p-3">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="mat-body-1">{{'mainSubscriptions.employeesImpact.numberOfEmployees' | translate}}</span>
+        </mat-panel-title>
+        <mat-panel-description class="text-right flex-grow-0">
+          <span>{{getTotalEmployees()}}</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let sub of subscriptionTypes; let i = index">
+        <div class="d-flex justify-content-between">
+          <span class="mat-caption">{{sub.name}}</span>
+          <span class="mat-caption">{{employeesSelected.controls[i].value}}</span>
+        </div>
+      </ng-container>
+    </mat-expansion-panel>
+    <ng-container *ngFor="let unit of supported | keyvalue">
+      <app-summary-unit
+        [border]="true"
+        [key]="unit.key"
+        [items]="unit.value"></app-summary-unit>
+    </ng-container>
+    <app-summary-unit
+      [border]="true"
+      [key]="'CO2'"
+      [items]="co2Values"></app-summary-unit>
+  </mat-card-content>
+  <mat-card-footer>
+    <div class="d-flex justify-content-between px-3">
+      <span class="mat-subheading-1 m-0">{{'mainSubscriptions.employeesImpact.costPerMonth' | translate}}</span>
+      <span class="mat-subheading-2 m-0">{{costPerMonth}}€</span>
+    </div>
+  </mat-card-footer>
+</mat-card>

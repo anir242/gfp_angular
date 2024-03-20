@@ -1,0 +1,620 @@
+<div id="energy-main">
+  <div class="text-white position-relative" [ngClass]="windowWidth > 600 ? 'py-5' : 'pt-5'" id="energy-banner">
+    <div class="d-md-flex ps-2 me-0" [style]="windowWidth > 600 ? 'margin: 0 76px;' : 'margin: 0 12px;'">
+      <div class="mt-5" style="min-width: 60%;">
+        <svg-icon src="/assets/images/emission/icons/energy.svg"></svg-icon>
+        <h1 class="title chivo xxl bold" [ngClass]="windowWidth > 600 ? 'mb-1' : 'mb-3'" style="margin-top: 20px;"  innerHtml="{{'pilioPage.energyAndManagement' | translate}}"></h1>
+        <p style="max-width: 90%;" class="lato md pe-1 mb-0">{{'pilioPage.measureYourScope' | translate}}</p>
+      </div>
+      <div class="demo-tablet w-100 d-flex  position-relative" [ngClass]="{'justify-content-start': windowWidth < 600, 'justify-content-center': windowWidth > 600}">
+        <img [ngClass]="{'m-0': windowWidth < 600}" class="start-0" [style]="windowWidth > 600 ? 'max-width: 450px;margin-left: 15px;' : 'max-width: 375px;margin-left: 15px;position:relative; bottom:-40px'" src="/assets/images/pilio/images/Pilio demo tablet.png"
+          alt="Demo Tablet"/>
+      </div>
+    </div>
+  </div>
+  <div class="ps-1" [style]="windowWidth > 600 ? 'margin: 0 76px; width: 90%' : 'margin: 0 12px;width: 90%'">
+    <div class="emissions-main py-5">
+      <div class="container ps-0 ms-0">
+        <div class="row">
+          <div [class]="windowWidth > 600 ?'col-9 pe-5 ps-2':'col-12'">
+            <p class="title chivo xl bold mt-5 fs-40 dark-green" 
+              innerHTML="{{'pilioPage.whatAreScope' | translate}}"></p>
+            <p [ngClass]="{'w-100': windowWidth < 600}" class="lato md w-75 mb-1" style="color: #636363">{{'pilioPage.understanding' | translate}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="d-md-flex mt-3  gap-5 justify-content-between">
+        <div class="d-flex flex-column" [style]="windowWidth > 600?'width:35%; gap: 24px': 'width:100%; gap:20px'">
+          <img  id="ms-main" src="../../../../../assets/images/pilio/images/Graphic.png" alt="" [ngClass]="{'d-none': windowWidth > 600 || isOpenedScope.ms1 || isOpenedScope.ms2 || isOpenedScope.ms3}">
+          <div style="padding: 16px 20px;" class="bg-light rounded scope" (click)="show('ms1')" (mouseenter)="scopesEnter(1)" (mouseleave)="scopesLeave()">
+            <p class="chivo large-body bold dark-green mb-1">{{'pilioPage.scope1' | translate}}</p>
+            <p class="opacity-75 sm lato m-0">{{'pilioPage.theseAreDefined' | translate}}</p>
+          </div>
+          <img  class="" id="ms-1" src="../../../../../assets/images/pilio/images/Graphic - Scope 1.png" alt="" [ngClass]="{'d-none':windowWidth > 600 || !isOpenedScope.ms1 }">
+          <div style="padding: 16px 20px;" class="bg-light rounded scope" (click)="show('ms2')" (mouseenter)="scopesEnter(2)" (mouseleave)="scopesLeave()">
+            <p class="chivo large-body bold dark-green mb-1">{{'pilioPage.scope2' | translate}}</p>
+            <p class="opacity-75 sm lato m-0">{{'pilioPage.thisCategory' | translate}}</p>
+          </div>
+          <img class="" id="ms-2" src="../../../../../assets/images/pilio/images/Graphic - Scope 2.png" alt="" [ngClass]="{'d-none': windowWidth > 600 || !isOpenedScope.ms2}">
+          <div style="padding: 16px 20px;" class="bg-light  rounded scope" (click)="show('ms3')" (mouseenter)="scopesEnter(3)" (mouseleave)="scopesLeave()">
+            <p class="chivo large-body bold dark-green mb-1">{{'pilioPage.scope3' | translate}}</p>
+            <p class="opacity-75 sm lato m-0">{{'pilioPage.allEmissions' | translate}}</p>
+          </div>
+          <img class="" id="ms-3" src="../../../../../assets/images/pilio/images/Graphic - Scope 3.png" alt="" [ngClass]="{'d-none': windowWidth > 600 || !isOpenedScope.ms3}">
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="width:65%" [ngClass]="{'d-none': windowWidth < 600}">
+          <!-- <img src="assets/images/pilio/images/{{graphic}}.png" alt="Graphic"> -->
+          <div id="graphic">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="their-carbon-main">
+      <div id="achieve" class="w-100">
+        <div class="row ps-3">
+          <div class="col-12 p-0 achieve-title">
+            <h2 class="title chivo xl bold mt-4 mb-5 fs-40 dark-green" 
+              innerHTML="{{'pilioPage.whatCanYou' | translate}}"></h2>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center" [ngClass]="{'d-none': windowWidth < 600}">
+            <div class="d-flex justify-content-end position-relative">
+              <div class="d-flex flex-column gap-2" style="position: absolute;
+              right: 357px;
+              top: 5%;
+              width: 80%;
+          ">
+                <ng-container *ngFor="let m of modules; let i = index">
+                  <div (mouseenter)="laptopChange(i)" (mouseleave)="laptopLeave()"
+                    class="bg-light pe-3 px-3 py-1 rounded d-flex align-items-center achieve-info" 
+                    style="gap: 20px;">
+                    <img src="/assets/images/emission/icons/emission{{i}}.svg" alt="E{{i}}"/>
+                    <div class="pt-2">
+                      <p class="chivo md bold  dark-green mb-2">{{'pilioPage.' + m[0] | translate}}</p>
+                      <div class="description" style="margin-bottom: 16px;" [ngClass]="moduleIndex == i ? 'visible' : ''">
+                        <p class="lato sm" innerHTML="{{'pilioPage.'+m[1] | translate}}" style="margin-bottom: 16px;"></p>
+                        <div>
+                          <button style="margin-bottom: 5px;" mat-raised-button color="yellow" (click)="m[3] == 'open'?openMeet():scrollToId('contact-form')">{{'pilioPage.'+m[2] | translate}}</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <img  src="assets/images/pilio/images/{{module}}.png" style="height: 415px; z-index: 10;position: relative;
+              right: -300px;" alt="Module">
+            </div>
+        </div>
+        <div *ngIf="windowWidth < 600">
+          <img class="mb-4"  id="main-laptop"  src="assets/images/pilio/images/Laptop.png"  alt="" [ngClass]="{'d-none': isOpenedLaptop.ml0 || isOpenedLaptop.ml1 || isOpenedLaptop.ml2}">
+          <ng-container *ngFor="let m of modules; let i = index">
+            <div (mouseenter)="laptopChange(i)" (mouseleave)="laptopLeave()" (click)="showLaptop('ml'+i)"
+              class="bg-light pe-3 px-3 py-1 rounded d-flex align-items-center achieve-info my-4" 
+              style="gap: 20px; width: 100% !important;">
+              <img src="/assets/images/emission/icons/emission{{i}}.svg" alt="E{{i}}"/>
+              <div class="pt-2">
+                <p class="chivo md bold  dark-green mb-2">{{'pilioPage.' + m[0] | translate}}</p>
+                <div class="description" style="margin-bottom: 16px;" [ngClass]="(moduleIndex == i && isOpenedLaptop['ml'+i]) ? 'visible' : ''">
+                  <p class="lato sm" innerHTML="{{'pilioPage.'+m[1] | translate}}" style="margin-bottom: 16px;"></p>
+                  <div>
+                    <a [disabled]="!isOpenedLaptop['ml'+i]" style="margin-bottom: 5px;" mat-raised-button color="yellow" (click)="m[3] == 'open'?openMeet():scrollToId('contact-form',170)">{{'pilioPage.'+m[2] | translate}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img style="margin: 15px 0;" id="laptop-{{i}}" src="assets/images/pilio/images/{{module}}.png"  alt="" [ngClass]="{'d-none': windowWidth > 600 || !isOpenedLaptop['ml'+i]}">
+          </ng-container>
+        </div>
+      </div>
+      <div class="container their-carbon mw-100" *ngIf="windowWidth > 600, else carouselCards">
+        <div class="row g-3">
+          <div class="col-lg-4 col-md-6 d-flex align-items-center p-3">
+            <h2 class="title chivo xl bold dark-green fs-40" style="width: 65%" innerHtml="{{'pilioPage.whyIsIt' | translate}}"></h2>
+          </div>
+          <ng-container *ngFor="let reason of carbonReasons">
+            <div class="col-lg-4 col-md-6">
+              <div class="card">
+                <div class="mb-4">
+                  <img style="width: 72px !important; height: 64px !important;" src="/assets/images/emission/icons/{{reason.icon}}.svg"
+                    alt=""/>
+                </div>
+                <p class="chivo bold dark-green fs-20">
+                  {{'pilioPage.'+reason.text1 | translate}}
+                </p>
+                <p class="lato sm" [innerHTML]="'pilioPage.'+reason.text2 | translate">
+                  
+                </p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+     <ng-template #carouselCards>
+       <div class="their-carbon-cards their-carbon w-100 p-0 py-4 pb-5">
+        <h2 class="title chivo xl bold dark-green fs-40 p-3" innerHtml="{{'pilioPage.whyIsIt' | translate}}"></h2>
+        <carousel cellsToShow="1" height="535">
+          <ng-container *ngFor="let reason of carbonReasons">
+              <div class="card carousel-cell">
+                <div class="mb-4">
+                  <img style="width: 48px !important; height: 48px !important;" src="/assets/images/emission/icons/{{reason.icon}}.svg"
+                    alt=""/>
+                </div>
+                <p class="chivo bold dark-green fs-20">
+                  {{'pilioPage.'+reason.text1 | translate}}
+                </p>
+                <p class="lato sm px-1"  [innerHTML]="'pilioPage.'+reason.text2 | translate">
+                  
+                </p>
+              </div>
+          </ng-container>
+        </carousel>
+       </div>
+     </ng-template>
+      <div class="">
+        <div
+          class="d-flex flex-column align-items-center justify-contnt-center journey-bg"
+          [ngClass]="windowWidth > 600 ? 'p-5' : 'p-2'"
+          style="
+            background-size: cover !important;
+            background-repeat: no-repeat;
+            border-radius: 24px;
+            background-position: 85% 100%
+          "
+        >
+          <div class="text-center" [style]="windowWidth > 600 ? 'width:85%' : 'width:100%; z-index: 5'">
+            <img
+              src="../../../../../assets/images/emission/icons/horse.svg"
+              alt=""
+              [ngClass]="{'mb-3': windowWidth < 600}"
+            />
+            <p class="title-2 bold dark-green" [style]="windowWidth < 600 ? 'font-size: 20px !important; line-height: 24px !important; margin-bottom: 16px;' : ''">
+              {{
+                'pilioPage.lookingDedicated'
+                  | translate
+              }}
+            </p>
+            <p [ngClass]="{'mb-4': windowWidth < 600}" style="letter-spacing: 0.03em;" class="body dark-green" innerHtml="  {{
+              'pilioPage.ourCarbonAccounting'
+                | translate
+            }}">
+            
+            </p>
+            <button class="shadow-none mx-auto" mat-raised-button color="yellow" (click)="scrollToId('contact-form')">  {{
+              'pilioPage.getTouch'
+                | translate
+            }}</button>
+          </div>
+        </div>
+      </div>
+      <div class="measuring my-5 pt-5">
+        <div class="">
+          <div class="">
+            <p style="letter-spacing: -0.2px;" class="emissions-title title-1 bold fs-40 dark-green" innerHtml="  {{
+              'pilioPage.discover'
+                | translate
+            }}">
+  
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs bg-white">
+      <mat-tab-group color="primary" animationDuration="0ms">
+        <mat-tab *ngFor="let tab of tabData" [label]="tab.tabName">
+          <div class="container p-0">
+            <div class="row mt-5  gx-5" style="padding-bottom: 28px;">
+              <div class="col-md-8">
+                <div class="row align-items-center" [ngClass]="windowWidth > 600 ? 'gx-5' : 'gy-5'">
+                  <div class="col-md-6">
+                    <img class="mw-100" [src]="tab.logo" alt="" />
+                  </div>
+                  <div class="col-md-6" [ngClass]="{'mt-4': windowWidth < 600}">
+                    <p class="title-3 bold text-dark mb-1">{{ tab.title1 | translate }}</p>
+                    <p class="small-body text-dark">{{ tab.description1 | translate }}</p>
+                  </div>
+                </div>
+                <div class="row gx-5"  [ngClass]="windowWidth > 600 ? 'mt-5' : ''">
+                  <div class="col-md-6" [ngClass]="{'mt-4': windowWidth < 600}">
+                    <p class="title-3 bold text-dark mb-1">{{ tab.title2 | translate }}</p>
+                    <p class="small-body text-dark" [innerHTML]="tab.description2 | translate ">
+                      
+                    </p>
+                  </div>
+                  <div class="col-md-6" [ngClass]="{'mt-4': windowWidth < 600}">
+                    <p class="title-3 bold text-dark mb-1">{{ tab.title3 | translate }}</p>
+                    <p
+                      class="small-body text-dark"
+                      [ngClass]="{' mb-5': windowWidth < 600}"
+                      [innerHTML]="tab.description3 | translate"
+                    ></p>
+                  </div>
+                </div>
+                <div class="row gx-4" *ngIf="windowWidth > 600, else small">
+                  <div class="col-md-12 py-1 px-0">
+                    <div class="row mt-5 gx-2">
+                      <div class="col-md-3">
+                        <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                          <img
+                            src="../../../../../assets/images/icons/co2.svg"
+                            alt=""
+                          />
+                          <p class="title-3 mt-3 mb-1 ls-1">{{ tab.co2 }}</p>
+                          <p class="tiny-body">{{
+                            'pilioPage.co2'
+                              | translate
+                          }}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                          <img
+                            src="../../../../../assets/images/icons/restoration.svg"
+                            alt=""
+                          />
+                          <p class="title-3 mt-3 mb-1 ls-1">{{ tab.restoration }}</p>
+                          <p class="tiny-body">{{
+                            'pilioPage.tree'
+                              | translate
+                          }}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                          <img
+                            src="../../../../../assets/images/icons/preservation.svg"
+                            alt=""
+                          />
+                          <p class="title-3 mt-3 mb-1 ls-1">{{ tab.preservation }}</p>
+                          <p class="tiny-body">{{
+                            'pilioPage.forest'
+                              | translate
+                          }}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3" *ngIf="tab.marine, else renew">
+                        <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                          <img
+                            src="../../../../../assets/images/public/menu/marine.svg"
+                            alt=""
+                          />
+                          <p class="title-3 mt-3 mb-1 ls-1">{{ tab.marine }}</p>
+                          <p class="tiny-body">{{
+                            'pilioPage.corals'
+                              | translate
+                          }}</p>
+                        </div>
+                      </div>
+                      <ng-template #renew>
+                        <div class="col-md-3">
+                          <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                            <img
+                              src="../../../../../assets/images/icons/renewable.svg"
+                              alt=""
+                            />
+                            <p class="title-3 mt-3 mb-1 ls-1">{{ tab.renewable }}</p>
+                            <p class="tiny-body">{{
+                              'pilioPage.energy'
+                                | translate
+                            }}</p>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+                <ng-template #small>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                        <img
+                        style="width: 30px;"
+                          src="../../../../../assets/images/icons/co2.svg"
+                          alt=""
+                        />
+                        <p class="title-3 mt-3 mb-1 ls-1">{{ tab.co2 }}</p>
+                        <p class="tiny-body">{{
+                          'pilioPage.co2'
+                            | translate
+                        }}</p>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                        <img
+                        style="width: 30px;"
+                          src="../../../../../assets/images/icons/restoration.svg"
+                          alt=""
+                        />
+                        <p class="title-3 mt-3 mb-1 ls-1">{{ tab.restoration }}</p>
+                        <p class="tiny-body">{{
+                          'pilioPage.tree'
+                            | translate
+                        }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">
+                      <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                        <img
+                        style="width: 30px;"
+                          src="../../../../../assets/images/icons/preservation.svg"
+                          alt=""
+                        />
+                        <p class="title-3 mt-3 mb-1 ls-1">{{ tab.preservation }}</p>
+                        <p class="tiny-body">{{
+                          'pilioPage.forest'
+                            | translate
+                        }}</p>
+                      </div>
+                    </div>
+                    <div class="col-6" *ngIf="tab.marine, else renew">
+                      <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                        <img
+                        style="width: 30px;"
+                          src="../../../../../assets/images/public/menu/marine.svg"
+                          alt=""
+                        />
+                        <p class="title-3 mt-3 mb-1 ls-1">{{ tab.marine }}</p>
+                        <p class="tiny-body">{{
+                          'pilioPage.corals'
+                            | translate
+                        }}</p>
+                      </div>
+                    </div>
+                    <ng-template #renew>
+                      <div class="col-6">
+                        <div class="bg-white p-1 h-100 p-3 pe-2 " style="border-radius: 16px; max-width:160px; max-height: 160px;box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);">
+                          <img
+                          style="width: 30px;"
+                            src="../../../../../assets/images/icons/renewable.svg"
+                            alt=""
+                          />
+                          <p class="title-3 mt-3 mb-1 ls-1">{{ tab.renewable }}</p>
+                          <p class="tiny-body">{{
+                            'pilioPage.energy'
+                              | translate
+                          }}</p>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </div>
+                </ng-template>
+              </div>
+              <div class="col-md-4">
+                <div style="    background-size: cover;
+                background-position: center;
+                border-radius: 16px;" class="w-100 h-100" [ngStyle]="{'background-image': 'url(' + tab.img + ')'}">
+                  <!-- <img
+                  class="object-fit-cover w-100 h-100"
+                  [src]="tab.img"
+                  alt=""
+                /> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <div class="w-100">
+      <div class="d-flex gap-3 my-5 justify-content-center align-items-center">
+        <p class="m-0 body text-dark">Powered by</p>
+        <img src="../../../../../assets/images/pilio/pilio.svg" alt="" />
+      </div>
+    </div>
+
+    <div [class]="windowWidth > 600 ? 'energy-efficiency p-5': 'energy-efficiency p-4 mb-5'">
+      <p [style]="windowWidth < 600 ? 'font-size: 32px !important; line-height: 40px !important': ''" class="energy-efficiency-title title-1 bold  text-dark py-4 fs-40" innerHtml="  {{
+        'pilioPage.checkOut'
+          | translate
+      }}">
+      
+      </p>
+      <div class="container blog" *ngIf="windowWidth > 600, else smallBlog">
+        <div class="row mt-3 gx-5">
+          <div class="col-md-4">
+            <div class="card">
+              <div
+                class="h-100 text-white p-4 bg"
+                style="
+                  background-image: url('../../../../../assets/images/pilio/images/Blog\ Image\ 1.png');
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                "
+              >
+                <p class="tiny-body">MARCH 23, 2023</p>
+                <p class="title-3 bold">
+                  IPCC AR6 Synthesis Report 2023: Climate Change Impacts and
+                  Pathways to Limit Warming
+                </p>
+              </div>
+              <div class="px-4 py-3 hovered">
+                <p class="small-body">
+                  On Monday, March 20, the International Panel on Climate Change
+                  (IPCC) Synthesis Report of the sixth Assessment Report (AR6)
+                  has been released and is a sobering reminder of the urgent
+                  need for immediate climate action. Representatives of 195...
+                </p>
+                <button class="text-white w-100" mat-raised-button (click)="openBlog('https://blog.greenfutureproject.com/making-impact-possible-a-green-future-project-blog/ipcc-ar6-report')">
+                  {{
+                    'pilioPage.readArticle'
+                      | translate
+                  }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <div
+                class="h-100 text-white p-4 bg"
+                style="
+                  background-image: url('../../../../../assets/images/pilio/images/Blog\ Image\ 2\ \(1\).png');
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                "
+              >
+                <p class="tiny-body">MARCH 23, 2023</p>
+                <p class="title-3 bold">
+                  Why Brands should care about their carbon footprint and how
+                  Green Future Project can help
+                </p>
+              </div>
+              <div class="px-4 py-3 hovered">
+                <p class="small-body">
+                  Carbon Footprint is the measure of the total greenhouse gas
+                  emissions associated to a product, organization or service.
+                  The carbon footprint is divided into three categories, known
+                  as Scope 1, Scope 2 and Scope 3, which group the sources of
+                  direct and indirect emission...
+                </p>
+                <button class="text-white w-100" mat-raised-button (click)="openBlog('https://blog.greenfutureproject.com/making-impact-possible-a-green-future-project-blog/carbonfootprint')">
+                  {{
+                    'pilioPage.readArticle'
+                      | translate
+                  }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <div
+                class="h-100 text-white p-4 bg"
+                style="
+                  background-image: url('../../../../../assets/images/pilio/images/Blog\ Image\ 2.png');
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                "
+              >
+                <p class="tiny-body">MARCH 23, 2023</p>
+                <p class="title-3 bold">
+                  When & how 50,000+ firms will be affected by the Corporate
+                  Sustainability Reporting Directive
+                </p>
+              </div>
+              <div class="px-4 py-3 hovered">
+                <p class="small-body">
+                  The European Commission adopted the Corporate Sustainability
+                  Reporting Directive (CSRD) in November 2022. It is designed to
+                  address gaps in current sustainability reporting and is part
+                  of the European Green Deal and the Sustainable Finance
+                  Agenda... perfomance.
+                </p>
+                <button class="text-white w-100" mat-raised-button (click)="openBlog('https://blog.greenfutureproject.com/making-impact-possible-a-green-future-project-blog/csrd')">
+                  {{
+                    'pilioPage.readArticle'
+                      | translate
+                  }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #smallBlog>
+          <carousel class="carousel-blog"  cellsToShow="1" height="450">
+            <div class="card carousel-cell">
+              <div
+                class="h-100 text-white px-2 bg"
+                style="
+                  background-image: url('../../../../../assets/images/pilio/images/Blog\ Image\ 1.png');
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                "
+              >
+                <p class="tiny-body m-0">MARCH 23, 2023</p>
+                <p class="title-3 bold" [style]="windowWidth < 600 ? 'line-height: 24px !important;' : ''">
+                  IPCC AR6 Synthesis Report 2023: Climate Change Impacts and
+                  Pathways to Limit Warming
+                </p>
+              </div>
+              <div class="px-4 py-3 hovered">
+                <p class="small-body">
+                  On Monday, March 20, the International Panel on Climate Change
+                  (IPCC) Synthesis Report of the sixth Assessment Report (AR6)
+                  has been released and is a sobering reminder of the urgent
+                  need for immediate climate action. Representatives of 195...
+                </p>
+                <button class="text-white w-100" mat-raised-button (click)="openBlog('https://blog.greenfutureproject.com/making-impact-possible-a-green-future-project-blog/ipcc-ar6-report')">
+                  {{
+                    'pilioPage.readArticle'
+                      | translate
+                  }}
+                </button>
+              </div>
+            </div>
+            <div class="card carousel-cell">
+              <div
+                class="h-100 text-white px-2 bg"
+                style="
+                  background-image: url('../../../../../assets/images/pilio/images/Blog\ Image\ 2\ \(1\).png');
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                "
+              >
+                <p class="tiny-body m-0">MARCH 23, 2023</p>
+                <p class="title-3 bold" [style]="windowWidth < 600 ? 'line-height: 24px !important;' : ''">
+                  Why Brands should care about their carbon footprint and how
+                  Green Future Project can help
+                </p>
+              </div>
+              <div class="px-4 py-3 hovered">
+                <p class="small-body">
+                  Carbon Footprint is the measure of the total greenhouse gas
+                  emissions associated to a product, organization or service.
+                  The carbon footprint is divided into three categories, known
+                  as Scope 1, Scope 2 and Scope 3, which group the sources of
+                  direct and indirect emission...
+                </p>
+                <button class="text-white w-100" mat-raised-button (click)="openBlog('https://blog.greenfutureproject.com/making-impact-possible-a-green-future-project-blog/carbonfootprint')">
+                  {{
+                    'pilioPage.readArticle'
+                      | translate
+                  }}
+                </button>
+              </div>
+            </div>
+            <div class="card carousel-cell">
+              <div
+                class="h-100 text-white px-2 bg"
+                style="
+                  background-image: url('../../../../../assets/images/pilio/images/Blog\ Image\ 2.png');
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                "
+              >
+                <p class="tiny-body m-0">MARCH 23, 2023</p>
+                <p class="title-3 bold" [style]="windowWidth < 600 ? 'line-height: 24px !important;' : ''">
+                  When & how 50,000+ firms will be affected by the Corporate
+                  Sustainability Reporting Directive
+                </p>
+              </div>
+              <div class="px-4 py-3 hovered">
+                <p class="small-body">
+                  The European Commission adopted the Corporate Sustainability
+                  Reporting Directive (CSRD) in November 2022. It is designed to
+                  address gaps in current sustainability reporting and is part
+                  of the European Green Deal and the Sustainable Finance
+                  Agenda... perfomance.
+                </p>
+                <button class="text-white w-100" mat-raised-button (click)="openBlog('https://blog.greenfutureproject.com/making-impact-possible-a-green-future-project-blog/csrd')">
+                  {{
+                    'pilioPage.readArticle'
+                      | translate
+                  }}
+                </button>
+              </div>
+            </div>
+          </carousel>
+      </ng-template>
+    </div>
+  </div>
+  <app-contact-form></app-contact-form>
+</div>

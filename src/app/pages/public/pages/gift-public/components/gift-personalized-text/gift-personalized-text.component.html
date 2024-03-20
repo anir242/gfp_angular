@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row gx-2 gy-1">
+    <div class="col-md-12 col-8">
+      <span class="large-body d-none d-md-block">{{'gift.personalized'| translate}}</span>
+      <span class="large-body d-md-none">{{'gift.personalizedMobile'| translate}}</span>
+    </div>
+    <div class="col-12 d-none d-md-block text-white">
+      <mat-radio-group [(ngModel)]="addMessage" (ngModelChange)="setControl()">
+        <mat-radio-button class="me-2 title-4" [value]="true">{{'gift.yes'| translate}}</mat-radio-button>
+        <mat-radio-button class="title-4" [value]="false">{{'gift.no'| translate}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col-4 d-md-none text-end">
+      <mat-slide-toggle [(ngModel)]="addMessage" (ngModelChange)="setControl()"></mat-slide-toggle>
+    </div>
+    <div class="col-12">
+      <app-mat-input
+        textAreaHeight="124"
+        textAreaLength="250"
+        type="textarea"
+        [label]="translate.instant('gift.leaveMessage')"
+        [control]="message"></app-mat-input>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="content" id="projectList">
+  <div class="container-fluid mt-4">
+    <div class="my-3 ms-0 ps-0 mb-5">
+      <span class="headline bold text-uppercase">{{'projects.projects'|translate}}</span>
+      <div class="container-fluid ps-0 d-none">
+        <div class="row">
+          <div class="col-6 col-md-12">
+            <span class="mat-body-2">{{'projects.filterBy'|translate}}</span>
+
+            <mat-select class="mt-2" [(value)]="selectedProject" (selectionChange)="onChange($event)">
+              <mat-option *ngFor="let option of projectTypes" [value]="option">
+                {{translate.instant('projectType.'+option)}}
+              </mat-option>
+            </mat-select>
+          </div>
+          <div class="col-6 col-md-12 mt-md-3">
+            <span>{{'projects.showOnly'|translate}}</span>
+            <div *ngFor="let item of checkboxType;  let i = index">
+              <mat-checkbox [checked]="selected === i" (change)="isSupporting($event, i); selected = i">{{item.name}}</mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-md-3 mb-3 d-none">
+      <div class="col-12 col-md-6">Search</div>
+      <div class="col-12 col-md-6">Filter</div>
+      <div class="col-12"><mat-divider></mat-divider></div>
+    </div>
+    <div class="row d-flex justify-content-center g-2">
+      <div *ngFor="let project of projectsInterface; let i = index" class="cellProject col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="project position-relative" (click)="openProject(project)" [style]="getBackground(project)">
+          <div class="overlay position-absolute w-100 h-100 d-flex justify-content-center align-items-center" *ngIf="!project.isActive">
+            <button mat-stroked-button color="yellow" (click)="projectSuperpowers(project)">Unlock project</button>
+          </div>
+          <div class="position-absolute start-0 m-3">
+            <span class="type small-body bold px-3 py-1 mat-caption" [style]="{'background-color': project.type.colorLabel}">{{project.type?.name}}</span>
+          </div>
+          <div class="position-absolute bottom-0 ms-3 py-4 pe-4 mb-0">
+            <div class="d-flex flex-row align-items-center mb-1">
+              <span class="nation tiny-body text-uppercase text-white"><img src="/assets/images/svg/location_dot.svg" class="mb-1 me-1"/>{{project.country.name}}</span>
+            </div>
+            <span class="place title-3 bold mt-1 text-white">{{project.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

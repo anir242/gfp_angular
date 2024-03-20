@@ -1,0 +1,60 @@
+<div class="paddingTools" id="tools">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-12">
+              <p class="text-center mat-display-1 mt-4 mb-3">{{'landingPublicTools.title'|translate}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="scroller">
+          <div *cdkVirtualFor="let item of tools, let i = index" class="scrollerItem">
+            <div class="d-flex flex-row">
+              <div class="item">
+                <div class="my-2 svgTitle">
+                  <svg-icon [src]="item.url"></svg-icon>
+                </div>
+                <div class="mt-3">
+                  <div class="title">
+                    <p class="mat-body-2 mb-0">
+                      {{item.title}}
+                    </p>
+                  </div>
+                  <div class="mt-2">
+                    <p class="mat-body-1">
+                      {{item.description}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="i+1 != tools.length" class="align-self-center sum">
+                <svg-icon class="ms-3" src="assets/images/svg/sum.svg"></svg-icon>
+              </div>
+            </div>
+          </div>
+        </cdk-virtual-scroll-viewport>
+      </div>
+      <div class="col-12">
+        <div class="container">
+          <div class="row justify-content-center g-0">
+            <div class="col-12">
+              <div class="my-3 text-center">
+                <svg-icon class="equal" src="assets/images/svg/equal.svg"></svg-icon>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 climate">
+              <div class="p-3 text-center">
+                <svg-icon class="tree" src="assets/images/svg/tree_one.svg"></svg-icon>
+                <span class="ms-3 mat-body-1">{{'landingPublicTools.climate'|translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

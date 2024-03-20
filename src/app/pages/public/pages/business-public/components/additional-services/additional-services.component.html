@@ -1,0 +1,28 @@
+<div class="text-center" id="additionalServices">
+  <p class="mat-display-1">
+    {{'whyJoin.additionalServices'|translate}}
+  </p>
+  <div class="container">
+    <div class="row gy-3">
+      <div class="col-12 col-md-6">
+        <app-card-icon-small
+          containerClass="text-start p-2 p-md-4"
+          [title]="translate.instant('whyJoin.serviceTitle1')"
+          [description]="translate.instant('whyJoin.serviceDescription1')"
+          [url]="'assets/images/svg/smartphone_data.svg'"></app-card-icon-small>
+      </div>
+      <div class="col-12 col-md-6">
+        <app-card-icon-small
+          containerClass="text-start p-2 p-md-4"
+          [title]="translate.instant('whyJoin.serviceTitle2')"
+          [description]="translate.instant('whyJoin.serviceDescription2')"
+          [url]="'assets/images/svg/jacket.svg'"></app-card-icon-small>
+      </div>
+    </div>
+    <div class="mt-5 touch">
+      <button mat-raised-button color="yellow" (click)="getTouch()">
+        {{'whyJoin.serviceButton'|translate}}
+      </button>
+    </div>
+  </div>
+</div>

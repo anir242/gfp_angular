@@ -1,0 +1,42 @@
+<div id="subscriptionTypes">
+  <div class="container p-0">
+    <div class="row g-0">
+      <ng-container *ngFor="let item of subscriptionGroups">
+        <div class="col-6 d-none d-md-block">
+          <div class="mx-1">
+            <app-subscription-card
+              [title]="item.name"
+              [url]="item.images.url"
+              [subtitle]="item.businessSubtitle"
+              [description]="item.businessDescription">
+            </app-subscription-card>
+          </div>
+        </div>
+      </ng-container>
+      <div class="col-12 d-md-none">
+        <mat-tab-group color="tranparent" mat-align-tabs="center">
+          <ng-container *ngFor="let item of subscriptionGroups">
+            <mat-tab [label]="item.name">
+              <div class="mx-3 p-2">
+                <app-subscription-card
+                  [title]="item.name"
+                  [url]="item.images.url"
+                  [subtitle]="item.businessSubtitle"
+                  [description]="item.businessDescription">
+                </app-subscription-card>
+              </div>
+            </mat-tab>
+          </ng-container>
+        </mat-tab-group>
+      </div>
+      <div class="col-12 text-center">
+        <div class="mt-4 mx-3">
+          <button mat-raised-button color="yellow" (click)="goToSubs()">
+            {{'whyJoin.takeToSubscription'|translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

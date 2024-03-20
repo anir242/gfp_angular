@@ -1,0 +1,62 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+.headingContainerClimate {
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 80px !important;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding-left: 32px;
+    padding-right: 0 !important;
+    height: 116px !important;
+}
+
+#headingImage {
+    width: 116px;
+    height: 116px;
+    background-color: white;
+    border-radius: 58px;
+}
+
+.iconStyle {
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+
+.mat-card {
+    padding: 0;
+    border-radius: 80px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15) !important;
+}
+
+h2, h3, p {
+    margin: 0;
+}
+
+.greyBox {
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.leftContent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        margin-right: 5px;
+    }
+}
+

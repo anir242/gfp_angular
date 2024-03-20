@@ -1,0 +1,37 @@
+<div id="blogItem" (click)="isMobile ? '' : openArticle()">
+  <mat-card class="boxBlog">
+    <div class="row m-0 h-100">
+      <div class="d-none d-md-flex col-8 p-3 m-0 descBlog">
+        <span class="mat-caption bold typeBlog text-uppercase">{{typeBlog}}</span>
+        <span class="title-3 bold">{{titleBlog}}</span>
+        <span class="title-4 pt-1">{{dateBlog}}</span>
+        <p class="small-body bold pt-4">{{descBlog}}</p>
+        <div class="mt-auto d-flex align-items-center">
+          <img src="/assets/images/icons/thumb_up.svg" class="me-2">
+          <span class="tiny-body bold">{{likesBlog}}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 bg-dark m-0 imgBlog" [style]="imgBlog" (click)="isMobile ? openArticle() : '' ">
+        <div class="d-md-none d-flex flex-column justify-content-start h-100 p-2">
+          <div class="pt-3">
+            <span class="mat-caption bold typeBlog text-uppercase">{{typeBlog}}</span>
+          </div>
+          <p class="title-3 bold mt-auto text-white">{{titleBlog}}</p>
+          <span class="title-4 text-white pb-3">{{dateBlog}}</span>
+        </div>
+      </div>
+      <div class="col-12 m-0">
+        <mat-accordion class="d-md-none">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <!-- {{ item.isExpand ? '' : sliceFirstTenWords(item.description)}} -->
+            </mat-expansion-panel-header>
+            <div class="p-3 body">
+              {{descBlog}}
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </mat-card>
+</div>

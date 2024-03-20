@@ -1,0 +1,121 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "../../app.component";
+
+@mixin info-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $foreground: map.get($color-config, 'foreground');
+  $background: map.get($color-config, 'background');
+
+  .info-wrapper {
+    margin-left: 20px;
+    position: relative;
+
+    .invert{
+      filter: invert(100%);
+      -webkit-filter: invert(100%);
+    }
+
+    .info {
+      cursor: pointer;
+    }
+
+    .bubble {
+      position: absolute;
+      z-index: 0;
+      opacity: 1;
+      transition: transform .3s ease-in-out;
+      bottom: 35px;
+      background: rgba(0, 115, 79, 1);
+      color: #fff;
+      min-width: 260px;
+      transform-origin: bottom left;
+      transform: scale(0);
+      border-radius: 7px;
+      height: fit-content;
+      z-index: 5;
+
+      @media(min-width:1000px) {
+        min-width: 400px;
+      }
+
+      &.right {
+        left: 0;
+
+        &.top {
+          transform-origin: bottom left;
+
+          &::after {
+            border-left: 10px solid transparent;
+            border-right: 40px solid transparent;
+            border-top: 20px solid rgba(0, 115, 79, 1);
+            bottom: -15px;
+            left: 0;
+          }
+        }
+
+        &.bottom {
+          transform-origin: top left;
+
+          &::after {
+            border-left: 10px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 20px solid rgba(0, 115, 79, 1);
+            top: -15px;
+            left: 0;
+          }
+        }
+      }
+
+      &.left {
+        right: 0;
+
+        &.top {
+          transform-origin: bottom right;
+
+          &::after {
+            border-left: 40px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 20px solid rgba(0, 115, 79, 1);
+            bottom: -15px;
+            right: 0;
+          }
+        }
+
+        &.bottom {
+          transform-origin: top right;
+
+          &::after {
+            border-left: 40px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid rgba(0, 115, 79, 1);
+            top: -15px;
+            right: 0;
+          }
+        }
+      }
+
+      &.top {
+        bottom: 35px;
+      }
+
+      &.bottom {
+        top: 35px;
+      }
+
+      &.visible {
+        opacity: 1;
+        transform: scale(1);
+        @include mat.elevation(8);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 5;
+      }
+    }
+  }
+}

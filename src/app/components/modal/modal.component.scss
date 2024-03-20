@@ -1,0 +1,53 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin modal-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .infoModal{
+    .closeButton{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .mat-icon-button {
+      background-color: transparent !important;
+      color: #000 !important;
+    }
+    .title{
+      padding: 10px 40px 0px 40px;
+    }
+    .small{
+      .mat-dialog-content{
+        max-width: 300px;
+        max-height: 250px;
+      }
+    }
+    .medium{
+      .mat-dialog-content{
+        max-width: 400px;
+        max-height: 250px;
+        @include media-breakpoint-up(md){
+          max-width: 550px;
+          max-height: 400px;
+        }
+      }
+    }
+    .large{
+      .mat-dialog-content{
+        max-width: 500px;
+        max-height: 250px;
+        @include media-breakpoint-up(md){
+          max-width: 700px;
+          max-height: 450px;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+<mat-divider></mat-divider>
+<div class="d-flex py-2">
+
+  <div class="flex-grow-1">
+    <div class="d-flex flex-column flex-md-row ">
+      <div class="d-flex align-items-center">
+        <div class="image me-3 my-2"></div>
+        <div class="d-md-none d-flex align-items-center">
+          <span class="mat-body-1 fw-bold">{{type.name}}</span>
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class=" d-none d-md-block">
+          <p class="mat-body-1 fw-bold">{{type.name}}</p>
+          <p class="mat-body-1 m-0">{{employee}} {{'subscriptionDetails.employees'|translate}}</p>
+          <p class="mat-body-1 m-0">{{monthPerEmployee}} {{'subscriptionDetails.monthPerEmployee'|translate}}</p>
+        </div>
+      </div>
+      <div class="d-md-none mb-2">
+        <p class="mat-body-1 m-0">{{employee}} {{'subscriptionDetails.employees'|translate}}</p>
+        <p class="mat-body-1 m-0">{{monthPerEmployee}} {{'subscriptionDetails.monthPerEmployee'|translate}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex align-items-center">
+    <div>
+      <div class="d-flex align-items-end flex-column">
+        <button mat-button (click)="action.emit()">{{'subscriptionDetails.add'|translate}}</button>
+      </div>
+      <div>
+        <p class="cost">{{'subscriptionDetails.€'|translate}} {{cost | number: '1.2-2' }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

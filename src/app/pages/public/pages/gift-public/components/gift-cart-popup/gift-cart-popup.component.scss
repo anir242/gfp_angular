@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-cart-popup-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .mat-menu-panel{
+    max-width: 400px;
+  }
+
+  #giftCartPopup{
+
+    @include chip-label-theme($theme);
+    // background-color: mat.get-color-from-palette($primary, 'main-contrast');
+    .close{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      mat-icon{
+        color: black;
+      }
+    }
+    img{
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+    }
+    .singleCard{
+      span, p{
+        color: mat.get-color-from-palette($primary);
+      }
+    }
+  }
+}

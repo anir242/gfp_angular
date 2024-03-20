@@ -1,0 +1,19 @@
+<div class="info-wrapper">
+  <div class="bubble {{positionX}} {{positionY}} p-3" id="info-bubble-{{selector}}" (window:resize)="onResize($event)">
+    <div class="bubble-text">
+      <h3 class="chivo lg m-0">{{title}}</h3>
+      <mat-divider class="mt-3 mb-3"></mat-divider>
+      <p class="lato xs mb-3">{{body}}</p>
+    </div>
+    <div class="bubble-action d-md-flex">
+      <button (click)="goToLink()" mat-stroked-button color="yellow" class="noFill me-3" *ngIf="link">
+        {{'aboutPublic.learn' | translate}}
+      </button>
+      <button (click)="display()" mat-raised-button color="yellow">
+        {{'gotIt' | translate}}
+      </button>
+    </div>
+  </div>
+  <svg-icon [ngClass]="invert=='y' ? 'invert' : ''" class="info" src="{{icon}}" (click)="display()"
+            [svgClass]="'align-center'" [svgStyle]="{'height.px':'20', 'width.px':'20'}"></svg-icon>
+</div>

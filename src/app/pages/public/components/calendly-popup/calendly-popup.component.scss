@@ -1,0 +1,43 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin calendly-popup-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+  $invite-friend-progress: #EEF5E7;
+
+  .calendlyPopup {
+    position: relative;
+
+    .close {
+      .mat-icon {
+        color: mat.get-color-from-palette($foreground, 'text');
+      }
+
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .image {
+      background-color: $invite-friend-progress;
+
+      svg-icon {
+        stroke: mat.get-color-from-palette($accent);
+      }
+    }
+
+    .itemContent {
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      padding: 60px 40px;
+
+      .goCalendly {
+        padding-top:2px;
+      }
+    }
+  }
+}

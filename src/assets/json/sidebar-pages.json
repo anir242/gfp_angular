@@ -1,0 +1,38 @@
+[
+  {
+    "displayName": "home",
+    "route": "/admin",
+    "iconName": "home"
+  },
+  {
+    "displayName": "dashboard",
+    "route": "/admin/dashboard",
+    "iconName": "chart-pie"
+  },
+  {
+    "displayName": "energy",
+    "route": "/admin/dashboard",
+    "iconName": "plug-circle-bolt",
+    "new": true
+  },
+  {
+    "displayName": "projects",
+    "route": "/admin/projects",
+    "iconName": "compass"
+  },
+  {
+    "displayName": "gifting",
+    "route": "/gift",
+    "iconName": "gift"
+  },
+  {
+    "displayName": "settings",
+    "route": "/admin/users/accountBilling",
+    "iconName": "cog"
+  },
+  {
+    "displayName": "logout",
+    "route": "/admin/users/subscriptions/api",
+    "iconName": "door-open"
+  }
+]

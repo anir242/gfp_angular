@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row gy-3">
+    <div class="col-6">
+      <div>
+        <span class="mat-body-2">{{'gift.name'|translate}}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{name}}</span>
+      </div>
+    </div>
+    <div class="col-6">
+      <div>
+        <span class="mat-body-2">{{'gift.surname'|translate}}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{surname}}</span>
+      </div>
+    </div>
+    <div class="col-6" *ngIf="email">
+      <div>
+        <span class="mat-body-2">{{'gift.emailAddress'|translate}}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{email}}</span>
+      </div>
+    </div>
+    <div class="col-6" *ngIf="phone">
+      <div>
+        <span class="mat-body-2">{{'gift.phoneNumber'|translate}}</span>
+      </div>
+      <div>
+        <span class="mat-body-1">{{phone}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<ng-container *ngIf="projectsPartnersInterface">
+  <div class="supportingPadding">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-12 text-center" *ngIf="title">
+          <p class="mb-4 mat-display-1">{{title}}</p>
+        </div>
+        <div class="col-12">
+          <carousel [arrows]="arrows" arrowsOutside="true" [height]="carouselHeight" [cellWidth]="cardWidth" class="d-flex align-items-center">
+            <div class="carousel-cell" *ngFor="let item of projectsPartnersInterface">
+              <img src="{{item.image.url}}" alt="{{item.name}}" class="p-2"/>
+            </div>
+          </carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

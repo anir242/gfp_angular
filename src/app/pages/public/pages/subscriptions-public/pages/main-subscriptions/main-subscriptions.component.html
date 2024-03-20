@@ -1,0 +1,101 @@
+<div class="mainSubscriptions content pt-5">
+  <div class="container-fluid pt-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="container pb-5">
+          <div class="row">
+            <div class="col-12">
+              <div class="containerButtons mb-5">
+                <mat-button-toggle-group [formControl]="typeSelected" appearance="legacy" class="yellow">
+                  <mat-button-toggle
+                    [value]="userType.individual">{{'landingPublicPlans.forIndividuals' | translate}}</mat-button-toggle>
+                  <mat-button-toggle
+                    [value]="userType.business">{{'landingPublicPlans.forBusiness' | translate}}</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+            <div class="col-12 ">
+              <div class="texts text-center">
+                <ng-container *ngIf="typeSelected.value == userType.individual">
+                  <p class="chivo xl bold text-white mb-2">{{'mainSubscriptions.individual' | translate}}</p>
+                  <p class="lato sm description mb-4 text-white">{{'mainSubscriptions.individualDescription' | translate}}</p>
+                </ng-container>
+                <ng-container *ngIf="typeSelected.value == userType.business">
+                  <p class="chivo xl bold text-white mb-2">{{'mainSubscriptions.business' | translate}}</p>
+                  <p class="lato sm description mb-4 text-white">{{'mainSubscriptions.businessDescription' | translate}}</p>
+                </ng-container>
+              </div>
+            </div>
+            <ng-container *ngFor="let group of subscriptionGroups">
+              <ng-container *ngIf="typeSelected.value == userType.individual; else business">
+                <ng-container *ngFor="let sub of group.subscriptionsTypes">
+                  <div class="col-12 col-md-4">
+                    <div class="py-2">
+                      <app-subscription
+                        [subType]="sub"
+                      ></app-subscription>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-template #business>
+                <div class="col-12 col-md-6">
+                  <app-subscription-group
+                    [group]="group"
+                  ></app-subscription-group>
+                </div>
+              </ng-template>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 explainSubscriptions p-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-center fakeCard">
+                <p class="mat-headline m-0" *ngIf="typeSelected.value == userType.individual">{{'mainSubscriptions.ourIndividualSubscriptions' | translate}}</p>
+                <p class="mat-headline m-0" *ngIf="typeSelected.value == userType.business">{{'mainSubscriptions.ourBusinessSubscriptions' | translate}}</p>
+                <div class="container g-0">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="py-2">
+                        <app-card-icon-small
+                          [description]="typeSelected.value == userType.individual ? translate.instant('mainSubscriptions.personalizedDashboard'): translate.instant('mainSubscriptions.personalizedDashboardBusiness')"
+                          url="assets/images/svg/window_browser.svg"
+                        ></app-card-icon-small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="py-2">
+                        <app-card-icon-small
+                          [description]="typeSelected.value == userType.individual ? translate.instant('mainSubscriptions.infographicAnalitycal'): translate.instant('mainSubscriptions.infographicAnalitycalBusiness')"
+                          url="assets/images/svg/monitor.svg"
+                        ></app-card-icon-small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="py-2">
+                        <app-card-icon-small
+                          [description]="typeSelected.value == userType.individual ? translate.instant('mainSubscriptions.gfpIntegration'): translate.instant('mainSubscriptions.gfpIntegrationBusiness')"
+                          url="assets/images/svg/integration.svg"
+                        ></app-card-icon-small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 p-0" [style]="retrieveStyleBackgroundPublic(urlReadyJoin)">
+        <app-make-gift
+          [buttonAction]="goToGift"
+          [title]="translate.instant('landingPublicGift.gift')"
+          [subtitle]="translate.instant('landingPublicGift.surprise')"
+          [button]="translate.instant('landingPublicGift.take')"></app-make-gift>
+      </div>
+    </div>
+  </div>
+</div>

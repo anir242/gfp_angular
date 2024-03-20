@@ -1,0 +1,8 @@
+<router-outlet></router-outlet>
+<ngx-ui-loader [fgsTemplate]="foregroundSpinner"></ngx-ui-loader>
+
+<ng-template #foregroundSpinner>
+  <div class="d-flex justify-content-center align-items-center">
+    <img src="assets/images/loader.gif" width="256" />
+  </div>
+</ng-template>

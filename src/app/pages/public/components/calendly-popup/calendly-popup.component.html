@@ -1,0 +1,73 @@
+<div id="homepagePopup" class="calendlyPopup">
+  <div class="container p-0">
+    <div class="row g-0 justify-content-center">
+      <div
+        class="col-md-3 col-12 popupImage text-center d-flex align-items-center justify-content-center"
+      >
+        <div class="m-3 m-md-auto">
+          <svg-icon src="assets/images/svg/globe.svg"></svg-icon>
+        </div>
+      </div>
+      <div class="col-md-9 col-12">
+        <button
+          class="close"
+          style="border: none; background: none; padding: 14px"
+          [mat-dialog-close]="true"
+        >
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
+        <div class="itemContent">
+          <p class="mat-headline fw-bold mb-1">
+            {{
+              data.type === "demo"
+                ? ("calendlyPopup.bookADemoTitle" | translate)
+                : null
+            }}
+            {{
+              data.type === "checkout"
+                ? ("calendlyPopup.checkoutTitle" | translate)
+                : null
+            }}
+          </p>
+          <p class="mat-body-2">
+            {{
+              data.type === "demo"
+                ? ("calendlyPopup.bookADemoSubtitle" | translate)
+                : null
+            }}
+            {{
+              data.type === "checkout"
+                ? ("calendlyPopup.checkoutSubtitle" | translate)
+                : null
+            }}
+          </p>
+          <p class="mat-body-1">
+            {{
+              data.type === "demo"
+                ? ("calendlyPopup.bookADemoDescription" | translate)
+                : null
+            }}
+            {{
+              data.type === "checkout"
+                ? ("calendlyPopup.checkoutDescription" | translate)
+                : null
+            }}
+          </p>
+
+          <div>
+            <a
+              (click)="lodgeBookDemoEvent()"
+              mat-raised-button
+              color="yellow"
+              class="mt-4 btn-2"
+              style="padding-top: 2px"
+              href="{{ data.buttonUrl }}"
+              target="_blank"
+              >{{ "calendlyPopup.buttonText" | translate }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

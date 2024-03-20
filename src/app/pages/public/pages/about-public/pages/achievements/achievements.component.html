@@ -1,0 +1,24 @@
+<div class="content" id="achievements">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlAchievements)">
+        <app-about-title-public
+          [title]="translate.instant('aboutPublicAchievements.title')"
+          [buttonText]="buttonText"
+          [name]="translate.instant('aboutPublicAchievements.name')"
+          (button)="joinGfp()"></app-about-title-public>
+      </div>
+      <div class="col-12" id="doneSoFar">
+        <app-done-so-far></app-done-so-far>
+      </div>
+      <div class="col-12 verified">
+        <app-title-images
+          [images]="images"
+          [title]="translate.instant('aboutPublicAchievements.verified')"></app-title-images>
+      </div>
+      <div class="col-12" [style]="retrieveStyleBackgroundPublic(urlFuture)">
+        <app-shape-future></app-shape-future>
+      </div>
+    </div>
+  </div>
+</div>

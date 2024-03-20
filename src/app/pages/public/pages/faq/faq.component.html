@@ -1,0 +1,65 @@
+<div class="content softImage" id="faq">
+  <div class=" d-flex align-items-center flex-column h-100">
+    <div class="container-fluid p-0">
+      <div class="row g-0" style="height: 550px;">
+        <div class="col-12">
+          <div class="banner" style="background-image:url(../../../../../assets/images/bg_faq.png)">
+            <div class="container p-0">
+              <div class="row px-3 g-0">
+                <div class="col-12 col-md-7">
+                  <div class="title text-start text-white mt-5">
+                    <div class="mb-5">
+                        <span class="headline text-nowrap d-lg-block d-none">{{'faq.title' | translate}}</span>
+                        <span class="title-1 bold text-nowrap d-lg-none">{{'faq.title' | translate}}</span>
+                        <p class="large-body mt-2">{{'faq.description' | translate}}</p>
+                    </div>
+                    <!-- <div *ngIf="showButton">
+                        <button mat-raised-button color="yellow" (click)="proceed()" [style]="btnStyle">
+                            {{buttonText}}
+                        </button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid px-0 d-flex flex-column justify-content-center align-items-center marginReverse">
+      <div class="container w-100 d-flex justify-content-end">
+        <div class="col-lg-6 col-12">
+          <div class="search flex-fill d-flex align-items-center">
+            <mat-form-field appearance="outline" class="pe-3">
+              <mat-icon matPrefix>search</mat-icon>
+              <input [(ngModel)]="defaultInput" [formControl]="searchInput" matInput type="search" [placeholder]="translate.instant('faq.typeSomething'|translate)" class="search-input">
+            </mat-form-field>
+            <button mat-raised-button color="green" class="w-25 d-flex align-items-center justify-content-center"><span class="text-white">Search</span></button>
+          </div>
+        </div>
+      </div>
+      <app-faq-public
+            [showHeader]="false"
+            [newFaqData]="faqData"
+          >
+      </app-faq-public>
+    </div>
+
+    <!--It doesn't show anything on screen-->
+    <!-- <div class="col-12">
+      <ng-container *ngFor="let faq of faqInterface, let i = index">
+        <div [ngClass]="['order-'+faq.order, i%2 !== 0 ? 'light' : '']" class="faqItem">
+          <div class="container">
+            <p class="headline mb-3">{{faq.title}}</p>
+            <app-faq-item [mockFaq]="faq.order == 1 ? mockFaq : null" [theme]="i%2 !== 0 ? 'light' : ''" [faqs]="faq.faqs">
+            </app-faq-item>
+          </div>
+        </div>
+      </ng-container>
+    </div> -->
+
+    <div class="col-12" id="contact-form">
+      <app-contact-form pageName="FAQ Page"></app-contact-form>
+    </div>
+  </div>
+</div>

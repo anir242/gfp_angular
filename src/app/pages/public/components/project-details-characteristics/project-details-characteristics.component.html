@@ -1,0 +1,47 @@
+<div id="projectCharacteristics">
+  <div class="container p-0">
+    <div class="row g-2 justify-content-center">
+      <div class="col-12">
+        <div class="mt-4 mb-3 text-center">
+          <span class="mat-display-1 ">
+            {{mainTitle}}
+          </span>
+        </div>
+      </div>
+      <ng-container *ngFor="let item of data">
+        <div class="col-11 col-md-4 d-none d-md-block" *ngIf="item.description">
+          <mat-card class="singleCard m-md-3 my-2">
+            <mat-card-content class="text-center p-3">
+              <div class="mt-4 mb-3">
+                <span class="title mat-headline fw-bold">{{item.title}}</span>
+              </div>
+              <div>
+                <span class="mat-body-1 description">{{item.description}}</span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-container>
+      <div class="col-12 d-md-none">
+        <mat-accordion>
+          <ng-container *ngFor="let item of data">
+            <mat-expansion-panel class="mb-2" *ngIf="item.description">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <span class="m-0 title mat-subheading-2 fw-bold">{{item.title}}</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <span class="mat-body-1 description">{{item.description}}</span>
+            </mat-expansion-panel>
+          </ng-container>
+        </mat-accordion>
+      </div>
+      <div class="col-12 text-center">
+        <div class="mt-4 d-none d-md-block">
+          <span class="mat-subheading-1 green">{{textBeforeButton}}</span>
+          <button mat-button (click)="goToTypology()">{{buttonText}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

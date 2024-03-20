@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-cart-summary($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #giftCartSummary {
+    img{
+      object-fit: cover;
+      width: 100%;
+      // min-width: 125px;
+      min-height: 140px;
+      border-radius: 4px;
+    }
+    .editIcon{
+      color: mat.get-color-from-palette($accent);
+    }
+    .deleteIcon{
+      color: #8A8A8A;
+    }
+  }
+
+}

@@ -1,0 +1,26 @@
+<!--<div>
+  <span class="mat-title">{{'singleDonations.billing'| translate}}</span>
+</div>-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <app-mat-input label="subscription.streetHouseNumber" [control]="streetHouse"
+        labelError="authentication.requiredField" [required]="true"></app-mat-input>
+    </div>
+    <div class="col-6">
+      <app-mat-input label="subscription.city" [control]="city" labelError="authentication.requiredField"
+        [required]="true"></app-mat-input>
+    </div>
+    <div class="col-6">
+      <app-mat-input label="subscription.zipCode" [control]="zip" labelError="authentication.requiredField">
+      </app-mat-input>
+    </div>
+    <div class="col-6">
+      <mat-form-field appearance="outline">
+        <mat-select [placeholder]="'subscription.country' | translate" (selectionChange)="countrySelected($event?.value)">
+          <mat-option *ngFor="let country of countries" [value]="country">{{country.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

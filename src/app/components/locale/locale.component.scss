@@ -1,0 +1,92 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin locale-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #localeModal{
+    max-width: 400px;
+
+    .mat-form-field {
+      &.mat-form-field-appearance-outline .mat-form-field-infix {
+        border-top: none;
+      }
+
+      .mat-form-field-outline-start {
+        border: 0.5px solid #8A8A8A;
+        border-right: 0;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+        height: 40px;
+      }
+
+      .mat-form-field-outline-end {
+        border: 0.5px solid #8A8A8A;
+        border-left: 0;
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+        height: 40px;
+      }
+
+      .textarea .mat-form-field-outline-end,
+      .textarea .mat-form-field-outline-start {
+        height: 80px;
+      }
+
+      textarea {
+        height: calc(80px - 2em);
+      }
+
+      fa-icon {
+        color: #2b2b2b;
+        font-size: 1.1rem;
+      }
+
+      .imagePrefix {
+        width: 20px;
+        height: 15px;
+      }
+    }
+
+    .closeButton{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .title{
+      padding: 10px 40px 0px 40px;
+    }
+    .small{
+      .mat-dialog-content{
+        max-width: 300px;
+        max-height: 250px;
+      }
+    }
+    .medium{
+      .mat-dialog-content{
+        max-width: 400px;
+        max-height: 250px;
+        @include media-breakpoint-up(md){
+          max-width: 550px;
+          max-height: 400px;
+        }
+      }
+    }
+    .large{
+      .mat-dialog-content{
+        max-width: 500px;
+        max-height: 250px;
+        @include media-breakpoint-up(md){
+          max-width: 700px;
+          max-height: 450px;
+        }
+      }
+    }
+  }
+}
+

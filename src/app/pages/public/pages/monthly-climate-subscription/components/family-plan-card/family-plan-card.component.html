@@ -1,0 +1,53 @@
+<mat-card>
+  <div class="position-relative" style="height: inherit">
+    <div class="layer headingContainer">
+        <img src="/assets/images/icons/people_roof_thin.png">
+        <p class="text-white title-1 ps-4 bold">{{ 'monthlyClimateSubscription.familyPlan' | translate }}</p>
+    </div>
+    <div class="px-5 pt-5">
+        <p class="body">{{ 'monthlyClimateSubscription.familyPlanDesc' | translate }}</p>
+    </div>
+    <div class="p-4 mb-5">
+        <mat-card>
+            <div class="d-flex flex-lg-row flex-column align-items-center px-4 justify-content-evenly py-4">
+                <div class="d-flex flex-column align-items-center">
+                    <img src="/assets/images/plan_adult.png" class="imgPlan">
+                    <div class="my-4">
+                        <p class="body bold text-center">{{ 'monthlyClimateSubscription.planAdult' | translate }}</p>
+                        <p class="body bold text-center">{{ 'monthlyClimateSubscription.adultAges' | translate: { value: '+18'} }}</p>
+                    </div>
+                    <p class="title-3 text-center bold" style="color: #00734F;">{{ 'monthlyClimateSubscription.each' | translate: { value: '€14,00'} }}</p>
+                </div>
+                <img src="assets/images/icons/plus_icon.png" />
+                <div class="d-flex flex-column align-items-center">
+                    <img src="/assets/images/plan_children.png" class="imgPlan">
+                    <div class="my-4">
+                        <p class="body bold text-center">{{ 'monthlyClimateSubscription.planChildren' | translate }}</p>
+                        <p class="body bold text-center">{{ 'monthlyClimateSubscription.adultAges' | translate: { value: '0-17'} }}</p>
+                    </div>
+                    <p class="title-3 text-center bold" style="color: #00734F;">{{ 'monthlyClimateSubscription.each' | translate: { value: '€5,00'} }}</p>
+                </div>
+                <img src="assets/images/icons/plus_icon.png" />
+                <div class="d-flex flex-column align-items-center">
+                    <img src="/assets/images/plan_pets.png" class="imgPlan">
+                    <div class="my-4">
+                        <p class="body bold text-center">{{ 'monthlyClimateSubscription.planPets' | translate }}</p>
+                        <p class="body bold text-center">{{ 'monthlyClimateSubscription.adultAges' | translate: { value: 'Any Kind'} }}</p>
+                    </div>
+                    <p class="title-3 text-center bold" style="color: #00734F;">{{ 'monthlyClimateSubscription.all' | translate: { value: '€0,70'} }}</p>
+                </div>
+            </div>
+            <div class="footerContainer d-flex align-items-center">
+                <img class="me-3" src="assets/images/icons/equal_regular.png" />
+                <span class="text-white body">{{'monthlyClimateSubscription.personalisedPlan' | translate}}</span>
+            </div>
+        </mat-card>
+        <div class="my-4">
+            <p class="small-body">{{ 'monthlyClimateSubscription.planImpact' | translate }}</p>
+        </div>
+    </div>
+    <div class="position-absolute bottom-0 col-12 px-4 py-4 mt-5">
+        <button mat-raised-button color="lime" class="w-100" [routerLink]="'/subscriptions/individual/checkout'">{{ 'monthlyClimateSubscription.getStarted' | translate }}</button>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,37 @@
+[
+  {
+    "displayName": "home",
+    "route": "/admin",
+    "iconName": "home"
+  },
+  {
+    "displayName": "accountBilling",
+    "route": "/admin/users/accountBilling",
+    "iconName": "user"
+  },
+  {
+    "displayName": "subscriptions",
+    "route": "/admin/users/subscriptions",
+    "iconName": "tree"
+  },
+  {
+    "displayName": "singlePayments",
+    "route": "/admin/users/singlePayments",
+    "iconName": "credit-card"
+  },
+  {
+    "displayName": "giftCards",
+    "route": "/admin/users/giftCards",
+    "iconName": "gift"
+  },
+  {
+    "displayName": "invoices",
+    "route": "/admin/users/invoices",
+    "iconName": "receipt"
+  },
+  {
+    "displayName": "privacyPolicy",
+    "route": "/admin/users/privacyPolicy",
+    "iconName": "lock"
+  }
+]

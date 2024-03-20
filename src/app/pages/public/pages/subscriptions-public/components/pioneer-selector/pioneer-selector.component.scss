@@ -1,0 +1,68 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin pioneer-selector-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+  .pioneerSelector {
+    padding: 1em;
+    border: 1px solid mat.get-color-from-palette($background, 'dialog');
+    border-radius: $border-radius;
+
+
+    .customRadio {
+      margin-right: 8px;
+
+      .customBorder {
+        border: 1px solid $captionColor;
+        width: 22px;
+        height: 22px;
+        border-radius: 11px;
+
+      }
+    }
+
+    &.active {
+      border: 1px solid $card-yellow;
+      background-color: rgba($card-yellow, .1);
+
+      .customRadio {
+        .customBorder {
+          border: 1px solid $bar-yellow;
+
+          .customCircle {
+            margin: 2px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: $bar-yellow;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .title {
+      color: mat.get-color-from-palette($foreground)
+    }
+
+    .subtitle {
+      color: $captionColor
+    }
+
+    .imageSrc {
+      width: 50px;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+<div class="container-fluid p-0" id="businessSolutions" [ngClass]="business ? 'business' : 'individual'">
+  <div class="row g-0">
+    <div class="col-12">
+      <div class="container">
+        <div class="business-solutions-wrapper">
+          <div class="d-flex flex-wrap flex-column flex-lg-row options justify-content-center align-items-center">
+            <div class="mx-1 mx-lg-2" *ngFor="let item of options; let i = index" (click)="selectOption(item)" [class.selected]="selectedOption === BusinessSolutionsOption[item]">
+              <p class="bold title-4 mt-1 mb-1">{{item | translate }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 mb-4">
+              <div class="left py-5 px-4 px-lg-5">
+                <div class="icon my-3">
+                  <img class="w-100 h-100" [src]="'/assets/images/icons/'+ selectedData.icon + '.svg'">
+                </div>
+                <div class="title-1 bold mb-5">{{selectedData.heading1 | translate}}</div>
+                <div class="large-body mb-4">
+                  {{selectedData.heading2 | translate }}
+                  <div *ngIf="selectedData.subheading2" class="mt-3">
+                    {{selectedData.subheading2 | translate}}
+                    <br><br>
+                    <div *ngIf="selectedData.choose">{{selectedData.choose | translate }}:</div>
+                  </div>
+                </div>
+                <div class="body bold mb-4">
+                  {{selectedData.heading3 | translate }}
+                  <div *ngIf="selectedData.subheading3" class="mt-3">{{selectedData.subheading3 | translate}}</div>
+                </div>
+                <div class="d-flex">
+                  <a [href]="selectedData.router" *ngIf="selectedData.whiteBtnNaming" mat-stroked-button color="green" class="my-2 me-3 d-flex align-items-center justify-content-center">
+                    {{selectedData.whiteBtnNaming|translate}}
+                  </a>
+                  <ng-container *ngIf="fragment; else noFragment">
+                    <ng-container *ngIf="business; else title">
+                      <a [href]="selectedData.checkout" mat-raised-button color="yellow" class="my-2 d-flex align-items-center justify-content-center" [routerLink]="[selectedData.checkout]" [fragment]="fragment">
+                        <div *ngIf="selectedData.icon === 'invest_green'" class="thunder_icon me-2 d-inline-block"></div>
+                        {{selectedData.yellowBtnNaming|translate}}
+                      </a>
+                    </ng-container>
+                    <ng-template #title>
+                      <a [href]="selectedData.checkout" mat-raised-button color="lime" class="my-2 d-flex align-items-center justify-content-center" [routerLink]="[selectedData.checkout]" [fragment]="fragment">
+                        <div *ngIf="selectedData.icon === 'invest_green'" class="thunder_icon me-2 d-inline-block"></div>
+                        {{selectedData.yellowBtnNaming|translate}}
+                      </a>
+                    </ng-template>
+                  </ng-container>
+                  <ng-template #noFragment>
+                    <ng-container *ngIf="business; else title">
+                      <a [href]="selectedData.checkout" mat-raised-button color="yellow" class="my-2 d-flex align-items-center justify-content-center" [routerLink]="[selectedData.checkout]">
+                        <div *ngIf="selectedData.icon === 'invest_green'" class="thunder_icon me-2 d-inline-block"></div>
+                        {{selectedData.yellowBtnNaming|translate}}
+                      </a>
+                    </ng-container>
+                    <ng-template #title>
+                      <a [href]="selectedData.checkout" mat-raised-button color="lime" class="my-2 d-flex align-items-center justify-content-center" [routerLink]="[selectedData.checkout]">
+                        <div *ngIf="selectedData.icon === 'invest_green'" class="thunder_icon me-2 d-inline-block"></div>
+                        {{selectedData.yellowBtnNaming|translate}}
+                      </a>
+                    </ng-template>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+              <div class="right w-100 h-100">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                  <img [src]="'/assets/images/explore_'+ selectedData.exampleImage + '.svg'" class="productImage">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

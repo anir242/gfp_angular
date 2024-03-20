@@ -1,0 +1,145 @@
+<div class="summaryItem">
+  <div *ngIf="integrationType !== 'nativa'">
+    <div *ngFor="let item of items | keyvalue,  let i = index" class="my-2">
+      <mat-accordion *ngIf="!offset">
+        <mat-expansion-panel [ngStyle]="setColor(getColor(item, summaryType))">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="me-0">
+              <div class="d-flex justify-content-between align-items-baseline px-2">
+                <div>
+                  <span class="mat-body-1">{{'orderSummary.' + item.key |translate}}</span>
+                </div>
+                <div>
+                  <ng-container *ngIf="item.key === projectTypesName.preservation, else noAcre">
+                    <span class="mat-body-1">{{getPreservationValue(getTotalQuantity(item.value, summaryType))}}</span>
+                  </ng-container>
+                  <ng-template #noAcre>
+                    <span
+                      class="mat-body-1">{{'orderSummary.' + item.key + 'Unit'|translate: {value: getTotalQuantity(item.value, summaryType)} }}</span>
+                  </ng-template>
+                </div>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let x of item.value">
+            <div class="d-flex justify-content-between align-items-baseline px-2">
+              <span class="mat-caption">{{getProjectName(x) | titlecase}}</span>
+              <div>
+                <ng-container *ngIf="item.key === projectTypesName.preservation, else noAcre">
+                  <span class="mat-caption">{{getPreservationValue(getQuantity(x, summaryType))}}</span>
+                </ng-container>
+                <ng-template #noAcre>
+                  <span
+                    class="mat-caption">{{'orderSummary.' + item.key + 'Unit' |translate: {value: getQuantity(x, summaryType)} }}</span>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div id="co2">
+      <div class="d-flex justify-content-between align-items-baseline px-2">
+        <span class="mat-body-1">{{'orderSummary.CO2' |translate}}</span>
+        <span class="mat-body-1" *ngIf="totalCO2 >= 1">{{'orderSummary.tons' | translate: {value: totalCO2.toFixed(2)} }}</span>
+        <span class="mat-body-1" *ngIf="totalCO2 < 1">{{'orderSummary.kg' | translate: {value: (totalCO2 * 1000).toFixed()} }}</span>
+      </div>
+    </div>
+    <div class="my-2">
+      <app-price-breakdown [summaryType]="summaryType" *ngIf="showPriceBreakdown"></app-price-breakdown>
+    </div>
+  </div>
+
+  <div *ngIf="integrationType === 'nativa'">
+    <div *ngIf="!freeAvailable">
+      <div id="co2">
+        <div class="d-flex gap-4 justify-content-between align-items-baseline px-1">
+          <span class="mat-body-1 fw-semibold">{{'nativa.orderSummary.sectionOne.heading' |translate}}</span>
+          <span class="mat-body-1">{{'orderSummary.tons' | translate: {value: totalCO2} }}</span>
+        </div>
+      </div>
+
+      <div class="mt-2 normal-summary-item">
+        <div class="d-flex gap-4 justify-content-between align-items-baseline px-1">
+          <span class="mat-body-1 fw-semibold">{{'nativa.orderSummary.sectionTwo.heading' |translate}}</span>
+          <span class="mat-body-1">{{'orderSummary.credits' | translate: {value: totalCO2} }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="freeAvailable">
+      <mat-accordian>
+        <mat-expansion-panel class="dark-border">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="d-flex justify-content-between gap-3">
+                <div class="mat-body-1 fw-semibold">
+                  {{'nativa.orderSummary.sectionOne.heading' |translate}}
+                </div>
+                <div class="mat-body-1">
+                  {{'orderSummary.tons' | translate: { value: totalCO2 + freeQuantity } }}
+                </div>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <hr class="mt-0 h-0" style="border-top: 2px solid #8a8a8a">
+            <div class="d-flex gap-4 justify-content-between align-items-baseline px-1">
+              <span class="mat-body-1 fw-semibold">{{'nativa.orderSummary.sectionOne.totalBought' |translate}}</span>
+              <span class="mat-body-1">{{ totalCO2 }}</span>
+            </div>
+          </div>
+          <div>
+            <div class="d-flex gap-4 justify-content-between align-items-baseline px-1">
+              <span class="mat-body-1 fw-semibold">{{'nativa.orderSummary.sectionOne.totalIncluded' |translate}}</span>
+              <span class="mat-body-1">{{ freeQuantity }}</span>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordian>
+
+      <div class="mt-2">
+        <mat-accordian >
+          <mat-expansion-panel class="light-border">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="d-flex justify-content-between gap-3">
+                  <div class="mat-body-1 fw-semibold">
+                    {{'nativa.orderSummary.sectionTwo.heading' |translate}}
+                  </div>
+                  <div class="mat-body-1">
+                    {{'orderSummary.credits' | translate: {value: totalCO2 + freeQuantity} }}
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="">
+              <hr class="mt-0 h-0" style="border-top: 2px solid #8a8a8a">
+              <div class="d-flex gap-4 justify-content-between align-items-baseline px-1">
+                <span class="mat-body-1 fw-semibold">{{'nativa.orderSummary.sectionTwo.totalBought' |translate}}</span>
+                <span class="mat-body-1">{{ totalCO2 }}</span>
+              </div>
+            </div>
+            <div class="">
+              <div class="d-flex gap-4 justify-content-between align-items-baseline px-1">
+                <span class="mat-body-1 fw-semibold">{{'nativa.orderSummary.sectionTwo.totalIncluded' |translate}}</span>
+                <span class="mat-body-1">{{ freeQuantity }}</span>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordian>
+      </div>
+    </div>
+    
+    <div class="my-2  normal-summary-item">
+      <div class="d-flex gap-4 justify-content-between align-items-baseline px-1">
+        <span class="mat-body-1 fw-semibold">{{'nativa.project' |translate}}</span>
+        <span class="mat-body-1">{{ 'nativa.projectName' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="my-2 light-border">
+      <app-price-breakdown [summaryType]="summaryType" [integrationType]= "integrationType" [countryPolicy]="countryPolicy"></app-price-breakdown>
+    </div>
+  </div>
+</div>

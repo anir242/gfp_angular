@@ -1,0 +1,23 @@
+<mat-card class="text-center ecommerce-type-box p-4 d-flex align-items-center justify-content-center" [class.selected]="isSelected">
+  <mat-card-content>
+    <img [src]="imageSrc"/>
+    <button mat-button class="text-lowercase d-none" *ngIf="!enable  && !isSelected" [disabled]="!enableButton"
+            (click)="connect()">{{'mainSubscriptions.checkout.business.connect'|translate}}</button>
+
+    <button mat-button class="text-lowercase d-none" *ngIf="!enable && isSelected"
+            disabled>{{'mainSubscriptions.checkout.business.connected'|translate}}</button>
+
+  </mat-card-content>
+  <mat-card-footer *ngIf="enable">
+    <app-mat-input
+      required="true"
+      [control]="shopName"
+      labelError="authentication.requiredField"
+      label="mainSubscriptions.checkout.business.shopName">
+
+    </app-mat-input>
+    <button mat-button class="text-lowercase d-none"
+            (click)="connect()">{{'mainSubscriptions.checkout.business.next'|translate}}</button>
+
+  </mat-card-footer>
+</mat-card>

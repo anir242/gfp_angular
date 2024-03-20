@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin partners-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #partners {
+    img {
+      // max-height: 80px;
+      max-width: 200px;
+    }
+    &.light{
+      @include media-breakpoint-up(md){
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+      .itemContainer{
+        width: 130px;
+        height: 130px;
+        text-align: center;
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+    }
+    .carousel-dot {
+      height: 10px;
+      width: 10px;
+      border: 0;
+      background-color: mat.get-color-from-palette($background, 'dialog');
+      &.carousel-dot-active {
+        background-color: mat.get-color-from-palette($accent);
+      }
+    }
+  }
+
+}

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Global",
+        "code": "all"
+    },
+    {
+        "name": "Europe",
+        "code": "eu"
+    },
+    {
+        "name": "Middle East & North Africa",
+        "code": "mena"
+    },
+    {
+        "name": "North America",
+        "code": "na"
+    },
+    {
+        "name": "South America",
+        "code": "sa"
+    },
+    {
+        "name": "Asia Pacific",
+        "code": "asia"
+    }
+]

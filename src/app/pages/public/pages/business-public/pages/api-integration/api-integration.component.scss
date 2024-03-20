@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin api-integration-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+  #apiIntegration {
+
+    margin: 0;
+    padding: 0;
+    height: auto;
+    position: relative;
+
+    .apiProgress {
+      padding-bottom: 70px;
+      padding-top: 70px;
+      background: mat.get-color-from-palette($primary, 'main-contrast');
+    }
+
+    .apiStep {
+      padding: 50px 20px;
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+      @include media-breakpoint-up(md) {
+        padding: 100px 100px
+      }
+      &.green{
+        background-image: url("../../../../../../../assets/images/bg_green_api.png");
+        background-size: cover;
+      }
+      &.blue{
+        background-image: url("../../../../../../../assets/images/bg_blue_api.png");
+        background-size: cover;
+      }
+    }
+
+    #cms {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      @include media-breakpoint-up(md){
+        padding-bottom: 70px;
+        padding-top: 70px;
+      }
+      background-color: mat.get-color-from-palette($background, 'app-bar');
+
+      .accentText {
+        color: mat.get-color-from-palette($accent);
+      }
+    }
+  }
+}

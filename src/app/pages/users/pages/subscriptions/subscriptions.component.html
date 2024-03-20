@@ -1,0 +1,197 @@
+<div class="subscriptionType content">
+  <div class="paddingUser">
+    <div class="container">
+      <div>
+        <p class="mat-headline mb-4 mt-4 text-white">
+          {{ "userSubscription.subscriptions" | translate }}
+        </p>
+        <mat-divider></mat-divider>
+      </div>
+      <ng-container *ngIf="subscriptionsInterfaces.length > 0; else noSub">
+        <div *ngFor="let item of subscriptionsInterfaces" class="py-4">
+          <div class="d-flex flex-row justify-content-between card1">
+            <div>
+              <h1>
+                {{ "subscriptionDetails.curentSubscribtion" | translate }}
+              </h1>
+              <div class="d-flex flex-row">
+                <div>
+                  <ng-container
+                    *ngIf="
+                      item.subscriptionType?.group.slug !==
+                        subscriptionTypes?.climatePioneer;
+                      else subImg
+                    "
+                  >
+                    <img
+                      class="image"
+                      [src]="item.subscriptionType.image.url"
+                      alt=""
+                    />
+                  </ng-container>
+                  <ng-template #subImg>
+                    <img
+                      class="image"
+                      [src]="item.subscriptionType?.group?.images?.url"
+                      [alt]="item.subscriptionType?.name"
+                    />
+                  </ng-template>
+                </div>
+                <div class="d-flex flex-column align-self-center ms-3">
+                  <div class="mat-subheading-1 mb-0">
+                    {{ "userSubscription.subscriptionPlan" | translate }}
+                  </div>
+                  <div class="">
+                    <ng-container
+                      *ngIf="
+                        item.subscriptionType?.group.slug !==
+                          subscriptionTypes?.climatePioneer;
+                        else sub
+                      "
+                    >
+                      <span class="mat-title">{{
+                        item.subscriptionType.name
+                      }}</span>
+                    </ng-container>
+                    <ng-template #sub>
+                      <span class="mat-title">
+                        {{ item.subscriptionType?.group.name }} -
+                        {{ item.subscriptionType?.name }}
+                      </span>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex flex-row gap-4">
+                <div class="my-4">
+                  <div class="me-auto mat-body-1">
+                    <span class="mat-subheading-1 m-0">{{
+                      "userSubscription.memberSince" | translate
+                    }}</span>
+                  </div>
+
+                  <div>
+                    <span class="mat-subheading-2 m-0">
+                      {{ item.createdAt | date : "dd/MM/yyyy" }}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="my-4">
+                  <div class="me-auto mat-body-1">
+                    <span class="mat-subheading-1 m-0">{{
+                      "userSubscription.monthlyCost" | translate
+                    }}</span>
+                  </div>
+
+                  <ng-container
+                    *ngIf="
+                      item.subscriptionType?.group.slug ===
+                        subscriptionTypes?.climateLeader ||
+                      item.subscriptionType?.group.slug ===
+                        subscriptionTypes?.individual
+                    "
+                  >
+                    <span class="mat-subheading-2 m-0">{{
+                      item.subscriptionType.costMonthly | number : "1.2-2"
+                    }}</span>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="item.subscriptionType?.slug === 'manual'"
+                  >
+                    <span class="mat-subheading-2 m-0">{{
+                      (item.itemsSold * item.percentageToDonate) / 100
+                        | number : "1.2-2"
+                    }}</span>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="item.subscriptionType?.slug === 'automatic'"
+                  >
+                    <span class="mat-subheading-2 m-0">{{
+                      item.plantPerItems | number : "1.2-2"
+                    }}</span>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column gap-3 justify-content-between pb-4">
+              <ng-container
+                *ngIf="
+                  item.subscriptionType?.group.slug !==
+                  subscriptionTypes?.individual
+                "
+              >
+              <div class="d-flex flex-column gap-3">
+                <button
+                *ngIf="item.subscriptionType.slug == 'manual'"
+                    mat-raised-button
+                    style="color: black"
+                    color="yellow"
+                    id="addSales"
+                    (click)="openDialog(item.id, item)"
+                  >
+                    {{ "subscriptionDetails.salesAdd" | translate }}
+                  </button>
+                </div>
+              </ng-container>
+              <div class="cancelBtn">
+                <button
+                  mat-stroked-button
+                  color="yellow"
+                  (click)="confirmCancelSubscription(item.id)"
+                >
+                  {{ "subscriptionDetails.cancelSubscription" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="canSeeCompanyData()">
+        <div class="d-flex flex-row justify-content-between card1">
+          <div class="d-flex flex-column align-items-start">
+            <h1>
+              {{ "userSubscription.widgetSection.premiumWidget" | translate }}
+            </h1>
+            <div class="d-flex flex-row justify-content-between toggle align-items-center">
+              <span class="mat-subheading-1 mr-3">{{
+                ( premiumWidgetEnabled ?
+                  "userSubscription.widgetSection.enabled" :
+                  "userSubscription.widgetSection.disabled"
+                ) | translate
+              }}</span>
+              <div class="toggle-container" [ngClass]="premiumWidgetEnabled ? 'active' : ''">
+                <mat-slide-toggle
+                [(ngModel)]="premiumWidgetEnabled"
+                (change)="onToggle()"
+                color="yellow"></mat-slide-toggle>
+              </div>
+            </div>
+            <div>
+              <span>{{ "userSubscription.widgetSection.explanation" | translate }}</span>
+            </div>
+          </div>
+
+          <div class="d-flex flex-column gap-3 justify-content-between pb-4">
+            <div class="d-flex flex-column gap-3">
+              <button
+                mat-raised-button
+                [disabled]="!premiumWidgetEnabled"
+                color="yellow"
+                (click)="openApiWidget()"
+              >
+                {{ "userSubscription.widgetSection.viewWidget" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noSub>
+        <span class="mat-body-2 d-inline-block my-4">{{
+          "userSubscription.noSubscriptions" | translate
+        }}</span>
+      </ng-template>
+    </div>
+  </div>
+</div>

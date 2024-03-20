@@ -1,0 +1,16 @@
+<div id="giftPick">
+  <div class="close">
+    <button mat-icon-button color="transparent" mat-dialog-close>
+      <mat-icon class="close-icon">close</mat-icon>
+    </button>
+  </div>
+  <div>
+    <span class="mat-title fw-bold">{{'gift.work'|translate}}</span>
+  </div>
+  <ng-container *ngFor="let item of items; let i = index">
+    <div class="my-3">
+      <p class="mb-2 mat-title fw-bold green">{{i+1}}</p>
+      <p class="mb-0 mat-body-1">{{item|translate}}</p>
+    </div>
+  </ng-container>
+</div>

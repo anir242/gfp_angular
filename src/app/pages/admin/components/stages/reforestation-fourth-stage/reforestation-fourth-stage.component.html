@@ -1,0 +1,38 @@
+<div class="position-relative">
+  <model-viewer src="assets/images/models3D/ref-stg4.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
+                environment-image="neutral" shadow-intensity="1">
+    <button class="Hotspot" slot="hotspot-1"
+            data-position="0.1485885320745568m 1.3511460680100282m -0.1521501917821824m"
+            data-normal="0.6673673506460863m 8.957709832659991e-8m -0.7447286883769253m"
+            (click)="clickHotspot($event.target)"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'restorationFourth.hotspot1'|translate}}
+      </div>
+    </button>
+    <button class="Hotspot" slot="hotspot-2"
+            data-position="0.22897121733909495m 1.329830355095294m 0.018506606517252833m"
+            data-normal="0.9799885492946669m 0.0447723103296513m 0.1939533023154793m"
+            (click)="clickHotspot($event.target)"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'restorationFourth.hotspot2'|translate}}
+      </div>
+    </button>
+    <button class="Hotspot" slot="hotspot-3"
+            data-position="-0.31387097257060026m 1.317664641600625m 0.10725399223359824m"
+            data-normal="-0.03362862754171977m 0.9993870538555956m -0.009727897794156221m"
+            (click)="clickHotspot($event.target)"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'restorationFourth.hotspot3'|translate}}
+      </div>
+    </button>
+    <button class="Hotspot" slot="hotspot-4"
+            data-position="-0.24821071420827523m 1.3188916322418966m -0.1819995973933349m"
+            data-normal="-0.036203741355842874m 0.9992535872225717m -0.013474328727674638m"
+            (click)="clickHotspot($event.target)"
+            data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">{{'restorationFourth.hotspot4'|translate}}
+      </div>
+    </button>
+  </model-viewer>
+</div>
+

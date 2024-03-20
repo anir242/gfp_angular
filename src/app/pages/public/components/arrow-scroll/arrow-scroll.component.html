@@ -1,0 +1,13 @@
+<div class="arrow mb-4">
+  <ng-container *ngIf="business; else individual">
+    <a (click)="scrollToId(id)">
+      <img src="/assets/images/public/home/arrow-down.png" alt="Next" width="56">
+    </a>
+  </ng-container>
+  <ng-template #individual>
+    <a (click)="scrollToId(id)">
+      <img src="/assets/images/public/home/arrow-down-green.png" alt="Next" width="56">
+    </a>
+  </ng-template>
+</div>
+

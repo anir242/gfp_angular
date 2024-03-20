@@ -1,0 +1,27 @@
+<div class="container p-0" id="dataIntegration">
+<div class="row g-0 gx-md-5 align-items-center">
+  <div class="col-6 d-none d-md-block text-end" [ngClass]="imgPosition === 'left' ? 'order-1' : 'order-2'">
+    <app-achievements-data [forApi]="true" *ngIf="imgPosition === 'left'"></app-achievements-data>
+    <img [src]="url" *ngIf="imgPosition != 'left'">
+  </div>
+  <div class="col-md-6 col-12 text-center text-md-start" [ngClass]="imgPosition === 'left' ? 'order-2' : 'order-1'">
+    <p class="pre-line mat-display-1">{{title}}</p>
+    <div class="text-center d-md-none mb-5">
+      <app-achievements-data [forApi]="true" *ngIf="imgPosition === 'left'"></app-achievements-data>
+      <img [src]="url" *ngIf="imgPosition != 'left'">
+    </div>
+    <p class="pre-line mat-body-1">{{showReadMore == true ? mobileDescription : description}}</p>
+<!--
+    <p class="pre-line d-md-none mat-body-1">{{mobileDescription}}</p>
+-->
+    <button mat-button [hidden]="!showReadMore" (click)="readMoreAction()" class="d-md-none">
+      <ng-container *ngIf="readMore, else noRead">
+        {{'apiIntegration.readLess'|translate}}
+      </ng-container>
+      <ng-template #noRead>
+        {{'apiIntegration.readMore'|translate}}
+      </ng-template>
+    </button>
+  </div>
+</div>
+</div>

@@ -1,0 +1,368 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin carbon-footprint-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, "accent");
+  $background: map.get($color-config, "background");
+  $foreground: map.get($color-config, "foreground");
+  $primary: map.get($color-config, "primary");
+  $warn: map.get($color-config, "warn");
+
+  .mat-raised-button{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: none !important;
+  }
+
+  .green {
+    color: #00ba80;
+  }
+
+  .dark-green {
+    color: #002822 !important;
+  }
+
+  .fs-40 {
+    font-size: 40px !important;
+    line-height: 48px !important;
+  }
+
+  .fs-20{
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .ls-1 {
+    letter-spacing: -0.6px;
+  }
+
+  .no-wrap {
+    white-space: nowrap;
+  }
+
+  .ms-height-100{
+    height: 100% !important;
+  }
+
+  .h-0{
+    height: 0px !important;
+  }
+
+  #energy-main {
+    background: linear-gradient(
+        rgba(240, 240, 240, 0.7),
+        rgba(240, 240, 240, 0.7)
+      ),
+      url("/assets/images/bg_noise.jpg");
+
+    img {
+      max-width: 100%;
+    }
+
+    #energy-banner {
+      background: url('/assets/images/carbon-footprint-bg.png');
+      background-size: 100% 100%;
+
+      @include media-breakpoint-up(md) {
+        .demo-tablet {
+          img {
+            position: absolute;
+            bottom: -100px;
+          }
+        }
+      }
+    }
+
+    .title {
+      span {
+        color: #00ba80;
+      }
+    }
+
+    .emissions-main {
+      color: $grey1;
+
+      .scope {
+        max-width: 420px;
+        border: 2px solid transparent;
+        transition: 0.5s all;
+        box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+
+        &:hover,:focus,
+        :active {
+          border: 2px solid #14b2c3;
+        }
+      }
+
+      #graphic{
+        background-image: url('../../../../../assets/images/pilio/images/Graphic.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    #achieve {
+      .achieve-info {
+        max-width: 600px;
+        width: 100%;
+        border: 2px solid transparent;
+        transition: 0.5s all;
+        box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+        &:hover {
+          border: 2px solid #14b2c3;
+        }
+
+        .description {
+          transition: height 0.5s;
+          height: 22px;
+          overflow: hidden;
+          margin-bottom: 10px;
+          button {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            box-shadow: none;
+          }
+
+          span,
+          button {
+            opacity: 0;
+            transition: opacity 0.3s;
+          }
+
+          &.visible {
+            height: 105px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            span,
+            button {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .laptop {
+        left: -7%;
+      }
+    }
+  }
+
+  .their-carbon-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .their-carbon {
+    padding: 48px;
+    margin: 48px auto;
+    border-radius: 24px;
+    background: #e9fdff;
+    gap: 40px;
+
+    .card {
+      background-color: white;
+      border-radius: 20px;
+      padding: 40px;
+      height: 100%;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      border: none;
+    }
+  }
+
+  .tabs {
+    padding: 48px;
+    padding-top:10px;
+    padding-bottom: 0;
+    margin: 0 auto;
+    border-radius: 24px;
+    .mat-tab-list {
+      .mat-tab-labels {
+        justify-content: space-between;
+      }
+      .mat-ink-bar {
+        background-color: #f2bf00 !important;
+      }
+    }
+    .mat-tab-label {
+      width: 100%;
+    }
+
+    .mat-tab-label-active {
+      color: #002822;
+      font-weight: 700;
+      opacity: 1;
+    }
+  }
+
+  .journey-bg{
+    background-image: url('../../../../../assets/images/pilio/images/Landscape.png')
+  }
+
+  .energy-efficiency {
+    background-image: url(/assets/images/blog_bg.png);
+    background-size: cover;
+    border-radius: 40px;
+
+    .energy-efficiency-title {
+      font-size: 40px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 100%;
+      box-shadow: 0px 10px 20px rgba(123, 123, 123, 0.08);
+      border: none;
+      button {
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          color: white;
+        }
+      }
+      .bg {
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        max-height: 200px;
+        gap: 10px;
+      }
+      .hovered {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border: 1px solid transparent;
+        transition: border 0.5s;
+        border-top: none;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+    }
+
+    .blog {
+      .card {
+        &:hover {
+          .hovered {
+            border: 1px solid #00ba80;
+            border-top: none;
+            transition: border 0.5s;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .their-carbon-cards{
+      .carousel-cell{
+        width: 278px !important;
+        padding: 20px !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .description {
+    transition: 0s all !important;
+    height: 50px !important;
+    span,
+    button {
+      transition: 0s all !important;
+    }
+
+    &.visible {
+      height: 100% !important;
+    }
+  }
+
+
+  .their-carbon{
+    .carousel{
+      width: 75%;
+      margin: 0 auto;
+    }
+    .carousel-cell{
+      width: 261px !important;
+      padding: 20px !important;
+    }
+    ::ng-deep{
+      .carousel-arrows{
+        .carousel-arrow-next{
+            right: -15%;
+        }
+        .carousel-arrow-prev{
+          left: -15%;
+        }
+        .carousel-arrow-disabled{
+          display: none;
+        }
+      }
+    }
+  }
+
+  .energy-efficiency{
+    .carousel-blog{
+        width: 85% !important;
+        margin: 0 auto !important;
+    }
+
+    ::ng-deep{
+      .carousel-arrows{
+        .carousel-arrow-next{
+            right: -15%;
+        }
+        .carousel-arrow-prev{
+          left: -15%;
+        }
+        .carousel-arrow-disabled{
+          display: none;
+        }
+      }
+    }
+
+    .card{
+      .bg{
+        justify-content: space-around !important;
+        padding: 5px !important;
+      }
+    }
+  }
+
+  .journey-bg{
+            background-image: url('../../../../../assets/images/pilio/images/Landscape_m.png') !important;
+            background-size: 100% 100% !important;
+            background-position: 100%;
+            border-radius: 24px;
+            position: relative;
+            padding: 24px !important;
+            &::after{
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+              background-color: white;
+              border-radius: 24px;
+              opacity: 0.1;
+            }
+  }
+
+  .tabs{
+    padding: 20px !important;
+  }
+}
+

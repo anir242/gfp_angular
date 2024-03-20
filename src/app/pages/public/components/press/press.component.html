@@ -1,0 +1,22 @@
+<ng-container>
+  <div class="supportingPadding">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-12 text-center">
+          <p class="mb-4 mat-display-1">{{title}}</p>
+        </div>
+        <div class="col-12">
+          <carousel [arrows]="arrows" arrowsOutside="true" [height]="carouselHeight" [cellWidth]="cardWidth" class="d-flex align-items-center">
+            <div class="carousel-cell" *ngFor="let item of pressItems">
+              <div class="image-container">
+                <a [href]="item.url" target="_blank">
+                  <img [src]="item.image" [alt]="item.name" />
+                </a>
+              </div>
+            </div>
+          </carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

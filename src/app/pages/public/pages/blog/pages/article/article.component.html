@@ -1,0 +1,67 @@
+<div class="content overflow-hidden" id="article">
+  <div class="container p-4">
+    <div class="row position-relative">
+      <div class="col-12">
+        <div class="position-absolute start-0 ms-2">
+          <span class="px-3 py-1 bold type mat-caption" style="background-color: burlywood;">Restoration</span>
+         <!-- <span class="px-3 py-1 bold type mat-caption" [style]="{'background-color': activeProject.type.colorLabel}">{{activeProject.type?.name}}</span> -->
+        </div>
+      </div>
+      <div class="col-12 col-md-6 d-flex flex-column justify-content-md-start mt-5">
+        <span class="title-1">Article’s title here</span>
+        <span class="small-body">11/11/21, 22.30</span>
+      </div>
+      <div class="col-12 col-md-6 d-flex justify-content-md-end mt-3 mt-md-5">
+        <div class="d-flex flex-row-reverse flex-md-row align-items-center">
+          <img src="assets/images/svg/share_icon.svg" class="ps-3 pe-3">
+          <button mat-stroked-button color="green">
+            <div class="d-flex align-items-center">
+              <img src="assets/images/svg/thumb_up_fill.svg" class="pe-1">
+              <span class="bold" style="color: #00734F;">1k likes</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div col="col-12">
+        <div class="imageArticle d-flex justify-content-center">
+          <img src="assets/images/milada-vigerova-J8U4qsUP3X4-unsplash 1.jpg">
+          <!-- <img src="assets/images/bg_forest.png"> -->
+        </div>
+      </div>
+      <div col="col-12">
+        <div class="descArticle small-body bold">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem ut nesciunt maiores corporis, totam quam perspiciatis vero molestiae quae sint? Qui vitae atque quibusdam deserunt eaque, repellat ullam veritatis voluptas! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non a sunt officia, delectus et accusamus quia mollitia commodi culpa eveniet, quo assumenda perferendis fugit vero aut, eius laborum repellat. Quo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat earum in nulla libero. Laudantium nisi maxime animi necessitatibus quae sapiente libero. Fuga a eaque quaerat itaque dolor illum fugiat nobis.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat earum in nulla libero. Laudantium nisi maxime animi necessitatibus quae sapiente libero. Fuga a eaque quaerat itaque dolor illum fugiat nobis.</p>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum totam iste, sint quibusdam harum alias provident temporibus, obcaecati placeat doloribus, dolor quo quam. Dolorum delectus et officia dolores soluta laboriosam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat earum in nulla libero. Laudantium nisi maxime animi necessitatibus quae sapiente libero. Fuga a eaque quaerat itaque dolor illum fugiat nobis.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat earum in nulla libero. Laudantium nisi maxime animi necessitatibus quae sapiente libero. Fuga a eaque quaerat itaque dolor illum fugiat nobis.</p>
+        </div>
+      </div>
+      <div col="col-12">
+        <span class="title-1">Related Articles</span>
+
+        <div class="d-flex justify-content-center my-4">
+          <carousel
+              [arrows]="true"
+              [margin]="25"
+              [height]="carouselHeight"
+              [cellWidth]="cardWidth"
+              [cellsToShow]="cellsToShow"
+              class="d-flex align-items-center">
+
+            <div class="carousel-cell" *ngFor="let item of data">
+              <div class="card-container">
+                <div [style.background-image]="'url(assets/images/bg_forest.png)'">
+                </div>
+                <div class="d-flex flex-column pt-4">
+                  <span class="title-3 bold">Article related name</span>
+                  <span class="mat-caption bold date">Project typology 11/11/21, 22.30</span>
+                  <span class="small-body bold pt-3">{{sliceFirstTenWords('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate autem ea delectus deserunt debitis at hic alias quibusdam libero ipsa sed blanditiis, commodi doloribus adipisci praesentium aliquam quam. Nobis, suscipit.')}}...</span>
+                </div>
+              </div>
+            </div>
+          </carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

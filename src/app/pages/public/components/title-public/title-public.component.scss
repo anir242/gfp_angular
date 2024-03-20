@@ -1,0 +1,124 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin title-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+  $is-dark-theme: map.get($color-config, "is-dark");
+
+  .bannerTitle {
+    height: max-content !important;
+
+    .mint-color{
+      color: #00BA80;
+    }
+    .title {
+      color: mat.get-color-from-palette($primary-palette, "main-contrast");
+      background-size: cover;
+      width: 100%;
+    }
+
+    .layer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 10rem 0 5rem 0;
+    }
+
+    /*    .arrow{
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+    }*/
+  }
+
+  .label-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 24px;
+
+    ul {
+      color: $bar-yellow;
+      margin-bottom: 0;
+
+      &.individual {
+        color: $bar-lime;
+      }
+
+      li {
+        cursor: pointer;
+
+        &:hover {
+          color: #ead27a;
+        }
+      }
+
+      > :first-child {
+        margin-top: 16px;
+      }
+
+      >*:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .globe-wrapper {
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      width: 70%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      transform: translateY(-5rem);
+      width: 80%;
+      float: right;
+    }
+
+    .globe {
+      margin-bottom: -80px;
+    }
+
+    .globe-text {
+      bottom: 13rem;
+      background: rgba(240,240,240,.15);
+      border-radius: 8px;
+      padding: 4px 8px;
+    }
+
+    .logos {
+      right: 0;
+      bottom: -50px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .layer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 4rem 0 0 0 !important;
+    }
+
+    .globe-wrapper {
+      .globe-text{
+        bottom: 3rem;
+      }
+    }
+
+      .bannerTitle{
+        .title-arrow{
+          .arrow{
+              margin: 0 !important;
+              left: 42%;
+              bottom: -100px;
+          }
+        }
+      }
+  }
+}

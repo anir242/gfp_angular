@@ -1,0 +1,129 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin project-list-item-public-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .shadow{
+    box-shadow: inset 0px -90px 150px 0px #1f1e1e !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .grey7 {
+    color: white;
+  }
+
+  @include media-breakpoint-up(md){
+    .mat-card > div{
+      height: 300px;
+    }
+  }
+
+  .mat-card {
+    @include media-breakpoint-up(md){
+      height: 300px;
+
+      .row{
+        height: inherit;
+
+        > div{
+          height: inherit;
+        }
+      }
+    }
+
+    .card-text, .card-content{
+      height: inherit;
+    }
+
+    border-radius: 8px;
+
+    .cardTitle{
+      @include media-breakpoint-up(md){
+        min-height: 32*3px;
+        @include media-breakpoint-up(xl){
+          min-height: auto
+        }
+      }
+    }
+    @include media-breakpoint-up(md){
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    padding: 0;
+    overflow: hidden;
+
+    .mat-expansion-panel{
+      @include mat.elevation(0);
+      background-color: mat.get-color-from-palette($primary, 'main-contrast');
+      .mat-expansion-indicator{
+        position: absolute;
+        left: calc(50% - 0.5rem);
+        &::after{
+          height: 5px;
+          width: 5px;
+          color: grey;
+        }
+      }
+      .mat-expansion-panel-header{
+        height: 40px;
+      }
+      .mat-expansion-panel-body{
+        padding: 0;
+      }
+    }
+    @include mat.elevation(0);
+
+    .mat-card-image {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      z-index: -1;
+      min-height: 244px;
+
+      @include media-breakpoint-up(md){
+        max-height: 300px;
+      }
+    }
+
+    .card-text {
+      padding: 1rem;
+    }
+
+    .mat-accordion{
+      display: block;
+
+      @include media-breakpoint-up(md){
+        display: none;
+      }
+    }
+  }
+  .description{
+    &.opened{
+      display: block;
+    }
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .projectLabel {
+    padding: 5px 30px;
+    border-radius: 20px;
+    height: fit-content;
+  }
+  img{
+    object-fit: cover;
+  }
+}

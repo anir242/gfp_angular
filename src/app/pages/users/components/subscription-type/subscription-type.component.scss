@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin subscription-type($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+
+
+    .image {
+      overflow: hidden;
+      vertical-align: middle;
+      background-color: $background-image-color;
+      width: 74px;
+      height: 74px;
+      border-radius: 50px;
+      display: inline-block;
+    }
+
+
+}

@@ -1,0 +1,92 @@
+@import 'src/assets/scss/custom/components/_variables.scss';
+
+.headline {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  font-family: $font-chivo;
+}
+
+.headline-2{
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 60px;
+  font-family: $font-chivo;
+}
+
+.title-1 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  font-family: $font-chivo;
+}
+
+.title-2 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 34px;
+  font-family: $font-chivo;
+}
+
+.title-3 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  font-family: $font-chivo;
+}
+
+.title-4 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: $font-chivo;
+}
+
+.link {
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: $font-chivo;
+}
+
+//
+
+.tiny-body {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: $font-lato;
+}
+
+.small-body {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: $font-lato;
+}
+
+.large-body {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  font-family: $font-lato;
+}
+
+.body {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: $font-lato;
+}
+.big-body {
+  font-size: 20px;
+  line-height: 28px;
+  font-family: $font-lato;
+}
+
+.body-bold {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: $font-lato;
+  font-weight: 700;
+}

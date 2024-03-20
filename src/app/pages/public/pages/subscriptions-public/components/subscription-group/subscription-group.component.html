@@ -1,0 +1,29 @@
+<mat-card id="subscriptionGroup">
+  <img mat-card-lg-image [src]="group.images.url" [alt]="group.name"/>
+  <mat-card-header>
+    <mat-card-title>
+      <div class="texts mt-3">
+        <span class="mat-headline d-block fw-bold">{{group.name}}</span>
+        <span class="mat-subheading-1 d-block description">{{group.description}}</span>
+        <div *ngIf="group.advise" class="advise">
+          <svg-icon src="assets/images/svg/info_public.svg"></svg-icon>
+          <span class="mat-caption ps-2" [innerHTML]="group.advise"></span>
+        </div>
+      </div>
+    </mat-card-title>
+
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+
+      <div class="texts mt-3">
+        <span class="mat-subheading-2 d-block">{{'mainSubscriptions.howDoesItWorks' | translate}}</span>
+        <span class="mat-subheading-1 d-block description">{{group.howWorks}}</span>
+      </div>
+  </mat-card-content>
+  <mat-card-actions class="p-2">
+    <button mat-raised-button class="w-100" color="yellow" (click)="openSubscriptionGroup(group.slug)">
+      {{'mainSubscriptions.getStarted' | translate}}
+    </button>
+  </mat-card-actions>
+</mat-card>

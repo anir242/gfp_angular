@@ -1,0 +1,23 @@
+@charset "UTF-8";
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin share-popup($theme) {
+  $primary: map.get($theme, primary);
+  $background: map.get($theme, background);
+  $accent: map.get($theme, accent);
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
+  $warn: map.get($theme, warn);
+
+  share-buttons-popup {
+    background-color: mat.get-color-from-palette($background, 'background');
+    color: mat.get-color-from-palette($foreground, 'text');
+    border-radius: 4px;
+    sb-close-overlay{
+      svg{
+        color: mat.get-color-from-palette($foreground, 'text');
+      }
+    }
+  }
+}

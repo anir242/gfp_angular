@@ -1,0 +1,23 @@
+<div id="partners" class="my-3" [ngClass]="bgColor">
+  <mat-grid-list [cols]="items.length > 5 ? 5 : items.length" rowHeight="2:1" class="d-none d-md-block">
+    <mat-grid-tile *ngFor="let item of items">
+      <img [src]="item" class="p-2">
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="col-12 d-md-none">
+    <carousel cellWidth="100%" dots="true" arrows="false" loop="true">
+      <ng-container *ngFor="let item of items, let i = index, let even = even">
+        <div class="carousel-cell" *ngIf="even">
+          <div class="d-flex h-100 align-items-center justify-content-center">
+            <div class="mx-2 itemContainer">
+              <img [src]="items[i]">
+            </div>
+            <div class="mx-2 itemContainer">
+              <img *ngIf="items[i+1]" [src]="items[i+1]">
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </carousel>
+  </div>
+</div>

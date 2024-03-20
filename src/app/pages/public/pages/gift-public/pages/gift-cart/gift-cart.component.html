@@ -1,0 +1,51 @@
+  <div class="main-content" id="giftList">
+    <div class="container">
+      <div class="row">
+        <ng-container *ngIf="items.length>0, else noItems">
+          <div class="col-12 d-none d-md-block">
+            <div class="mb-3">
+            <span class="mat-display-1">
+              {{'gift.cart'|translate}}
+            </span>
+              <span class="mat-subheading-2">
+              {{'gift.items'|translate: {value: items.length} }}
+            </span>
+            </div>
+          </div>
+          <div class="col-md-8 col-12 cardContainer" *ngIf="items.length>0">
+            <span class="mat-display-1 d-md-none mt-3">
+              {{'gift.cart'|translate}}
+            </span>
+            <ng-container *ngFor="let item of items, let i = index">
+              <div class="p-4">
+                <app-gift-card-summary
+                  (action)="action(item, $event)"
+                  [item]="item"></app-gift-card-summary>
+              </div>
+              <div class="mx-4" *ngIf="items.length>1 && items.length > i+1">
+                <mat-divider></mat-divider>
+              </div>
+            </ng-container>
+          </div>
+          <div class="col-md-4 col-12 ">
+            <div class="mt-md-auto mt-3">
+              <app-order-summary
+                [title]="translate.instant('gift.totalGift')"
+                [costDescription]="translate.instant('gift.totalCost')"
+                summaryType="gift"></app-order-summary>
+              <button class="w-100 my-4" color="yellow" mat-raised-button
+                      (click)="goToCheckOut()">{{'gift.proceedCheckOut' | translate}}</button>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noItems>
+          <div class="col-12 text-center">
+            <p class="mat-title">
+              {{'gift.noItems'|translate}}
+            </p>
+            <button (click)="goToGifts()" color="yellow" mat-raised-button>{{'gift.returnCart'|translate}}</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>

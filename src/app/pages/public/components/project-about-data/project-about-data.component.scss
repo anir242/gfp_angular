@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin project-about-data($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #projectAboutData.paddingAboutData {
+    /*height: 380px;*/
+    padding: 2em 2em;
+    @include media-breakpoint-up(md) {
+      padding: 5.5em 3em;
+    }
+
+    p {
+      color: mat.get-color-from-palette($foreground, 'base');
+    }
+
+
+  }
+}

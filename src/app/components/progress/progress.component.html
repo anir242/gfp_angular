@@ -1,0 +1,63 @@
+<div *ngIf="!forGift; else giftHowTo">
+  <div *ngIf="type === progressTypes.numberInsideTextBelow; else other">
+    <div class="big my-4">
+      <div class="stepper-wrapper">
+        <div class="stepper-item" *ngFor="let item of items | keyvalue,  let i = index">
+          <div class="step-counter" [ngStyle]="setColor()">
+            <span class="mat-title number">{{i + 1}}</span>
+          </div>
+          <div class="step-name">{{item.value.text}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #other>
+    <div class="small my-4 d-none d-md-block">
+      <p class="text-center mb-5" [ngClass]="titleFont ? titleFont : 'mat-headline'" *ngIf="title">{{title}}</p>
+      <div class="stepper-wrapper">
+        <div class="stepper-item mx-2" *ngFor="let item of items | keyvalue, let i = index">
+          <div class="text-center step">
+            <span *ngIf="type === progressTypes.numberUpTextBelow" [ngStyle]="{'color': numberColor}"
+                  [ngClass]="numberFont ? numberFont : 'mat-subheading-1'" class="number">{{i + 1}}</span>
+            <svg-icon [svgStyle]="" *ngIf="type === progressTypes.imageAndTextBelow" [src]="item.value?.url"></svg-icon>
+            <p class="mt-2" [ngClass]="descriptionFont ? descriptionFont : 'mat-body-1'">{{item.value.text}}</p>
+          </div>
+          <div class="step-name"></div>
+          <div class="step-counter" [ngStyle]="setColor()"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid smView d-md-none" *ngIf="type === progressTypes.imageAndTextBelow">
+      <div class="row mb-3 justify-content-center text-center" *ngFor="let item of items | keyvalue, let i = index">
+        <div class="col itemList">
+          <div class="my-3">
+            <svg-icon [svgStyle]="" [src]="item.value?.url"></svg-icon>
+            <p class="mat-body-1 text-center">{{item.value.text}}</p>
+          </div>
+          <div class="vertical"></div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<ng-template #giftHowTo>
+  <div class="container">
+    <div class="row mt-5 mb-5">
+      <div class="col-12">
+        <div class="chivo lg bold mb-5 text-center">{{title}}</div>
+      </div>
+      <div class="col-12 col-lg-4" *ngFor="let item of items | keyvalue,  let i = index">
+        <mat-card class="giftHowTo p-0">
+          <div class="top p-4 d-flex align-items-center text-white">
+            <div class="chivo xl bold me-3">{{i + 1}}</div>
+            <div class="lato xs">{{item.value.text}}</div>
+          </div>
+          <div class="bottom p-1">
+            <img [src]="'/assets/images/public/gifts/gift-howto-' + (i+1).toString() + '.png'">
+          </div>  
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

@@ -1,0 +1,48 @@
+<div id="manifesto">
+  <div class="container p-0 p-lg-4">
+    <div class="row g-3 justify-content-center">
+      <div class="col-12">
+        <div class="mb-4">
+          <span class="title-1 bold">
+            {{'aboutPublicTeam.ourManifesto'|translate}}
+          </span>
+          <p class="large-body text-center">
+            {{'aboutPublicTeam.manifestoDescription' | translate}}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-xl-5 col-lg-6 mt-5" *ngFor="let item of items">
+        <mat-card class="singleCard">
+          <mat-card-content class="p-3 p-lg-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="me-2 me-lg-4">
+                <img [src]="'/assets/images/public/about/manifesto_' + item.icon + '.svg'" alt="">
+              </div>
+              <span [ngClass]="isSmallScreen ? 'title-3 bold' : 'title-2'">
+                {{item.title}}
+              </span>
+            </div>
+            <div class="d-none d-lg-block small-body">
+              {{item.description}}
+            </div>
+            <div class="d-lg-none mt-1">
+              <mat-accordion>
+                <mat-expansion-panel [(expanded)]="item.isExpand">
+                  <mat-expansion-panel-header class="p-3 body"
+                    [ngStyle]="{'height': item.isExpand ? 0 : 'initial' }">
+                    {{ item.isExpand ? '' : sliceFirstTenWords(item.description)}}
+                  </mat-expansion-panel-header>
+                  <div class="p-3">
+                    <span class="small-body">
+                    {{item.description}}
+                    </span>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

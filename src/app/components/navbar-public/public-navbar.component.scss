@@ -1,0 +1,127 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin public-navbar-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, 'primary');
+  $background: map.get($color-config, 'background');
+  $accent-palette: map.get($color-config, 'accent');
+  $warn-palette: map.get($color-config, 'warn');
+  $is-dark-theme: map.get($color-config, 'is-dark');
+
+  .mat-toolbar {
+    svg-icon {
+      fill: mat.get-color-from-palette($primary-palette, 'main-contrast');
+    }
+  }
+}
+
+.access{
+  .mat-raised-button{
+    line-height: 20px;
+    box-shadow: none !important;
+    height: 40px !important;
+  }
+}
+
+svg-icon svg {
+  height: 36px;
+  width: fit-content;
+}
+
+a{
+  img{
+    height: 36px;
+  }
+}
+
+.logoDesktop{
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+.configbar {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  height: 40px;
+  background: rgba(250, 250, 250, 0.05);
+  color: white;
+  margin-right: 1rem;
+
+  > div {
+    height: 24px;
+    padding-inline: 16px;
+    cursor: pointer;
+  }
+
+  > :nth-child(2) {
+    border-inline: 1px white solid;
+  }
+}
+
+.nav-item {
+
+  .nav-item-title{
+    &:hover{
+      color: #FFE274 !important;
+        &::after{
+          // mask: url("../../../assets/images/svg/arrow_down_yellow.svg") !important;
+          background-color: #FFE274 !important;
+        }
+    }
+  }
+
+  &.active {
+    .nav-item-title {
+      font-weight: bold;
+      color: #F2BF00 !important;
+    }
+    
+    .dropdown-toggle{
+      &::after{
+        // mask: url("../../../assets/images/svg/arrow_down_yellow.svg") !important;
+        background-color: #F2BF00 !important;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    .dropdown-item {
+      cursor: pointer;
+
+      &.active {
+        .nav-item-item {
+          font-weight: bold;
+          color: #00734F !important;
+        }
+      }
+
+      &:hover{
+        background-color: transparent !important;
+        .nav-item-item{
+          color: #00734F !important;
+        }
+      }
+
+    }
+  }
+}
+
+#google_translate_element {
+  display: none;
+}
+
+@media(min-width:992px) {
+  #google_translate_element {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .fixed-top{
+    height: 70px !important;
+  }
+}

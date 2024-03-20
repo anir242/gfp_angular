@@ -1,0 +1,26 @@
+<div class="container-fluid p-0" id="power">
+  <div class="row g-0">
+    <div class="col-12">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-12 text-center">
+            <div class="points">
+              <div class="mb-5">
+                <span class="mat-display-1 green">{{'landingPublicProgress.you'|translate|uppercase}}</span>
+                <span class="mat-display-1">{{'landingPublicProgress.title'|translate}}</span>
+                <span class="mat-display-1">.</span>
+              </div>
+              <app-progress
+                [descriptionFont]="'mat-body-2'"
+                [type]="progressTypes.imageAndTextBelow"
+                [items]="items"
+                [circleColor]="'#00BA80'"
+                [svgColor]="'#00734F'"
+              ></app-progress>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

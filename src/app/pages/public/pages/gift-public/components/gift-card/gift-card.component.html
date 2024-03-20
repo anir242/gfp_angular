@@ -1,0 +1,35 @@
+<div id="giftCard" class="my-3">
+  <mat-card>
+    <mat-card-content>
+      <div>
+        <div class="position-relative px-3">
+          <img mat-card-image [src]="url">
+          <div class="position-absolute top-0 mt-3">
+            <app-chip-label [color]="color" [text]="projectType"></app-chip-label>
+          </div>
+        </div>
+        <p class="px-3 mb-2 title-3 bold">
+          {{title}}
+        </p>
+        <p class="px-3 mb-5 small-body light-text pre-line description">
+          {{description}}
+        </p>
+        <div class="px-3 my-4">
+          <div class="align-items-center">
+            <div>
+              <span class="tiny-body me-2">{{'giftCard.starting'|translate}}</span>
+            </div>
+            <div>
+            <span class="title-2 bold">
+              {{'giftCard.price'|translate : {value: price | number: '1.2-2'} }}
+            </span>
+            </div>
+          </div>
+        </div>
+        <button mat-raised-button color="yellow" (click)="selectGift(cardId)" class="w-100 selectGift">
+          {{'giftCard.select'|translate}}
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

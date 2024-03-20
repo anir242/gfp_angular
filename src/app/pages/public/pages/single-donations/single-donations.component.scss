@@ -1,0 +1,364 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin single-donations-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  $my-typography: mat.define-typography-config();
+  $border-sm: #BABABA;
+
+  #singleDonations {
+
+    background-color: $landing-blue;
+    background-image: url('../../../../../assets/images/bg_dashboard.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include media-breakpoint-up(lg){
+      padding-top: 88px;
+    }
+
+    &.main-content {
+
+      .selectBox {
+        width: 270px;
+        &.selected {
+          .mat-card {
+            border: $bar-yellow 2px solid;
+          }
+        }
+      }
+
+      .providers {
+        text-align: center;
+        color: rgba(51, 51, 51, 0.87) !important;
+        cursor: pointer;
+        border-radius: 8px;
+
+        .imgWrapper {
+          img {
+            max-height: 50px;
+          }
+        }
+
+        .mat-card-header {
+          display: block;
+          flex-direction: unset;
+          border-radius: 8px;
+          background-color: #fafafa;
+
+          .radio {
+            right: 0;
+          }
+        }
+
+        .mat-card-content {
+          .body {
+            .content {
+              border-radius: 8px;
+              background: #fafafa;
+
+              @include media-breakpoint-up(lg){
+                min-height: 220px;
+              }
+            }
+          }
+        }
+
+        .mat-expansion-panel {
+          background-color: transparent;
+          border: 0;
+          box-shadow: none;
+
+          .mat-expansion-panel-content, .mat-expansion-panel-body {
+            padding: 0;
+            text-align: left;
+          }
+
+          .mat-expansion-indicator{
+            position: absolute;
+            left: calc(50% - 0.5rem);
+            &::after{
+              height: 5px;
+              width: 5px;
+              color: grey;
+            }
+          }
+        }
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white;
+      }
+
+      .p24{
+        padding-bottom: 24px;
+      }
+
+      .mat-card {
+        background-color: rgba(250, 250, 250, 0.08) !important;
+        border-radius: 8px;
+        @include mat.elevation(0);
+        border: 2px solid transparent;
+        box-shadow: none !important;
+      }
+
+      .mat-card-content{
+        padding: 1.5rem;
+
+        @include media-breakpoint-down(md){
+          padding: 1rem;
+        }
+      }
+
+      .mat-vertical-content {
+        padding: 0;
+      }
+
+      .mat-step-header {
+        background-color: rgba(250, 250, 250, 0.15);
+        border-radius: 40px;
+        padding: 0;
+        margin-bottom: 20px;
+        height: 32px;
+
+        .mat-step-icon {
+          width: 32px;
+          height: 32px;
+          background-color: transparent;
+          border: 2px solid white;
+          color: white;
+        }
+
+        .mat-step-icon-selected {
+          background-color: white;
+          border-color: white;
+          color: $deep-green;
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 18px;
+          font-family: $font-lato;
+        }
+      }
+
+      .mat-expansion-panel {
+        border-radius: 8px;
+        padding-bottom: 2rem;
+        @include mat.elevation(0);
+        background: #ffffff;
+
+        .mat-expansion-panel-header {
+          color: inherit;
+          font-size: inherit;
+          padding: 0;
+          position: initial;
+          text-align: left;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          background: inherit;
+        }
+
+        .mat-content {
+          display: inline-block;
+          text-overflow: ellipsis;
+        }
+
+        .mat-expansion-panel-body {
+          color: inherit;
+          padding: 0;
+          background: inherit;
+        }
+
+        .mat-expansion-indicator {
+          position: absolute;
+          bottom: 0;
+          font-size: 2rem;
+          width: fit-content;
+          height: 1.5rem;
+          left: calc(50% - 0.5rem);
+        }
+      }
+
+      .projects {
+
+        .imgWrapper {
+          img {
+            max-height: 50px;
+          }
+        }
+
+        .mat-radio-outer-circle{
+          background-color: white;
+        }
+
+        .project {
+          min-height: 200px;
+          border-radius: 0;
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          box-shadow: inset 0px -40px 90px 20px #1f1e1e;
+
+          .content {
+            margin-top: 120px;
+          }
+        }
+
+        .imgWrapper {
+          border-radius: 8px;
+        }
+
+        .btn-holder {
+          .mat-stroked-button {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+          }
+        }
+      }
+
+      .project-offset-wrapper {
+
+        .mat-radio-button {
+          float: right;
+        }
+
+        .selected>div {
+          border-radius: 8px;
+          border: $bar-yellow 1px solid;
+        }
+
+        .grey7 {
+          color: white;
+        }
+
+        img.background {
+          width: 100%;
+          height: 200px;
+          z-index: -1;
+          border-radius: 8px;
+        }
+
+        .btn-holder {
+          height: 38px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+
+
+      .donationField {
+        margin-bottom: 60px;
+
+        .saveButton {
+          max-width: 250px;
+          box-shadow: none;
+
+          @include media-breakpoint-down(md){
+            width: 100%;
+          }
+
+        }
+
+        #outerCard {
+          background-color: rgba(250, 250, 250, 0.05) !important;
+          border-radius: 8px;
+
+          background-color: mat.get-color-from-palette($primary, 'main-contrast');
+          @include mat.elevation(0);
+
+          .mat-tab-header {
+            border: 0;
+
+            .mat-tab-label-content {
+              color: #FAFAFA;
+            }
+
+            .mat-ink-bar {
+              background-color: $bar-yellow;
+            }
+          }
+
+          .tabContent {
+            border-radius: 8px;
+          }
+
+          .mat-form-field {
+            .mat-form-field-outline > * {
+              background: rgba(250,250,250,.05);
+            }
+            .mat-form-field-label, .mat-input-element {
+              color: white;
+            }
+          }
+
+          .mat-step-label-selected {
+            font-weight: bold;
+          }
+
+          .labelTitle {
+            color: mat.get-color-from-palette($foreground);
+          }
+
+          .mat-step {
+
+            &:nth-child(2){
+              .mat-vertical-content{
+                padding-bottom: 0px;
+              }
+            }
+          }
+
+          .mat-stepper-vertical {
+            .mat-step-header {
+              cursor: pointer;
+            }
+
+            background-color: transparent;
+
+            .mat-vertical-content-container {
+              margin-left: 0px;
+            }
+
+            .mat-stepper-vertical-line {
+              &:before {
+                border-width: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .summary {
+        padding: 20px;
+        min-width: 360px;
+        @include media-breakpoint-up(lg) {
+          padding: unset;
+        }
+
+        &.fixed {
+          position: fixed;
+        }
+
+        &.absolute {
+          position: absolute;
+          bottom: 0;
+          margin-bottom: 60px;
+        }
+      }
+
+      .authentication {
+        background-color: mat.get-color-from-palette($primary, 'main-contrast');
+        @include media-breakpoint-up(lg) {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin carbon-dioxide-offset-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #carbon-dioxide-offset {
+    background-image: $background1, url('/assets/images/bg_noise_low.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    color: white;
+    padding: 100px 18px 50px 18px;
+
+    @include media-breakpoint-up(lg) {
+      padding: 120px 70px 70px 70px;
+    }
+  }
+
+  .checkout-wrapper {
+    padding: 15px;
+    background: rgba(250, 250, 250, 0.05);
+    border-radius: 16px;
+
+
+    @include media-breakpoint-up(lg) {
+      padding: 32px;
+    }
+  }
+}

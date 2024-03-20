@@ -1,0 +1,116 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import "src/app/components/menu-item/menu-item.component";
+
+@mixin sidebar-account-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .sidebar-wrapper {
+    .mat-nav-list {
+      @include menu-item-theme($theme);
+
+      .mat-list-item {
+        .mat-list-item-content {
+          .nav-link {
+            p {
+              color: mat.get-color-from-palette($primary);
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+
+
+  .sidebarAccount {
+    height: 100%;
+    width: 300px;
+    position: relative;
+    z-index: 3;
+    padding-top: 64px;
+    background-size: cover;
+    background: $main-text-light center center;
+    display: block;
+
+    .sidebar-wrapper {
+      width: 100%;
+      min-height: 100%;
+      max-height: 100%;
+      z-index: 4;
+      position: relative;
+      overflow: auto;
+
+      .contentSelect {
+        margin-top: 8px;
+        padding: 8px;
+
+        .mat-form-field {
+          width: 100%;
+
+          &.mat-form-field-appearance-outline {
+            color: mat.get-color-from-palette($primary);
+
+            .mat-form-field-outline-thick,
+            .mat-form-field-outline {
+              color: mat.get-color-from-palette($primary);
+            }
+          }
+        }
+
+        &.mat-focused {
+          .mat-form-field-label {
+            color: mat.get-color-from-palette($primary);
+          }
+
+          .mat-form-field-outline-thick {
+            color: mat.get-color-from-palette($primary);
+          }
+        }
+
+        .mat-form-field-label {
+          mat-label {
+            color: mat.get-color-from-palette($primary);
+          }
+        }
+      }
+
+      .mobile {
+        display: block;
+
+        @include media-breakpoint-up(md) {
+          display: none;
+        }
+
+        div {
+          margin: 8px;
+
+          .mat-stroked-button {
+            color: mat.get-color-from-palette($background, 'background');
+            border-color: mat.get-color-from-palette($background, 'background');
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .sidebar,
+    .main-panel,
+    .sidebar-wrapper {
+      -webkit-transition-property: top, bottom, width;
+      transition-property: top, bottom, width;
+      -webkit-transition-duration: 0.2s, 0.2s, 0.35s;
+      transition-duration: 0.2s, 0.2s, 0.35s;
+      -webkit-transition-timing-function: linear, linear, ease;
+      transition-timing-function: linear, linear, ease;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}

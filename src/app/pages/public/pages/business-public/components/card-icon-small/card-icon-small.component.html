@@ -1,0 +1,21 @@
+<mat-card class="h-100" id="cardIconSmall">
+  <mat-card-content [class]="containerClass">
+    <div class="icon my-2">
+      <svg-icon [src]="url"></svg-icon>
+    </div>
+    <div>
+      <p class="mat-body-2">{{title}}</p>
+      <p class="mat-body-1" *ngIf="readMore">{{description}}</p>
+      <div class="d-md-none">
+        <button class="text-start" mat-button (click)="readMoreAction()">
+          <ng-container *ngIf="readMore, else noRead">
+            {{'whyJoin.readLess'|translate}}
+          </ng-container>
+          <ng-template #noRead>
+            {{'whyJoin.readMore'|translate}}
+          </ng-template>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

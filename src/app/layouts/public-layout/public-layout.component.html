@@ -1,0 +1,19 @@
+<div class="wrapper public-layout">
+  <app-public-navbar *ngIf="!(router.url.includes('/nativa'))" [menuItemsApp]="menuItems"
+                     (toggleSidenav)="sidenav.toggle()"></app-public-navbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="mode"
+                 [opened]="toggleOpen"
+                 (window:resize)="onResize($event)">
+      <div class="sidebar">
+        <app-sidebar (toggleSidenav)="this.sidenav.close()"
+                     [menuItemsApp]="[]"
+                     [menuItemsGen]="menuItems"></app-sidebar>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+      <app-footer-public *ngIf="!(router.url === '/login' || router.url === '/forgotPassword')"></app-footer-public>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

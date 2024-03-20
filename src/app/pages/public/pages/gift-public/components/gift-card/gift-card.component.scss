@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin gift-card-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  #giftCard {
+    .mat-card{
+      box-shadow: 0 10px 20px rgba($color: #7B7B7B, $alpha: 0.15);
+    }
+    .light-text{
+      color: mat.get-color-from-palette($background, 'secondary-text');
+
+      &.description {
+        height: 2em;
+      }
+
+    }
+    img{
+      height: 187px;
+      object-fit: cover;
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+    }
+
+    .selectGift{
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      box-shadow: none;
+    }
+  }
+}

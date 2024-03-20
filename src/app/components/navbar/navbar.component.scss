@@ -1,0 +1,133 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@mixin navbar-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+  $background: map.get($color-config, 'background');
+  $foreground: map.get($color-config, 'foreground');
+  $primary: map.get($color-config, 'primary');
+  $warn: map.get($color-config, 'warn');
+
+  .mat-toolbar {
+    background: $landing-blue !important;
+
+    .fixed-top.scrolled {
+      background: #fff !important;
+    }
+
+    &.hidden {
+      display: none !important;
+    }
+
+    @include mat.elevation(0);
+
+    @include media-breakpoint-up(md) {
+      &.mat-dark {
+        .navbar {
+          svg-icon {
+            fill: mat.get-color-from-palette($primary, 'main-contrast');
+          }
+
+          span {
+            color: mat.get-color-from-palette($primary, 'main-contrast');
+          }
+        }
+      }
+
+    }
+
+    .navbar {
+      width: 100%;
+
+      .nav-menu-items {
+        position: fixed;
+        right: 30px;
+
+        @include media-breakpoint-up(md) {
+          right: 60px;
+          width: 300px;
+        }
+      }
+
+      svg-icon {
+        fill: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+
+      .image {
+        overflow: hidden;
+        vertical-align: middle;
+        background-color: $background-image-color;
+        width: 35px;
+        height: 35px;
+        border-radius: 50px;
+        display: inline-block;
+      }
+      /*.notificationPanel{
+        white-space: normal;
+        .header{
+          background-color: $notificationHeader;
+        }
+        .read {
+          background-color: $notificationRead;
+        }
+        .unRead{
+          background-color: $notificationUnRead;
+        }
+        .dropdown-menu{
+          width: 450px;
+          right: 2px;
+        }
+        ul{
+          transform: translateX(60%);
+        }
+        .dropdown-toggle::after{
+          content: none;
+        }
+        svg-icon{
+          stroke: mat.get-color-from-palette($primary);
+          margin-left: 10px;
+        }
+        .mat-stroked-button {
+          padding-right: 15px;
+        }
+        .mat-raised-button{
+          .mat-button-wrapper{
+            color: $main-text-dark;
+          }
+        }
+        .dot {
+          height: 11px;
+          width: 11px;
+          background-color: $notificationDot;
+          border-radius: 50%;
+          display: inline-block;
+        }
+      }*/
+      .navbar-wrapper {
+        display: flex;
+        align-items: center;
+
+        .mat-icon {
+          color: mat.get-color-from-palette($primary, 'main-contrast');
+        }
+
+        button {
+          &.activeTab {
+            span {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      span, p {
+        color: mat.get-color-from-palette($primary, 'main-contrast');
+      }
+
+      .dropdown-toggle::after {
+        content: none;
+      }
+    }
+  }
+}
+
